@@ -4,8 +4,8 @@ import MainLayout from "../components/MainLayout";
 const LoginPage = () => {
   return (
     <MainLayout>
-      <div className="flex sm:flex-row flex-col justify-center min-h-full bg-white ">
-        <div className="flex sm:w-1/2 min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex">
+        <div className="w-1/2">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               src="/logo-csw.png"
@@ -45,8 +45,7 @@ const LoginPage = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
+                  className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
                 </label>
                 <div className="mt-[1%]">
@@ -65,8 +64,7 @@ const LoginPage = () => {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
+                    className="block text-sm font-medium leading-6 text-gray-900">
                     Password
                   </label>
                 </div>
@@ -99,8 +97,7 @@ const LoginPage = () => {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   Sign in
                 </button>
               </div>
@@ -110,21 +107,20 @@ const LoginPage = () => {
               Belum memiliki akun?
               <a
                 href="#"
-                className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-              >
+                className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Daftar
               </a>
             </p>
           </div>
         </div>
 
-        <div className="w-1/2">
+        {/* <div className="w-1/2">
           <img
             src="/img/SlideLogin.png"
             className={`mx-auto object-cover w-full h-auto`}
             alt="Logo CSW"
           />
-        </div>
+        </div> */}
       </div>
     </MainLayout>
   );
