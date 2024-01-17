@@ -1,19 +1,18 @@
-"use client";
-import React from 'react';
+import React from "react";
 
-import MainLayout from "./components/MainLayout";
+import MainLayout from "../components/MainLayout";
 
-import MentorCard from "./components/group-card/mentor";
+import MentorCard from "../components/group-card/mentor";
 
-import TentangBimbel from "./components/group-card/TentangBimbel";
+import TentangBimbel from "../components/group-card/TentangBimbel";
 
-import PaketPenawaran from "./components/group-card/PaketPenawaran";
+import PaketPenawaran from "../components/group-card/PaketPenawaran";
 
-import Review from "./components/group-card/Review";
+import Review from "../components/group-card/Review";
 
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
 
-import CustomizedAccordions from "./components/Accordion";
+import CustomizedAccordions from "../components/Accordion";
 const options = [
   { label: "Option 1", value: "option1" },
   { label: "Option 2", value: "option2" },
@@ -169,7 +168,8 @@ const Beranda = () => {
           <div className="w-full md:w-1/2 px-3 text-right">
             <button
               type="button"
-              className="bg-customPalette-primary text-white font-bold py-1 px-3 rounded">
+              className="bg-customPalette-primary text-white font-bold py-1 px-3 rounded"
+            >
               Semua Testimoni
             </button>
           </div>

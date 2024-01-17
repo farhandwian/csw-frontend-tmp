@@ -5,18 +5,20 @@ const RegisterPage = () => {
   return (
     <MainLayout>
       <div className="flex sm:flex-row flex-col justify-center min-h-full bg-white ">
-        <div className="w-1/2">
+        <div className="hidden sm:block w-1/2">
           <img
             src="/img/SlideDaftar.png"
             className={`mx-auto object-cover w-full h-auto`}
             alt="Logo CSW"
           />
         </div>
-        <div className="w-1/2 min-h-screen flex justify-center items-center">
-          <div className="w-auto">
-            <h1 className="text-xl font-bold mb-4 text-center">Registrasi</h1>
+        <div className="w-full sm:w-1/2 min-h-screen flex justify-center">
+          <div className="w-auto px-[5%]">
+            <h1 className="mt-[3%] text-xl font-bold mb-4 text-center">
+              Registrasi
+            </h1>
 
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block text-sm font-bold mb-2">Nama</label>
                 <input

@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import Topnav from "./nav/Topnav";
-import Sidebar from "./nav/Sidebar";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -11,7 +10,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, title }) => {
   return (
     <main>
       <Topnav />
-      <div className="container md:pt-[7%]">{children}</div>
+      <div className="container bg-gray-50 overflow-hidden">{children}</div>
     </main>
   );
 };
