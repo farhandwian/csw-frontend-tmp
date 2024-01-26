@@ -1,6 +1,8 @@
 "use client";
 
 import Studentlayout from "@/app/components/StudentLayout";
+
+import PrevButton from "@/app/components/PrevButton";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -25,6 +27,7 @@ interface Question {
   question: string;
   options: Option[];
   rightAnswer?: string;
+  isMark?: boolean;
   status?: string; //belum-dijawab,sudah-dijawab,ditandai
   noSoal: number;
   userAnswer?: string;
@@ -129,6 +132,7 @@ const page = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [formattedTime, setFormattedTime] = useState("");
   const [result, setResult] = useState(quiz);
+  const [isMark, setIsMark] = useState(false);
   // Ambil waktu dari server, misalnya melalui fetch atau prop
   const serverTime = 600000; // Contoh waktu dalam milidetik (10 menit)
 
@@ -201,7 +205,8 @@ const page = () => {
   const onClickTandaiPertanyaan = () => {
     const updateResult = { ...result };
     // Mengganti userAnswer pada pertanyaan yang sedang aktif
-    updateResult.questions[activeQuestion].status = "ditandai";
+    setIsMark(!isMark);
+    updateResult.questions[activeQuestion].isMark = !isMark;
     // Memperbarui state menggunakan setResult
     setResult(updateResult);
   };
@@ -209,18 +214,28 @@ const page = () => {
   const checkColorNavigation = (question: Question, index: number) => {
     let style: string = "";
     if (question.noSoal === activeQuestion + 1) {
-      style += `border border-black `;
+      style += `border-green-400 `;
     } //belum-dijawab,sudah-dijawab,ditandai
 
     let isStatusNull = typeof question.status;
     if (question.status === "belum-dijawab" || isStatusNull === "undefined") {
-      style += `bg-red-200`;
+      style += `bg-white `;
     }
     if (question.status === "sudah-dijawab") {
-      style += "bg-green-200";
+      style += "bg-green-200 ";
     }
     if (question.status === "ditandai") {
       style += "bg-blue-200";
+    }
+    return style;
+  };
+
+  const checkFlagMark = (question: Question, index: number) => {
+    let style: string = "";
+    if (question.isMark === true) {
+      style += "block ";
+    } else {
+      style += "hidden ";
     }
     return style;
   };
@@ -236,7 +251,7 @@ const page = () => {
   const { question, options } = questions[activeQuestion];
   return (
     <Studentlayout>
-      <section className="relative">
+      <section className="relative w-[100%]">
         <ToggleButtonGroup
           color="primary"
           value={alignment}
@@ -256,169 +271,223 @@ const page = () => {
         <h1
           className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
         >
-          Latihan Modul Materi 1
+          Latihan Modul Materi 1 Pancasila
         </h1>
-        {/* awal section informasi kuis */}
-        <div className="inline-flex bg-white border rounded-2xl mb-5">
-          <div className="flex p-3">
-            <div>
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                PERTANYAAN
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                NOMOR {addLeadingZero(activeQuestion + 1)}
-              </p>
+
+        <div className="flex">
+          <div className="w-[80%]">
+            {/* awal section informasi kuis */}
+            <div className="inline-flex bg-white border-2 rounded-2xl mb-5">
+              <div className="flex p-3">
+                <div>
+                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
+                    PERTANYAAN
+                  </p>
+                  <p
+                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
+                  >
+                    NOMOR {addLeadingZero(activeQuestion + 1)}/
+                    {addLeadingZero(questions.length)}
+                  </p>
+                </div>
+
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  className="ml-3 h-8"
+                  sx={{ borderRightWidth: 3 }}
+                />
+              </div>
+              <div className="flex p-3">
+                <div>
+                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
+                    STATUS
+                  </p>
+                  <p
+                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
+                  >
+                    {result.questions[activeQuestion].status}
+                  </p>
+                </div>
+
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  className="ml-3 h-8"
+                  sx={{ borderRightWidth: 3 }}
+                />
+              </div>
+              <div className="flex p-3">
+                <div>
+                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
+                    MARK
+                  </p>
+                  <p
+                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
+                  >
+                    1.00
+                  </p>
+                </div>
+
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  className="ml-3 h-8"
+                  sx={{ borderRightWidth: 3 }}
+                />
+              </div>
+              <div className="flex p-3">
+                <div>
+                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
+                    TANDA
+                    <HelpIcon className="ml-2 pb-1"></HelpIcon>
+                  </p>
+                  <button onClick={() => onClickTandaiPertanyaan()}>
+                    <p
+                      className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
+                    >
+                      <EmojiFlagsIcon className="pb-1 mr-1"></EmojiFlagsIcon>
+                      TANDAI PERTANYAAN
+                    </p>
+                  </button>
+                </div>
+
+                <Divider
+                  orientation="vertical"
+                  variant="middle"
+                  flexItem
+                  className="ml-3 h-8"
+                  sx={{ borderRightWidth: 3 }}
+                />
+              </div>
+              <div className="flex p-3">
+                <div>
+                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
+                    WAKTU TERSISA
+                  </p>
+                  <p
+                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
+                  >
+                    {formattedTime}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
+            {/* akhir section informasi kuis */}
+            {/* awal section soal dan jawaban */}
+            <div className="w-[100%] bg-white-400 border-2 rounded-2xl p-4">
+              <h2 className="mb-2">{question}</h2>
+              <div>
+                {options.map((option, index) => (
+                  <div
+                    onClick={() => onOptionSelected(option, index)}
+                    key={option.id}
+                    className={`flex border-2 rounded-lg mb-2 ${
+                      option.letter ===
+                      result.questions[activeQuestion].userAnswer
+                        ? "border-green-400"
+                        : ""
+                    }`}
+                  >
+                    <div
+                      className={`inline-block px-3 rounded-l-sm ${
+                        option.letter ===
+                        result.questions[activeQuestion].userAnswer
+                          ? "bg-green-400"
+                          : ""
+                      }`}
+                    >
+                      {option.letter}
+                    </div>
+                    <div className="w-[2px] h-[25px] bg-customPalette-GreyDefault"></div>
+                    <div className="inline-block text-left ml-3">
+                      {option.text}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between mt-3">
+                <div>
+                  {activeQuestion !== 0 && (
+                    <PrevButton
+                      className="bg-gray-400 text-white"
+                      onClick={() => onClickPrev()}
+                      variant="contained"
+                    >
+                      prev
+                    </PrevButton>
+                  )}
+
+                  {activeQuestion !== questions.length - 1 && (
+                    <Button
+                      className="bg-customPalette-RoyalBlue ml-2 text-white"
+                      onClick={() => onClickNext()}
+                      variant="contained"
+                    >
+                      next
+                    </Button>
+                  )}
+                </div>
+                <div>
+                  <Button
+                    className="bg-customPalette-GreenButton text-white"
+                    onClick={() => onClickNext()}
+                    variant="contained"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </div>
+            </div>
+            {/* akhir section soal dan jawaban */}
           </div>
-          <div className="flex p-3">
-            <div>
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                STATUS
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                {result.questions[activeQuestion].status}
-              </p>
+          <div className="w-[20%]">
+            {/* section navigasi soal */}
+            <div className="bg-white border-2 rounded-sm ml-2 w-[92%]">
+              <div className="flex p-3 justify-between gap-1">
+                <div>
+                  <Image
+                    width={60}
+                    height={60}
+                    src="/img/uji-kemampuan/ic_navigation.png"
+                    className={`inline-block`}
+                    alt="Logo CSW"
+                  />
+                </div>
+
+                <div className="ml-3">
+                  <h1>NAVIGASI LATIHAN</h1>
+                </div>
+              </div>
+
+              <div className="flex justify-center py-1">
+                <div className="w-[90%] grid grid-cols-4 gap-2">
+                  {result.questions.map((question, index) => (
+                    <button
+                      key={index}
+                      onClick={() => onClickNavigation(question.noSoal, index)}
+                      className={`h-[55px] inline-block border-2 rounded-sm ${checkColorNavigation(
+                        question,
+                        index
+                      )}`}
+                    >
+                      {index + 1}
+                      <div className={`${checkFlagMark(question, index)}`}>
+                        <EmojiFlagsIcon className="pb-1 mr-1"></EmojiFlagsIcon>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
-          </div>
-          <div className="flex p-3">
-            <div>
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                MARK
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                1.00
-              </p>
-            </div>
-
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
-          </div>
-          <div className="flex p-3">
-            <div>
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                TANDA
-                <HelpIcon className="ml-2 pb-1"></HelpIcon>
-              </p>
-              <button onClick={() => onClickTandaiPertanyaan()}>
-                <p
-                  className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                >
-                  <EmojiFlagsIcon className="pb-1 mr-1"></EmojiFlagsIcon>TANDAI
-                  PERTANYAAN
-                </p>
-              </button>
-            </div>
-
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
-          </div>
-          <div className="flex p-3">
-            <div>
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                WAKTU TERSISA
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                {formattedTime}
-              </p>
-            </div>
+            {/* akhir navigasi soal */}
           </div>
         </div>
-
-        {/* akhir section informasi kuis */}
-        <hr className="border-y-1 border-y-gray-300" />
-
-        {/* awal section soal dan jawaban */}
-        <div className="w-[70%] bg-slate-400 ">
-          <div>
-            <span className="active-question-no">
-              {addLeadingZero(activeQuestion + 1)}
-            </span>
-            <span className="total-question">
-              /{addLeadingZero(questions.length)}
-            </span>
-          </div>
-          <h2>{question}</h2>
-          <ul>
-            {options.map((option, index) => (
-              <li
-                onClick={() => onOptionSelected(option, index)}
-                key={option.id}
-                className={
-                  option.letter === result.questions[activeQuestion].userAnswer
-                    ? "bg-white"
-                    : ""
-                }
-              >
-                {option.text}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-3 bg-gray-700">
-            <hr />
-            {activeQuestion !== 0 && (
-              <button onClick={() => onClickPrev()}>prev</button>
-            )}
-            <hr />
-            {activeQuestion !== questions.length - 1 && (
-              <button onClick={() => onClickNext()}>next</button>
-            )}
-            <hr />
-            <button>Submit</button>
-          </div>
-        </div>
-        {/* akhir section soal dan jawaban */}
-
-        {/* section navigasi soal */}
-        <ul className="mb-3">
-          {result.questions.map((question, index) => (
-            <button
-              key={index}
-              onClick={() => onClickNavigation(question.noSoal, index)}
-              className={`inline-block mr-3 ${checkColorNavigation(
-                question,
-                index
-              )}`}
-            >
-              {index + 1}
-              <hr />
-            </button>
-          ))}
-        </ul>
-        {/* akhir navigasi soal */}
       </section>
     </Studentlayout>
   );

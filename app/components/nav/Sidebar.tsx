@@ -336,7 +336,7 @@ const MiniDrawer = () => {
       </Drawer>
 
       {/* Main content */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: "black" }}>
         <DrawerHeader />
         {/* Content for each route */}
         {/* Add your route components here */}

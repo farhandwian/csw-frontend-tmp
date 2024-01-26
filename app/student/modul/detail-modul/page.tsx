@@ -6,7 +6,6 @@ import React, { useState } from "react";
 
 import { usePathname } from "next/navigation";
 
-// import { useRouter } from "next/router";
 import Image from "next/image";
 
 import Link from "next/link";

@@ -18,6 +18,9 @@ const config: Config = {
         customPalette: {
           primary: "#6255A4",
           RoyalBlue: "#0066D7",
+          GreenButton: "#8EC63F",
+          GreyDefault: "#e5e7eb",
+          GreenQuestionNow: "#8EC63F",
         },
         customColorTypography: {
           SteelBlue: "#64748B",
