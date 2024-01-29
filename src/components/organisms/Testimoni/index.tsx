@@ -23,6 +23,7 @@ const Testimoni = () => {
               alt="ic-arrow"
               width={21}
               height={21}
+              className="-rotate-90"
             />
           </div>
           <div className="bg-[#0D0D68] flex items-center justify-center w-[54px] h-[54px] rounded-full">
@@ -31,7 +32,7 @@ const Testimoni = () => {
               alt="ic-arrow"
               width={21}
               height={21}
-              className="rotate-180"
+              className="rotate-90"
             />
           </div>
         </div>
@@ -170,14 +171,14 @@ const Testimoni = () => {
         </div>
       </div>
 
-      <div className="absolute xl:-bottom-10 right-0 w-full h-full">
+      <div className="">
         <div className="relative w-full">
           <Image
             src={"/image/bg-testimoni.png"}
             width={1440}
             height={680}
             alt="bg-testimoni"
-            className="w-full h-[1200px] max-h-[1200px]"
+            className="w-full "
           />
           <div className="absolute bottom-20 w-full flex flex-col items-center">
             <h2 className="text-[#393934] font-semibold text-3xl">

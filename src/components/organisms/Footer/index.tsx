@@ -3,110 +3,130 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <div className="bg-white px-20 flex justify-between py-16">
-        <div className="max-w-[250px]">
-          <Image
-            src={"/image/img-logo.png"}
-            alt="img-logo"
-            width={90}
-            height={70}
-          />
-          <p className="mt-5 font-light text-[#1E293B] text-sm">
-            Website untuk belajar seputar sekolah kedinasan bersama mentor -
-            mentor yang berpengalaman
-          </p>
-        </div>
-        <div>
-          <h3 className="font-bold text-[#334155] text-lg">Company</h3>
-          <ul className="mt-5 font-light text-[#1E293B] flex flex-col gap-y-2">
-            <li>Privacy</li>
-            <li>Hubungi Kami</li>
-            <li>Tentang Kami</li>
-            <li>Mentor</li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold text-[#334155] text-lg">Product</h3>
-          <ul className="mt-5 font-light text-[#1E293B] flex flex-col gap-y-2">
-            <li>Paket Bimbel</li>
-            <li>Modul</li>
-            <li>Blockchain</li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold text-[#334155] text-lg">Support</h3>
-          <ul className="mt-5 font-light text-[#1E293B] flex flex-col gap-y-2">
-            <li>FAQ</li>
-            <li>Support 24/7</li>
-            <li>Glossary</li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-bold text-[#334155] text-lg">Office</h3>
-          <ul className="mt-5 font-light text-[#1E293B] flex flex-col gap-y-2">
-            <li className="flex items-center gap-x-2">
+    <div className="bg-[#F0F0F0] px-40">
+      <div>
+        <div className=" flex justify-between py-14">
+          <div className="max-w-xs">
+            <Image
+              src={"/image/img-logo.png"}
+              alt="img-logo"
+              width={90}
+              height={70}
+            />
+            <p className="mt-5 text-[#888888]">
+              Website untuk belajar seputar sekolah kedinasan bersama mentor -
+              mentor yang berpengalaman
+            </p>
+            <div className="flex items-center gap-x-4 mt-7">
               <Image
-                src={"/icon/ic-office.svg"}
-                width={40}
-                height={40}
-                alt="ic-office"
+                src={"/icon/ic-youtube.svg"}
+                alt="ic-youtube"
+                width={24}
+                height={24}
               />
-              <p>PT. Civil Servant Warrior</p>
-            </li>
-            <li className="flex items-center gap-x-2">
               <Image
-                src={"/icon/ic-maps.svg"}
-                width={40}
-                height={40}
-                alt="ic-maps"
+                src={"/icon/ic-ig.svg"}
+                alt="ic-ig"
+                width={24}
+                height={24}
               />
-              <p>Jakarta, Indonesia</p>
-            </li>
-            <li className="flex items-center gap-x-2">
               <Image
-                src={"/icon/ic-phone.svg"}
-                width={40}
-                height={40}
-                alt="ic-phone"
+                src={"/icon/ic-tiktok.svg"}
+                alt="ic-tiktok"
+                width={24}
+                height={24}
               />
-              <p>+628917393780</p>
-            </li>
-            <li className="flex items-center gap-x-2">
               <Image
-                src={"/icon/ic-mail.svg"}
-                width={40}
-                height={40}
-                alt="ic-mail"
+                src={"/icon/ic-fb.svg"}
+                alt="ic-fb"
+                width={24}
+                height={24}
               />
-              <p>csw@mail.com</p>
-            </li>
-          </ul>
+              <Image
+                src={"/icon/ic-linked.svg"}
+                alt="ic-linked"
+                width={24}
+                height={24}
+              />
+            </div>
+          </div>
+          <div className="mt-10">
+            <h3 className="font-bold text-[#334155] text-lg">Company</h3>
+            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+              <li>Privacy</li>
+              <li>Hubungi Kami</li>
+              <li>Tentang Kami</li>
+              <li>Mentor</li>
+            </ul>
+          </div>
+          <div className="mt-10">
+            <h3 className="font-bold text-[#334155] text-lg">Product</h3>
+            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+              <li>Paket Bimbel</li>
+              <li>Modul</li>
+              <li>Blockchain</li>
+            </ul>
+          </div>
+          <div className="mt-10">
+            <h3 className="font-bold text-[#334155] text-lg">Support</h3>
+            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+              <li>FAQ</li>
+              <li>Support 24/7</li>
+              <li>Glossary</li>
+            </ul>
+          </div>
+          <div className="mt-10">
+            <h3 className="font-bold text-[#334155] text-lg">Office</h3>
+            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+              <li className="flex items-center gap-x-2">
+                <Image
+                  src={"/icon/ic-office.svg"}
+                  width={40}
+                  height={40}
+                  alt="ic-office"
+                />
+                <p>PT. Civil Servant Warrior</p>
+              </li>
+              <li className="flex items-center gap-x-2">
+                <Image
+                  src={"/icon/ic-maps.svg"}
+                  width={40}
+                  height={40}
+                  alt="ic-maps"
+                />
+                <p>Jakarta, Indonesia</p>
+              </li>
+              <li className="flex items-center gap-x-2">
+                <Image
+                  src={"/icon/ic-phone.svg"}
+                  width={40}
+                  height={40}
+                  alt="ic-phone"
+                />
+                <p>+628917393780</p>
+              </li>
+              <li className="flex items-center gap-x-2">
+                <Image
+                  src={"/icon/ic-mail.svg"}
+                  width={40}
+                  height={40}
+                  alt="ic-mail"
+                />
+                <p>csw@mail.com</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="bg-[#6255A5] py-2 px-20 flex justify-between items-center">
-        <Image
-          src={"/image/img-logo.png"}
-          alt="img-logo"
-          width={60}
-          height={40}
-        />
-        <h3 className="font-medium text-white">
-          © 2022 Civil Servant Warrior. All rights reserved{" "}
-        </h3>
-        <div className="flex items-center gap-x-3">
-          <Image
-            src={"/icon/ic-instagram.svg"}
-            width={40}
-            height={40}
-            alt="ic-instagram"
-          />
-          <Image
-            src={"/icon/ic-whatsapp.svg"}
-            width={40}
-            height={40}
-            alt="ic-whatsapp"
-          />
+      <div className="border-t border-[#B0B0B0] flex py-3 justify-between text-[#888888] text-sm">
+        <h4>
+          © 2020 - 2023 Civil Servant Warrior | Merek dagang dari PT. Pilihanmu
+          Indonesia{" "}
+        </h4>
+        <div className="flex gap-x-2">
+          <h4>Kebijakan Privasi</h4>
+          <span>|</span>
+          <h4>Syarat dan Ketentuan Umum</h4>
         </div>
       </div>
     </div>

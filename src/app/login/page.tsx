@@ -18,7 +18,102 @@ const Login = () => {
           />
         </div>
 
-        <div className="w-1/2 bg-white h-screen"></div>
+        <div className="w-1/2 bg-white h-screen flex flex-col justify-center pl-28 pt-14">
+          <div className="max-w-xl">
+            <h3 className="font-semibold text-3xl">
+              Selamat Datang di Civil Servant Warrior
+            </h3>
+            <p className="mt-2 font-medium text-[#5E5252]">
+              Sign in untuk belajar dan meraih mimpimu bersama kami
+            </p>
+          </div>
+
+          <div className="mt-6 max-w-md">
+            <form action="#" method="POST">
+              <div className="space-y-2">
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Alamat Email
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder="Masukkan Email Anda"
+                      required
+                      className="bg-[#F8F8F8] block w-full rounded-lg border p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="password"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Password
+                    </label>
+                  </div>
+                  <div className="mt-1 ">
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      autoComplete="current-password"
+                      placeholder="Masukkan Password Anda"
+                      required
+                      className="bg-[#F8F8F8] block w-full rounded-lg border p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="mt-8 flex w-full justify-center bg-[#090963] py-3 rounded-full text-lg font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Lanjut
+              </button>
+
+              <div className="relative flex my-8 items-center w-full">
+                <div className="w-full flex-auto border-t border-[#D4D4D4] "></div>
+                <span className="flex-shrink mx-2 text-[#6F6F6F]">Atau</span>
+                <div className="w-full flex-auto border-t border-[#D4D4D4] "></div>
+              </div>
+
+              <div className="flex flex-col gap-y-5">
+                <button className="py-3 w-full border border-black rounded-full flex items-center justify-center">
+                  <div className="flex gap-x-2 items-center">
+                    <Image
+                      src={"/icon/ic-google-color.svg"}
+                      alt="ic-google"
+                      width={24}
+                      height={24}
+                    />
+                    <h4 className="font-semibold">Lanjut dengan Google</h4>
+                  </div>
+                </button>
+                <button className="py-3 w-full border border-black rounded-full flex items-center justify-center">
+                  <div className="flex gap-x-2 items-center">
+                    <Image
+                      src={"/icon/ic-fb-color.svg"}
+                      alt="ic-facebook"
+                      width={20}
+                      height={20}
+                    />
+                    <h4 className="font-semibold">Lanjut dengan Facebook</h4>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
         {/* <div className="w-1/2 pt-20 bg-white flex flex-col items-center justify-center">
           <Image
             src={"/image/img-logo.png"}
