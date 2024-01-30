@@ -1,8 +1,9 @@
 "use client";
 
 import Studentlayout from "@/app/components/StudentLayout";
-
 import PrevButton from "@/app/components/PrevButton";
+import SubmitButton from "@/app/components/SubmitButton";
+import ModalSubmitModul from "@/app/components/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -133,10 +134,18 @@ const page = () => {
   const [formattedTime, setFormattedTime] = useState("");
   const [result, setResult] = useState(quiz);
   const [isMark, setIsMark] = useState(false);
+  const [isOpenSubmitModal, setIsOpenSubmitModal] = useState(false);
+  const [unAnsweredQuestions, setisUnAnsweredQuestions] = useState(
+    quiz.questions.length
+  );
   // Ambil waktu dari server, misalnya melalui fetch atau prop
   const serverTime = 600000; // Contoh waktu dalam milidetik (10 menit)
 
+  const { questions } = quiz;
+  const { question, options } = questions[activeQuestion];
+  // let unAnsweredQuestions = questions.length;
   useEffect(() => {
+    console.log("testestes");
     let countdown = timeLeft;
 
     const interval = setInterval(() => {
@@ -161,8 +170,6 @@ const page = () => {
     setTimeLeft(serverTime);
   }, [serverTime]);
 
-  useEffect(() => {}, []);
-
   const pathname = usePathname();
 
   // const router = useRouter();
@@ -177,6 +184,17 @@ const page = () => {
     const arr = pathname.split("/");
     const firstTwoWords = "/" + arr.slice(1, 3).join("/");
     return firstTwoWords;
+  };
+
+  const checkunAnsweredQuestions = () => {
+    let i = 0;
+    questions.forEach((question) => {
+      if (question.status === "belum-dijawab") {
+        i++;
+      }
+    });
+
+    setisUnAnsweredQuestions(i);
   };
 
   const submitQuiz = () => {};
@@ -244,11 +262,18 @@ const page = () => {
     setActiveQuestion(index);
   };
 
+  const onClickSubmit = () => {
+    setIsOpenSubmitModal(true);
+    checkunAnsweredQuestions();
+  };
+
+  const onCloseModalSubmit = () => {
+    setIsOpenSubmitModal(false);
+  };
+
   const addLeadingZero = (number: number) =>
     number > 9 ? number : `0${number}`;
 
-  const { questions } = quiz;
-  const { question, options } = questions[activeQuestion];
   return (
     <Studentlayout>
       <section className="relative w-[100%]">
@@ -433,13 +458,13 @@ const page = () => {
                   )}
                 </div>
                 <div>
-                  <Button
+                  <SubmitButton
                     className="bg-customPalette-GreenButton text-white"
-                    onClick={() => onClickNext()}
+                    onClick={() => onClickSubmit()}
                     variant="contained"
                   >
-                    Submit
-                  </Button>
+                    SUBMIT
+                  </SubmitButton>
                 </div>
               </div>
             </div>
@@ -488,6 +513,13 @@ const page = () => {
             {/* akhir navigasi soal */}
           </div>
         </div>
+
+        <ModalSubmitModul
+          isOpen={isOpenSubmitModal}
+          formattedTime={formattedTime}
+          unAnsweredQuestions={unAnsweredQuestions}
+          onClose={onCloseModalSubmit}
+        />
       </section>
     </Studentlayout>
   );
