@@ -6,7 +6,6 @@ import React from "react";
 const Login = () => {
   return (
     <div>
-      <Navbar />
       <div className="flex">
         <div className="w-1/2 h-screen flex items-center justify-center pt-24 pl-3">
           <Image

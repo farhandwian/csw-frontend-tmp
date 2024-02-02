@@ -11,7 +11,6 @@ import WhyUs from "@/components/organisms/WhyUs";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Banner />
       <Mentor />
       <WhyUs />

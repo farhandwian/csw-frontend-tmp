@@ -25,13 +25,13 @@ const Banner = () => {
         </div>
 
         {/* Icon Background for Banner */}
-        <div className="w-fit h-fit md:w-full md:h-full absolute flex bottom-0 md:-bottom-40 lg:top-14 xl:top-5 z-0 right-0 ">
+        <div className="overflow-hidden w-fit h-fit md:w-full md:h-full absolute flex bottom-0 right-0 md:-bottom-40 lg:top-0 z-0  ">
           <Image
             src={"/icon/ic-banner.svg"}
             width={1440}
             height={680}
             alt="ic-banner"
-            className="h-full w-auto"
+            className="h-full w-auto lg:scale-150 xl:scale-100"
           />
         </div>
 
