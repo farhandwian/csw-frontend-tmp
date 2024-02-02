@@ -6,7 +6,6 @@ import React from "react";
 const Daftar = () => {
   return (
     <div>
-      <Navbar />
       <div className="flex ">
         <div className="w-1/2  relative">
           <Image

@@ -43,7 +43,7 @@ const Testimoni = () => {
     instanceRef.current?.prev();
   };
   return (
-    <div className="relative h-full">
+    <div className="relative h-full" id="testimoni">
       <div className="h-full mt-10 lg:mt-32 w-full ">
         <div className="flex flex-col items-center justify-center text-center px-2 lg:px-20">
           <h4 className="text-[#0D0D68] font-medium text-lg lg:text-[26px]">
