@@ -171,20 +171,12 @@ const page = () => {
     setTimeLeft(serverTime);
   }, [serverTime]);
 
-  const pathname = usePathname();
-
   // const router = useRouter();
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
   ) => {
     setAlignment(newAlignment);
-  };
-
-  const checkUrl = () => {
-    const arr = pathname.split("/");
-    const firstTwoWords = "/" + arr.slice(1, 3).join("/");
-    return firstTwoWords;
   };
 
   const checkunAnsweredQuestions = () => {
@@ -293,7 +285,7 @@ const page = () => {
             {/* awal section informasi kuis */}
             <div className="inline-flex bg-white border-2 rounded-2xl mb-5">
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     PERTANYAAN
                   </p>
@@ -309,12 +301,12 @@ const page = () => {
                   orientation="vertical"
                   variant="middle"
                   flexItem
-                  className="ml-3 h-8"
+                  className="h-8"
                   sx={{ borderRightWidth: 3 }}
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     STATUS
                   </p>
@@ -334,7 +326,7 @@ const page = () => {
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     MARK
                   </p>
@@ -354,7 +346,7 @@ const page = () => {
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     TANDA
                     <HelpIcon className="ml-2 pb-1"></HelpIcon>
@@ -378,7 +370,7 @@ const page = () => {
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     WAKTU TERSISA
                   </p>

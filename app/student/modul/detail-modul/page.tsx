@@ -45,14 +45,6 @@ detail_moduls = [
 ];
 
 const page = () => {
-  const pathname = usePathname();
-
-  const checkUrl = () => {
-    const arr = pathname.split("/");
-    const firstTwoWords = "/" + arr.slice(1, 3).join("/");
-    return firstTwoWords;
-  };
-
   const [alignment, setAlignment] = useState("modul_home");
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,

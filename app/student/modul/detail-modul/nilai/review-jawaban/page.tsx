@@ -149,7 +149,7 @@ const page = () => {
                 {/* awal section informasi kuis */}
                 <div className="inline-flex bg-white border-2 rounded-2xl mb-5">
                   <div className="flex p-3">
-                    <div>
+                    <div className="mr-3">
                       <p
                         className={`${GlobalStyles["normal-xs-gray-typography"]}`}
                       >
@@ -171,7 +171,7 @@ const page = () => {
                     />
                   </div>
                   <div className="flex p-3">
-                    <div>
+                    <div className="mr-3">
                       <p
                         className={`${GlobalStyles["normal-xs-gray-typography"]}`}
                       >
@@ -193,7 +193,7 @@ const page = () => {
                     />
                   </div>
                   <div className="flex p-3">
-                    <div>
+                    <div className="mr-3">
                       <p
                         className={`${GlobalStyles["normal-xs-gray-typography"]}`}
                       >
@@ -216,7 +216,7 @@ const page = () => {
                   </div>
 
                   <div className="flex p-3">
-                    <div>
+                    <div className="mr-3">
                       <p
                         className={`${GlobalStyles["normal-xs-gray-typography"]}`}
                       >
