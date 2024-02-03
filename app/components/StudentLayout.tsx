@@ -35,7 +35,7 @@ const StudentLayout: React.FC<StudentLayoutProps> = ({
   return (
     <Box sx={{ display: "flex", marginTop: "100px" }}>
       <Sidebar />
-      <Container fixed className="mt-[30px] bg-white p-[0px] ml-5">
+      <Container fixed className="mt-[30px] bg-white pr-[10px] ml-5">
         {children}
       </Container>
     </Box>

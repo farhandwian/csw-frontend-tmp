@@ -3,7 +3,7 @@
 import Studentlayout from "@/app/components/StudentLayout";
 import PrevButton from "@/app/components/PrevButton";
 import SubmitButton from "@/app/components/SubmitButton";
-import ModalSubmitModul from "@/app/components/ModalSubmitModul";
+import ModalSubmitModul from "@/app/student/modul/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -16,6 +16,7 @@ import Button from "@mui/material/Button";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import { v4 as uuidv4 } from "uuid";
+import ModulFAB from "@/app/student/modul/component/ModulFAB";
 
 interface Option {
   id: string;
@@ -277,22 +278,10 @@ const page = () => {
   return (
     <Studentlayout>
       <section className="relative w-[100%]">
-        <ToggleButtonGroup
-          color="primary"
-          value={alignment}
-          exclusive
-          onChange={handleChange}
-          aria-label="Platform"
-          className="mt-0"
-        >
-          <ToggleButton value="modul_home">
-            <Link href="/student/modul/detail-modul">Modul Home</Link>
-          </ToggleButton>
-
-          <ToggleButton value="nilai">
-            <Link href="/student/modul/detail-modul/nilai">nilai</Link>
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <ModulFAB
+          alignment={alignment}
+          handleChange={(e) => handleChange(e, alignment)}
+        ></ModulFAB>
         <h1
           className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
         >
@@ -435,6 +424,8 @@ const page = () => {
                   </div>
                 ))}
               </div>
+
+              {/* awal button section */}
               <div className="flex justify-between mt-3">
                 <div>
                   {activeQuestion !== 0 && (
@@ -467,6 +458,7 @@ const page = () => {
                   </SubmitButton>
                 </div>
               </div>
+              {/* akhir button section */}
             </div>
             {/* akhir section soal dan jawaban */}
           </div>

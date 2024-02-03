@@ -7,108 +7,109 @@ import { FaChevronCircleRight } from "react-icons/fa";
 import { Box, Container } from "@mui/material";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 
+const moduls = [
+  {
+    name: "Ayu Lestari",
+    title: "Mentor Matematika Terbaik",
+    description:
+      "Saya salah satu mentor yang ahli dalam mengajarkan seputar matematika untuk salah satu syarat test di sekolah kedinasan STIS. “Matematika itu mudah, asik dan seru”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-01",
+    dateTime: "2023-11-01T09:00",
+  },
+  {
+    name: "Budi Darmawan",
+    title: "Mentor Fisika Terapan",
+    description:
+      "Dengan pengalaman mengajar yang luas, saya siap membantu anda menguasai fisika terapan untuk berbagai tes sekolah kedinasan. “Fisika adalah tentang memahami alam semesta.”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-02",
+    dateTime: "2023-11-02T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+  {
+    name: "Citra Kirana",
+    title: "Mentor Kimia Analitik",
+    description:
+      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
+    imageUrl: "/img/img_mentor.png",
+    date: "2023-11-03",
+    dateTime: "2023-11-03T09:00",
+  },
+];
+
 const page = () => {
-  const moduls = [
-    {
-      name: "Ayu Lestari",
-      title: "Mentor Matematika Terbaik",
-      description:
-        "Saya salah satu mentor yang ahli dalam mengajarkan seputar matematika untuk salah satu syarat test di sekolah kedinasan STIS. “Matematika itu mudah, asik dan seru”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-01",
-      dateTime: "2023-11-01T09:00",
-    },
-    {
-      name: "Budi Darmawan",
-      title: "Mentor Fisika Terapan",
-      description:
-        "Dengan pengalaman mengajar yang luas, saya siap membantu anda menguasai fisika terapan untuk berbagai tes sekolah kedinasan. “Fisika adalah tentang memahami alam semesta.”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-02",
-      dateTime: "2023-11-02T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-    {
-      name: "Citra Kirana",
-      title: "Mentor Kimia Analitik",
-      description:
-        "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-      imageUrl: "/img/img_mentor.png",
-      date: "2023-11-03",
-      dateTime: "2023-11-03T09:00",
-    },
-  ];
   return (
     <Studentlayout>
       {/* <Breadcrumbs /> */}

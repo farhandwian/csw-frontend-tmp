@@ -267,7 +267,7 @@ const MiniDrawer = () => {
           </Link>
         </Toolbar>
 
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
       </AppBar>
 
       {/* Drawer */}

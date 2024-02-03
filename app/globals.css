@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -19,4 +18,5 @@
 
 body {
   background-color: white;
+  font-family: var(--font-poppins);
 }
