@@ -62,9 +62,9 @@ const page = () => {
         >
           Latihan Modul Materi 1
         </h1>
-        <div className="inline-flex bg-white border rounded-2xl mb-5">
+        <div className="flex max-w-max bg-white border rounded-2xl mb-5">
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 PENGERJAAN DIPERBOLEHKAN
               </p>
@@ -84,7 +84,7 @@ const page = () => {
             />
           </div>
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 STATUS
               </p>
@@ -104,7 +104,7 @@ const page = () => {
             />
           </div>
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 WAKTU
               </p>
@@ -124,7 +124,7 @@ const page = () => {
             />
           </div>
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 JUMLAH SOAL
               </p>

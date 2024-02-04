@@ -257,7 +257,7 @@ const MiniDrawer = () => {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon sx={{ color: "black" }} />
+            <MenuIcon sx={{ color: "white" }} />
           </IconButton>
           <Link href={"/"} className="flex">
             <Image
@@ -342,7 +342,7 @@ const MiniDrawer = () => {
       </Drawer>
 
       {/* Main content */}
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: "black" }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: "white" }}>
         <DrawerHeader />
         {/* Content for each route */}
         {/* Add your route components here */}
