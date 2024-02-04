@@ -21,6 +21,7 @@ const config: Config = {
           GreenButton: "#8EC63F",
           GreyDefault: "#e5e7eb",
           GreenQuestionNow: "#8EC63F",
+          Orange: "#FFA056",
         },
         customColorTypography: {
           SteelBlue: "#64748B",

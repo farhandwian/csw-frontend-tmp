@@ -1,8 +1,9 @@
 "use client";
 
 import Studentlayout from "@/app/components/StudentLayout";
-
 import PrevButton from "@/app/components/PrevButton";
+import SubmitButton from "@/app/components/SubmitButton";
+import ModalSubmitModul from "@/app/student/modul/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -15,6 +16,7 @@ import Button from "@mui/material/Button";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import { v4 as uuidv4 } from "uuid";
+import ModulFAB from "@/app/student/modul/component/ModulFAB";
 
 interface Option {
   id: string;
@@ -133,10 +135,18 @@ const page = () => {
   const [formattedTime, setFormattedTime] = useState("");
   const [result, setResult] = useState(quiz);
   const [isMark, setIsMark] = useState(false);
+  const [isOpenSubmitModal, setIsOpenSubmitModal] = useState(false);
+  const [unAnsweredQuestions, setisUnAnsweredQuestions] = useState(
+    quiz.questions.length
+  );
   // Ambil waktu dari server, misalnya melalui fetch atau prop
   const serverTime = 600000; // Contoh waktu dalam milidetik (10 menit)
 
+  const { questions } = quiz;
+  const { question, options } = questions[activeQuestion];
+  // let unAnsweredQuestions = questions.length;
   useEffect(() => {
+    console.log("testestes");
     let countdown = timeLeft;
 
     const interval = setInterval(() => {
@@ -161,10 +171,6 @@ const page = () => {
     setTimeLeft(serverTime);
   }, [serverTime]);
 
-  useEffect(() => {}, []);
-
-  const pathname = usePathname();
-
   // const router = useRouter();
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -173,10 +179,15 @@ const page = () => {
     setAlignment(newAlignment);
   };
 
-  const checkUrl = () => {
-    const arr = pathname.split("/");
-    const firstTwoWords = "/" + arr.slice(1, 3).join("/");
-    return firstTwoWords;
+  const checkunAnsweredQuestions = () => {
+    let i = 0;
+    questions.forEach((question) => {
+      if (question.status === "belum-dijawab") {
+        i++;
+      }
+    });
+
+    setisUnAnsweredQuestions(i);
   };
 
   const submitQuiz = () => {};
@@ -244,30 +255,25 @@ const page = () => {
     setActiveQuestion(index);
   };
 
+  const onClickSubmit = () => {
+    setIsOpenSubmitModal(true);
+    checkunAnsweredQuestions();
+  };
+
+  const onCloseModalSubmit = () => {
+    setIsOpenSubmitModal(false);
+  };
+
   const addLeadingZero = (number: number) =>
     number > 9 ? number : `0${number}`;
 
-  const { questions } = quiz;
-  const { question, options } = questions[activeQuestion];
   return (
     <Studentlayout>
       <section className="relative w-[100%]">
-        <ToggleButtonGroup
-          color="primary"
-          value={alignment}
-          exclusive
-          onChange={handleChange}
-          aria-label="Platform"
-          className="mt-0"
-        >
-          <ToggleButton value="modul_home">
-            <Link href="/student/modul/detail-modul">Modul Home</Link>
-          </ToggleButton>
-
-          <ToggleButton value="nilai">
-            <Link href="/student/modul/detail-modul/nilai">nilai</Link>
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <ModulFAB
+          alignment={alignment}
+          handleChange={(e) => handleChange(e, alignment)}
+        ></ModulFAB>
         <h1
           className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
         >
@@ -279,7 +285,7 @@ const page = () => {
             {/* awal section informasi kuis */}
             <div className="inline-flex bg-white border-2 rounded-2xl mb-5">
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     PERTANYAAN
                   </p>
@@ -295,12 +301,12 @@ const page = () => {
                   orientation="vertical"
                   variant="middle"
                   flexItem
-                  className="ml-3 h-8"
+                  className="h-8"
                   sx={{ borderRightWidth: 3 }}
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     STATUS
                   </p>
@@ -320,7 +326,7 @@ const page = () => {
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     MARK
                   </p>
@@ -340,7 +346,7 @@ const page = () => {
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     TANDA
                     <HelpIcon className="ml-2 pb-1"></HelpIcon>
@@ -364,7 +370,7 @@ const page = () => {
                 />
               </div>
               <div className="flex p-3">
-                <div>
+                <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                     WAKTU TERSISA
                   </p>
@@ -410,6 +416,8 @@ const page = () => {
                   </div>
                 ))}
               </div>
+
+              {/* awal button section */}
               <div className="flex justify-between mt-3">
                 <div>
                   {activeQuestion !== 0 && (
@@ -433,15 +441,16 @@ const page = () => {
                   )}
                 </div>
                 <div>
-                  <Button
+                  <SubmitButton
                     className="bg-customPalette-GreenButton text-white"
-                    onClick={() => onClickNext()}
+                    onClick={() => onClickSubmit()}
                     variant="contained"
                   >
-                    Submit
-                  </Button>
+                    SUBMIT
+                  </SubmitButton>
                 </div>
               </div>
+              {/* akhir button section */}
             </div>
             {/* akhir section soal dan jawaban */}
           </div>
@@ -488,6 +497,13 @@ const page = () => {
             {/* akhir navigasi soal */}
           </div>
         </div>
+
+        <ModalSubmitModul
+          isOpen={isOpenSubmitModal}
+          formattedTime={formattedTime}
+          unAnsweredQuestions={unAnsweredQuestions}
+          onClose={onCloseModalSubmit}
+        />
       </section>
     </Studentlayout>
   );

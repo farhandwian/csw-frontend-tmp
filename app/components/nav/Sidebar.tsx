@@ -45,14 +45,82 @@ import {
   Logout as LogoutIcon,
   Settings as SettingsIcon,
 } from "@mui/icons-material";
-// Import necessary Next.js hooks
 import { usePathname, useRouter } from "next/navigation";
-
-import { FiMenu } from "react-icons/fi";
-import { Container } from "postcss";
 
 // Define the width of the drawer
 const drawerWidth = 240;
+
+const dataRes = [
+  {
+    id: 0,
+    label: "Dashboard",
+    img: <DashboardIcon />,
+    path: "/student",
+  },
+  {
+    id: 1,
+    label: "Uji Kemampuan",
+    img: <AssignmentAddIcon />,
+    component: <Contact />,
+    path: "/student/contact",
+  },
+  {
+    id: 2,
+    label: "Modul",
+    img: <LibraryBooksIcon />,
+    component: <Contact />,
+    path: "/student/modul",
+  },
+  {
+    id: 3,
+    label: "Try Out",
+    img: <ListAltIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+  {
+    id: 4,
+    label: "Grafik",
+    img: <BarChartIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+  {
+    id: 5,
+    label: "Record Zoom",
+    img: <FiberSmartRecordIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+  {
+    id: 6,
+    label: "Profile Mentor",
+    img: <EmojiPeopleIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+  {
+    id: 7,
+    label: "Jadwal",
+    img: <DateRangeIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+  {
+    id: 8,
+    label: "Pengaturan",
+    img: <SettingsIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+  {
+    id: 9,
+    label: "Logout",
+    img: <LogoutIcon />,
+    component: <Contact />,
+    path: "/Contact",
+  },
+];
 
 // Define the mixin for opened state
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -132,77 +200,7 @@ const Drawer = styled(MuiDrawer, {
 // Main component
 const MiniDrawer = () => {
   const pathname = usePathname();
-  const dataRes = [
-    {
-      id: 0,
-      label: "Dashboard",
-      img: <DashboardIcon />,
-      path: "/student",
-    },
-    {
-      id: 1,
-      label: "Uji Kemampuan",
-      img: <AssignmentAddIcon />,
-      component: <Contact />,
-      path: "/student/contact",
-    },
-    {
-      id: 2,
-      label: "Modul",
-      img: <LibraryBooksIcon />,
-      component: <Contact />,
-      path: "/student/modul",
-    },
-    {
-      id: 3,
-      label: "Try Out",
-      img: <ListAltIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-    {
-      id: 4,
-      label: "Grafik",
-      img: <BarChartIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-    {
-      id: 5,
-      label: "Record Zoom",
-      img: <FiberSmartRecordIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-    {
-      id: 6,
-      label: "Profile Mentor",
-      img: <EmojiPeopleIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-    {
-      id: 7,
-      label: "Jadwal",
-      img: <DateRangeIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-    {
-      id: 8,
-      label: "Pengaturan",
-      img: <SettingsIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-    {
-      id: 9,
-      label: "Logout",
-      img: <LogoutIcon />,
-      component: <Contact />,
-      path: "/Contact",
-    },
-  ];
+
   // Retrieve the theme
   const theme = useTheme();
 
@@ -210,7 +208,10 @@ const MiniDrawer = () => {
   const router = useRouter();
 
   // Local state for drawer open/close
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(() => {
+    // Retrieve the state from localStorage, default to true if not present
+    return localStorage.getItem("drawerOpen") === "false" ? false : true;
+  });
 
   // Event handler for opening the drawer
   const handleDrawerOpen = () => {
@@ -226,6 +227,11 @@ const MiniDrawer = () => {
   const tabClickEvent = (url: any, index: number) => {
     router.push(url.path);
   };
+
+  // Effect to persist the open state in localStorage
+  React.useEffect(() => {
+    localStorage.setItem("drawerOpen", open.toString());
+  }, [open]);
 
   const checkUrl = () => {
     const arr = pathname.split("/");
@@ -251,7 +257,7 @@ const MiniDrawer = () => {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon sx={{ color: "black" }} />
+            <MenuIcon sx={{ color: "white" }} />
           </IconButton>
           <Link href={"/"} className="flex">
             <Image
@@ -336,7 +342,7 @@ const MiniDrawer = () => {
       </Drawer>
 
       {/* Main content */}
-      <Box component="main" sx={{ flexGrow: 1, backgroundColor: "black" }}>
+      <Box component="main" sx={{ flexGrow: 1, backgroundColor: "white" }}>
         <DrawerHeader />
         {/* Content for each route */}
         {/* Add your route components here */}

@@ -10,86 +10,61 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
+import ModulFAB from "@/app/student/modul/component/ModulFAB";
+
+let detail_moduls: {
+  materi: string;
+  isi: string;
+  latihan: string;
+}[];
+
+detail_moduls = [
+  {
+    materi: "Modul Materi 1 - Pancasila",
+    isi: "Isi Modul Materi 1",
+    latihan: "Latihan Modul Materi 1",
+  },
+  {
+    materi: "Modul Materi 2 - Pancasila",
+    isi: "Isi Modul Materi 2",
+    latihan: "Latihan Modul Materi 2",
+  },
+  {
+    materi: "Modul Materi 3 - Pancasila",
+    isi: "Isi Modul Materi 3",
+    latihan: "Latihan Modul Materi 3",
+  },
+  {
+    materi: "Modul Materi 4 - Pancasila",
+    isi: "Isi Modul Materi 4",
+    latihan: "Latihan Modul Materi 4",
+  },
+];
 const page = () => {
   const [alignment, setAlignment] = useState("modul_home");
 
-  const pathname = usePathname();
-  // const router = useRouter();
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
   ) => {
     setAlignment(newAlignment);
-    // switch (newAlignment) {
-    //   case "modul_name":
-    //     router.push("/student/modul/detail-modul");
-    //   case "nilai":
-    //     router.push("/student/modul/detail-modul/nilai");
-    // }
   };
-
-  const checkUrl = () => {
-    const arr = pathname.split("/");
-    const firstTwoWords = "/" + arr.slice(1, 3).join("/");
-    return firstTwoWords;
-  };
-
-  let detail_moduls: {
-    materi: string;
-    isi: string;
-    latihan: string;
-  }[];
-
-  detail_moduls = [
-    {
-      materi: "Modul Materi 1 - Pancasila",
-      isi: "Isi Modul Materi 1",
-      latihan: "Latihan Modul Materi 1",
-    },
-    {
-      materi: "Modul Materi 2 - Pancasila",
-      isi: "Isi Modul Materi 2",
-      latihan: "Latihan Modul Materi 2",
-    },
-    {
-      materi: "Modul Materi 3 - Pancasila",
-      isi: "Isi Modul Materi 3",
-      latihan: "Latihan Modul Materi 3",
-    },
-    {
-      materi: "Modul Materi 4 - Pancasila",
-      isi: "Isi Modul Materi 4",
-      latihan: "Latihan Modul Materi 4",
-    },
-  ];
 
   return (
     <Studentlayout>
       <section className="relative">
-        <ToggleButtonGroup
-          color="primary"
-          value={alignment}
-          exclusive
-          onChange={handleChange}
-          aria-label="Platform"
-          className="mt-0"
-        >
-          <ToggleButton value="modul_home">
-            <Link href="/student/modul/detail-modul">Modul Home</Link>
-          </ToggleButton>
-
-          <ToggleButton value="nilai">
-            <Link href="/student/modul/detail-modul/nilai">nilai</Link>
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <ModulFAB
+          alignment={alignment}
+          handleChange={(e) => handleChange(e, alignment)}
+        ></ModulFAB>
         <h1
           className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
         >
           Latihan Modul Materi 1
         </h1>
-        <div className="inline-flex bg-white border rounded-2xl mb-5">
+        <div className="flex max-w-max bg-white border rounded-2xl mb-5">
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 PENGERJAAN DIPERBOLEHKAN
               </p>
@@ -109,7 +84,7 @@ const page = () => {
             />
           </div>
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 STATUS
               </p>
@@ -129,7 +104,7 @@ const page = () => {
             />
           </div>
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 WAKTU
               </p>
@@ -149,7 +124,7 @@ const page = () => {
             />
           </div>
           <div className="flex p-3">
-            <div>
+            <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
                 JUMLAH SOAL
               </p>
