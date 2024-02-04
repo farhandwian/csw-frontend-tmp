@@ -257,7 +257,7 @@ const MiniDrawer = () => {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon sx={{ color: "white" }} />
+            <MenuIcon sx={{ color: "black" }} />
           </IconButton>
           <Link href={"/"} className="flex">
             <Image
