@@ -1,38 +1,109 @@
 import Image from "next/image";
 import React from "react";
-import FaqItem from "./FaqItem";
 
 const Faq = () => {
   return (
-    <div className="mt-10 lg:mt-32 flex flex-col items-center justify-center px-2 lg:px-0">
-      <h2 className="text-xl text-center lg:text-4xl font-semibold text-[#323062]">
+    <div className="mt-32 flex flex-col items-center justify-center">
+      <h2 className="text-4xl font-semibold text-[#323062]">
         Pertanyaan yang Paling Sering Ditanyakan
       </h2>
-      <div className="mt-5 lg:mt-20 w-full flex flex-col items-center justify-center gap-y-4 lg:gap-y-6">
-        <FaqItem
-          title="Masalah apa yang Anda selesaikan?"
-          text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
+      <div className="mt-20 max-w-[880px] flex flex-col gap-y-6">
+        <div className="flex items-start  justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+          <div>
+            <h3 className="text-[#334155] font-medium text-lg">
+              Masalah apa yang Anda selesaikan?
+            </h3>
+            <p className="mt-4 text-[#1E293B]/40">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s
+            </p>
+          </div>
+          <Image
+            src={"/icon/ic-arrow.svg"}
+            alt="ic-arrow"
+            width={13}
+            height={24}
+            className="w-7 h-7"
+          />
+        </div>
+        <div className="flex items-start justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+          <div>
+            <h3 className="text-[#334155] font-medium text-lg">
+              Masalah apa yang Anda selesaikan?
+            </h3>
+            <p className=" hidden mt-4 text-[#1E293B]/40">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s
+            </p>
+          </div>
+          <Image
+            src={"/icon/ic-arrow.svg"}
+            alt="ic-arrow"
+            width={13}
+            height={24}
+            className="w-7 h-7 rotate-180"
+          />
+        </div>
+        <div className="flex items-start justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+          <div>
+            <h3 className="text-[#334155] font-medium text-lg">
+              Masalah apa yang Anda selesaikan?
+            </h3>
+            <p className=" hidden mt-4 text-[#1E293B]/40">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s
+            </p>
+          </div>
+          <Image
+            src={"/icon/ic-arrow.svg"}
+            alt="ic-arrow"
+            width={13}
+            height={24}
+            className="w-7 h-7 rotate-180"
+          />
+        </div>
+        <div className="flex items-start justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+          <div>
+            <h3 className="text-[#334155] font-medium text-lg">
+              Masalah apa yang Anda selesaikan?
+            </h3>
+            <p className=" hidden mt-4 text-[#1E293B]/40">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s
+            </p>
+          </div>
+          <Image
+            src={"/icon/ic-arrow.svg"}
+            alt="ic-arrow"
+            width={13}
+            height={24}
+            className="w-7 h-7 rotate-180"
+          />
+        </div>
+      </div>
+
+      <div className="mt-32 w-full h-[440px] bg-[#1A69F0] flex items-center justify-center relative">
+        <Image
+          src={"/image/img-contactus.png"}
+          alt="bg-contact-me"
+          width={1171}
+          height={440}
         />
-        <FaqItem
-          title="Masalah apa yang Anda selesaikan?"
-          text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
-        />
-        <FaqItem
-          title="Masalah apa yang Anda selesaikan?"
-          text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
-        />
-        <FaqItem
-          title="Masalah apa yang Anda selesaikan?"
-          text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
-        />
+        <div className="absolute max-w-3xl text-center text-white">
+          <h1 className="font-bold text-5xl">Memiliki Kesulitan?</h1>
+          <p className="mt-6 font-medium">
+            Kami tahu Anda memiliki beberapa pertanyaan, kami telah mencoba
+            membuat daftar yang paling penting sekali dan Anda bisa mengajukan
+            pertanyaan jika terdapat kebingunan
+          </p>
+          <button className="mt-6 text-black bg-white px-5 py-4 rounded-full font-semibold">
+            Ajukan Pertanyaan
+          </button>
+        </div>
       </div>
     </div>
     // <div className="border-t-2 mt-[700px] py-16 px-20 flex justify-between">

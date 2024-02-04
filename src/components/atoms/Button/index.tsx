@@ -1,11 +1,20 @@
-import React from "react";
+import React, { ButtonHTMLAttributes, FC } from "react";
 
-const Button = () => {
-  return (
-    <button className="mt-10 bg-[#6255A4] text-[#E2E8F0] px-3 py-4 rounded-[10px] font-semibold xl:text-lg w-fit shadow-lg shadow-[#6255A4]/60">
-      Daftar dan Belajar sekarang
-    </button>
-  );
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary";
+}
+
+const Button: FC<ButtonProps> = ({ variant = "primary", ...props }) => {
+  const buttonStyles = `
+    mt-8 flex w-full justify-center py-3 rounded-full text-lg font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+    ${
+      variant === "primary"
+        ? "bg-[#090963] text-white"
+        : "bg-gray-500 text-[#E2E8F0]"
+    }
+  `;
+
+  return <button className={buttonStyles} {...props} />;
 };
 
 export default Button;
