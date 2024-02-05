@@ -5,31 +5,38 @@ import * as Yup from "yup";
 import Input from "../../../atoms/Input";
 import Button from "@/components/atoms/Button";
 
-const ForgotPassForm: React.FC = () => {
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Harap masukkan email dengan benar")
-      .required("Harap masukkan email"),
-  });
+interface ForgotPassFormValues {
+  email: string;
+}
 
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Harap masukkan email dengan benar")
+    .required("Harap masukkan email"),
+});
+
+const ForgotPassForm: React.FC = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log("Login submitted with values:", values);
-      // Add your login logic here
-    },
+    onSubmit: handleSubmit,
   });
+
+  function handleSubmit(values: ForgotPassFormValues) {
+    console.log("Login submitted with values:", values);
+    // Add your login logic here
+  }
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="space-y-3">
         <Input
-          placeHolder="Masukkan Email Anda"
+          label="Alamat Email"
           fieldName="email"
           fieldType="email"
-          label="Alamat Email"
+          placeHolder="Masukkan Email Anda"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
