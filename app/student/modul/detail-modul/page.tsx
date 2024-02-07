@@ -93,18 +93,18 @@ const page = () => {
           handleChange={(e) => handleChange(e, alignment)}
         ></ModulFAB>
         <h1
-          className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
+          className={`${GlobalStyles["bold-3xl-typography"]} text-tp-Gunmetal`}
         >
           Modul Tes Wawasan Kebangsaan
         </h1>
         <hr className="border-y-1 border-y-gray-300" />
         <h1
-          className={`${GlobalStyles["light-base-gray-typography"]} text-customColorTypography-SlateGray`}
+          className={`${GlobalStyles["light-base-gray-typography"]} text-tp-SlateGray`}
         >
           pengenalan
         </h1>
         <p
-          className={`${GlobalStyles["light-sm-typography"]} text-customColorTypography-SteelBlue`}
+          className={`${GlobalStyles["light-sm-typography"]} text-tp-SteelBlue`}
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil et
           voluptate quos fuga tempora laborum voluptatibus cumque nobis mollitia
@@ -118,7 +118,7 @@ const page = () => {
           mollitia! Enim doloremque velit molestiae eum illo possimus quod ab,
           minus accusamus placeat laudantium suscipit maiores consequuntur quas.
         </p>
-        <ul className="list-disc text-customColorTypography-SteelBlue ml-3">
+        <ul className="list-disc text-tp-SteelBlue ml-3">
           <li>Modul Materi</li>
           <li>Latihan Pada Setiap Materi</li>
         </ul>
@@ -130,7 +130,7 @@ const page = () => {
               {/* Conditionally render content for the last item */}
               {/* {index === detail_moduls.length - 1 ? (
                 <div>
-                  <p className="text-customColorTypography-SlateGray mt-2">
+                  <p className="text-tp-SlateGray mt-2">
                     {detail_modul.materi}
                   </p>
                   <div className="flex justify-start gap-4 mt-2">
@@ -141,7 +141,7 @@ const page = () => {
                       className={`object-cover w-10 md:w-10 inline-block`}
                       alt="Logo CSW"
                     />
-                    <p className="text-customColorTypography-Gunmetal mt-1 inline-block ml-4">
+                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
                       {detail_modul.isi}
                     </p>
                   </div>
@@ -154,14 +154,14 @@ const page = () => {
                       className={`object-cover w-10 md:w-10 inline-block`}
                       alt="Logo CSW"
                     />
-                    <p className="text-customColorTypography-Gunmetal mt-1 inline-block ml-4">
+                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
                       {detail_modul.latihan}
                     </p>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <p className="text-customColorTypography-SlateGray mt-2">
+                  <p className="text-tp-SlateGray mt-2">
                     {detail_modul.materi}
                   </p>
                   <div className="flex justify-start gap-4 mt-2">
@@ -172,7 +172,7 @@ const page = () => {
                       className={`object-cover w-10 md:w-10 inline-block`}
                       alt="Logo CSW"
                     />
-                    <p className="text-customColorTypography-Gunmetal mt-1 inline-block ml-4">
+                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
                       {detail_modul.isi}
                     </p>
 
@@ -187,7 +187,7 @@ const page = () => {
                       className={`object-cover w-10 md:w-10 inline-block`}
                       alt="Logo CSW"
                     />
-                    <p className="text-customColorTypography-Gunmetal mt-1 inline-block ml-4">
+                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
                       {detail_modul.latihan}
                     </p>
                     <Checkbox {...label} />
@@ -198,9 +198,7 @@ const page = () => {
               )} */}
 
               <div>
-                <p className="text-customColorTypography-SlateGray mt-2">
-                  {detail_modul.materi}
-                </p>
+                <p className="text-tp-SlateGray mt-2">{detail_modul.materi}</p>
                 <div className="flex justify-between gap-4 mt-2">
                   <div className="flex">
                     <Image
@@ -210,7 +208,7 @@ const page = () => {
                       className={`object-cover w-10 md:w-10 inline-block`}
                       alt="Logo CSW"
                     />
-                    <p className="text-customColorTypography-Gunmetal mt-1 inline-block ml-4">
+                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
                       {detail_modul.isi}
                     </p>
                   </div>
@@ -227,7 +225,7 @@ const page = () => {
                       className={`object-cover w-10 md:w-10 inline-block`}
                       alt="Logo CSW"
                     />
-                    <p className="text-customColorTypography-Gunmetal mt-1 inline-block ml-4">
+                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
                       {detail_modul.latihan}
                     </p>
                   </div>

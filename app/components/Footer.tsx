@@ -89,7 +89,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-customPalette-primary pt-3 pb-1 mt-5">
+        <div className="bg-pl-primary pt-3 pb-1 mt-5">
           <div className="w-[97%] m-auto container flex justify-between">
             <img
               src="img/LogoCSW.png"

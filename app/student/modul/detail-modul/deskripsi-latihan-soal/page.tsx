@@ -58,7 +58,7 @@ const page = () => {
           handleChange={(e) => handleChange(e, alignment)}
         ></ModulFAB>
         <h1
-          className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
+          className={`${GlobalStyles["bold-3xl-typography"]} text-tp-Gunmetal`}
         >
           Latihan Modul Materi 1
         </h1>
@@ -138,12 +138,12 @@ const page = () => {
         </div>
         <hr className="border-y-1 border-y-gray-300" />
         <h1
-          className={`${GlobalStyles["light-base-gray-typography"]} text-customColorTypography-SlateGray`}
+          className={`${GlobalStyles["light-base-gray-typography"]} text-tp-SlateGray`}
         >
           Deskripsi Latihan
         </h1>
         <p
-          className={`${GlobalStyles["light-sm-typography"]} text-customColorTypography-SteelBlue`}
+          className={`${GlobalStyles["light-sm-typography"]} text-tp-SteelBlue`}
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil et
           voluptate quos fuga tempora laborum voluptatibus cumque nobis mollitia
@@ -163,7 +163,7 @@ const page = () => {
           mulai kerjakan latihan!
         </p>
 
-        <Button variant="contained" className="bg-customPalette-RoyalBlue my-3">
+        <Button variant="contained" className="bg-pl-RoyalBlue my-3">
           Mulai Kerjakan
         </Button>
       </section>

@@ -13,21 +13,31 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         banner: "url('/img/bg.png')",
+        cardItemPreTest: "/img/card_recently_pretest.png",
       },
       colors: {
-        customPalette: {
+        pl: {
+          //pl=pallete
           primary: "#6255A4",
           RoyalBlue: "#0066D7",
           GreenButton: "#8EC63F",
-          GreyDefault: "#e5e7eb",
+          GrayDefault: "#e5e7eb",
           GreenQuestionNow: "#8EC63F",
           Orange: "#FFA056",
+          BackgroundUserDashboard: "#F9F9F9",
+          GrayUserDashboard: "#F9FAFB",
+          GreenUserDashboard: "#9BE1BD",
+          GrayUserDashboardTabelJamPelaksanaan: "#F8F7FA",
+          RedUserDahboard: "#f3736c",
         },
-        customColorTypography: {
+        tp: {
+          //tp=typhography
           SteelBlue: "#64748B",
           SlateGray: "#9CA3AF",
           SilverGray: "#B4B4B4",
           Gunmetal: "#1F2937 ",
+          BlueUserDashboard: "#2563EB",
+          GrayTabelJadwalUserDashboard: "#9CA3AF",
         },
       },
     },

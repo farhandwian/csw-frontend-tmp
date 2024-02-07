@@ -77,7 +77,7 @@ const PaketPenawaran = () => {
                 />
                 <p className="text-sm font-semibold ml-1">{paket.price}</p>
               </div>
-              <button className="rounded-lg p-3 text-white bg-customPalette-primary w-full text-sm font-semibold">
+              <button className="rounded-lg p-3 text-white bg-pl-primary w-full text-sm font-semibold">
                 Beli Paket
               </button>
             </div>
@@ -91,10 +91,10 @@ const PaketPenawaran = () => {
                   {paket.features[0]}
                 </p>
               </div>
-              <p className="text-customPalette-primary text-xs font-bold">
+              <p className="text-pl-primary text-xs font-bold">
                 Detail Isi Paket:
               </p>
-              <div className="text-xs font-semibold text-customPalette-primary">
+              <div className="text-xs font-semibold text-pl-primary">
                 {paket.features.map((feature, index) => (
                   <div
                     key={index}
