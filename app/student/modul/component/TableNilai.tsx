@@ -173,13 +173,13 @@ export default function TableNilai() {
                     {quiz.taskName}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <h1 className="text-customPalette-Orange inline-block">
+                    <h1 className="text-pl-Orange inline-block">
                       {quiz.rightQuestion}
                     </h1>
                     /{quiz.totalQuestion}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <h1 className="text-customPalette-Orange inline-block">
+                    <h1 className="text-pl-Orange inline-block">
                       {quiz.score}
                     </h1>
                     /25

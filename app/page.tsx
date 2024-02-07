@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React from "react";
 
 import MainLayout from "./components/MainLayout";
 
@@ -67,14 +67,14 @@ const Beranda = () => {
 
         <div className="flex flex-wrap -mx-3 mb-6 mt-6 px-[5%]">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <p className="font-semibold text-customPalette-primary">
+            <p className="font-semibold text-pl-primary">
               Mau belajar bersama mentor terbaik dari kami?
             </p>
           </div>
           <div className="w-full md:w-1/2 px-3 text-right">
             <button
               type="button"
-              className="bg-customPalette-primary text-white font-bold py-1 px-3 rounded"
+              className="bg-pl-primary text-white font-bold py-1 px-3 rounded"
             >
               Lihat lebih banyak mentor
             </button>
@@ -126,14 +126,14 @@ const Beranda = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mt-4 px-[5%]">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <p className="font-semibold text-customPalette-primary">
+            <p className="font-semibold text-pl-primary">
               Tertarik untuk membeli paket bimbel kami?
             </p>
           </div>
           <div className="w-full md:w-1/2 px-3 text-right">
             <button
               type="button"
-              className="bg-customPalette-primary text-white font-bold py-1 px-3 rounded"
+              className="bg-pl-primary text-white font-bold py-1 px-3 rounded"
             >
               Semua Paket
             </button>
@@ -162,14 +162,15 @@ const Beranda = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mt-4 px-[5%]">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <p className="font-semibold text-customPalette-primary">
+            <p className="font-semibold text-pl-primary">
               Ingin tahu lebih banyak kisah sukses lainnya?
             </p>
           </div>
           <div className="w-full md:w-1/2 px-3 text-right">
             <button
               type="button"
-              className="bg-customPalette-primary text-white font-bold py-1 px-3 rounded">
+              className="bg-pl-primary text-white font-bold py-1 px-3 rounded"
+            >
               Semua Testimoni
             </button>
           </div>
@@ -183,7 +184,7 @@ const Beranda = () => {
         {/* FAQ */}
         <div className="flex flex-col sm:flex-row justify-between items-center w-[90%] m-auto">
           <div className="w-[80%] sm:w-[50%]">
-            <h1 className="text-2xl text-customPalette-primary mb-2">FAQ</h1>
+            <h1 className="text-2xl text-pl-primary mb-2">FAQ</h1>
             <p className="font-semibold text-green-300 text-lg mb-1">
               Ada pertanyaan? Kami akan membantu
             </p>
@@ -195,7 +196,7 @@ const Beranda = () => {
             <div className="w-full md:w-1/2 text-left">
               <button
                 type="button"
-                className="bg-customPalette-primary text-white font-bold py-1 px-2 rounded"
+                className="bg-pl-primary text-white font-bold py-1 px-2 rounded"
               >
                 Semua Paket
               </button>

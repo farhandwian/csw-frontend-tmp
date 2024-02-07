@@ -29,7 +29,7 @@ export default function Breadcrumbs() {
           return (
             <div className={`${styles["crumb"]}`} key={crumb}>
               <Link href={currentLink}>
-                <h1 className="text-customColorTypography-SlateGray text-[16px] inline-block">
+                <h1 className="text-tp-SlateGray text-[16px] inline-block">
                   {crumb}
                 </h1>
               </Link>

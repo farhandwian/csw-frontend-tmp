@@ -261,7 +261,7 @@ const page = () => {
                                 >
                                   {option.letter}
                                 </div>
-                                <div className="w-[2px] h-[25px] bg-customPalette-GreyDefault"></div>
+                                <div className="w-[2px] h-[25px] bg-pl-GrayDefault"></div>
                                 <div className="inline-block text-left ml-3">
                                   {option.text}
                                 </div>
@@ -305,7 +305,7 @@ const page = () => {
                                 >
                                   {option.letter}
                                 </div>
-                                <div className="w-[2px] h-[25px] bg-customPalette-GreyDefault"></div>
+                                <div className="w-[2px] h-[25px] bg-pl-GrayDefault"></div>
                                 <div className="inline-block text-left ml-3">
                                   {option.text}
                                 </div>
@@ -338,14 +338,14 @@ const page = () => {
 
             <div className="flex justify-between mt-3">
               <Button
-                className="bg-customPalette-RoyalBlue ml-2 text-white"
+                className="bg-pl-RoyalBlue ml-2 text-white"
                 onClick={() => onClickModulHome()}
                 variant="contained"
               >
                 <ArrowBackIosIcon style={{ fontSize: 15 }} /> Modul Home
               </Button>
               <SubmitButton
-                className="bg-customPalette-GreenButton text-white"
+                className="bg-pl-GreenButton text-white"
                 onClick={() => onClickFinish()}
                 variant="contained"
               >
