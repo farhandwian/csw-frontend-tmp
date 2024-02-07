@@ -7,12 +7,11 @@ const ReTypePassSection = () => {
   return (
     <div className="flex">
       <HeroImage
-        src={"/image/bg-register.png"}
-        width={1815}
-        height={1815 / (1815 / 1660)}
-        alt="img-login"
-        className="lg:h-[85%] xl:h-[95%] object-cover
-          "
+        src={"/image/bg-forgot-pass.png"}
+        width={3242}
+        height={2904}
+        alt="img-forgot-pass"
+        classNameWrap="px-12"
       />
 
       <div className="w-1/2 bg-white h-screen flex flex-col justify-center px-28 pt-14">
@@ -27,7 +26,6 @@ const ReTypePassSection = () => {
         <div className="mt-6">
           <ReTypePassFprm />
         </div>
-        H
       </div>
     </div>
   );

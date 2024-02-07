@@ -7,13 +7,15 @@ const Navbar = () => {
     <nav className="py-2 drop-shadow-xl fixed w-full bg-white z-50 flex items-center justify-center">
       <div className="flex items-center gap-x-24 xl:gap-x-[166px] ">
         <div className="flex items-center">
-          <Image
-            src={"/image/img-logo.png"}
-            width={72}
-            height={57}
-            alt="img-logo"
-            // className="lg:w-20 lg:h-16 xl:w-[103px] xl:h-[81px]"
-          />
+          <Link href={"/"}>
+            <Image
+              src={"/image/img-logo.png"}
+              width={72}
+              height={57}
+              alt="img-logo"
+              // className="lg:w-20 lg:h-16 xl:w-[103px] xl:h-[81px]"
+            />
+          </Link>
         </div>
         <div>
           <ul className="flex lg:gap-x-5 xl:gap-x-12">

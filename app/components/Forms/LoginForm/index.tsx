@@ -3,7 +3,7 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../Input";
-import Button from "@/components/atoms/Button";
+import Button from "../../Button";
 import Link from "next/link";
 
 const LoginForm: React.FC = () => {

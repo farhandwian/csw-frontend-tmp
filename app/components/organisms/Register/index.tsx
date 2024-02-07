@@ -10,8 +10,8 @@ const RegisterSection = () => {
         src={"/image/bg-register.png"}
         width={1815}
         height={1815 / (1815 / 1660)}
-        alt="img-login"
-        className="lg:h-[85%] xl:h-[95%] object-cover"
+        alt="img-register"
+        classNameWrap="px-12"
       />
       <div className="w-1/2 bg-white h-screen flex flex-col justify-center px-28 pt-14">
         <div className="max-w-xl">
@@ -25,7 +25,6 @@ const RegisterSection = () => {
         <div className="mt-6">
           <RegisterForm />
         </div>
-        uH
       </div>
     </div>
   );
