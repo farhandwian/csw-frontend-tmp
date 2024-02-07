@@ -117,7 +117,7 @@ function ChildModal() {
     <React.Fragment>
       {/* <ModalButton onClick={handleOpen}>Open Child Modal</ModalButton> */}
       <SubmitButton
-        className="bg-customPalette-GreenButton text-white"
+        className="bg-pl-GreenButton text-white"
         onClick={handleOpen}
         variant="contained"
       >
@@ -152,7 +152,7 @@ function ChildModal() {
 
           <form className="m-auto" action={navigate}>
             <Button
-              className="bg-customPalette-RoyalBlue ml-2 text-white"
+              className="bg-pl-RoyalBlue ml-2 text-white"
               onClick={() => {}}
               variant="contained"
             >

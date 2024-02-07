@@ -725,6 +725,4 @@ const Beranda = () => {
       </div>
     </>
   );
-};
-
-export default Beranda;
+}

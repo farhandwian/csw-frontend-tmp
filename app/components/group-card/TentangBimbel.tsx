@@ -11,7 +11,7 @@ const TentangBimbel = () => {
           <img src="img/img_about_1.png" width="110" alt="..." />
           <div className="bg-white rounded-full flex items-center justify-start gap-2">
             <h5 className="font-medium">Studi Kasus</h5>
-            <FaCheckCircle className="text-customPalette-primary" size={24} />
+            <FaCheckCircle className="text-pl-primary" size={24} />
           </div>
 
           <p className="mb-9">
@@ -23,7 +23,7 @@ const TentangBimbel = () => {
           <img src="img/img_about_2.png" width="110" alt="..." />
           <div className="bg-white rounded-full flex items-center justify-start gap-2">
             <h5 className="font-medium">Konsultasi</h5>
-            <FaCheckCircle className="text-customPalette-primary" size={24} />
+            <FaCheckCircle className="text-pl-primary" size={24} />
           </div>
 
           <p className="mb-9">
@@ -34,7 +34,7 @@ const TentangBimbel = () => {
           <img src="img/img_about_3.png" width="110" alt="..." />
           <div className="bg-white rounded-full flex items-center justify-start gap-2">
             <h5 className="font-medium">#DibuatOlehMahasiswaKedinasan</h5>
-            <FaCheckCircle className="text-customPalette-primary" size={24} />
+            <FaCheckCircle className="text-pl-primary" size={24} />
           </div>
 
           <p className="mb-9">
@@ -48,7 +48,7 @@ const TentangBimbel = () => {
           <img src="img/img_about_4.png" width="110" alt="..." />
           <div className="bg-white rounded-full flex items-center justify-start gap-2">
             <h5 className="font-medium">Harga Terjangkau</h5>
-            <FaCheckCircle className="text-customPalette-primary" size={24} />
+            <FaCheckCircle className="text-pl-primary" size={24} />
           </div>
 
           <p className="mb-9">
@@ -59,7 +59,7 @@ const TentangBimbel = () => {
           <img src="img/img_about_5.png" width="110" alt="..." />
           <div className="bg-white rounded-full flex items-center justify-start gap-2">
             <h5 className="font-medium">Paket Bimbel</h5>
-            <FaCheckCircle className="text-customPalette-primary" size={24} />
+            <FaCheckCircle className="text-pl-primary" size={24} />
           </div>
 
           <p className="mb-9">
@@ -70,7 +70,7 @@ const TentangBimbel = () => {
           <img src="img/img_about_6.png" width="110" alt="..." />
           <div className="bg-white rounded-full flex items-center justify-start gap-2">
             <h5 className="font-medium">Studi Kasus</h5>
-            <FaCheckCircle className="text-customPalette-primary" size={24} />
+            <FaCheckCircle className="text-pl-primary" size={24} />
           </div>
 
           <p className="mb-9">

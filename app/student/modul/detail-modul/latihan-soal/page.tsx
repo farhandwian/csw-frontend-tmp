@@ -275,7 +275,7 @@ const page = () => {
           handleChange={(e) => handleChange(e, alignment)}
         ></ModulFAB>
         <h1
-          className={`${GlobalStyles["bold-3xl-typography"]} text-customColorTypography-Gunmetal`}
+          className={`${GlobalStyles["bold-3xl-typography"]} text-tp-Gunmetal`}
         >
           Latihan Modul Materi 1 Pancasila
         </h1>
@@ -409,7 +409,7 @@ const page = () => {
                     >
                       {option.letter}
                     </div>
-                    <div className="w-[2px] h-[25px] bg-customPalette-GreyDefault"></div>
+                    <div className="w-[2px] h-[25px] bg-pl-GrayDefault"></div>
                     <div className="inline-block text-left ml-3">
                       {option.text}
                     </div>
@@ -432,7 +432,7 @@ const page = () => {
 
                   {activeQuestion !== questions.length - 1 && (
                     <Button
-                      className="bg-customPalette-RoyalBlue ml-2 text-white"
+                      className="bg-pl-RoyalBlue ml-2 text-white"
                       onClick={() => onClickNext()}
                       variant="contained"
                     >
@@ -442,7 +442,7 @@ const page = () => {
                 </div>
                 <div>
                   <SubmitButton
-                    className="bg-customPalette-GreenButton text-white"
+                    className="bg-pl-GreenButton text-white"
                     onClick={() => onClickSubmit()}
                     variant="contained"
                   >
