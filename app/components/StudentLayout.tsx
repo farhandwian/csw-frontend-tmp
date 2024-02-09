@@ -20,22 +20,19 @@ function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
 
 interface StudentLayoutProps {
   children: ReactNode;
-  title?: string;
   menuPage?: string;
-  activeSidebar?: string;
-  navigations?: Array<string>;
 }
 
 const StudentLayout: React.FC<StudentLayoutProps> = ({
   children,
-  title,
   menuPage,
-  navigations = [],
 }) => {
   return (
-    <Box sx={{ display: "flex", marginTop: "100px" }}>
+    <Box sx={{ display: "flex" }}>
       <Sidebar />
-      <div className="bg-pl-BackgroundUserDashboard">
+      <div className="bg-pl-BackgroundUserDashboard mt-[65px]">
+        {/* <Breadcrumbs widthReduction={"54px"} /> */}
+        {menuPage === "modul" && <Breadcrumbs widthReduction={"54px"} />}
         <Container
           fixed
           className="mt-[30px] bg-pl-BackgroundUserDashboard pr-[10px] ml-5"

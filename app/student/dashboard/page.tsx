@@ -45,11 +45,10 @@ const page = () => {
   return (
     <StudentLayout>
       <>
-        {/* <Breadcrumbs /> */}
         <section className="relative">
           {dashboards.status === "newbie" && (
             <>
-              <div className="bg-pl-RedUserDahboard border rounded-md h-[300px] mt-5 flex items-center justify-center relative w-full lg:w-full md:px-10">
+              <div className="bg-pl-RedUserDahboard border rounded-md h-72 mt-5 flex items-center justify-center relative w-full lg:w-full md:px-10">
                 <div className="w-[30%] h-[100%] py-8">
                   <h1 className="text-2xl font-bold mt-4 text-white">
                     Hello,Farhan
@@ -78,7 +77,7 @@ const page = () => {
 
           <h1>Overview</h1>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {/* kolom 1 */}
             <div>
               <div className="bg-white border rounded-md">

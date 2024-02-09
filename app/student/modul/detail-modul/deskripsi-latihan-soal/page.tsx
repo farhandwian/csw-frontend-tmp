@@ -51,7 +51,7 @@ const page = () => {
   };
 
   return (
-    <Studentlayout>
+    <Studentlayout menuPage={"modul"}>
       <section className="relative">
         <ModulFAB
           alignment={alignment}
