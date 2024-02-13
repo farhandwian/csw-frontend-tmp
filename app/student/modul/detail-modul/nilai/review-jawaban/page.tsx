@@ -134,7 +134,7 @@ const page = () => {
     setAlignment(newAlignment);
   };
   return (
-    <Studentlayout>
+    <Studentlayout menuPage={"modul"}>
       <ModulFAB
         alignment={alignment}
         handleChange={(e) => handleChange(e, alignment)}

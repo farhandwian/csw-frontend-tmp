@@ -1,5 +1,4 @@
 "use client";
-// Import necessary modules from MUI and React
 import * as React from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -8,7 +7,6 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,19 +16,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
-// Import icons for the list items
-// import DashboardIcon from "@mui/icons-material/Dashboard";
-import PhonePausedIcon from "@mui/icons-material/PhonePaused";
-import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
-
 import Contact from "../../student/contact/page";
-// import Subscription from "../../student/dashboard/page";
-
-import Breadcrumbs from "../Breadcrumbs";
-
 import Image from "next/image";
-
 import Link from "next/link";
 import {
   Dashboard as DashboardIcon,
@@ -45,16 +32,22 @@ import {
   Settings as SettingsIcon,
 } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
+import Tooltip from "@mui/material/Tooltip";
+import Avatar from "@mui/material/Avatar";
+import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 // Define the width of the drawer
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const dataRes = [
   {
     id: 0,
     label: "Dashboard",
     img: <DashboardIcon />,
-    path: "/student",
+    path: "/student/dashboard",
   },
   {
     id: 1,
@@ -121,6 +114,24 @@ const dataRes = [
   },
 ];
 
+const settings = [
+  {
+    id: 1,
+    image: "/foto-profil.png",
+    text: "Farhan Dwian",
+  },
+  {
+    id: 2,
+    image: "/logo-csw.png",
+    text: "Civil Servant Warrior",
+  },
+  {
+    id: 3,
+    image: "/icon/ic-logout.svg",
+    text: "Logout",
+  },
+];
+
 // Define the mixin for opened state
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -142,7 +153,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
-  marginTop: "40px",
+  marginTop: "",
 });
 
 // Create a styled component for the DrawerHeader
@@ -198,6 +209,21 @@ const Drawer = styled(MuiDrawer, {
 
 // Main component
 const MiniDrawer = () => {
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [auth, setAuth] = React.useState(true);
+
+  const [status, setStatus] = React.useState("newbie"); //temporary
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   const pathname = usePathname();
 
   // Retrieve the theme
@@ -243,7 +269,7 @@ const MiniDrawer = () => {
       {/* CSS Reset */}
       <CssBaseline />
 
-      {/* App Bar */}
+      {/* App Bar atau Nav barnya */}
       <AppBar position="fixed" open={open} style={{ background: "white" }}>
         <Toolbar className="rounded-sm shadow-md">
           <IconButton
@@ -270,12 +296,86 @@ const MiniDrawer = () => {
               Civil Servant Warrior
             </p>
           </Link>
-        </Toolbar>
+          {/* supaya si profilenya bisa kesamping */}
+          <div className="grow"></div>
 
-        <Breadcrumbs />
+          {/* profile di samping kanan navbar */}
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              {auth ? (
+                <Avatar alt="Remy Sharp" src="/foto-profil.png" />
+              ) : (
+                <AccountCircle />
+              )}
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            {settings.map((setting, index) => (
+              <MenuItem
+                key={setting.id}
+                onClick={handleCloseUserMenu}
+                sx={{ fontFamily: "Poppins", fontSize: "12px" }}
+              >
+                {index === 0 && auth && status === "newbie" ? (
+                  <>
+                    <Image
+                      src={setting.image}
+                      alt={"profile-image"}
+                      width={25}
+                      height={25}
+                      className={`${
+                        index !== settings.length - 1 && "rounded-full"
+                      } mr-2`}
+                    />
+                    <div>
+                      <h3>Login as {setting.text}</h3>
+                      <h3>Newbie User</h3>
+                    </div>
+                  </>
+                ) : index === 0 && auth && status === "premium" ? (
+                  <>
+                    <AccountCircle />
+                    <div>
+                      <h3>Login as {setting.text}</h3>
+                      <h3>Premium User</h3>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Image
+                      src={setting.image}
+                      alt={"profile-image"}
+                      width={25}
+                      height={25}
+                      className={`${
+                        index !== settings.length - 1 && "rounded-full"
+                      } mr-2`}
+                    />
+                    <h3>{setting.text}</h3>
+                  </>
+                )}
+              </MenuItem>
+            ))}
+          </Menu>
+        </Toolbar>
       </AppBar>
 
-      {/* Drawer */}
+      {/* Sidebar */}
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -290,6 +390,7 @@ const MiniDrawer = () => {
 
         {/* List of items */}
         <List>
+          {/* profile jika sidebar terbuka */}
           <div className={`p-4 ${open ? "block" : "hidden"}`}>
             <div className="flex flex-col items-center justify-center">
               <Image
@@ -305,8 +406,24 @@ const MiniDrawer = () => {
               </p>
             </div>
           </div>
-          {dataRes.map((text: any, index: number) => (
-            <ListItem key={text.id} disablePadding sx={{ display: "block" }}>
+
+          {/* profile jika sidebar tertutup */}
+          <div className={`p-1 ${open ? "hidden" : "block"}`}>
+            <div className="flex flex-col items-center justify-center">
+              <Image
+                src="/foto-profil.png"
+                alt="Foto Profil"
+                width={35}
+                height={35}
+                className="rounded-full overflow-hidden mb-2 mt-2"
+              />
+            </div>
+          </div>
+
+          {/* data pada sidebar */}
+
+          {dataRes.map((data: any, index: number) => (
+            <ListItem key={data.id} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -315,24 +432,31 @@ const MiniDrawer = () => {
                 }}
                 style={{
                   background:
-                    text.path === checkUrl() ? "rgb(239 68 68 / 1)" : "white",
+                    data.path === checkUrl() ? "rgb(239 68 68 / 1)" : "white",
                 }}
               >
                 {/* "rgb(226 232 240 / 1)" */}
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
-                    mr: open ? 3 : "auto",
+                    mr: open ? 1 : "auto",
                     justifyContent: "center",
                   }}
-                  onClick={() => tabClickEvent(text, index)}
+                  onClick={() => tabClickEvent(data, index)}
                 >
-                  {text.img}
+                  {data.img}
                 </ListItemIcon>
                 <ListItemText
-                  onClick={() => tabClickEvent(text, index)}
-                  primary={text.label}
-                  sx={{ opacity: open ? 1 : 0 }}
+                  onClick={() => tabClickEvent(data, index)}
+                  primary={
+                    <Typography fontFamily="Poppins" fontSize={12}>
+                      {data.label}
+                    </Typography>
+                  }
+                  sx={{
+                    opacity: open ? 1 : 0,
+                    fontFamily: "Times New Roman !important",
+                  }}
                 />
               </ListItemButton>
             </ListItem>

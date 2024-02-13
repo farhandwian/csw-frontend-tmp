@@ -268,7 +268,7 @@ const page = () => {
     number > 9 ? number : `0${number}`;
 
   return (
-    <Studentlayout>
+    <Studentlayout menuPage={"modul"}>
       <section className="relative w-[100%]">
         <ModulFAB
           alignment={alignment}
