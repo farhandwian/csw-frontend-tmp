@@ -1,14 +1,10 @@
 "use client";
 import React from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
   {
-    title:
-      "OverviewOverviewOverviewOverviewOverviewOverviewOverviewOverviewOverview",
+    title: "Pancasila",
     path: "",
     subBab: "1.1",
 
@@ -17,15 +13,49 @@ export const SidebarData = [
 
     subNav: [
       {
-        title:
-          "UsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsersUsers",
+        title: "Pengertian Pancasila",
         path: "",
         subBab: "1.1",
       },
       {
-        title: "Revenue",
+        title: "Asal Usul Pancasila",
         path: "",
-        subBab: "1.1",
+        subBab: "1.2",
+      },
+      {
+        title: "Sejarah Pancasila",
+        path: "",
+        subBab: "1.3",
+      },
+      {
+        title: "Lambang dan Nilai Pancasila",
+        path: "",
+        subBab: "1.4",
+      },
+      {
+        title: "Dimensi Pancasila",
+        path: "",
+        subBab: "1.5",
+      },
+      {
+        title: "Rumusan Kesatuan Sila Pancasila",
+        path: "",
+        subBab: "1.6",
+      },
+      {
+        title: "Implementasi Pancasila",
+        path: "",
+        subBab: "1.7",
+      },
+      {
+        title: "Pancasila Dalam Ketatanegaraan NKRI",
+        path: "",
+        subBab: "1.8",
+      },
+      {
+        title: "Kedudukan dan Fungsi Pancasila",
+        path: "",
+        subBab: "1.9",
       },
     ],
   },

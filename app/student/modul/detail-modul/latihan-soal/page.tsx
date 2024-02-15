@@ -3,7 +3,7 @@
 import Studentlayout from "@/app/components/StudentLayout";
 import PrevButton from "@/app/components/PrevButton";
 import SubmitButton from "@/app/components/SubmitButton";
-import ModalSubmitModul from "@/app/student/modul/component/ModalSubmitModul";
+import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -16,7 +16,7 @@ import Button from "@mui/material/Button";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import { v4 as uuidv4 } from "uuid";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 
 interface Option {
   id: string;

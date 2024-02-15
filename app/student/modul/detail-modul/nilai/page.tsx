@@ -2,14 +2,14 @@
 
 import Studentlayout from "@/app/components/StudentLayout";
 import GlobalStyles from "@/app/Globals.module.css";
-import TableNilai from "@/app/student/modul/component/TableNilai";
+import TableNilai from "@/app/student/modul/detail-modul/nilai/component/TableNilai";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 
 const page = () => {
   const [alignment, setAlignment] = useState("nilai");

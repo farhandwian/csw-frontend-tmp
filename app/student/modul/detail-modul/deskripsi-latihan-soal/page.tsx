@@ -10,7 +10,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 
 let detail_moduls: {
   materi: string;
