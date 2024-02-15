@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
+import Studentlayout from "@/app/student/components/StudentLayout";
 import GlobalStyles from "@/app/Globals.module.css";
 import TableNilai from "@/app/student/modul/detail-modul/nilai/component/TableNilai";
 import React, { useState } from "react";

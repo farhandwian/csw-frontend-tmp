@@ -7,9 +7,9 @@ import Image from "next/image";
 
 import Button from "@mui/material/Button";
 
-import SubmitButton from "@/app/components/SubmitButton";
+import SubmitButton from "@/app/components/Button/SubmitButton";
 
-import PrevButton from "@/app/components/PrevButton";
+import PrevButton from "@/app/components/Button/PrevButton";
 import Link from "next/link";
 
 import { redirect } from "next/navigation";

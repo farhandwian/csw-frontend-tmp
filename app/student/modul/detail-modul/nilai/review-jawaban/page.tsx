@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
+import Studentlayout from "@/app/student/components/StudentLayout";
 import GlobalStyles from "@/app/Globals.module.css";
 import InformationTable from "@/app/student/modul/detail-modul/nilai/review-jawaban/component/InformationTableReviewJawaban";
 import React, { useState } from "react";
@@ -13,7 +13,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Divider from "@mui/material/Divider";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
-import SubmitButton from "@/app/components/SubmitButton";
+import SubmitButton from "@/app/components/Button/SubmitButton";
 import { ReviewJawaban } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import { Quiz } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";

@@ -1,4 +1,4 @@
-import MiniDrawer from "../components/nav/SideTopbarStudentDashboad";
+import MiniDrawer from "./components/SideTopbarStudentDashboad";
 import { Box, Container } from "@mui/material";
 const Dashboard = () => {
   return (

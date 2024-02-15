@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
+import Studentlayout from "@/app/student/components/StudentLayout";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";

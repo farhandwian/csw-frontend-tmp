@@ -1,6 +1,6 @@
 // Import necessary modules
 import React, { ReactNode } from "react";
-import Sidebar from "./nav/SideTopbarStudentDashboad";
+import Sidebar from "./SideTopbarStudentDashboad";
 import Breadcrumbs from "./Breadcrumbs";
 import { Box, Container } from "@mui/material";
 

@@ -1,5 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
-import Breadcrumbs from "@/app/components/Breadcrumbs";
+import Breadcrumbs from "@/app/student/components/Breadcrumbs";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";

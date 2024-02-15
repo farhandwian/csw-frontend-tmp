@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
+import Studentlayout from "@/app/student/components/StudentLayout";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -86,7 +86,7 @@ const page = () => {
   };
 
   return (
-    <Studentlayout>
+    <Studentlayout menuPage={"modul"}>
       <section className="relative">
         <ModulFAB
           alignment={alignment}

@@ -1,8 +1,8 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
-import PrevButton from "@/app/components/PrevButton";
-import SubmitButton from "@/app/components/SubmitButton";
+import Studentlayout from "@/app/student/components/StudentLayout";
+import PrevButton from "@/app/components/Button/PrevButton";
+import SubmitButton from "@/app/components/Button/SubmitButton";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
