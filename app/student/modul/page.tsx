@@ -4,8 +4,6 @@ import Studentlayout from "@/app/student/components/StudentLayout";
 import Link from "next/link";
 import { CiCircleInfo } from "react-icons/ci";
 import { FaChevronCircleRight } from "react-icons/fa";
-import { Box, Container } from "@mui/material";
-import Breadcrumbs from "@/app/student/components/Breadcrumbs";
 
 const moduls = [
   {

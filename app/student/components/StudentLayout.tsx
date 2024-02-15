@@ -1,4 +1,3 @@
-// Import necessary modules
 import React, { ReactNode } from "react";
 import Sidebar from "./SideTopbarStudentDashboad";
 import Breadcrumbs from "./Breadcrumbs";

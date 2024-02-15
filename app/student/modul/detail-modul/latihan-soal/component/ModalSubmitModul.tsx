@@ -2,16 +2,10 @@ import * as React from "react";
 import clsx from "clsx";
 import { styled, css } from "@mui/system";
 import { Modal as BaseModal } from "@mui/base/Modal";
-// import { Button } from "@mui/base/Button";
 import Image from "next/image";
-
 import Button from "@mui/material/Button";
-
 import SubmitButton from "@/app/components/Button/SubmitButton";
-
 import PrevButton from "@/app/components/Button/PrevButton";
-import Link from "next/link";
-
 import { redirect } from "next/navigation";
 
 export default function ModalSubmitModul({
