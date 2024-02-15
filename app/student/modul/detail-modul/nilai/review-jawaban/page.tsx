@@ -1,24 +1,18 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
+import Studentlayout from "@/app/student/components/StudentLayout";
 import GlobalStyles from "@/app/Globals.module.css";
 import InformationTable from "@/app/student/modul/detail-modul/nilai/review-jawaban/component/InformationTableReviewJawaban";
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Divider from "@mui/material/Divider";
-import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
-import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
-import SubmitButton from "@/app/components/SubmitButton";
+import SubmitButton from "@/app/components/Button/SubmitButton";
 import { ReviewJawaban } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import { Quiz } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 
 const quiz: Quiz = {
   id: "1",

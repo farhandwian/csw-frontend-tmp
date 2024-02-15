@@ -1,7 +1,7 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import Studentlayout from "@/app/student/components/StudentLayout";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -86,7 +86,7 @@ const page = () => {
   };
 
   return (
-    <Studentlayout>
+    <Studentlayout menuPage={"modul"}>
       <section className="relative">
         <ModulFAB
           alignment={alignment}

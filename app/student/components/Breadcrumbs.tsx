@@ -1,14 +1,23 @@
 "use client";
 import Link from "next/link";
 import styles from "./Breadcrumbs.module.css";
-
-import GlobalStyles from "@/app/Globals.module.css";
 import { usePathname, useRouter } from "next/navigation";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-interface BreadcrumbsProps {
+
+interface BreadCrumbsProps {
   widthReduction?: string | null;
+  fontSize?: string;
+  bgColor?: string;
+  isShadow?: boolean;
+  padding?: string;
 }
-export default function Breadcrumbs({ widthReduction }: BreadcrumbsProps) {
+export default function Breadcrumbs({
+  widthReduction,
+  fontSize,
+  bgColor,
+  isShadow = true,
+  padding,
+}: BreadCrumbsProps) {
   console.log(widthReduction ? `ml-[${widthReduction}]` : "");
   const pathname = usePathname();
   let currentLink = "";
@@ -33,7 +42,11 @@ export default function Breadcrumbs({ widthReduction }: BreadcrumbsProps) {
           return (
             <div className={`${styles["crumb"]}`} key={crumb}>
               <Link href={currentLink}>
-                <h1 className="text-tp-SlateGray text-[16px] inline-block">
+                <h1
+                  className={`text-tp-SlateGray ${
+                    fontSize ? `text-[${fontSize}]` : "text-[16px]"
+                  } inline-block`}
+                >
                   {crumb}
                 </h1>
               </Link>
@@ -47,9 +60,11 @@ export default function Breadcrumbs({ widthReduction }: BreadcrumbsProps) {
     <div
       className={`${
         widthReduction ? `ml-[${widthReduction}]` : ""
-      } relative z-20 bg-white-100 rounded-sm shadow-md text-left p-3 text-black`}
+      } relative z-20 ${bgColor ? `bg-[${bgColor}]` : "bg-white"}  rounded-sm ${
+        isShadow ? "shadow-md" : ""
+      } text-left ${padding ? `p-[${padding}]` : "p-3"} text-black `}
     >
-      <div className={styles.breadcrumbs}>
+      <div className={`${styles.breadcrumbs}`}>
         <ArrowBackIosIcon style={{ fontSize: 15 }} />
         {crumbs}
         {/* {tes}

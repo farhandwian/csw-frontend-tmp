@@ -1,16 +1,11 @@
 "use client";
 
-import Studentlayout from "@/app/components/StudentLayout";
+import Studentlayout from "@/app/student/components/StudentLayout";
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 
 let detail_moduls: {
   materi: string;

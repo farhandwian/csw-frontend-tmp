@@ -29,6 +29,10 @@ const config: Config = {
           GreenUserDashboard: "#9BE1BD",
           GrayUserDashboardTabelJamPelaksanaan: "#F8F7FA",
           RedUserDahboard: "#f3736c",
+          GraySidebarMateriModul: "#F7F7F7",
+          DarkBlueSidebarMateriModul: "#127CA6",
+          DarkBlueSidebarMateriModul2: "#1594C5",
+          BlueSidebarMateriModul: "#31B9ED",
         },
         tp: {
           //tp=typhography

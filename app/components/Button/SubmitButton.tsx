@@ -1,8 +1,3 @@
-// CustomButton.js
-import React from "react";
-
-import { purple } from "@mui/material/colors";
-
 import { green } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 

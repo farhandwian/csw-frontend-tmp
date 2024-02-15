@@ -1,22 +1,7 @@
-// Import necessary modules
 import React, { ReactNode } from "react";
-import Topnav from "./nav/Topnav";
-
-import Sidebar from "./nav/Sidebar";
-import { SlArrowRight } from "react-icons/sl";
-
-// Use next/navigation instead of next/router
-import { useRouter } from "next/navigation";
-import Typography from "@mui/material/Typography";
+import Sidebar from "./SideTopbarStudentDashboad";
 import Breadcrumbs from "./Breadcrumbs";
-import Link from "@mui/material/Link";
-
 import { Box, Container } from "@mui/material";
-
-function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
 
 interface StudentLayoutProps {
   children: ReactNode;

@@ -1,22 +1,17 @@
 "use client";
-
-import Studentlayout from "@/app/components/StudentLayout";
-import PrevButton from "@/app/components/PrevButton";
-import SubmitButton from "@/app/components/SubmitButton";
-import ModalSubmitModul from "@/app/student/modul/component/ModalSubmitModul";
+import Studentlayout from "@/app/student/components/StudentLayout";
+import PrevButton from "@/app/components/Button/PrevButton";
+import SubmitButton from "@/app/components/Button/SubmitButton";
+import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import { v4 as uuidv4 } from "uuid";
-import ModulFAB from "@/app/student/modul/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 
 interface Option {
   id: string;
