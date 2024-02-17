@@ -7,7 +7,7 @@ const cleanPercentage = (percentage: number) => {
 };
 
 const Circle = ({ colour, pct }) => {
-  const r = 30; // Mengubah nilai jari-jari lingkaran
+  const r = 25; // Mengubah nilai jari-jari lingkaran
   const circ = 2 * Math.PI * r;
   const strokePct = ((100 - pct) * circ) / 100;
   return (

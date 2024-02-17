@@ -15,7 +15,7 @@ const page = () => {
     setAlignment(newAlignment);
   };
   return (
-    <Studentlayout menuPage={"modul"}>
+    <Studentlayout isBreadCrumb={true}>
       <ModulFAB
         alignment={alignment}
         handleChange={(e) => handleChange(e, alignment)}

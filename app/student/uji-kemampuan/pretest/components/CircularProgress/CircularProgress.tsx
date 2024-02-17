@@ -2,6 +2,11 @@
 import { useState } from "react";
 import Pie from "./Pie";
 
+interface CircularProgressProps {
+  colour?: string;
+  percentage?: number;
+}
+
 export default function App() {
   const [random, setRandom] = useState({
     percentage: 0,
@@ -17,13 +22,13 @@ export default function App() {
   };
 
   return (
-    <div className="text-center">
+    <>
       {/* <Pie percentage={random.percentage} colour={random.colour} /> */}
-      <Pie percentage={85} colour="blue" />
+      <Pie percentage={85} colour="#F9BF3B" />
       {/* other examples... */}
       {/* <Pie percentage={43.6} colour="#3e0" />
       <Pie percentage={"63"} colour="hsl(0,95%,40%)" />
       <Pie percentage={"58u"} colour="red" /> */}
-    </div>
+    </>
   );
 }

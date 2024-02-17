@@ -263,7 +263,7 @@ const page = () => {
     number > 9 ? number : `0${number}`;
 
   return (
-    <Studentlayout menuPage={"modul"}>
+    <Studentlayout isBreadCrumb={true}>
       <section className="relative w-[100%]">
         <ModulFAB
           alignment={alignment}

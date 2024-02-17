@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/student/components/StudentLayout";
+import StudentLayout from "@/app/student/components/StudentLayout";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -86,8 +86,8 @@ const page = () => {
   };
 
   return (
-    <Studentlayout menuPage={"modul"}>
-      <section className="relative">
+    <StudentLayout isBreadCrumb={true}>
+      <section className="relative z-10">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -245,7 +245,7 @@ const page = () => {
           ))}
         </div>
       </section>
-    </Studentlayout>
+    </StudentLayout>
   );
 };
 

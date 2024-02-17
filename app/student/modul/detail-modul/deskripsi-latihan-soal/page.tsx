@@ -46,7 +46,7 @@ const page = () => {
   };
 
   return (
-    <Studentlayout menuPage={"modul"}>
+    <Studentlayout isBreadCrumb={true}>
       <section className="relative">
         <ModulFAB
           alignment={alignment}

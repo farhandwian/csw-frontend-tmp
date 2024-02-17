@@ -1,7 +1,5 @@
-"use client";
 import Link from "next/link";
-import styles from "./Breadcrumbs.module.css";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 interface BreadCrumbsProps {
@@ -11,6 +9,7 @@ interface BreadCrumbsProps {
   isShadow?: boolean;
   padding?: string;
 }
+
 export default function Breadcrumbs({
   widthReduction,
   fontSize,
@@ -18,38 +17,50 @@ export default function Breadcrumbs({
   isShadow = true,
   padding,
 }: BreadCrumbsProps) {
-  console.log(widthReduction ? `ml-[${widthReduction}]` : "");
   const pathname = usePathname();
   let currentLink = "";
   const len = pathname.split("/").length;
   let crumbs;
-  if (len == 2) {
+
+  if (len === 2) {
     currentLink = "/dashboard";
     crumbs = (
-      <div className={styles.crumb} key="0">
-        <Link href={currentLink}>
-          <h1>dashboard</h1>
-        </Link>
+      <div className="inline-flex ml-2 items-center ">
+        <ArrowBackIosIcon style={{ fontSize: 15 }} />
+        <div
+          className={`text-tp-SlateGray ${
+            fontSize ? `text-${fontSize}` : "text-base"
+          }`}
+        >
+          <Link href={currentLink} passHref>
+            <a className="hover:underline">dashboard</a>
+          </Link>
+        </div>
       </div>
     );
   } else {
     crumbs = pathname
       .split("/")
       .filter((crumb) => crumb !== "")
-      .map((crumb) => {
+      .map((crumb, index, array) => {
         currentLink += `/${crumb}`;
+        const isLast = index === array.length - 1;
         if (crumb !== "student") {
           return (
-            <div className={`${styles["crumb"]}`} key={crumb}>
-              <Link href={currentLink}>
-                <h1
-                  className={`text-tp-SlateGray ${
-                    fontSize ? `text-[${fontSize}]` : "text-[16px]"
-                  } inline-block`}
+            <div className="inline-flex ml-2 items-center" key={crumb}>
+              <ArrowBackIosIcon style={{ fontSize: 15 }} />
+              <div
+                className={`text-tp-SlateGray ${
+                  fontSize ? `text-${fontSize}` : "text-base"
+                }`}
+              >
+                <Link
+                  href={currentLink}
+                  className={`hover:underline ${isLast ? "font-bold" : ""}`}
                 >
                   {crumb}
-                </h1>
-              </Link>
+                </Link>
+              </div>
             </div>
           );
         }
@@ -58,22 +69,13 @@ export default function Breadcrumbs({
 
   return (
     <div
-      className={`${
-        widthReduction ? `ml-[${widthReduction}]` : ""
-      } relative z-20 ${bgColor ? `bg-[${bgColor}]` : "bg-white"}  rounded-sm ${
-        isShadow ? "shadow-md" : ""
-      } text-left ${padding ? `p-[${padding}]` : "p-3"} text-black `}
+      className={`relative  ${
+        bgColor ? `bg-${bgColor}` : "bg-white"
+      } rounded-sm ${isShadow ? "shadow-md" : ""} text-left ${
+        padding ? `p-${padding}` : "p-3"
+      } text-black`}
     >
-      <div className={`${styles.breadcrumbs}`}>
-        <ArrowBackIosIcon style={{ fontSize: 15 }} />
-        {crumbs}
-        {/* {tes}
-        {widthReduction ? `ml-[${widthReduction}]` : ""}
-        {"---"}
-        {`${
-          widthReduction ? `ml-[${widthReduction}]` : ""
-        } z-20 bg-white rounded-sm shadow-md text-left p-3 text-black ml-[56px]`} */}
-      </div>
+      <div className="inline">{crumbs}</div>
     </div>
   );
 }
