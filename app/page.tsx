@@ -12,6 +12,7 @@ import useTablet from "./hooks/useTablet";
 import FaqItem from "./home-page/FaqItem";
 import Link from "next/link";
 import Navbar from "./components/organisms/Navbar";
+import { useRouter } from "next/router";
 
 const Beranda = () => {
   const tabletView = useTablet();
@@ -89,13 +90,6 @@ const Beranda = () => {
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
   };
-  const navbarItems = [
-    { text: "Beranda", href: "#" },
-    { text: "Produk", href: "#" },
-    { text: "Testimoni", href: "#" },
-    { text: "Informasi", href: "#" },
-    { text: "Hubungi Kami", href: "#" },
-  ];
 
   useEffect(() => {
     const body = document.body;
@@ -131,9 +125,11 @@ const Beranda = () => {
               <p className="mt-14 font-medium text-sm md:text-base">
                 #Platform Bimbel Kedinasan Online Terbaik
               </p>
-              <button className="mt-8 bg-[#FFC007] text-[#090963] w-full py-3 md:w-fit md:px-10 md:py-4 rounded-xl font-bold">
-                Daftar Sekarang
-              </button>
+              <Link href={"/daftar"}>
+                <button className="mt-8 bg-[#FFC007] text-[#090963] hover:bg-[#CAA022] w-full py-3 md:w-fit md:px-10 md:py-4 rounded-xl font-bold">
+                  Daftar Sekarang
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -239,7 +235,7 @@ const Beranda = () => {
           </div>
 
           <div className="px-2 mt-5 lg:mt-24 w-full flex items-center justify-center">
-            <button className="text-[#0D0D68] bg-[#FFC007] w-full md:w-fit md:px-5 py-3 md:py-4 rounded-lg font-bold">
+            <button className="text-[#0D0D68] bg-[#FFC007] hover:bg-[#CAA022] w-full md:w-fit md:px-5 py-3 md:py-4 rounded-lg font-bold">
               Meet All Mentor
             </button>
           </div>
@@ -308,7 +304,7 @@ const Beranda = () => {
               <h4 className="text-[#323062] font-medium text-base lg:text-lg">
                 Tertarik untuk membeli paket bimbel kami?
               </h4>
-              <button className="flex-none flex items-center justify-center bg-[#090963] text-[#E2E8F0] w-fit px-4 py-2 lg:py-0 lg:h-[52px] lg:w-[218px] font-semibold text-sm xl:text-base rounded-full">
+              <button className="flex-none flex items-center justify-center bg-[#090963] hover:bg-[#36367e]1 text-[#E2E8F0] w-fit px-4 py-2 lg:py-0 lg:h-[52px] lg:w-[218px] font-semibold text-sm xl:text-base rounded-full">
                 Semua Paket
               </button>
             </div>
@@ -360,7 +356,7 @@ const Beranda = () => {
           {loaded && instanceRef.current && (
             <div className="flex items-center justify-center w-full gap-x-5 mt-10 lg:mt-[70px]">
               <button
-                className="bg-[#0D0D68] flex items-center justify-center w-[54px] h-[54px] rounded-full disabled:bg-gray-400"
+                className="bg-[#0D0D68] hover:bg-[#36367e] flex items-center justify-center w-[54px] h-[54px] rounded-full disabled:bg-gray-400"
                 onClick={handlePrevClick}
                 disabled={currentSlide === 0}
               >
@@ -373,7 +369,7 @@ const Beranda = () => {
                 />
               </button>
               <button
-                className="bg-[#0D0D68] flex items-center justify-center w-[54px] h-[54px] rounded-full disabled:bg-gray-400"
+                className="bg-[#0D0D68] hover:bg-[#36367e] flex items-center justify-center w-[54px] h-[54px] rounded-full disabled:bg-gray-400 pointer"
                 onClick={handleNextClick}
                 disabled={
                   // currentSlide >=
@@ -454,7 +450,7 @@ const Beranda = () => {
                 Ayo temukan minat dan potensi dirimu bersama{" "}
                 <br className="block md:hidden" /> Pilih Jurusan sekarang!
               </h2>
-              <button className="mt-2 md:mt-4 lg:mt-8 xl:mt-10 flex items-center justify-center gap-x-3 lg:gap-x-4 xl:gap-x-6 px-4 py-2 lg:px-16 lg:py-3 xl:px-24 xl:py-5 bg-[#1A69F0] rounded-full">
+              <button className="mt-2 md:mt-4 lg:mt-8 xl:mt-10 flex items-center justify-center gap-x-3 lg:gap-x-4 xl:gap-x-6 px-4 py-2 lg:px-16 lg:py-3 xl:px-24 xl:py-5 bg-[#1A69F0] hover:bg-[#164fb0] rounded-full">
                 <Image
                   src={"/icon/ic-arrow-circle.svg"}
                   alt="ic-arrow-circle"
@@ -520,9 +516,11 @@ const Beranda = () => {
             membuat daftar yang paling penting sekali dan Anda bisa mengajukan
             pertanyaan jika terdapat kebingunan
           </p>
-          <button className="mt-6 text-black bg-white px-4 py-2 lg:px-5 lg:py-4 rounded-full font-semibold">
-            Ajukan Pertanyaan
-          </button>
+          <Link href={"#"}>
+            <button className="mt-6 text-black bg-white px-4 py-2 lg:px-5 lg:py-4 rounded-full font-semibold hover:bg-[#e0e0e0] cursor-pointer">
+              Ajukan Pertanyaan
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -734,11 +732,11 @@ const Beranda = () => {
             Pilihanmu Indonesia{" "}
           </h4>
           <div className="hidden lg:flex gap-x-2">
-            <h4>
+            <h4 className="hover:text-[#2447F9]">
               <Link href={"#"}>Kebijakan Privasi</Link>
             </h4>
             <span>|</span>
-            <h4>
+            <h4 className="hover:text-[#2447F9]">
               <Link href={"#"}>Syarat dan Ketentuan Umum</Link>
             </h4>
           </div>
