@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
@@ -68,13 +70,29 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="hidden lg:flex lg:gap-x-5 xl:gap-x-10 lg:text-sm xl:text-base">
-            <button className="rounded-full py-4 px-7 border-solid border-[#090963] border-2 hover:border-[#5E5ED0] hover:text-[#5E5ED0]">
-              <Link href={"/login"}>Masuk</Link>
-            </button>
-            <button className="text-white bg-[#090963] hover:bg-transparent border-solid border-2 hover:border-[#090963] hover:text-[#090963] rounded-full py-4 px-7 lg:py-3 xl:py-4">
-              <Link href={"/daftar"}>Daftar</Link>
-            </button>
+          <div className="hidden lg:flex lg:gap-x-3 xl:gap-x-5 lg:text-sm xl:text-base">
+            <Link href={"/login"}>
+              <button
+                className={`${
+                  pathname === "/login"
+                    ? "bg-[#090963] text-white border-none"
+                    : "hover:text-[#5E5ED0]"
+                } rounded-full py-3 px-7 border-solid border-[#090963] border-2 hover:border-[#5E5ED0]`}
+              >
+                Masuk
+              </button>
+            </Link>
+            <Link href={"/daftar"}>
+              <button
+                className={`${
+                  pathname === "/daftar"
+                    ? "bg-[#090963] text-white border-none"
+                    : "hover:text-[#5E5ED0]"
+                } rounded-full py-3 px-7 border-solid border-[#090963] border-2 hover:border-[#5E5ED0]`}
+              >
+                Daftar
+              </button>
+            </Link>
           </div>
         </div>
       </nav>

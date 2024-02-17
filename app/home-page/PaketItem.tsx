@@ -101,7 +101,7 @@ const PaketItem = () => {
 
       {/* Button */}
       <div className="w-full flex items-center justify-center mt-6">
-        <button className="text-sm font-semibold text-white px-12 py-3 bg-[#0A0A65] rounded-[10px]">
+        <button className="text-sm font-semibold text-white px-12 py-3 bg-[#0A0A65] hover:bg-[#36367e] rounded-[10px]">
           Beli Paket
         </button>
       </div>
