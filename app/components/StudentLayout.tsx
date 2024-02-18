@@ -29,7 +29,6 @@ const StudentLayout: React.FC<StudentLayoutProps> = ({
 }) => {
   return (
     <Box sx={{ display: "flex" }}>
-      <Sidebar />
       <div className="bg-pl-BackgroundUserDashboard mt-[65px]">
         {/* <Breadcrumbs widthReduction={"54px"} /> */}
         {menuPage === "modul" && <Breadcrumbs widthReduction={"54px"} />}
