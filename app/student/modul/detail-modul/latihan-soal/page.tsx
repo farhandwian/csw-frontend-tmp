@@ -1,7 +1,7 @@
 "use client";
 import Studentlayout from "@/app/student/components/StudentLayout";
-import PrevButton from "@/app/components/Button/PrevButton";
-import SubmitButton from "@/app/components/Button/SubmitButton";
+import PrevButton from "@/app/components/Button/BlueButton";
+import SubmitButton from "@/app/components/Button/GreenButton";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";

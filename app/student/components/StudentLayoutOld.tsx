@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Sidebar from "./SideTopbarStudentDashboad";
+import Sidebar from "./SideTopbarStudentDashboadOld";
 import Breadcrumbs from "./Breadcrumbs";
 import { Box, Container } from "@mui/material";
 

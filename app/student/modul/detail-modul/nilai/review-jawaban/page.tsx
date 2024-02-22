@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import Divider from "@mui/material/Divider";
-import SubmitButton from "@/app/components/Button/SubmitButton";
+import SubmitButton from "@/app/components/Button/GreenButton";
 import { ReviewJawaban } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import { Quiz } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";

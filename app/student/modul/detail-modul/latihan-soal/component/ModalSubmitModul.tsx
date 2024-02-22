@@ -4,8 +4,8 @@ import { styled, css } from "@mui/system";
 import { Modal as BaseModal } from "@mui/base/Modal";
 import Image from "next/image";
 import Button from "@mui/material/Button";
-import SubmitButton from "@/app/components/Button/SubmitButton";
-import PrevButton from "@/app/components/Button/PrevButton";
+import SubmitButton from "@/app/components/Button/GreenButton";
+import PrevButton from "@/app/components/Button/BlueButton";
 import { redirect } from "next/navigation";
 
 export default function ModalSubmitModul({

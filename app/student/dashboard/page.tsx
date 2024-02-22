@@ -15,7 +15,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const dashboards = {
   id: 1,
-  status: "newbie",
+  status: "newbieee", // ganti ini jadi newbie klo mau buat tampilan user newbie
 };
 
 interface TableColor {
@@ -197,7 +197,7 @@ const page = () => {
                   </div>
                 ))}
               </div>
-              {/* Recently Pretest card item */}
+              {/* Recently Pretest container */}
               <div className="bg-white border rounded-md mt-3">
                 <h1 className="px-3 pt-2 font-bold">Recently pretest</h1>
                 {/* horizontal line */}

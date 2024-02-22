@@ -5,6 +5,9 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/flowbite-react/lib/**/*.js",
+    "node_modules/flowbite-react/lib/esm/**/*.js",
+    "./public/**/*.html",
   ],
   theme: {
     extend: {
@@ -50,7 +53,7 @@ const config: Config = {
       serif: ["Merriweather", "serif"],
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin"), require("tailwind-scrollbar")],
 };
 
 export default config;

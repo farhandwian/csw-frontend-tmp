@@ -35,7 +35,7 @@ const dataSidebar = [
     label: "Uji Kemampuan",
     icon: <BiTask />,
     component: "",
-    path: "/student/contact",
+    path: "/student/uji-kemampuan",
   },
   {
     id: 2,

@@ -72,7 +72,7 @@ const page = () => {
               <div className="flex h-[20%] shadow-md p-2">
                 <div className="w-[20%] mr-2">
                   <Image
-                    src={"/img/uji-kemampuan/pretest/ic_info_uji.png"}
+                    src={"/img/uji-kemampuan/ic_info_uji.png"}
                     width={165}
                     height={165}
                     alt="ic-banner"
