@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Studentlayout from "@/app/student/components/StudentLayout";
 import Link from "next/link";
-import { CiCircleInfo } from "react-icons/ci";
-import { FaChevronCircleRight } from "react-icons/fa";
+import InfoIcon from "@mui/icons-material/Info";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const moduls = [
   {
@@ -132,13 +132,13 @@ const page = () => {
                   30 Desember 2022
                 </p>
                 <small className="text-slate-400">
-                  <CiCircleInfo className="inline-block mr-1" />
+                  <InfoIcon className="inline-block mr-1" />
                   Modul tidak bisa di download
                 </small>
               </div>
               <Link href="/student/modul/detail-modul">
                 <i>
-                  <FaChevronCircleRight />
+                  <ChevronRightIcon />
                 </i>
                 <h1 className="leading-5 mt-1">Lihat Modul</h1>
               </Link>

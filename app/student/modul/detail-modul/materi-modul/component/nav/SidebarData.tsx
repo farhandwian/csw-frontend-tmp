@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import * as RiIcons from "react-icons/ri";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 export const SidebarData = [
   {
@@ -8,8 +9,8 @@ export const SidebarData = [
     path: "",
     subBab: "1.1",
 
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
+    iconClosed: <ArrowDropDownIcon />,
+    iconOpened: <ArrowDropUpIcon />,
 
     subNav: [
       {
@@ -64,8 +65,8 @@ export const SidebarData = [
     path: "",
     subBab: "1.1",
 
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
+    iconClosed: <ArrowDropDownIcon />,
+    iconOpened: <ArrowDropUpIcon />,
 
     subNav: [
       {
@@ -104,8 +105,8 @@ export const SidebarData = [
     path: "",
     subBab: "1.1",
 
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
+    iconClosed: <ArrowDropDownIcon />,
+    iconOpened: <ArrowDropUpIcon />,
 
     subNav: [
       {

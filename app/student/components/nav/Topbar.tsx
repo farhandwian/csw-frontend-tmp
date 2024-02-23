@@ -1,16 +1,12 @@
-import { Fragment } from "react";
-import {
-  Bars3CenterLeftIcon,
-  PencilIcon,
-  ChevronDownIcon,
-  CreditCardIcon,
-  Cog8ToothIcon,
-} from "@heroicons/react/24/solid";
-import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
-import { CiLogout } from "react-icons/ci";
-import { Menu, Transition, Popover } from "@headlessui/react";
-import Link from "next/link";
+import { Menu, Popover, Transition } from "@headlessui/react";
+import CheckIcon from "@mui/icons-material/Check";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import Image from "next/image";
+import Link from "next/link";
+import { Fragment } from "react";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const profiles = [
   {
@@ -40,10 +36,15 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
       } h-16 flex justify-between items-center transition-all duration-[400ms] shadow-md z-[100] bg-white`}
     >
       <div className="flex items-center pl-4 md:pl-4">
-        <Bars3CenterLeftIcon
+        {/* <Bars3CenterLeftIcon
+          className="h-8 w-8 text-gray-700 cursor-pointer mr-2"
+          onClick={() => setShowNav(!showNav)}
+        /> */}
+        <MenuIcon
           className="h-8 w-8 text-gray-700 cursor-pointer mr-2"
           onClick={() => setShowNav(!showNav)}
         />
+
         <Link href={"/"} className="flex">
           <Image
             width={40}
@@ -60,7 +61,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
       <div className="flex items-center pr-4 md:pr-16">
         <Popover className="relative">
           <Popover.Button className="outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
-            <BellIcon className="h-6 w-6" />
+            <NotificationsNoneIcon className="h-6 w-6" />
           </Popover.Button>
           <Transition
             as={Fragment}
@@ -150,7 +151,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
               <span className="hidden md:block font-medium text-gray-700">
                 Username
               </span>
-              <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" />
+              <ExpandMoreIcon className="ml-2 h-4 w-4 text-gray-700" />
             </Menu.Button>
           </div>
           <Transition
@@ -204,7 +205,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
                     href="#"
                     className="flex hover:bg-red-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
                   >
-                    <CiLogout className="h-4 w-4 mr-4" />
+                    <LogoutIcon className="h-4 w-4 mr-4" />
 
                     <h3>{profiles[2].text}</h3>
                   </Link>

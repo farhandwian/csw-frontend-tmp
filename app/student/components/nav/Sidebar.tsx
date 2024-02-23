@@ -1,24 +1,20 @@
-import { forwardRef } from "react";
 import Link from "next/link";
-import { HomeIcon, CreditCardIcon, UserIcon } from "@heroicons/react/24/solid";
+import { forwardRef } from "react";
 
-import React from "react";
-import { FiMenu, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import {
-  HiOutlineViewList,
-  HiOutlineChartBar,
-  HiOutlineReceiptRefund,
-  HiOutlineEmojiHappy,
-  HiOutlineCalendar,
-  HiOutlineCog,
-  HiOutlineLogout,
-} from "react-icons/hi";
-import { MdDashboard } from "react-icons/md";
-import { FaBook } from "react-icons/fa";
-import { BiTask } from "react-icons/bi";
-import { MdOutlineQuiz } from "react-icons/md";
+  Assignment as AssignmentAddIcon,
+  BarChart as BarChartIcon,
+  Dashboard as DashboardIcon,
+  DateRange as DateRangeIcon,
+  EmojiPeople as EmojiPeopleIcon,
+  FiberSmartRecord as FiberSmartRecordIcon,
+  LibraryBooks as LibraryBooksIcon,
+  ListAlt as ListAltIcon,
+  Logout as LogoutIcon,
+  Settings as SettingsIcon,
+} from "@mui/icons-material";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 // height topbar:
 // xl: h-16 / 4rem
@@ -27,70 +23,61 @@ const dataSidebar = [
   {
     id: 0,
     label: "Dashboard",
-    icon: <MdDashboard />,
+    img: <DashboardIcon />,
     path: "/student/dashboard",
   },
   {
     id: 1,
     label: "Uji Kemampuan",
-    icon: <BiTask />,
-    component: "",
+    img: <AssignmentAddIcon />,
     path: "/student/uji-kemampuan",
   },
   {
     id: 2,
     label: "Modul",
-    icon: <FaBook />,
-    component: "",
+    img: <LibraryBooksIcon />,
     path: "/student/modul",
   },
   {
     id: 3,
     label: "Try Out",
-    icon: <MdOutlineQuiz />,
-    component: "",
+    img: <ListAltIcon />,
     path: "/Contact",
   },
   {
     id: 4,
     label: "Grafik",
-    icon: <HiOutlineChartBar />,
-    component: "",
+    img: <BarChartIcon />,
     path: "/Contact",
   },
   {
     id: 5,
     label: "Record Zoom",
-    icon: <HiOutlineReceiptRefund />,
-    component: "",
+    img: <FiberSmartRecordIcon />,
     path: "/Contact",
   },
   {
     id: 6,
     label: "Profile Mentor",
-    icon: <HiOutlineEmojiHappy />,
-    component: "",
+    img: <EmojiPeopleIcon />,
     path: "/Contact",
   },
   {
     id: 7,
     label: "Jadwal",
-    icon: <HiOutlineCalendar />,
-    component: "",
+    img: <DateRangeIcon />,
     path: "/Contact",
   },
   {
     id: 8,
     label: "Pengaturan",
-    icon: <HiOutlineCog />,
-    component: "",
+    img: <SettingsIcon />,
     path: "/Contact",
   },
   {
     id: 9,
     label: "Logout",
-    icon: <HiOutlineLogout />,
-    component: "",
+    img: <LogoutIcon />,
     path: "/Contact",
   },
 ];

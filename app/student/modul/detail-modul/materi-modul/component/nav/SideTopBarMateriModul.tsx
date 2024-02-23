@@ -1,11 +1,11 @@
-import SearchIcon from "@mui/icons-material/Search";
 import Breadcrumbs from "@/app/student/components/Breadcrumbs";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react";
+import SearchModal from "../SearchModal";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
-import SearchModal from "../SearchModal";
-import { useState } from "react";
 
 interface SidebarMateriModulProps {
   sidebar: boolean;
@@ -34,11 +34,7 @@ const SideTopbarMateriModul = ({
         <div className="flex items-center justify-between bg-white h-12 shadow-md">
           {/* hamburger button */}
           <div className="ml-4 mr-3 cursor-pointer" onClick={showSidebar}>
-            {sidebar ? (
-              <AiIcons.AiOutlineClose color={"black"} />
-            ) : (
-              <FaIcons.FaBars color={"black"} />
-            )}
+            {sidebar ? <CloseIcon /> : <MenuIcon />}
           </div>
           {/* Breadcrumbs */}
           <Breadcrumbs

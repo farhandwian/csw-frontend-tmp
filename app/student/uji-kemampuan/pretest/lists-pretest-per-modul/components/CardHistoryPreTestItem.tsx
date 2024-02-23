@@ -1,10 +1,8 @@
-import React from "react";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import QuizIcon from "@mui/icons-material/Quiz";
-import YellowButton from "@/app/student/dashboard/components/YellowButton";
-import { FaRegCheckCircle } from "react-icons/fa";
-import { IoIosArrowDroprightCircle } from "react-icons/io";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const CardHistoryPreTestItem = () => {
   return (
@@ -22,7 +20,7 @@ const CardHistoryPreTestItem = () => {
             <h3>100 pts</h3>
             <QuizIcon sx={{ color: "white" }} fontSize="small" />
             <h3>quizziz</h3>
-            <FaRegCheckCircle size="20px" color="white" fontSize="small" />
+            <CheckCircleOutlineIcon sx={{ color: "white" }} fontSize="small" />
             <h3>Selesai</h3>
           </div>
 
@@ -34,7 +32,7 @@ const CardHistoryPreTestItem = () => {
               </h3>
             </div>
             <div className="">
-              <IoIosArrowDroprightCircle />
+              <ChevronRightIcon />
               <h3 className="text-xs">
                 Lihat <br /> Pretest
               </h3>

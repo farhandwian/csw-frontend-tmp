@@ -23,7 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable}`}>
-      <body className={`${GlobalStyles["default"]}`}>{children}</body>
+      <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      </head>
+      <body className={`${GlobalStyles["default"]} text-xs md:text-sm`}>
+        {children}
+      </body>
     </html>
   );
 }

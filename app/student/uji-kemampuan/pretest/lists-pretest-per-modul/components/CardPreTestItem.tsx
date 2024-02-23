@@ -3,8 +3,10 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import QuizIcon from "@mui/icons-material/Quiz";
 import YellowButton from "@/app/student/dashboard/components/YellowButton";
-import { FaRegCheckCircle } from "react-icons/fa";
-import { RxCrossCircled } from "react-icons/rx";
+
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const CardPreTestItem = ({ isStillOpen }) => {
   return (
@@ -25,9 +27,9 @@ const CardPreTestItem = ({ isStillOpen }) => {
             <h3>100 pts</h3>
             <QuizIcon sx={{ color: "white" }} />
             <h3>quizziz</h3>
-            <FaRegCheckCircle size="20px" color="white" />
+            <ChevronRightIcon sx={{ color: "white", fontSize: "20px" }} />
             <h3>Dibuka</h3>
-            <RxCrossCircled size="20px" color="white" />
+            <CancelIcon sx={{ size: "20px", color: "white" }} />
             <h3>1 kali pengerjaan</h3>
           </div>
 
@@ -39,9 +41,9 @@ const CardPreTestItem = ({ isStillOpen }) => {
           <YellowButton className="text-sm">Kerjakan Pretest</YellowButton>
         </div>
 
-        <div className="absolute top-2 right-1 p-1 w-[80px] h-[50px] bg-[#fbe360] rounded-md">
-          <h4 className="text-black" style={{ fontSize: "8px" }}>
-            Dibuka pada 20 September 2022 Pukul 07:00 WIB
+        <div className="absolute top-2 right-1 p-1 w-[100%] max-w-[150px] h-[50px] bg-[#fbe360] rounded-md">
+          <h4 className="text-black text-[10px]">
+            Dibuka pada 20 September 2022 Pukul 07:00
           </h4>
         </div>
       </div>
