@@ -123,7 +123,7 @@ const page = () => {
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
+    newAlignment: string,
   ) => {
     setAlignment(newAlignment);
   };
@@ -134,14 +134,14 @@ const page = () => {
         handleChange={(e) => handleChange(e, alignment)}
       ></ModulFAB>
       <section className="relative">
-        <div className="flex mb-3">
+        <div className="mb-3 flex">
           <div className="w-[80%]">
             <InformationTable reviewJawaban={reviewJawaban} />
             {/* awal section soal */}
             {reviewJawaban.quiz.questions.map((question, index) => (
               <div key={index} className="mb-8">
                 {/* awal section informasi kuis */}
-                <div className="inline-flex bg-white border-2 rounded-2xl mb-5">
+                <div className="mb-5 inline-flex rounded-2xl border-2 bg-white">
                   <div className="flex p-3">
                     <div className="mr-3">
                       <p
@@ -230,7 +230,7 @@ const page = () => {
                 {/* akhir section informasi kuis */}
 
                 {/* awal section soal dan jawaban */}
-                <div className="w-[100%] bg-white-400 border-2 rounded-2xl p-4">
+                <div className="bg-white-400 w-[100%] rounded-2xl border-2 p-4">
                   <h2 className="mb-2">{question.question}</h2>
                   <div>
                     {question.options.map((option, index) => (
@@ -239,7 +239,7 @@ const page = () => {
                           <>
                             <div
                               key={option.id}
-                              className={`flex justify-between border-2 rounded-lg mb-2 ${
+                              className={`mb-2 flex justify-between rounded-lg border-2 ${
                                 option.letter === question.userAnswer
                                   ? "border-green-400"
                                   : ""
@@ -247,7 +247,7 @@ const page = () => {
                             >
                               <div className="flex">
                                 <div
-                                  className={`inline-block px-3 rounded-l-sm ${
+                                  className={`inline-block rounded-l-sm px-3 ${
                                     option.letter === question.userAnswer
                                       ? "bg-green-400"
                                       : ""
@@ -255,8 +255,8 @@ const page = () => {
                                 >
                                   {option.letter}
                                 </div>
-                                <div className="w-[2px] h-[25px] bg-pl-GrayDefault"></div>
-                                <div className="inline-block text-left ml-3">
+                                <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
+                                <div className="ml-3 inline-block text-left">
                                   {option.text}
                                 </div>
                               </div>
@@ -275,7 +275,7 @@ const page = () => {
                           <>
                             <div
                               key={option.id}
-                              className={`flex justify-between border-2 rounded-lg mb-2 ${
+                              className={`mb-2 flex justify-between rounded-lg border-2 ${
                                 option.letter === question.rightAnswer
                                   ? "border-green-400"
                                   : ""
@@ -287,7 +287,7 @@ const page = () => {
                             >
                               <div className="flex">
                                 <div
-                                  className={`inline-block px-3 rounded-l-sm ${
+                                  className={`inline-block rounded-l-sm px-3 ${
                                     option.letter === question.userAnswer
                                       ? "bg-red-400"
                                       : ""
@@ -299,8 +299,8 @@ const page = () => {
                                 >
                                   {option.letter}
                                 </div>
-                                <div className="w-[2px] h-[25px] bg-pl-GrayDefault"></div>
-                                <div className="inline-block text-left ml-3">
+                                <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
+                                <div className="ml-3 inline-block text-left">
                                   {option.text}
                                 </div>
                               </div>
@@ -330,9 +330,9 @@ const page = () => {
 
             {/* akhir section soal */}
 
-            <div className="flex justify-between mt-3">
+            <div className="mt-3 flex justify-between">
               <Button
-                className="bg-pl-RoyalBlue ml-2 text-white"
+                className="ml-2 bg-pl-RoyalBlue text-white"
                 onClick={() => onClickModulHome()}
                 variant="contained"
               >
@@ -350,8 +350,8 @@ const page = () => {
 
           <div className="w-[20%]">
             {/* section navigasi soal */}
-            <div className="bg-white border-2 rounded-sm ml-2 w-[92%] mt-3">
-              <div className="flex p-3 justify-between gap-1">
+            <div className="ml-2 mt-3 w-[92%] rounded-sm border-2 bg-white">
+              <div className="flex justify-between gap-1 p-3">
                 <div>
                   <Image
                     width={60}
@@ -368,11 +368,11 @@ const page = () => {
               </div>
 
               <div className="flex justify-center py-1">
-                <div className="w-[90%] grid grid-cols-4 gap-2">
+                <div className="grid w-[90%] grid-cols-4 gap-2">
                   {quiz.questions.map((question, index) => (
                     <button
                       key={index}
-                      className={`h-[55px] inline-block border-2 rounded-sm bg-green-200`}
+                      className={`inline-block h-[55px] rounded-sm border-2 bg-green-200`}
                     >
                       {index + 1}
                     </button>

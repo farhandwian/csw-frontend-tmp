@@ -40,7 +40,7 @@ const page = () => {
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
+    newAlignment: string,
   ) => {
     setAlignment(newAlignment);
   };
@@ -57,7 +57,7 @@ const page = () => {
         >
           Latihan Modul Materi 1
         </h1>
-        <div className="flex max-w-max bg-white border rounded-2xl mb-5">
+        <div className="mb-5 flex max-w-max rounded-2xl border bg-white">
           <div className="flex p-3">
             <div className="mr-3">
               <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
@@ -158,7 +158,7 @@ const page = () => {
           mulai kerjakan latihan!
         </p>
 
-        <Button variant="contained" className="bg-pl-RoyalBlue my-3">
+        <Button variant="contained" className="my-3 bg-pl-RoyalBlue">
           Mulai Kerjakan
         </Button>
       </section>

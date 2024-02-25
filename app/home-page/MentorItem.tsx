@@ -11,22 +11,22 @@ interface MentorItemProps {
 const MentorItem = (props: MentorItemProps) => {
   const { img, name, job, quote } = props;
   return (
-    <div className="bg-white w-full h-full lg:w-[379px] lg:h-[402px] rounded-lg lg:rounded-[20px]">
+    <div className="h-full w-full rounded-lg bg-white lg:h-[402px] lg:w-[379px] lg:rounded-[20px]">
       <div className="flex w-full justify-center">
         <Image
           src={`/img/img-${img}.png`}
           width={288}
           height={281}
           alt={`img-${img}`}
-          className="w-[281px] h-[280px]"
+          className="h-[280px] w-[281px]"
         />
       </div>
-      <div className="w-full h-[180px]  bg-[#0D0D68] rounded-b-lg lg:rounded-b-[20px] text-white flex flex-col justify-between items-center lg:px-8 py-5">
+      <div className="flex h-[180px]  w-full flex-col items-center justify-between rounded-b-lg bg-[#0D0D68] py-5 text-white lg:rounded-b-[20px] lg:px-8">
         <div className="text-center">
           <h4 className="font-semibold">{name}</h4>
-          <p className="font-medium text-sm">Mentor {job} Terbaik</p>
+          <p className="text-sm font-medium">Mentor {job} Terbaik</p>
         </div>
-        <h4 className="italic text-sm text-center h-full mt-10">
+        <h4 className="mt-10 h-full text-center text-sm italic">
           &quot;{quote}&quot;
         </h4>
       </div>

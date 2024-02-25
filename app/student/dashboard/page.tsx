@@ -48,12 +48,12 @@ const page = () => {
         <section className="relative">
           {dashboards.status === "newbie" && (
             <>
-              <div className="bg-pl-RedUserDahboard border rounded-md h-72 mt-5 flex items-center justify-center relative w-full lg:w-full md:px-10">
-                <div className="w-[30%] h-[100%] py-8">
-                  <h1 className="text-2xl font-bold mt-4 text-white">
+              <div className="relative mt-5 flex h-72 w-full items-center justify-center rounded-md border bg-pl-RedUserDahboard md:px-10 lg:w-full">
+                <div className="h-[100%] w-[30%] py-8">
+                  <h1 className="mt-4 text-2xl font-bold text-white">
                     Hello,Farhan
                   </h1>
-                  <h3 className="text-sm mb-4 text-white">
+                  <h3 className="mb-4 text-sm text-white">
                     Akun Anda saat ini masih berstatus newbie. Upgrade akun akan
                     menjadi pro dengan memilih pilihan paket yang tersedia
                   </h3>
@@ -77,10 +77,10 @@ const page = () => {
 
           <h1>Overview</h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
             {/* kolom 1 */}
             <div>
-              <div className="bg-white border rounded-md">
+              <div className="rounded-md border bg-white">
                 {/* mata pelajaran yang saya ikuti card */}
                 <h1 className="p-3 font-bold">
                   Mata Pelajaran yang saya ikuti
@@ -93,23 +93,23 @@ const page = () => {
                       width={200}
                       height={200}
                       className={
-                        "mx-auto my-2.5 lg:w-[200px] lg:h-[150px] md:w-16 md:h-16 sm:w-12 sm:h-12"
+                        "mx-auto my-2.5 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[150px] lg:w-[200px]"
                       }
                       alt="Logo CSW"
                     />
-                    <div className="text-center mt-3 text-sm">
+                    <div className="mt-3 text-center text-sm">
                       <h2>
                         Oopss!! sepertinya mata pelajaranmu kosong, pasti kamu
                         belum membeli paket belajar ya?
                       </h2>
                     </div>
 
-                    <div className="text-center mt-3 text-sm">
+                    <div className="mt-3 text-center text-sm">
                       <h2>
                         Tenang, kamu dapat membelinya sesuai dengan kebutuhanmu!
                       </h2>
                     </div>
-                    <div className="w-100% flex justify-center items-center mt-3 mb-4 text-md">
+                    <div className="w-100% text-md mb-4 mt-3 flex items-center justify-center">
                       <RedButton className="m-auto" variant="contained">
                         <h1 className="text-black">Lihat Paket Belajar</h1>
                       </RedButton>
@@ -122,19 +122,19 @@ const page = () => {
                       width={200}
                       height={200}
                       className={
-                        "mx-auto my-2.5 lg:w-[200px] lg:h-[150px] md:w-16 md:h-16 sm:w-12 sm:h-12"
+                        "mx-auto my-2.5 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[150px] lg:w-[200px]"
                       }
                       alt="Logo CSW"
                     />
 
                     <h1 className="ml-3 font-bold">TWK</h1>
                     <h2 className="ml-3 text-sm font-semibold">Kelas</h2>
-                    <div className="mt-2 mb-4">
+                    <div className="mb-4 mt-2">
                       <AccessTimeFilledIcon
-                        className="inline-block ml-3"
+                        className="ml-3 inline-block"
                         sx={{ color: red[400] }}
                       />
-                      <h2 className="inline-block ml-1">Waktu akses</h2>
+                      <h2 className="ml-1 inline-block">Waktu akses</h2>
                     </div>
                   </>
                 )}
@@ -144,8 +144,8 @@ const page = () => {
             {/* kolom 2 */}
             <div>
               {/* Materi card section */}
-              <div className="bg-white border rounded-md">
-                <h1 className="mt-3 mb-3 ml-3 font-bold">Materi</h1>
+              <div className="rounded-md border bg-white">
+                <h1 className="mb-3 ml-3 mt-3 font-bold">Materi</h1>
                 {[...Array(2)].map((_, index) => (
                   // Materi carditem
                   <div key={index} className="">
@@ -153,14 +153,14 @@ const page = () => {
                       <h2 className="text-sm font-semibold">
                         Materi Matematika
                       </h2>
-                      <h3 className="text-xs mb-3">
+                      <h3 className="mb-3 text-xs">
                         Materi akan di lock jika pertemuan zoom belum
                         berlangsung dan akan dibuka 3 hari sebelum pertemuan
                         zoom berlangsung.
                       </h3>
                     </div>
 
-                    <div className="flex justify-between px-3 bg-pl-GrayUserDashboard">
+                    <div className="flex justify-between bg-pl-GrayUserDashboard px-3">
                       <h2 className="text-sm">Nama Materi</h2>
                       <h2 className="text-sm text-tp-BlueUserDashboard">
                         Baca Materi
@@ -176,32 +176,32 @@ const page = () => {
                               : "bg-white"
                           }  flex justify-between px-3 text-sm`}
                         >
-                          <div className="relative blur-sm flex-grow">
+                          <div className="relative flex-grow blur-sm">
                             <p className="text-xl font-bold">Sensit</p>
                           </div>
                           <div className="flex-grow text-[#f3736c]">
                             materi dikunci
                           </div>
-                          <div className="blur-sm flex-grow text-right">
+                          <div className="flex-grow text-right blur-sm">
                             <LockIcon sx={{ color: red[400] }} />
                           </div>
                         </div>
                       </div>
                     ))}
 
-                    <h2 className="px-3 text-sm mt-2 text-tp-BlueUserDashboard">
+                    <h2 className="mt-2 px-3 text-sm text-tp-BlueUserDashboard">
                       Lihat Semua Materi Matematika
                     </h2>
                     {/* horizontal line */}
-                    <div className="w-100% h-[1px] bg-gray-100 mt-2"></div>
+                    <div className="w-100% mt-2 h-[1px] bg-gray-100"></div>
                   </div>
                 ))}
               </div>
               {/* Recently Pretest container */}
-              <div className="bg-white border rounded-md mt-3">
+              <div className="mt-3 rounded-md border bg-white">
                 <h1 className="px-3 pt-2 font-bold">Recently pretest</h1>
                 {/* horizontal line */}
-                <div className="w-100% h-[1px] bg-gray-100 mt-2 p-0"></div>
+                <div className="w-100% mt-2 h-[1px] bg-gray-100 p-0"></div>
 
                 {dashboards.status === "newbie" ? (
                   <>
@@ -211,13 +211,13 @@ const page = () => {
                         width={200}
                         height={200}
                         className={
-                          "mx-auto my-2.5 lg:w-[200px] lg:h-[150px] md:w-16 md:h-16 sm:w-12 sm:h-12"
+                          "mx-auto my-2.5 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[150px] lg:w-[200px]"
                         }
                         alt="Logo CSW"
                       />
                       <LockIcon
                         fontSize="large"
-                        className="absolute top-0 left-7"
+                        className="absolute left-7 top-0"
                         sx={{ color: red[400] }}
                       />
                       <div className="px-3">
@@ -230,7 +230,7 @@ const page = () => {
                         </h3>
                       </div>
 
-                      <div className="w-100% flex justify-center items-center mt-3 mb-4">
+                      <div className="w-100% mb-4 mt-3 flex items-center justify-center">
                         <RedButton className="m-auto" variant="contained">
                           <h1 className="text-black">Lihat Paket Belajar</h1>
                         </RedButton>
@@ -239,13 +239,13 @@ const page = () => {
                   </>
                 ) : (
                   <>
-                    <h1 className="font-semibold ml-3">Pretest SKD</h1>
+                    <h1 className="ml-3 font-semibold">Pretest SKD</h1>
                     {[...Array(5)].map((_, index) => (
                       <>
-                        <div className="px-3 relative mb-3">
+                        <div className="relative mb-3 px-3">
                           {/* carditem pretest user jika sudah beli modul */}
-                          <div className="p-2 bg-cover bg-center rounded-md min-h-32 w-[100%] bg-[url('/img/dashboard-user/card_recently_pretest.png')] text-white">
-                            <div className="flex w-fit justify-center items-center text-neutral-100 text-xs mb-2">
+                          <div className="min-h-32 w-[100%] rounded-md bg-[url('/img/dashboard-user/card_recently_pretest.png')] bg-cover bg-center p-2 text-white">
+                            <div className="mb-2 flex w-fit items-center justify-center text-xs text-neutral-100">
                               <AccessTimeFilledIcon sx={{ color: "white" }} />
 
                               <h3>15 menit</h3>
@@ -256,7 +256,7 @@ const page = () => {
                             </div>
 
                             <h1 className="text-sm font-bold">Judul Pretest</h1>
-                            <h3 className="text-xs text-left mb-2">
+                            <h3 className="mb-2 text-left text-xs">
                               Pada pretest kali ini akan membahas seputar materi
                               yang akan kita pelajari nanti di pertemuan,
                               kerjakan dengan...
@@ -266,7 +266,7 @@ const page = () => {
                             </YellowButton>
                           </div>
 
-                          <div className="absolute top-2 right-1 p-1 w-[80px] h-[50px] bg-[#fbe360] rounded-md">
+                          <div className="absolute right-1 top-2 h-[50px] w-[80px] rounded-md bg-[#fbe360] p-1">
                             <h4
                               className="text-black"
                               style={{ fontSize: "8px" }}
@@ -277,7 +277,7 @@ const page = () => {
                         </div>
                       </>
                     ))}
-                    <h2 className="text-center text-sm text-tp-BlueUserDashboard mb-3">
+                    <h2 className="mb-3 text-center text-sm text-tp-BlueUserDashboard">
                       LIHAT SEMUA <NavigateNextIcon className="mb-1" />
                     </h2>
                   </>
@@ -288,7 +288,7 @@ const page = () => {
             {/* kolom 3 */}
             <div>
               {/* jam pelaksanaan bimbel */}
-              <div className="bg-white border rounded-md px-3">
+              <div className="rounded-md border bg-white px-3">
                 <h1 className="py-3 font-bold">
                   Jam Pelaksanaan Bimbel SKD dan Matematika
                 </h1>
@@ -299,18 +299,18 @@ const page = () => {
                 <div>
                   {[...Array(7)].map((_, index) => (
                     <>
-                      <div className="flex justify-center items-center border border-gray-100 min-h-28 w-[100%]">
+                      <div className="flex min-h-28 w-[100%] items-center justify-center border border-gray-100">
                         <div className="w-[20%] flex-col border-r-2 text-sm text-tp-GrayTabelJadwalUserDashboard">
-                          <div className="bg-gray-100 h-7 w-[100%] text-center ">
+                          <div className="h-7 w-[100%] bg-gray-100 text-center ">
                             Senin
                           </div>
 
-                          <h3 className="text-center mt-2">{index + 1}</h3>
+                          <h3 className="mt-2 text-center">{index + 1}</h3>
                         </div>
                         <div className="w-[80%]">
                           <div className="p-1">
                             <div
-                              className="flex rounded-md w-[100%] h-[50px] bg-pl-GreenUserDashboard mb-2 p-1"
+                              className="mb-2 flex h-[50px] w-[100%] rounded-md bg-pl-GreenUserDashboard p-1"
                               style={{ fontSize: "10px" }}
                             >
                               <div className="flex w-[80%]">
@@ -336,8 +336,8 @@ const page = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="flex w-[20%] justify-end items-center">
-                                <div className="w-fit h-fit bg-green-500 rounded-xl mr-1 px-1">
+                              <div className="flex w-[20%] items-center justify-end">
+                                <div className="mr-1 h-fit w-fit rounded-xl bg-green-500 px-1">
                                   SKD
                                 </div>
                               </div>
@@ -348,9 +348,9 @@ const page = () => {
                     </>
                   ))}
                   {/* bagian bawah tabel */}
-                  <div className="flex border border-gray-100 min-h-16 w-[100%]">
+                  <div className="flex min-h-16 w-[100%] border border-gray-100">
                     <div className="w-[20%] flex-col border-r-2">
-                      <div className="bg-gray-100 h-7 w-[100%] text-center">
+                      <div className="h-7 w-[100%] bg-gray-100 text-center">
                         ............
                       </div>
 
@@ -368,14 +368,14 @@ const page = () => {
                 {/* keterangan */}
                 <div className="px-3">
                   <h1 className="mb-1">Keterangan</h1>
-                  <div className="flex mb-1">
-                    <div className="border rounded-md w-[20px] h-[20px] bg-pl-GreenUserDashboard"></div>
+                  <div className="mb-1 flex">
+                    <div className="h-[20px] w-[20px] rounded-md border bg-pl-GreenUserDashboard"></div>
                     <h2 className="ml-2 text-sm">
                       Pertemuan Zoom Pelajaran SKD
                     </h2>
                   </div>
                   <div className="flex">
-                    <div className="border rounded-md w-[20px] h-[20px] bg-pl-GrayUserDashboardTabelJamPelaksanaan"></div>
+                    <div className="h-[20px] w-[20px] rounded-md border bg-pl-GrayUserDashboardTabelJamPelaksanaan"></div>
                     <h2 className="ml-2 text-sm">
                       Pertemuan Zoom Pelajaran Matematika
                     </h2>
@@ -384,10 +384,10 @@ const page = () => {
               </div>
 
               {/* recently postest card */}
-              <div className="bg-white border rounded-md mt-3">
+              <div className="mt-3 rounded-md border bg-white">
                 <h1 className="ml-3 px-3 pt-2 font-bold">Recently Posttest</h1>
                 {/* horizontal line */}
-                <div className="w-100% h-[1px] bg-gray-100 mt-2"></div>
+                <div className="w-100% mt-2 h-[1px] bg-gray-100"></div>
                 {dashboards.status === "newbie" ? (
                   <>
                     <div className="relative text-sm">
@@ -396,13 +396,13 @@ const page = () => {
                         width={200}
                         height={200}
                         className={
-                          "mx-auto my-2.5 lg:w-[200px] lg:h-[150px] md:w-16 md:h-16 sm:w-12 sm:h-12"
+                          "mx-auto my-2.5 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-[150px] lg:w-[200px]"
                         }
                         alt="Logo CSW"
                       />
                       <LockIcon
                         fontSize="large"
-                        className="absolute top-0 left-7"
+                        className="absolute left-7 top-0"
                         sx={{ color: red[400] }}
                       />
                       <div className="px-3">
@@ -415,7 +415,7 @@ const page = () => {
                         </h3>
                       </div>
 
-                      <div className="w-100% flex justify-center items-center mt-3 mb-4">
+                      <div className="w-100% mb-4 mt-3 flex items-center justify-center">
                         <RedButton className="m-auto" variant="contained">
                           <h1 className="text-black">Lihat Paket Belajar</h1>
                         </RedButton>
@@ -424,13 +424,13 @@ const page = () => {
                   </>
                 ) : (
                   <>
-                    <h1 className="font-semibold ml-3">Posttest SKD</h1>
+                    <h1 className="ml-3 font-semibold">Posttest SKD</h1>
                     {[...Array(5)].map((_, index) => (
                       <>
-                        <div className="px-3 relative mb-3">
+                        <div className="relative mb-3 px-3">
                           {/* carditem pretest user jika sudah beli modul */}
-                          <div className="p-2 bg-cover bg-center rounded-md min-h-32 w-[100%] bg-[url('/img/dashboard-user/card_recently_posttest.png')] text-white">
-                            <div className="flex w-fit justify-center items-center text-neutral-100 text-xs mb-2">
+                          <div className="min-h-32 w-[100%] rounded-md bg-[url('/img/dashboard-user/card_recently_posttest.png')] bg-cover bg-center p-2 text-white">
+                            <div className="mb-2 flex w-fit items-center justify-center text-xs text-neutral-100">
                               <AccessTimeFilledIcon sx={{ color: "white" }} />
 
                               <h3>15 menit</h3>
@@ -441,7 +441,7 @@ const page = () => {
                             </div>
 
                             <h1 className="text-sm font-bold">Judul Pretest</h1>
-                            <h3 className="text-xs text-left mb-2">
+                            <h3 className="mb-2 text-left text-xs">
                               Pada pretest kali ini akan membahas seputar materi
                               yang akan kita pelajari nanti di pertemuan,
                               kerjakan dengan...
@@ -451,7 +451,7 @@ const page = () => {
                             </YellowButton>
                           </div>
 
-                          <div className="absolute top-2 right-1 p-1 w-[80px] h-[50px] bg-[#fbe360] rounded-md">
+                          <div className="absolute right-1 top-2 h-[50px] w-[80px] rounded-md bg-[#fbe360] p-1">
                             <h4
                               className="text-black"
                               style={{ fontSize: "8px" }}
@@ -462,7 +462,7 @@ const page = () => {
                         </div>
                       </>
                     ))}
-                    <h2 className="text-center text-sm text-tp-BlueUserDashboard mb-3">
+                    <h2 className="mb-3 text-center text-sm text-tp-BlueUserDashboard">
                       LIHAT SEMUA <NavigateNextIcon className="mb-1" />
                     </h2>
                   </>

@@ -14,13 +14,13 @@ const TestimoniItem = (props: TestimoniItemProps) => {
 
   return (
     <div className="w-full ">
-      <div className="bg-white w-full h-full relative border-[1.5px] border-[#E7E7E7] rounded-2xl lg:rounded-[36px] px-6 py-8 lg:py-10 lg:px-14">
+      <div className="relative h-full w-full rounded-2xl border-[1.5px] border-[#E7E7E7] bg-white px-6 py-8 lg:rounded-[36px] lg:px-14 lg:py-10">
         <Image
           src={"/icon/ic-quote.svg"}
           width={180}
           height={99}
           alt="ic-quote"
-          className="absolute -top-[6px] -right-[10px] lg:-top-[22px] lg:-right-[22px] w-[100px] h-[50px] lg:w-fit lg:h-fit z-0 lg:scale-75"
+          className="absolute -right-[10px] -top-[6px] z-0 h-[50px] w-[100px] lg:-right-[22px] lg:-top-[22px] lg:h-fit lg:w-fit lg:scale-75"
         />
 
         <div className="flex items-start gap-x-4">
@@ -29,17 +29,17 @@ const TestimoniItem = (props: TestimoniItemProps) => {
             width={105}
             height={105}
             alt="img-profile"
-            className="w-20 h-20 lg:w-fit lg:h-fit"
+            className="h-20 w-20 lg:h-fit lg:w-fit"
           />
           <div className=" text-[#393934]">
-            <h2 className="font-bold text-lg lg:text-2xl">{name}</h2>
+            <h2 className="text-lg font-bold lg:text-2xl">{name}</h2>
             <p className="mt-1 lg:text-xl">{student}</p>
           </div>
         </div>
 
         <div className="flex flex-col ">
-          <p className="mt-5 lg:mt-9 text-sm lg:text-lg">{text}</p>
-          <div className="flex gap-x-2 mt-3">
+          <p className="mt-5 text-sm lg:mt-9 lg:text-lg">{text}</p>
+          <div className="mt-3 flex gap-x-2">
             {Array.from({ length: rating }, (_, index) => (
               <Image
                 key={index}

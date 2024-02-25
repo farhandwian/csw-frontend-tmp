@@ -23,7 +23,7 @@ const HeroImage: React.FC<HeroImageProps> = ({
 }) => {
   return (
     <div
-      className={`w-1/2 h-screen flex items-center justify-center pt-24 ${classNameWrap}`}
+      className={`flex h-screen w-1/2 items-center justify-center pt-24 ${classNameWrap}`}
     >
       <Image
         src={src}

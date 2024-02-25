@@ -7,10 +7,10 @@ const Faq = () => {
       <h2 className="text-4xl font-semibold text-[#323062]">
         Pertanyaan yang Paling Sering Ditanyakan
       </h2>
-      <div className="mt-20 max-w-[880px] flex flex-col gap-y-6">
-        <div className="flex items-start  justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+      <div className="mt-20 flex max-w-[880px] flex-col gap-y-6">
+        <div className="flex items-start  justify-between gap-x-4 rounded-xl bg-white px-4 py-6">
           <div>
-            <h3 className="text-[#334155] font-medium text-lg">
+            <h3 className="text-lg font-medium text-[#334155]">
               Masalah apa yang Anda selesaikan?
             </h3>
             <p className="mt-4 text-[#1E293B]/40">
@@ -24,15 +24,15 @@ const Faq = () => {
             alt="ic-arrow"
             width={13}
             height={24}
-            className="w-7 h-7"
+            className="h-7 w-7"
           />
         </div>
-        <div className="flex items-start justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+        <div className="flex items-start justify-between gap-x-4 rounded-xl bg-white px-4 py-6">
           <div>
-            <h3 className="text-[#334155] font-medium text-lg">
+            <h3 className="text-lg font-medium text-[#334155]">
               Masalah apa yang Anda selesaikan?
             </h3>
-            <p className=" hidden mt-4 text-[#1E293B]/40">
+            <p className=" mt-4 hidden text-[#1E293B]/40">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s
@@ -43,15 +43,15 @@ const Faq = () => {
             alt="ic-arrow"
             width={13}
             height={24}
-            className="w-7 h-7 rotate-180"
+            className="h-7 w-7 rotate-180"
           />
         </div>
-        <div className="flex items-start justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+        <div className="flex items-start justify-between gap-x-4 rounded-xl bg-white px-4 py-6">
           <div>
-            <h3 className="text-[#334155] font-medium text-lg">
+            <h3 className="text-lg font-medium text-[#334155]">
               Masalah apa yang Anda selesaikan?
             </h3>
-            <p className=" hidden mt-4 text-[#1E293B]/40">
+            <p className=" mt-4 hidden text-[#1E293B]/40">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s
@@ -62,15 +62,15 @@ const Faq = () => {
             alt="ic-arrow"
             width={13}
             height={24}
-            className="w-7 h-7 rotate-180"
+            className="h-7 w-7 rotate-180"
           />
         </div>
-        <div className="flex items-start justify-between gap-x-4 bg-white px-4 py-6 rounded-xl">
+        <div className="flex items-start justify-between gap-x-4 rounded-xl bg-white px-4 py-6">
           <div>
-            <h3 className="text-[#334155] font-medium text-lg">
+            <h3 className="text-lg font-medium text-[#334155]">
               Masalah apa yang Anda selesaikan?
             </h3>
-            <p className=" hidden mt-4 text-[#1E293B]/40">
+            <p className=" mt-4 hidden text-[#1E293B]/40">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s
@@ -81,12 +81,12 @@ const Faq = () => {
             alt="ic-arrow"
             width={13}
             height={24}
-            className="w-7 h-7 rotate-180"
+            className="h-7 w-7 rotate-180"
           />
         </div>
       </div>
 
-      <div className="mt-32 w-full h-[440px] bg-[#1A69F0] flex items-center justify-center relative">
+      <div className="relative mt-32 flex h-[440px] w-full items-center justify-center bg-[#1A69F0]">
         <Image
           src={"/image/img-contactus.png"}
           alt="bg-contact-me"
@@ -94,13 +94,13 @@ const Faq = () => {
           height={440}
         />
         <div className="absolute max-w-3xl text-center text-white">
-          <h1 className="font-bold text-5xl">Memiliki Kesulitan?</h1>
+          <h1 className="text-5xl font-bold">Memiliki Kesulitan?</h1>
           <p className="mt-6 font-medium">
             Kami tahu Anda memiliki beberapa pertanyaan, kami telah mencoba
             membuat daftar yang paling penting sekali dan Anda bisa mengajukan
             pertanyaan jika terdapat kebingunan
           </p>
-          <button className="mt-6 text-black bg-white px-5 py-4 rounded-full font-semibold">
+          <button className="mt-6 rounded-full bg-white px-5 py-4 font-semibold text-black">
             Ajukan Pertanyaan
           </button>
         </div>

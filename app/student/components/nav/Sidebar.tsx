@@ -95,9 +95,9 @@ const SideBar = forwardRef(({ showNav, isMobile }, ref) => {
   return (
     <div
       ref={ref}
-      className="fixed w-30 md:w-56 h-[37.5rem] md:h-full  mt-16 md:mt-0 bg-white z-20 shadow-sm overflow-y-scroll text-xs md:text-sm"
+      className="w-30 fixed z-20 mt-16 h-[37.5rem]  overflow-y-scroll bg-white text-xs shadow-sm md:mt-0 md:h-full md:w-56 md:text-sm"
     >
-      <div className="flex justify-center mt-1 md:mt-6 mb-3">
+      <div className="mb-3 mt-1 flex justify-center md:mt-6">
         {/* profile jika sidebar terbuka */}
         <div className={`p-4 ${true ? "block" : "hidden"}`}>
           <div className="flex flex-col items-center justify-center">
@@ -106,9 +106,9 @@ const SideBar = forwardRef(({ showNav, isMobile }, ref) => {
               alt="Foto Profil"
               width={200}
               height={200}
-              className="rounded-full mt-4 w-16 h-16 md:w-20 md:h-20"
+              className="mt-4 h-16 w-16 rounded-full md:h-20 md:w-20"
             />
-            <p className="capitalize text-center mt-2">
+            <p className="mt-2 text-center capitalize">
               Dashboard Anda, <br />
               <span className="font-semibold">Username</span>
             </p>
@@ -120,7 +120,7 @@ const SideBar = forwardRef(({ showNav, isMobile }, ref) => {
         {dataSidebar.map((item) => (
           <Link key={item.id} href={item.path}>
             <div
-              className={`pl-2 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              className={`mx-5 mb-3 flex cursor-pointer items-center rounded py-3 pl-2 text-center transition-colors ${
                 item.path === checkUrl()
                   ? "bg-red-100 text-red-500"
                   : "text-gray-400 hover:bg-red-100 hover:text-red-500"

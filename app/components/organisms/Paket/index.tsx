@@ -3,28 +3,28 @@ import React from "react";
 
 const Paket = () => {
   return (
-    <div className="h-full mt-32 w-full">
+    <div className="mt-32 h-full w-full">
       <div className="flex flex-col items-center justify-center">
-        <h4 className="text-[#0D0D68] font-medium text-[26px]">
+        <h4 className="text-[26px] font-medium text-[#0D0D68]">
           Paket Unggulan Teratas
         </h4>
-        <h2 className="mt-1 text-4xl text-center font-semibold text-[#1A69F0] leading-tight">
+        <h2 className="mt-1 text-center text-4xl font-semibold leading-tight text-[#1A69F0]">
           Pilih Paket Unggulan untuk Meningkatkan Ilmu
         </h2>
       </div>
 
-      <div className="mt-36 w-full flex items-center justify-center">
-        <div className="flex items-center justify-center gap-x-4 xl:gap-x-14 w-fit relative mx-10 xl:px-0">
-          <div className=" flex items-center justify-between absolute -top-24 w-full">
-            <h4 className="text-[#323062] font-medium text-lg">
+      <div className="mt-36 flex w-full items-center justify-center">
+        <div className="relative mx-10 flex w-fit items-center justify-center gap-x-4 xl:gap-x-14 xl:px-0">
+          <div className=" absolute -top-24 flex w-full items-center justify-between">
+            <h4 className="text-lg font-medium text-[#323062]">
               Tertarik untuk membeli paket bimbel kami?
             </h4>
-            <button className="flex items-center justify-center bg-[#090963] text-[#E2E8F0] h-[52px] w-[218px] font-semibold xl:text-base rounded-full">
+            <button className="flex h-[52px] w-[218px] items-center justify-center rounded-full bg-[#090963] font-semibold text-[#E2E8F0] xl:text-base">
               Semua Paket
             </button>
           </div>
 
-          <div className="bg-white p-6 w-fit rounded-[20px]">
+          <div className="w-fit rounded-[20px] bg-white p-6">
             <Image
               src={"/image/img-paket1.png"}
               width={312}
@@ -33,82 +33,82 @@ const Paket = () => {
             />
             <div className="mt-6 flex items-center justify-between">
               <h2 className="text-xl font-semibold">Paket D</h2>
-              <div className="border border-[#6255A4] px-3 py-1 rounded-full">
-                <h4 className="font-medium text-xs">Paket SKD Teratas</h4>
+              <div className="rounded-full border border-[#6255A4] px-3 py-1">
+                <h4 className="text-xs font-medium">Paket SKD Teratas</h4>
               </div>
             </div>
-            <h1 className="pt-2 text-[#E23535] font-semibold text-3xl">
+            <h1 className="pt-2 text-3xl font-semibold text-[#E23535]">
               Rp 285.000,00
             </h1>
-            <p className="pt-2 text-[#0A0A65] text-sm">
+            <p className="pt-2 text-sm text-[#0A0A65]">
               Sesuai untuk mengasah kemampuan
             </p>
 
             {/* Isi Paket */}
             <div className="mt-6">
               <h2 className="font-medium text-[#0A0A65]">Detail isi Paket</h2>
-              <div className="flex flex-col gap-y-2 ml-3 mt-2">
-                <div className="flex gap-x-3 items-center">
+              <div className="ml-3 mt-2 flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     Grup Bersama dengan Mentor
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     36 Pertemuan Zoom
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     660 Latihan Soal
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">Modul</p>
+                  <p className="text-sm font-medium text-[#696F8C]">Modul</p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     2x Tryout
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     3 Bulan Akses Web
                   </p>
                 </div>
@@ -116,14 +116,14 @@ const Paket = () => {
             </div>
 
             {/* Button */}
-            <div className="w-full flex items-center justify-center mt-6">
-              <button className="text-sm font-semibold text-white px-12 py-3 bg-[#0A0A65] rounded-[10px]">
+            <div className="mt-6 flex w-full items-center justify-center">
+              <button className="rounded-[10px] bg-[#0A0A65] px-12 py-3 text-sm font-semibold text-white">
                 Beli Paket
               </button>
             </div>
           </div>
 
-          <div className="bg-white p-6 w-fit rounded-[20px]">
+          <div className="w-fit rounded-[20px] bg-white p-6">
             <Image
               src={"/image/img-paket1.png"}
               width={312}
@@ -132,82 +132,82 @@ const Paket = () => {
             />
             <div className="mt-6 flex items-center justify-between">
               <h2 className="text-xl font-semibold">Paket D</h2>
-              <div className="border border-[#6255A4] px-3 py-1 rounded-full">
-                <h4 className="font-medium text-xs">Paket SKD Teratas</h4>
+              <div className="rounded-full border border-[#6255A4] px-3 py-1">
+                <h4 className="text-xs font-medium">Paket SKD Teratas</h4>
               </div>
             </div>
-            <h1 className="pt-2 text-[#E23535] font-semibold text-3xl">
+            <h1 className="pt-2 text-3xl font-semibold text-[#E23535]">
               Rp 285.000,00
             </h1>
-            <p className="pt-2 text-[#0A0A65] text-sm">
+            <p className="pt-2 text-sm text-[#0A0A65]">
               Sesuai untuk mengasah kemampuan
             </p>
 
             {/* Isi Paket */}
             <div className="mt-6">
               <h2 className="font-medium text-[#0A0A65]">Detail isi Paket</h2>
-              <div className="flex flex-col gap-y-2 ml-3 mt-2">
-                <div className="flex gap-x-3 items-center">
+              <div className="ml-3 mt-2 flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     Grup Bersama dengan Mentor
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     36 Pertemuan Zoom
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     660 Latihan Soal
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">Modul</p>
+                  <p className="text-sm font-medium text-[#696F8C]">Modul</p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     2x Tryout
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     3 Bulan Akses Web
                   </p>
                 </div>
@@ -215,14 +215,14 @@ const Paket = () => {
             </div>
 
             {/* Button */}
-            <div className="w-full flex items-center justify-center mt-6">
-              <button className="text-sm font-semibold text-white px-12 py-3 bg-[#0A0A65] rounded-[10px]">
+            <div className="mt-6 flex w-full items-center justify-center">
+              <button className="rounded-[10px] bg-[#0A0A65] px-12 py-3 text-sm font-semibold text-white">
                 Beli Paket
               </button>
             </div>
           </div>
 
-          <div className="bg-white p-6 w-fit rounded-[20px]">
+          <div className="w-fit rounded-[20px] bg-white p-6">
             <Image
               src={"/image/img-paket1.png"}
               width={312}
@@ -231,82 +231,82 @@ const Paket = () => {
             />
             <div className="mt-6 flex items-center justify-between">
               <h2 className="text-xl font-semibold">Paket D</h2>
-              <div className="border border-[#6255A4] px-3 py-1 rounded-full">
-                <h4 className="font-medium text-xs">Paket SKD Teratas</h4>
+              <div className="rounded-full border border-[#6255A4] px-3 py-1">
+                <h4 className="text-xs font-medium">Paket SKD Teratas</h4>
               </div>
             </div>
-            <h1 className="pt-2 text-[#E23535] font-semibold text-3xl">
+            <h1 className="pt-2 text-3xl font-semibold text-[#E23535]">
               Rp 285.000,00
             </h1>
-            <p className="pt-2 text-[#0A0A65] text-sm">
+            <p className="pt-2 text-sm text-[#0A0A65]">
               Sesuai untuk mengasah kemampuan
             </p>
 
             {/* Isi Paket */}
             <div className="mt-6">
               <h2 className="font-medium text-[#0A0A65]">Detail isi Paket</h2>
-              <div className="flex flex-col gap-y-2 ml-3 mt-2">
-                <div className="flex gap-x-3 items-center">
+              <div className="ml-3 mt-2 flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     Grup Bersama dengan Mentor
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     36 Pertemuan Zoom
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     660 Latihan Soal
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">Modul</p>
+                  <p className="text-sm font-medium text-[#696F8C]">Modul</p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     2x Tryout
                   </p>
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex items-center gap-x-3">
                   <Image
                     src={"/icon/ic-check.svg"}
                     width={21}
                     height={21}
                     alt="ic-check"
                   />
-                  <p className="text-[#696F8C] text-sm font-medium">
+                  <p className="text-sm font-medium text-[#696F8C]">
                     3 Bulan Akses Web
                   </p>
                 </div>
@@ -314,8 +314,8 @@ const Paket = () => {
             </div>
 
             {/* Button */}
-            <div className="w-full flex items-center justify-center mt-6">
-              <button className="text-sm font-semibold text-white px-12 py-3 bg-[#0A0A65] rounded-[10px]">
+            <div className="mt-6 flex w-full items-center justify-center">
+              <button className="rounded-[10px] bg-[#0A0A65] px-12 py-3 text-sm font-semibold text-white">
                 Beli Paket
               </button>
             </div>

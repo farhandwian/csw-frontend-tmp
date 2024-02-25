@@ -50,12 +50,12 @@ export default function ModalSubmitModul({
               width={150}
               height={150}
               src="/img/uji-kemampuan/ic_attention.png"
-              className={`object-cover inline-block`}
+              className={`inline-block object-cover`}
               alt="Logo CSW"
             />
           </div>
-          <h1 className="text-xl font-bold text-center">PERHATIAN!!</h1>
-          <p className="text-center mb-4">
+          <h1 className="text-center text-xl font-bold">PERHATIAN!!</h1>
+          <p className="mb-4 text-center">
             Lorem Ipsum has been the industry's standard dummy text ever since
             the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book.
@@ -130,11 +130,11 @@ function ChildModal() {
               width={150}
               height={150}
               src="/img/uji-kemampuan/ic_success_latsol.gif"
-              className={`object-cover inline-block`}
+              className={`inline-block object-cover`}
               alt="Logo CSW"
             />
           </div>
-          <h2 className="text-xl font-bold text-center">
+          <h2 className="text-center text-xl font-bold">
             Yeay!!! Selamat kamu telah menyelesaikan Latihan
           </h2>
 
@@ -146,7 +146,7 @@ function ChildModal() {
 
           <form className="m-auto" action={navigate}>
             <Button
-              className="bg-pl-RoyalBlue ml-2 text-white"
+              className="ml-2 bg-pl-RoyalBlue text-white"
               onClick={() => {}}
               variant="contained"
             >
@@ -252,7 +252,7 @@ const ModalContent = styled("div")(
       color: ${theme.palette.mode === "dark" ? grey[400] : grey[800]};
       margin-bottom: 4px;
     }
-  `
+  `,
 );
 
 const TriggerButton = styled(Button)(
@@ -286,7 +286,7 @@ const TriggerButton = styled(Button)(
     };
     outline: none;
   }
-`
+`,
 );
 
 const ModalButton = styled(Button)(
@@ -332,5 +332,5 @@ const ModalButton = styled(Button)(
       background-color: ${blue[500]};
     }
   }
-`
+`,
 );

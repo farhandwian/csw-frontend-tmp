@@ -10,9 +10,9 @@ const CardHistoryPreTestItem = () => {
       <div className="relative">
         {/* carditem pretest user jika sudah beli modul */}
         <div
-          className={`p-2 bg-cover bg-center rounded-md min-h-28 w-[100%] bg-[#7547FF] text-white`}
+          className={`min-h-28 w-[100%] rounded-md bg-[#7547FF] bg-cover bg-center p-2 text-white`}
         >
-          <div className="flex w-fit justify-center items-center text-neutral-100 text-[11px] mb-2 gap-1">
+          <div className="mb-2 flex w-fit items-center justify-center gap-1 text-[11px] text-neutral-100">
             <AccessTimeFilledIcon sx={{ color: "white" }} fontSize="small" />
             <h3>15 menit</h3>
             <WorkspacePremiumIcon sx={{ color: "white" }} fontSize="small" />
@@ -27,7 +27,7 @@ const CardHistoryPreTestItem = () => {
           <div className="flex justify-between">
             <div>
               <h1 className="text-sm font-bold">Judul Pretest</h1>
-              <h3 className="text-xs text-left mb-2">
+              <h3 className="mb-2 text-left text-xs">
                 Kamu telah selesai mengerjakan pretest ini
               </h3>
             </div>

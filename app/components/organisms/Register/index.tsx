@@ -13,9 +13,9 @@ const RegisterSection = () => {
         alt="img-register"
         classNameWrap="px-12"
       />
-      <div className="w-1/2 bg-white h-screen flex flex-col justify-center px-28 pt-14">
+      <div className="flex h-screen w-1/2 flex-col justify-center bg-white px-28 pt-14">
         <div className="max-w-xl">
-          <h3 className="font-semibold text-3xl">
+          <h3 className="text-3xl font-semibold">
             Buat Mimpimu Menjadi Kenyataan
           </h3>
           <p className="mt-2 font-normal text-[#5E5252]">

@@ -110,23 +110,23 @@ const Beranda = () => {
       {/* Navbar */}
       <Navbar />
       {/* Banner */}
-      <div className="flex items-center h-screen w-full relative">
-        <div className="bg-gradient-to-br from-[#090963] via-[#090963]  to-[#3333A1] w-full h-full relative">
-          <div className="flex items-center w-full h-full text-white px-2 md:px-10 lg:px-0 lg:pt-36 lg:pl-16 xl:pl-32 absolute z-20">
+      <div className="relative flex h-screen w-full items-center">
+        <div className="relative h-full w-full  bg-gradient-to-br from-[#090963] via-[#090963] to-[#3333A1]">
+          <div className="absolute z-20 flex h-full w-full items-center px-2 text-white md:px-10 lg:px-0 lg:pl-16 lg:pt-36 xl:pl-32">
             <div className="md:max-w-[400px] lg:max-w-[420px] xl:max-w-[550px]">
-              <h1 className="text-xl lg:text-[24px] xl:text-[32px] font-bold xl:leading-snug">
+              <h1 className="text-xl font-bold lg:text-[24px] xl:text-[32px] xl:leading-snug">
                 Masih Bingung Untuk Belajar Test Masuk Sekolah Kedinasan?
                 Belajar Sekarang
               </h1>
-              <p className="mt-2 text-xs font-regular md:text-sm md:font-semibold xl:text-base">
+              <p className="font-regular mt-2 text-xs md:text-sm md:font-semibold xl:text-base">
                 Kami menyediakan modul untuk Anda mengenal dan mempelajari
                 seputar sekolah kedinasan
               </p>
-              <p className="mt-14 font-medium text-sm md:text-base">
+              <p className="mt-14 text-sm font-medium md:text-base">
                 #Platform Bimbel Kedinasan Online Terbaik
               </p>
               <Link href={"/daftar"}>
-                <button className="mt-8 bg-[#FFC007] text-[#090963] hover:bg-[#CAA022] w-full py-3 md:w-fit md:px-10 md:py-4 rounded-xl font-bold">
+                <button className="mt-8 w-full rounded-xl bg-[#FFC007] py-3 font-bold text-[#090963] hover:bg-[#CAA022] md:w-fit md:px-10 md:py-4">
                   Daftar Sekarang
                 </button>
               </Link>
@@ -134,7 +134,7 @@ const Beranda = () => {
           </div>
 
           {/* Icon Background for Banner */}
-          <div className="overflow-hidden w-fit h-fit md:w-full md:h-full absolute flex bottom-0 right-0 md:-bottom-40 lg:top-0 z-0  ">
+          <div className="absolute bottom-0 right-0 z-0 flex h-fit w-fit overflow-hidden md:-bottom-40 md:h-full md:w-full lg:top-0  ">
             <Image
               src={"/icon/ic-banner.svg"}
               width={1440}
@@ -145,40 +145,40 @@ const Beranda = () => {
           </div>
 
           {/* Image Banner */}
-          <div className="hidden md:w-full md:h-full md:flex absolute items-end justify-end bottom-0 md:right-5 lg:right-16 xl:right-36  z-10 ">
+          <div className="absolute bottom-0 z-10 hidden items-end justify-end md:right-5 md:flex md:h-full md:w-full lg:right-16  xl:right-36 ">
             <Image
               src={"/img/img-banner.png"}
               width={538}
               height={638}
               alt="img-banner"
-              className="md:w-[380px] md:h-[438px] lg:w-[438px] lg:h-[538px] xl:w-auto xl:h-[550px] 2xl:h-[85%] 2xl:w-auto"
+              className="md:h-[438px] md:w-[380px] lg:h-[538px] lg:w-[438px] xl:h-[550px] xl:w-auto 2xl:h-[85%] 2xl:w-auto"
             />
           </div>
         </div>
       </div>
 
       {/* Mentor */}
-      <div className="h-full mt-10 lg:mt-20 w-full">
+      <div className="mt-10 h-full w-full lg:mt-20">
         <div className="flex flex-col items-center justify-center px-2 md:px-10 lg:px-20">
-          <h2 className="text-2xl lg:text-4xl lg:max-w-2xl text-center font-bold text-[#323062] leading-normal">
+          <h2 className="text-center text-2xl font-bold leading-normal text-[#323062] lg:max-w-2xl lg:text-4xl">
             Gapai Impianmu Bersama Mentor Berpengalaman
           </h2>
         </div>
 
         <div className="mt-10 lg:mt-16 lg:w-full lg:items-center lg:justify-center">
-          <div className="lg:flex lg:flex-col md:flex-row lg:items-center lg:justify-center lg:pt-32 lg:gap-x-7 lg:relative lg:mx-20 xl:mx-32">
-            <div className="lg:absolute left-0 top-10 px-2 md:px-10 lg:px-0">
-              <h4 className="text-[#323062] font-medium text-base lg:text-2xl">
+          <div className="md:flex-row lg:relative lg:mx-20 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-x-7 lg:pt-32 xl:mx-32">
+            <div className="left-0 top-10 px-2 md:px-10 lg:absolute lg:px-0">
+              <h4 className="text-base font-medium text-[#323062] lg:text-2xl">
                 Mau belajar bersama mentor terbaik dari kami?
               </h4>
-              <p className="mt-2 lg:mt-3 font-light lg:max-w-3xl text-xs lg:text-base">
+              <p className="mt-2 text-xs font-light lg:mt-3 lg:max-w-3xl lg:text-base">
                 Perdalam ilmumu seputar tes SKD dan tes khusus setiap sekolah
                 kedinasan secara teratur, terarah dan terorganisir
               </p>
             </div>
 
             {desktopView ? (
-              <div className="mt-10 flex lg:gap-x-5 xl:gap-x-10 w-full h-full items-center justify-center">
+              <div className="mt-10 flex h-full w-full items-center justify-center lg:gap-x-5 xl:gap-x-10">
                 <MentorItem
                   img="mentor1"
                   name="Ayu Lestari"
@@ -201,7 +201,7 @@ const Beranda = () => {
                 />
               </div>
             ) : (
-              <div className="flex items-center justify-center relative w-full md:px-10 xl:px-32">
+              <div className="relative flex w-full items-center justify-center md:px-10 xl:px-32">
                 <div ref={ref} className="keen-slider">
                   <div className="keen-slider__slide number-slide1 px-2 md:px-0 lg:py-20">
                     <MentorItem
@@ -234,8 +234,8 @@ const Beranda = () => {
             )}
           </div>
 
-          <div className="px-2 mt-5 lg:mt-24 w-full flex items-center justify-center">
-            <button className="text-[#0D0D68] bg-[#FFC007] hover:bg-[#CAA022] w-full md:w-fit md:px-5 py-3 md:py-4 rounded-lg font-bold">
+          <div className="mt-5 flex w-full items-center justify-center px-2 lg:mt-24">
+            <button className="w-full rounded-lg bg-[#FFC007] py-3 font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4">
               Meet All Mentor
             </button>
           </div>
@@ -243,17 +243,17 @@ const Beranda = () => {
       </div>
 
       {/* WhyUs */}
-      <div className="h-full mt-14 lg:mt-32 w-full px-2 md:px-5 lg:px-16 xl:px-28">
+      <div className="mt-14 h-full w-full px-2 md:px-5 lg:mt-32 lg:px-16 xl:px-28">
         <div className="flex flex-col items-center justify-center">
-          <h4 className="text-[#0D0D68] font-medium text-lg lg:text-[26px]">
+          <h4 className="text-lg font-medium text-[#0D0D68] lg:text-[26px]">
             Kenapa memilih kami?
           </h4>
-          <h2 className="mt-1 text-xl lg:text-3xl max-w-4xl text-center font-semibold text-[#1A69F0] leading-tight">
+          <h2 className="mt-1 max-w-4xl text-center text-xl font-semibold leading-tight text-[#1A69F0] lg:text-3xl">
             Platform Bimbel Kedinasan Online Menggunakan Kurikulum Terbaru
           </h2>
         </div>
 
-        <div className="mt-10 lg:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
           <WhyUsItem
             img="whyus1"
             title="Studi Kasus"
@@ -288,23 +288,23 @@ const Beranda = () => {
       </div>
 
       {/* Paket */}
-      <div className="h-full mt-14 lg:mt-32 w-full px-2 md:px-0 lg:px-10 xl:px-0">
+      <div className="mt-14 h-full w-full px-2 md:px-0 lg:mt-32 lg:px-10 xl:px-0">
         <div className="flex flex-col items-center justify-center">
-          <h4 className="text-[#0D0D68] font-medium text-lg lg:text-[26px]">
+          <h4 className="text-lg font-medium text-[#0D0D68] lg:text-[26px]">
             Paket Unggulan Teratas
           </h4>
-          <h2 className="mt-1 text-xl lg:text-3xl max-w-4xl text-center font-semibold text-[#1A69F0] leading-tight">
+          <h2 className="mt-1 max-w-4xl text-center text-xl font-semibold leading-tight text-[#1A69F0] lg:text-3xl">
             Pilih Paket Unggulan untuk Meningkatkan Ilmu
           </h2>
         </div>
 
-        <div className="mt-10 lg:mt-36 lg:w-full lg:flex lg:items-center lg:justify-center">
-          <div className="lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-x-4 xl:gap-x-14 lg:relative">
-            <div className="flex flex-row items-center justify-between gap-x-10 lg:absolute -top-20 w-full md:px-10 lg:px-0">
-              <h4 className="text-[#323062] font-medium text-base lg:text-lg">
+        <div className="mt-10 lg:mt-36 lg:flex lg:w-full lg:items-center lg:justify-center">
+          <div className="lg:relative lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-x-4 xl:gap-x-14">
+            <div className="-top-20 flex w-full flex-row items-center justify-between gap-x-10 md:px-10 lg:absolute lg:px-0">
+              <h4 className="text-base font-medium text-[#323062] lg:text-lg">
                 Tertarik untuk membeli paket bimbel kami?
               </h4>
-              <button className="flex-none flex items-center justify-center bg-[#090963] hover:bg-[#36367e]1 text-[#E2E8F0] w-fit px-4 py-2 lg:py-0 lg:h-[52px] lg:w-[218px] font-semibold text-sm xl:text-base rounded-full">
+              <button className="hover:bg-[#36367e]1 flex w-fit flex-none items-center justify-center rounded-full bg-[#090963] px-4 py-2 text-sm font-semibold text-[#E2E8F0] lg:h-[52px] lg:w-[218px] lg:py-0 xl:text-base">
                 Semua Paket
               </button>
             </div>
@@ -322,15 +322,15 @@ const Beranda = () => {
                 </div>
               </div>
             ) : (
-              <div className="mt-5 flex items-center justify-center relative w-full lg:w-fit md:px-10">
+              <div className="relative mt-5 flex w-full items-center justify-center md:px-10 lg:w-fit">
                 <div ref={refPaket} className="keen-slider">
-                  <div className="keen-slider__slide number-slide1 px-2 md:px-0 w-fit">
+                  <div className="keen-slider__slide number-slide1 w-fit px-2 md:px-0">
                     <PaketItem />
                   </div>
-                  <div className="keen-slider__slide number-slide2 px-2 md:px-0 w-fit">
+                  <div className="keen-slider__slide number-slide2 w-fit px-2 md:px-0">
                     <PaketItem />
                   </div>
-                  <div className="keen-slider__slide number-slide3 px-2 md:px-0 w-fit">
+                  <div className="keen-slider__slide number-slide3 w-fit px-2 md:px-0">
                     <PaketItem />
                   </div>
                 </div>
@@ -342,21 +342,21 @@ const Beranda = () => {
 
       {/* Testimoni */}
       <div className="relative h-full" id="testimoni">
-        <div className="h-full mt-10 lg:mt-32 w-full ">
-          <div className="flex flex-col items-center justify-center text-center px-2 lg:px-20">
-            <h4 className="text-[#0D0D68] font-medium text-lg lg:text-[26px]">
+        <div className="mt-10 h-full w-full lg:mt-32 ">
+          <div className="flex flex-col items-center justify-center px-2 text-center lg:px-20">
+            <h4 className="text-lg font-medium text-[#0D0D68] lg:text-[26px]">
               Testimoni dan Kisah Sukses Orang-orang Yang Belajar di CSW
             </h4>
-            <h2 className="mt-1 text-xl lg:text-4xl text-center font-semibold text-[#1A69F0] leading-tight">
+            <h2 className="mt-1 text-center text-xl font-semibold leading-tight text-[#1A69F0] lg:text-4xl">
               Menjadikan Ilmu Semakin Bermanfaat
             </h2>
           </div>
 
           {/* Button Left & Right */}
           {loaded && instanceRef.current && (
-            <div className="flex items-center justify-center w-full gap-x-5 mt-10 lg:mt-[70px]">
+            <div className="mt-10 flex w-full items-center justify-center gap-x-5 lg:mt-[70px]">
               <button
-                className="bg-[#0D0D68] hover:bg-[#36367e] flex items-center justify-center w-[54px] h-[54px] rounded-full disabled:bg-gray-400"
+                className="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#0D0D68] hover:bg-[#36367e] disabled:bg-gray-400"
                 onClick={handlePrevClick}
                 disabled={currentSlide === 0}
               >
@@ -369,7 +369,7 @@ const Beranda = () => {
                 />
               </button>
               <button
-                className="bg-[#0D0D68] hover:bg-[#36367e] flex items-center justify-center w-[54px] h-[54px] rounded-full disabled:bg-gray-400 pointer"
+                className="pointer flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#0D0D68] hover:bg-[#36367e] disabled:bg-gray-400"
                 onClick={handleNextClick}
                 disabled={
                   // currentSlide >=
@@ -394,7 +394,7 @@ const Beranda = () => {
           )}
 
           {/* Card Testimoni */}
-          <div className="mt-5 lg:mt-11 flex items-center justify-center md:px-10 lg:px-20 xl:px-32">
+          <div className="mt-5 flex items-center justify-center md:px-10 lg:mt-11 lg:px-20 xl:px-32">
             <div ref={refTestimoni} className="keen-slider">
               <div className="keen-slider__slide number-slide1 w-fit px-2 py-5">
                 <TestimoniItem
@@ -443,22 +443,22 @@ const Beranda = () => {
               width={1440}
               height={680}
               alt="bg-testimoni"
-              className="w-full h-[180px] lg:h-full lg:max-h-[680px]"
+              className="h-[180px] w-full lg:h-full lg:max-h-[680px]"
             />
-            <div className="absolute bottom-3 md:bottom-4 lg:bottom-10 xl:bottom-20 w-full flex flex-col items-center">
-              <h2 className="text-[#393934] font-semibold text-center text-xs lg:text-xl xl:text-3xl">
+            <div className="absolute bottom-3 flex w-full flex-col items-center md:bottom-4 lg:bottom-10 xl:bottom-20">
+              <h2 className="text-center text-xs font-semibold text-[#393934] lg:text-xl xl:text-3xl">
                 Ayo temukan minat dan potensi dirimu bersama{" "}
                 <br className="block md:hidden" /> Pilih Jurusan sekarang!
               </h2>
-              <button className="mt-2 md:mt-4 lg:mt-8 xl:mt-10 flex items-center justify-center gap-x-3 lg:gap-x-4 xl:gap-x-6 px-4 py-2 lg:px-16 lg:py-3 xl:px-24 xl:py-5 bg-[#1A69F0] hover:bg-[#164fb0] rounded-full">
+              <button className="mt-2 flex items-center justify-center gap-x-3 rounded-full bg-[#1A69F0] px-4 py-2 hover:bg-[#164fb0] md:mt-4 lg:mt-8 lg:gap-x-4 lg:px-16 lg:py-3 xl:mt-10 xl:gap-x-6 xl:px-24 xl:py-5">
                 <Image
                   src={"/icon/ic-arrow-circle.svg"}
                   alt="ic-arrow-circle"
                   width={36}
                   height={36}
-                  className="w-5 h-5 lg:w-fit lg:h-fit"
+                  className="h-5 w-5 lg:h-fit lg:w-fit"
                 />
-                <h3 className="text-white font-bold text-xs lg:text-base xl:text-xl">
+                <h3 className="text-xs font-bold text-white lg:text-base xl:text-xl">
                   Daftar Sekarang
                 </h3>
               </button>
@@ -468,11 +468,11 @@ const Beranda = () => {
       </div>
 
       {/* Faq */}
-      <div className="mt-10 lg:mt-32 flex flex-col items-center justify-center px-2 lg:px-0">
-        <h2 className="text-xl text-center lg:text-4xl font-semibold text-[#323062]">
+      <div className="mt-10 flex flex-col items-center justify-center px-2 lg:mt-32 lg:px-0">
+        <h2 className="text-center text-xl font-semibold text-[#323062] lg:text-4xl">
           Pertanyaan yang Paling Sering Ditanyakan
         </h2>
-        <div className="mt-5 lg:mt-20 w-full flex flex-col items-center justify-center gap-y-4 lg:gap-y-6">
+        <div className="mt-5 flex w-full flex-col items-center justify-center gap-y-4 lg:mt-20 lg:gap-y-6">
           <FaqItem
             title="Masalah apa yang Anda selesaikan?"
             text="Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -501,7 +501,7 @@ const Beranda = () => {
       </div>
 
       {/* Having Problem */}
-      <div className="mt-10 lg:mt-32 w-full h-[210px] lg:h-[400px] bg-[#1A69F0] flex items-center justify-center relative">
+      <div className="relative mt-10 flex h-[210px] w-full items-center justify-center bg-[#1A69F0] lg:mt-32 lg:h-[400px]">
         <Image
           src={"/img/img-contactus.png"}
           alt="bg-contact-me"
@@ -509,15 +509,15 @@ const Beranda = () => {
           height={440}
           className="h-full"
         />
-        <div className="absolute max-w-3xl text-center text-white px-2 lg:px-0">
-          <h1 className="font-bold text-xl lg:text-5xl">Memiliki Kesulitan?</h1>
-          <p className="mt-3 lg:mt-6 font-medium text-xs lg:text-base">
+        <div className="absolute max-w-3xl px-2 text-center text-white lg:px-0">
+          <h1 className="text-xl font-bold lg:text-5xl">Memiliki Kesulitan?</h1>
+          <p className="mt-3 text-xs font-medium lg:mt-6 lg:text-base">
             Kami tahu Anda memiliki beberapa pertanyaan, kami telah mencoba
             membuat daftar yang paling penting sekali dan Anda bisa mengajukan
             pertanyaan jika terdapat kebingunan
           </p>
           <Link href={"#"}>
-            <button className="mt-6 text-black bg-white px-4 py-2 lg:px-5 lg:py-4 rounded-full font-semibold hover:bg-[#e0e0e0] cursor-pointer">
+            <button className="mt-6 cursor-pointer rounded-full bg-white px-4 py-2 font-semibold text-black hover:bg-[#e0e0e0] lg:px-5 lg:py-4">
               Ajukan Pertanyaan
             </button>
           </Link>
@@ -527,7 +527,7 @@ const Beranda = () => {
       {/* Footer */}
       <div className="bg-[#F0F0F0] ">
         <div className="px-2 md:px-10 lg:px-20 xl:px-32">
-          <div className="flex flex-col lg:flex-row justify-between py-14 gap-x-4 text-sm lg:text-base">
+          <div className="flex flex-col justify-between gap-x-4 py-14 text-sm lg:flex-row lg:text-base">
             <div className="lg:max-w-[280px] xl:max-w-xs">
               <Image
                 src={"/img/img-logo.png"}
@@ -539,7 +539,7 @@ const Beranda = () => {
                 Website untuk belajar seputar sekolah kedinasan bersama mentor -
                 mentor yang berpengalaman
               </p>
-              <div className="flex items-center gap-x-2 lg:gap-x-4 mt-4 lg:mt-7">
+              <div className="mt-4 flex items-center gap-x-2 lg:mt-7 lg:gap-x-4">
                 <Link href={"#"} target="blank" className="inline-block">
                   <svg
                     width="24"
@@ -602,10 +602,10 @@ const Beranda = () => {
                 </Link>
               </div>
             </div>
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 lg:flex lg:justify-between w-full gap-4 lg:gap-8 xl:gap-4 ">
+            <div className="mt-10 grid w-full grid-cols-2 gap-4 md:grid-cols-4 lg:flex lg:justify-between lg:gap-8 xl:gap-4 ">
               <div>
-                <h3 className="font-bold text-[#334155] text-lg">Company</h3>
-                <ul className="mt-3 lg:mt-5 text-[#888888] flex flex-col gap-y-2">
+                <h3 className="text-lg font-bold text-[#334155]">Company</h3>
+                <ul className="mt-3 flex flex-col gap-y-2 text-[#888888] lg:mt-5">
                   <li>
                     <Link href={"#"} className="hover:text-[#2447F9]">
                       Privacy
@@ -629,8 +629,8 @@ const Beranda = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="font-bold text-[#334155] text-lg">Product</h3>
-                <ul className="mt-3 lg:mt-5 text-[#888888] flex flex-col gap-y-2">
+                <h3 className="text-lg font-bold text-[#334155]">Product</h3>
+                <ul className="mt-3 flex flex-col gap-y-2 text-[#888888] lg:mt-5">
                   <li>
                     <Link href={"#"} className="hover:text-[#2447F9]">
                       Paket Bimbel
@@ -644,8 +644,8 @@ const Beranda = () => {
                 </ul>
               </div>
               <div className="col-span-2 md:col-span-1">
-                <h3 className="font-bold text-[#334155] text-lg">Support</h3>
-                <ul className="mt-3 lg:mt-5 text-[#888888] flex flex-col gap-y-2">
+                <h3 className="text-lg font-bold text-[#334155]">Support</h3>
+                <ul className="mt-3 flex flex-col gap-y-2 text-[#888888] lg:mt-5">
                   <li>
                     <Link href={"#"} className="hover:text-[#2447F9]">
                       Support 24/7
@@ -654,11 +654,11 @@ const Beranda = () => {
                 </ul>
               </div>
               <div className="col-span-2 md:col-span-1">
-                <h3 className="font-bold text-[#334155] text-lg">Office</h3>
-                <div className="mt-3 lg:mt-5 text-[#888888] flex flex-col gap-y-2">
+                <h3 className="text-lg font-bold text-[#334155]">Office</h3>
+                <div className="mt-3 flex flex-col gap-y-2 text-[#888888] lg:mt-5">
                   <Link href={"#"}>
                     <div className="group flex items-center gap-x-2">
-                      <div className="bg-[#0D0D68] rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-[#2447F9] transition duration-300">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0D0D68] transition duration-300 group-hover:bg-[#2447F9]">
                         <Image
                           src={"/icon/ic-office-vctr.svg"}
                           width={15}
@@ -674,7 +674,7 @@ const Beranda = () => {
                   </Link>
                   <Link href={"#"}>
                     <div className="group flex items-center gap-x-2">
-                      <div className="bg-[#0D0D68] rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-[#2447F9] transition duration-300">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0D0D68] transition duration-300 group-hover:bg-[#2447F9]">
                         <Image
                           src={"/icon/ic-map.svg"}
                           width={14}
@@ -690,7 +690,7 @@ const Beranda = () => {
                   </Link>
                   <Link target="blank" href={"https://wa.me/082246550661"}>
                     <div className="group flex items-center gap-x-2">
-                      <div className="bg-[#0D0D68] rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-[#2447F9] transition duration-300">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0D0D68] transition duration-300 group-hover:bg-[#2447F9]">
                         <Image
                           src={"/icon/ic-wa.svg"}
                           width={16}
@@ -706,7 +706,7 @@ const Beranda = () => {
                   </Link>
                   <Link target="blank" href={"mailto:wstatistical@gmail.com"}>
                     <div className="group flex items-center gap-x-2">
-                      <div className="bg-[#0D0D68] rounded-full w-10 h-10 flex items-center justify-center group-hover:bg-[#2447F9] transition duration-300">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0D0D68] transition duration-300 group-hover:bg-[#2447F9]">
                         <Image
                           src={"/icon/ic-mail-2.svg"}
                           width={16}
@@ -715,7 +715,7 @@ const Beranda = () => {
                           alt="ic-office"
                         />
                       </div>
-                      <p className="group-hover:text-[#2447F9] transition duration-300">
+                      <p className="transition duration-300 group-hover:text-[#2447F9]">
                         wstatistical@gmail.com
                       </p>
                     </div>
@@ -726,12 +726,12 @@ const Beranda = () => {
           </div>
         </div>
 
-        <div className="border-t border-[#B0B0B0] flex py-3 justify-center lg:justify-between text-[#888888] text-xs xl:text-sm px-2 md:px-10 lg:px-20 xl:px-32 text-center">
+        <div className="flex justify-center border-t border-[#B0B0B0] px-2 py-3 text-center text-xs text-[#888888] md:px-10 lg:justify-between lg:px-20 xl:px-32 xl:text-sm">
           <h4>
             © 2020 - 2024 Civil Servant Warrior | Merek dagang dari PT.
             Pilihanmu Indonesia{" "}
           </h4>
-          <div className="hidden lg:flex gap-x-2">
+          <div className="hidden gap-x-2 lg:flex">
             <h4 className="hover:text-[#2447F9]">
               <Link href={"#"}>Kebijakan Privasi</Link>
             </h4>

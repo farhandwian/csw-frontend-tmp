@@ -30,8 +30,8 @@ const SideTopbarMateriModul = ({
   return (
     <div className="text-md">
       {/* TOPBAR */}
-      <div className="fixed w-[100%] h-12 z-20">
-        <div className="flex items-center justify-between bg-white h-12 shadow-md">
+      <div className="fixed z-20 h-12 w-[100%]">
+        <div className="flex h-12 items-center justify-between bg-white shadow-md">
           {/* hamburger button */}
           <div className="ml-4 mr-3 cursor-pointer" onClick={showSidebar}>
             {sidebar ? <CloseIcon /> : <MenuIcon />}
@@ -58,16 +58,20 @@ const SideTopbarMateriModul = ({
       {/* END TOPBAR */}
       {/* SIDEBAR */}
       <nav
-        className={`overflow-x-hidden text-wrap bg-white w-64 h-screen fixed top-12 transition-all z-10 shadow-lg ${
+        className={`fixed top-12 z-10 h-screen w-64 overflow-x-hidden text-wrap bg-white shadow-lg transition-all ${
           sidebar ? "left-0" : "-left-full"
         }`}
         style={{ overflowWrap: "break-word" }}
       >
         <div className="p-3">
-          <div className="w-full max-w-[100%] mt-5">
+          <div className="mt-5 w-full max-w-[100%]">
             {SidebarData.map((item: any, index) => (
               <SubMenu item={item} key={index} />
             ))}
+          </div>
+
+          <div className=" flex h-2 w-[100%] px-3 shadow-sm">
+            <div className=""></div>
           </div>
         </div>
       </nav>

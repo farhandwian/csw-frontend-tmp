@@ -15,11 +15,11 @@ const StudentLayout: React.FC<StudentLayoutProps> = ({
   return (
     <div className="flex">
       <Sidebar />
-      <div className="relative bg-pl-BackgroundUserDashboard mt-[65px]">
+      <div className="relative mt-[65px] bg-pl-BackgroundUserDashboard">
         {menuPage === "modul" && <Breadcrumbs widthReduction={"54px"} />}
         <Container
           fixed
-          className="mt-[30px] bg-pl-BackgroundUserDashboard pr-[10px] ml-5"
+          className="ml-5 mt-[30px] bg-pl-BackgroundUserDashboard pr-[10px]"
         >
           {children}
         </Container>

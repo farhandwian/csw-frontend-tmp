@@ -48,7 +48,7 @@ const Input: React.FC<InputProps> = ({
       >
         {label}
       </label>
-      <div className="mt-1 relative">
+      <div className="relative mt-1">
         <input
           className={style}
           placeholder={placeHolder}

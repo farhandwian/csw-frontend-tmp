@@ -15,9 +15,9 @@ const LoginSection = () => {
         classNameWrap="px-12"
       />
 
-      <div className="w-1/2 bg-white h-screen flex flex-col justify-center pl-28 pt-14">
+      <div className="flex h-screen w-1/2 flex-col justify-center bg-white pl-28 pt-14">
         <div className="max-w-xl">
-          <h3 className="font-semibold text-3xl">
+          <h3 className="text-3xl font-semibold">
             Selamat Datang di Civil Servant Warrior
           </h3>
           <p className="mt-2 font-medium text-[#5E5252]">
@@ -27,15 +27,15 @@ const LoginSection = () => {
         <div className="mt-6 max-w-md">
           <LoginForm />
 
-          <div className="relative flex my-8 items-center w-full">
+          <div className="relative my-8 flex w-full items-center">
             <div className="w-full flex-auto border-t border-[#D4D4D4] "></div>
-            <span className="flex-shrink mx-2 text-[#6F6F6F]">Atau</span>
+            <span className="mx-2 flex-shrink text-[#6F6F6F]">Atau</span>
             <div className="w-full flex-auto border-t border-[#D4D4D4] "></div>
           </div>
 
           <div className="flex flex-col gap-y-5">
-            <button className="py-3 w-full border border-black rounded-full flex items-center justify-center">
-              <div className="flex gap-x-2 items-center">
+            <button className="flex w-full items-center justify-center rounded-full border border-black py-3">
+              <div className="flex items-center gap-x-2">
                 <Image
                   src={"/icon/ic-google-color.svg"}
                   alt="ic-google"
@@ -45,8 +45,8 @@ const LoginSection = () => {
                 <h4 className="font-semibold">Lanjut dengan Google</h4>
               </div>
             </button>
-            <button className="py-3 w-full border border-black rounded-full flex items-center justify-center">
-              <div className="flex gap-x-2 items-center">
+            <button className="flex w-full items-center justify-center rounded-full border border-black py-3">
+              <div className="flex items-center gap-x-2">
                 <Image
                   src={"/icon/ic-fb-color.svg"}
                   alt="ic-facebook"

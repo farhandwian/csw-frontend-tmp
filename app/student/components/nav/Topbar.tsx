@@ -33,7 +33,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
         showNav && !isMobile ? "w-[calc(100%-14rem)]" : "w-[100%]"
       }  ${
         showNav && "right-0"
-      } h-16 flex justify-between items-center transition-all duration-[400ms] shadow-md z-[100] bg-white`}
+      } z-[100] flex h-16 items-center justify-between bg-white shadow-md transition-all duration-[400ms]`}
     >
       <div className="flex items-center pl-4 md:pl-4">
         {/* <Bars3CenterLeftIcon
@@ -41,7 +41,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
           onClick={() => setShowNav(!showNav)}
         /> */}
         <MenuIcon
-          className="h-8 w-8 text-gray-700 cursor-pointer mr-2"
+          className="mr-2 h-8 w-8 cursor-pointer text-gray-700"
           onClick={() => setShowNav(!showNav)}
         />
 
@@ -50,17 +50,17 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
             width={40}
             height={40}
             src="/logo-csw.png"
-            className={`object-cover w-10 md:w-10`}
+            className={`w-10 object-cover md:w-10`}
             alt="Logo CSW"
           />
-          <p className="text-black font-semibold capitalize hidden md:block mt-2">
+          <p className="mt-2 hidden font-semibold capitalize text-black md:block">
             Civil Servant Warrior
           </p>
         </Link>
       </div>
       <div className="flex items-center pr-4 md:pr-16">
         <Popover className="relative">
-          <Popover.Button className="outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
+          <Popover.Button className="mr-5 cursor-pointer text-gray-700 outline-none md:mr-8">
             <NotificationsNoneIcon className="h-6 w-6" />
           </Popover.Button>
           <Transition
@@ -72,63 +72,63 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
             leaveFrom="transform scale-100"
             leaveTo="transform scale-95"
           >
-            <Popover.Panel className="absolute -right-16 sm:right-4 z-50 mt-2 bg-white shadow-sm rounded max-w-xs sm:max-w-sm w-screen">
+            <Popover.Panel className="absolute -right-16 z-50 mt-2 w-screen max-w-xs rounded bg-white shadow-sm sm:right-4 sm:max-w-sm">
               <div className="relative p-3">
-                <div className="flex justify-between items-center w-full">
-                  <p className="text-gray-700 font-medium">Notifications</p>
+                <div className="flex w-full items-center justify-between">
+                  <p className="font-medium text-gray-700">Notifications</p>
                   <a className="text-sm text-red-500" href="#">
                     Mark all as read
                   </a>
                 </div>
-                <div className="mt-4 grid gap-4 grid-cols-1 overflow-hidden">
+                <div className="mt-4 grid grid-cols-1 gap-4 overflow-hidden">
                   <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-200">
                       <CheckIcon className="h-4 w-4 text-green-600" />
                     </div>
                     <div className="ml-4">
                       <p className="font-medium text-gray-700">
                         Notification Title
                       </p>
-                      <p className="text-sm text-gray-500 truncate">
+                      <p className="truncate text-sm text-gray-500">
                         Test Notification text for design
                       </p>
                     </div>
                   </div>
                   <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-200">
                       <CheckIcon className="h-4 w-4 text-green-600" />
                     </div>
                     <div className="ml-4">
                       <p className="font-medium text-gray-700">
                         Notification Title
                       </p>
-                      <p className="text-sm text-gray-500 truncate">
+                      <p className="truncate text-sm text-gray-500">
                         Test Notification text for design
                       </p>
                     </div>
                   </div>
                   <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-200">
                       <CheckIcon className="h-4 w-4 text-green-600" />
                     </div>
                     <div className="ml-4">
                       <p className="font-medium text-gray-700">
                         Notification Title
                       </p>
-                      <p className="text-sm text-gray-500 truncate">
+                      <p className="truncate text-sm text-gray-500">
                         Test Notification text for design
                       </p>
                     </div>
                   </div>
                   <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-200">
                       <CheckIcon className="h-4 w-4 text-green-600" />
                     </div>
                     <div className="ml-4">
                       <p className="font-medium text-gray-700">
                         Notification Title
                       </p>
-                      <p className="text-sm text-gray-500 truncate">
+                      <p className="truncate text-sm text-gray-500">
                         Test Notification text for design
                       </p>
                     </div>
@@ -140,15 +140,15 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
         </Popover>
         <Menu as="div" className="relative inline-block text-left">
           <div>
-            <Menu.Button className="inline-flex w-full justify-center items-center">
+            <Menu.Button className="inline-flex w-full items-center justify-center">
               <picture>
                 <img
                   src="/foto-profil.png"
-                  className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
+                  className="h-8 rounded-full border-2 border-white shadow-sm md:mr-4"
                   alt="profile picture"
                 />
               </picture>
-              <span className="hidden md:block font-medium text-gray-700">
+              <span className="hidden font-medium text-gray-700 md:block">
                 Username
               </span>
               <ExpandMoreIcon className="ml-2 h-4 w-4 text-gray-700" />
@@ -163,20 +163,20 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
             leaveFrom="transform scale-100"
             leaveTo="transform scale-95"
           >
-            <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
+            <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded bg-white shadow-sm">
               <div className="p-1">
                 <Menu.Item>
                   <Link
                     href="#"
-                    className="flex hover:bg-red-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
+                    className="group flex items-center rounded p-2 text-sm text-gray-700 transition-colors hover:bg-red-500 hover:text-white"
                   >
                     <Image
                       src={profiles[0].image}
                       alt={"profile-image"}
                       width={25}
                       height={25}
-                      className={`rounded-full
-                       mr-2`}
+                      className={`mr-2
+                       rounded-full`}
                     />
                     <div>
                       <h3>Login as {profiles[0].text}</h3>
@@ -187,15 +187,15 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
                 <Menu.Item>
                   <Link
                     href="#"
-                    className="flex hover:bg-red-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
+                    className="group flex items-center rounded p-2 text-sm text-gray-700 transition-colors hover:bg-red-500 hover:text-white"
                   >
                     <Image
                       src={profiles[1].image}
                       alt={"profile-anda"}
                       width={25}
                       height={25}
-                      className={`rounded-full
-                       mr-2`}
+                      className={`mr-2
+                       rounded-full`}
                     />
                     <h3>{profiles[1].text}</h3>
                   </Link>
@@ -203,9 +203,9 @@ export default function TopBar({ showNav, setShowNav, isMobile }) {
                 <Menu.Item>
                   <Link
                     href="#"
-                    className="flex hover:bg-red-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
+                    className="group flex items-center rounded p-2 text-sm text-gray-700 transition-colors hover:bg-red-500 hover:text-white"
                   >
-                    <LogoutIcon className="h-4 w-4 mr-4" />
+                    <LogoutIcon className="mr-4 h-4 w-4" />
 
                     <h3>{profiles[2].text}</h3>
                   </Link>

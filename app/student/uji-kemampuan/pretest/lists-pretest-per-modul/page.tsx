@@ -25,7 +25,7 @@ const page = () => {
           </h3>
         </div>
 
-        <div className={`flex w-[100%] mt-3`}>
+        <div className={`mt-3 flex w-[100%]`}>
           {/* list pretest card */}
           <div className="relative w-[70%] ">
             <div className={`${isHaveModul ? "block" : "hidden"}`}>
@@ -33,7 +33,7 @@ const page = () => {
                 // container card item pretest
                 <div
                   key={index}
-                  className="w-[95%] bg-[#F1F1F1] shadow-md rounded-md"
+                  className="w-[95%] rounded-md bg-[#F1F1F1] shadow-md"
                 >
                   <div className="w-[100%] bg-white pl-4">
                     <h3>
@@ -44,18 +44,18 @@ const page = () => {
                         width={20}
                         height={20}
                         alt="ic-banner"
-                        className="w-[1.3rem] h-[1.3rem] inline mr-1 ml-1"
+                        className="ml-1 mr-1 inline h-[1.3rem] w-[1.3rem]"
                       />{" "}
                       Judul pertemuan - tanggal pertemuan
                     </h3>
                   </div>
-                  <div className="h-fit bg-[#F1F1F1] w-100% p-4">
+                  <div className="w-100% h-fit bg-[#F1F1F1] p-4">
                     {/* card item pretest */}
                     <CardPreTestItem isStillOpen={true} />
                   </div>
                 </div>
               ))}
-              <div className="flex overflow-x-auto sm:justify-center text-xs">
+              <div className="flex overflow-x-auto text-xs sm:justify-center">
                 <Pagination
                   currentPage={currentPage}
                   totalPages={100}
@@ -67,14 +67,14 @@ const page = () => {
             <div
               className={`${
                 isHaveModul ? "hidden" : "block"
-              } w-[100%] m-auto text-center mt-20`}
+              } m-auto mt-20 w-[100%] text-center`}
             >
               <Image
                 src={"/img/uji-kemampuan/pretest/img_empty.png"}
                 width={320}
                 height={300}
                 alt="ic-banner"
-                className="w-[20rem] h-[20rem] inline m-auto"
+                className="m-auto inline h-[20rem] w-[20rem]"
               />
             </div>
           </div>
@@ -83,17 +83,17 @@ const page = () => {
             <div
               className={`ml-5 ${
                 isHaveModul ? "h-[43.75rem]" : "h-[10rem]"
-              }  max-w-[23rem] bg-white border border-[#9CA3AF] rounded-md`}
+              }  max-w-[23rem] rounded-md border border-[#9CA3AF] bg-white`}
             >
               {/* header table */}
-              <div className="flex shadow-md p-2 border-b-2 border-[#94A3B8]">
-                <div className="w-[20%] mr-2">
+              <div className="flex border-b-2 border-[#94A3B8] p-2 shadow-md">
+                <div className="mr-2 w-[20%]">
                   <Image
                     src={"/img/uji-kemampuan/ic_history.png"}
                     width={165}
                     height={165}
                     alt="ic-banner"
-                    className="w-[2.3rem] h-[2.3rem] inline mt-1"
+                    className="mt-1 inline h-[2.3rem] w-[2.3rem]"
                   />
                 </div>
 
@@ -111,15 +111,15 @@ const page = () => {
               <div
                 className={`${
                   isHaveModul ? "block" : "hidden"
-                } h-[85%] max-w-full bg-[#F9F9F9] relative overflow-y-scroll scrollbar-thin`}
+                } relative h-[85%] max-w-full overflow-y-scroll bg-[#F9F9F9] scrollbar-thin`}
               >
                 {/* tombol sudah dikerjakan atau belum dikerjakan */}
-                <div className="w-[100%] bg-white h-14 px-2 py-2">
-                  <div className="w-[100%] h-[100%] flex justify-center items-center gap-2 mx-auto bg-[#F1F1F1]">
-                    <button className="w-[40%] bg-[#366AD3] rounded-md text-[11px] text-white p-0 min-h-6">
+                <div className="h-14 w-[100%] bg-white px-2 py-2">
+                  <div className="mx-auto flex h-[100%] w-[100%] items-center justify-center gap-2 bg-[#F1F1F1]">
+                    <button className="min-h-6 w-[40%] rounded-md bg-[#366AD3] p-0 text-[11px] text-white">
                       sudah dikerjakan
                     </button>
-                    <button className="w-[40%] bg-[#F1F1F1] rounded-md text-[11px] text-black p-0 min-h-6">
+                    <button className="min-h-6 w-[40%] rounded-md bg-[#F1F1F1] p-0 text-[11px] text-black">
                       belum dikerjakan
                     </button>
                   </div>
@@ -130,9 +130,9 @@ const page = () => {
                 {[...Array(5)].map((_, index) => (
                   <div
                     key={index}
-                    className="w-full border border-tp.SteelBlue border-x-0 py-3 px-2"
+                    className="border-tp.SteelBlue w-full border border-x-0 px-2 py-3"
                   >
-                    <h1 className="text-sm mb-1">
+                    <h1 className="mb-1 text-sm">
                       Judul Pertemuan - Tanggal Pertemuan
                     </h1>
                     {/* card item history pretest */}
@@ -144,7 +144,7 @@ const page = () => {
               <div
                 className={`${
                   isHaveModul ? "hidden" : "block"
-                } p-3 max-w-full bg-[#F9F9F9]`}
+                } max-w-full bg-[#F9F9F9] p-3`}
               >
                 <h2 className="text xs">
                   Belum ada histori pretest untuk ditampilkan

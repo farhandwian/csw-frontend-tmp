@@ -17,7 +17,7 @@ const Footer = () => {
               Website untuk belajar seputar sekolah kedinasan bersama mentor -
               mentor yang berpengalaman
             </p>
-            <div className="flex items-center gap-x-4 mt-7">
+            <div className="mt-7 flex items-center gap-x-4">
               <Image
                 src={"/icon/ic-youtube.svg"}
                 alt="ic-youtube"
@@ -51,8 +51,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-10">
-            <h3 className="font-bold text-[#334155] text-lg">Company</h3>
-            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+            <h3 className="text-lg font-bold text-[#334155]">Company</h3>
+            <ul className="mt-5 flex flex-col gap-y-2 text-[#888888]">
               <li>Privacy</li>
               <li>Hubungi Kami</li>
               <li>Tentang Kami</li>
@@ -60,24 +60,24 @@ const Footer = () => {
             </ul>
           </div>
           <div className="mt-10">
-            <h3 className="font-bold text-[#334155] text-lg">Product</h3>
-            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+            <h3 className="text-lg font-bold text-[#334155]">Product</h3>
+            <ul className="mt-5 flex flex-col gap-y-2 text-[#888888]">
               <li>Paket Bimbel</li>
               <li>Modul</li>
               <li>Blockchain</li>
             </ul>
           </div>
           <div className="mt-10">
-            <h3 className="font-bold text-[#334155] text-lg">Support</h3>
-            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+            <h3 className="text-lg font-bold text-[#334155]">Support</h3>
+            <ul className="mt-5 flex flex-col gap-y-2 text-[#888888]">
               <li>FAQ</li>
               <li>Support 24/7</li>
               <li>Glossary</li>
             </ul>
           </div>
           <div className="mt-10">
-            <h3 className="font-bold text-[#334155] text-lg">Office</h3>
-            <ul className="mt-5 text-[#888888] flex flex-col gap-y-2">
+            <h3 className="text-lg font-bold text-[#334155]">Office</h3>
+            <ul className="mt-5 flex flex-col gap-y-2 text-[#888888]">
               <li className="flex items-center gap-x-2">
                 <Image
                   src={"/icon/ic-office.svg"}
@@ -118,7 +118,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-[#B0B0B0] flex py-3 justify-between text-[#888888] text-sm">
+      <div className="flex justify-between border-t border-[#B0B0B0] py-3 text-sm text-[#888888]">
         <h4>
           © 2020 - 2023 Civil Servant Warrior | Merek dagang dari PT. Pilihanmu
           Indonesia{" "}

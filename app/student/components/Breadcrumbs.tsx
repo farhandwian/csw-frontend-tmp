@@ -25,7 +25,7 @@ export default function Breadcrumbs({
   if (len === 2) {
     currentLink = "/dashboard";
     crumbs = (
-      <div className="inline-flex ml-2 items-center ">
+      <div className="ml-2 inline-flex items-center ">
         <ArrowBackIosIcon style={{ fontSize: 15 }} />
         <div
           className={`text-tp-SlateGray ${
@@ -47,7 +47,7 @@ export default function Breadcrumbs({
         const isLast = index === array.length - 1;
         if (crumb !== "student") {
           return (
-            <div className="inline-flex ml-2 items-center" key={crumb}>
+            <div className="ml-2 inline-flex items-center" key={crumb}>
               <ArrowBackIosIcon style={{ fontSize: 15 }} />
               <div
                 className={`text-tp-SlateGray ${

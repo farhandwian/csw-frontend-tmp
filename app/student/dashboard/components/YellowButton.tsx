@@ -16,7 +16,7 @@ const YellowButton = ({ children }: { children: React.ReactNode }) => {
   return (
     <button
       type="button"
-      className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm p-1 me-2 mb-2 dark:focus:ring-yellow-900"
+      className="mb-2 me-2 rounded-lg bg-yellow-400 p-1 text-sm font-medium text-white hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900"
     >
       {children}
     </button>

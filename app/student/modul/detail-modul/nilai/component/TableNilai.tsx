@@ -127,7 +127,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableHead = styled(TableHead)`
-  border: ;
+  border:;
 `;
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -142,7 +142,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function TableNilai() {
   return (
-    <TableContainer className="mt-3 mb-3" component={Paper}>
+    <TableContainer className="mb-3 mt-3" component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead className="border">
           <TableRow>
@@ -173,13 +173,13 @@ export default function TableNilai() {
                     {quiz.taskName}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <h1 className="text-pl-Orange inline-block">
+                    <h1 className="inline-block text-pl-Orange">
                       {quiz.rightQuestion}
                     </h1>
                     /{quiz.totalQuestion}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <h1 className="text-pl-Orange inline-block">
+                    <h1 className="inline-block text-pl-Orange">
                       {quiz.score}
                     </h1>
                     /25

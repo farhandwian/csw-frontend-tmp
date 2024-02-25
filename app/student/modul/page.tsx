@@ -115,7 +115,7 @@ const page = () => {
         <div className="grid grid-cols-3 gap-6">
           {moduls.map((modul, index) => (
             <div
-              className="flex bg-white rounded-3xl shadow-md p-6"
+              className="flex rounded-3xl bg-white p-6 shadow-md"
               key={index}
             >
               <div className="">
@@ -125,14 +125,14 @@ const page = () => {
                   height={35}
                   alt="Picture of the author"
                 />
-                <h1 className="text-2xl font-semibold mb-2">MODUL TWK</h1>
-                <p className="text-sm mb-3">
+                <h1 className="mb-2 text-2xl font-semibold">MODUL TWK</h1>
+                <p className="mb-3 text-sm">
                   Berisi tentang materi - materi pembelajaran twk yang dapat
                   digunakan selama mengikuti pertemuan mulai dari 20 September -
                   30 Desember 2022
                 </p>
                 <small className="text-slate-400">
-                  <InfoIcon className="inline-block mr-1" />
+                  <InfoIcon className="mr-1 inline-block" />
                   Modul tidak bisa di download
                 </small>
               </div>
@@ -140,7 +140,7 @@ const page = () => {
                 <i>
                   <ChevronRightIcon />
                 </i>
-                <h1 className="leading-5 mt-1">Lihat Modul</h1>
+                <h1 className="mt-1 leading-5">Lihat Modul</h1>
               </Link>
             </div>
           ))}
