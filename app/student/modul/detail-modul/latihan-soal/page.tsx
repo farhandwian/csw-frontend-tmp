@@ -1,7 +1,7 @@
 "use client";
 import Studentlayout from "@/app/student/components/StudentLayout";
-import PrevButton from "@/app/components/Button/PrevButton";
-import SubmitButton from "@/app/components/Button/SubmitButton";
+import PrevButton from "@/app/components/Button/BlueButton";
+import SubmitButton from "@/app/components/Button/GreenButton";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -132,7 +132,7 @@ const page = () => {
   const [isMark, setIsMark] = useState(false);
   const [isOpenSubmitModal, setIsOpenSubmitModal] = useState(false);
   const [unAnsweredQuestions, setisUnAnsweredQuestions] = useState(
-    quiz.questions.length
+    quiz.questions.length,
   );
   // Ambil waktu dari server, misalnya melalui fetch atau prop
   const serverTime = 600000; // Contoh waktu dalam milidetik (10 menit)
@@ -169,7 +169,7 @@ const page = () => {
   // const router = useRouter();
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
+    newAlignment: string,
   ) => {
     setAlignment(newAlignment);
   };
@@ -263,7 +263,7 @@ const page = () => {
     number > 9 ? number : `0${number}`;
 
   return (
-    <Studentlayout menuPage={"modul"}>
+    <Studentlayout isBreadCrumb={true}>
       <section className="relative w-[100%]">
         <ModulFAB
           alignment={alignment}
@@ -278,7 +278,7 @@ const page = () => {
         <div className="flex">
           <div className="w-[80%]">
             {/* awal section informasi kuis */}
-            <div className="inline-flex bg-white border-2 rounded-2xl mb-5">
+            <div className="mb-5 inline-flex rounded-2xl border-2 bg-white">
               <div className="flex p-3">
                 <div className="mr-3">
                   <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
@@ -350,7 +350,7 @@ const page = () => {
                     <p
                       className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
                     >
-                      <EmojiFlagsIcon className="pb-1 mr-1"></EmojiFlagsIcon>
+                      <EmojiFlagsIcon className="mr-1 pb-1"></EmojiFlagsIcon>
                       TANDAI PERTANYAAN
                     </p>
                   </button>
@@ -380,14 +380,14 @@ const page = () => {
 
             {/* akhir section informasi kuis */}
             {/* awal section soal dan jawaban */}
-            <div className="w-[100%] bg-white-400 border-2 rounded-2xl p-4">
+            <div className="bg-white-400 w-[100%] rounded-2xl border-2 p-4">
               <h2 className="mb-2">{question}</h2>
               <div>
                 {options.map((option, index) => (
                   <div
                     onClick={() => onOptionSelected(option, index)}
                     key={option.id}
-                    className={`flex border-2 rounded-lg mb-2 ${
+                    className={`mb-2 flex rounded-lg border-2 ${
                       option.letter ===
                       result.questions[activeQuestion].userAnswer
                         ? "border-green-400"
@@ -395,7 +395,7 @@ const page = () => {
                     }`}
                   >
                     <div
-                      className={`inline-block px-3 rounded-l-sm ${
+                      className={`inline-block rounded-l-sm px-3 ${
                         option.letter ===
                         result.questions[activeQuestion].userAnswer
                           ? "bg-green-400"
@@ -404,8 +404,8 @@ const page = () => {
                     >
                       {option.letter}
                     </div>
-                    <div className="w-[2px] h-[25px] bg-pl-GrayDefault"></div>
-                    <div className="inline-block text-left ml-3">
+                    <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
+                    <div className="ml-3 inline-block text-left">
                       {option.text}
                     </div>
                   </div>
@@ -413,7 +413,7 @@ const page = () => {
               </div>
 
               {/* awal button section */}
-              <div className="flex justify-between mt-3">
+              <div className="mt-3 flex justify-between">
                 <div>
                   {activeQuestion !== 0 && (
                     <PrevButton
@@ -427,7 +427,7 @@ const page = () => {
 
                   {activeQuestion !== questions.length - 1 && (
                     <Button
-                      className="bg-pl-RoyalBlue ml-2 text-white"
+                      className="ml-2 bg-pl-RoyalBlue text-white"
                       onClick={() => onClickNext()}
                       variant="contained"
                     >
@@ -451,8 +451,8 @@ const page = () => {
           </div>
           <div className="w-[20%]">
             {/* section navigasi soal */}
-            <div className="bg-white border-2 rounded-sm ml-2 w-[92%]">
-              <div className="flex p-3 justify-between gap-1">
+            <div className="ml-2 w-[92%] rounded-sm border-2 bg-white">
+              <div className="flex justify-between gap-1 p-3">
                 <div>
                   <Image
                     width={60}
@@ -469,19 +469,19 @@ const page = () => {
               </div>
 
               <div className="flex justify-center py-1">
-                <div className="w-[90%] grid grid-cols-4 gap-2">
+                <div className="grid w-[90%] grid-cols-4 gap-2">
                   {result.questions.map((question, index) => (
                     <button
                       key={index}
                       onClick={() => onClickNavigation(question.noSoal, index)}
-                      className={`h-[55px] inline-block border-2 rounded-sm ${checkColorNavigation(
+                      className={`inline-block h-[55px] rounded-sm border-2 ${checkColorNavigation(
                         question,
-                        index
+                        index,
                       )}`}
                     >
                       {index + 1}
                       <div className={`${checkFlagMark(question, index)}`}>
-                        <EmojiFlagsIcon className="pb-1 mr-1"></EmojiFlagsIcon>
+                        <EmojiFlagsIcon className="mr-1 pb-1"></EmojiFlagsIcon>
                       </div>
                     </button>
                   ))}

@@ -10,17 +10,17 @@ interface WhyUseItemProps {
 const WhyUsItem = (props: WhyUseItemProps) => {
   const { img, title, text } = props;
   return (
-    <div className="flex lg:flex-col items-start gap-x-5 bg-white rounded-3xl p-3 lg:p-6">
+    <div className="flex items-start gap-x-5 rounded-3xl bg-white p-3 lg:flex-col lg:p-6">
       <Image
         src={`/img/img-${img}.png`}
         alt="img-whyus1"
         width={110}
         height={110}
         // className="h-fit w-fit"
-        className="w-[90px] h-[90px] lg:h-fit lg:w-fit"
+        className="h-[90px] w-[90px] lg:h-fit lg:w-fit"
       />
       <div>
-        <h3 className="lg:mt-7 gap-x-2 break-all font-bold text-sm flex items-center lg:text-xl">
+        <h3 className="flex items-center gap-x-2 break-all text-sm font-bold lg:mt-7 lg:text-xl">
           {title}
           <span className="flex-none">
             <Image
@@ -28,11 +28,11 @@ const WhyUsItem = (props: WhyUseItemProps) => {
               width={24}
               height={24}
               alt="ic-check"
-              className="w-4 h-4 lg:w-6 lg:h-6"
+              className="h-4 w-4 lg:h-6 lg:w-6"
             />
           </span>
         </h3>
-        <p className="mt-3 lg:mt-5 text-xs lg:text-base">{text}</p>
+        <p className="mt-3 text-xs lg:mt-5 lg:text-base">{text}</p>
       </div>
     </div>
   );

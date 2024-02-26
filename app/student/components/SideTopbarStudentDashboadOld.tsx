@@ -210,7 +210,7 @@ const Drawer = styled(MuiDrawer, {
 // Main component
 const MiniDrawer = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
   const [auth, setAuth] = React.useState(true);
 
@@ -289,10 +289,10 @@ const MiniDrawer = () => {
               width={40}
               height={40}
               src="/logo-csw.png"
-              className={`object-cover w-10 md:w-10`}
+              className={`w-10 object-cover md:w-10`}
               alt="Logo CSW"
             />
-            <p className="text-black font-semibold capitalize hidden md:block mt-2">
+            <p className="mt-2 hidden font-semibold capitalize text-black md:block">
               Civil Servant Warrior
             </p>
           </Link>
@@ -398,9 +398,9 @@ const MiniDrawer = () => {
                 alt="Foto Profil"
                 width={200}
                 height={200}
-                className="rounded-full mt-4 w-16 h-16 md:w-20 md:h-20"
+                className="mt-4 h-16 w-16 rounded-full md:h-20 md:w-20"
               />
-              <p className="capitalize text-center mt-2">
+              <p className="mt-2 text-center capitalize">
                 Dashboard Anda, <br />
                 <span className="font-semibold">Username</span>
               </p>
@@ -415,7 +415,7 @@ const MiniDrawer = () => {
                 alt="Foto Profil"
                 width={35}
                 height={35}
-                className="rounded-full overflow-hidden mb-2 mt-2"
+                className="mb-2 mt-2 overflow-hidden rounded-full"
               />
             </div>
           </div>

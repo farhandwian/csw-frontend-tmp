@@ -24,11 +24,11 @@ const MateriModulLayout = ({ children }: MateriModulLayoutProps) => {
       <div
         className={`${
           sidebar ? "w-[calc(100%-256px)]" : "w-[100%] "
-        } max-w-[100%] relative ${
+        } relative max-w-[100%] ${
           sidebar ? "left-64 top-12" : "left-0 top-12"
         } z-10 transition-all`}
       >
-        <div className="px-10 pt-5 pb-10 bg-pl-BackgroundUserDashboard">
+        <div className="bg-pl-BackgroundUserDashboard px-10 pb-10 pt-5">
           {children}
         </div>
       </div>

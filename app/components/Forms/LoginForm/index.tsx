@@ -52,7 +52,7 @@ const LoginForm: React.FC = () => {
           error={formik.errors.password}
           touched={formik.touched.password || false}
         />
-        <div className="w-full flex justify-end">
+        <div className="flex w-full justify-end">
           <p className="mt-2 font-medium text-[#5E5252] hover:text-indigo-500">
             <Link href={"/forgot-pass"}>Forgot Pass ?</Link>
           </p>

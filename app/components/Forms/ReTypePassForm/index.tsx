@@ -12,7 +12,7 @@ const ReTypePassForm: React.FC = () => {
       .required("Harap masukkan password"),
     konfPassword: Yup.string().oneOf(
       [Yup.ref("password")],
-      "Konfirmasi password harus sesuai dengan password"
+      "Konfirmasi password harus sesuai dengan password",
     ),
   });
 

@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/student/components/StudentLayout";
+import StudentLayout from "@/app/student/components/StudentLayout";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -80,14 +80,14 @@ const page = () => {
   const [alignment, setAlignment] = useState("modul_home");
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
+    newAlignment: string,
   ) => {
     setAlignment(newAlignment);
   };
 
   return (
-    <Studentlayout menuPage={"modul"}>
-      <section className="relative">
+    <StudentLayout isBreadCrumb={true}>
+      <section className="relative z-10">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -118,13 +118,13 @@ const page = () => {
           mollitia! Enim doloremque velit molestiae eum illo possimus quod ab,
           minus accusamus placeat laudantium suscipit maiores consequuntur quas.
         </p>
-        <ul className="list-disc text-tp-SteelBlue ml-3">
+        <ul className="ml-3 list-disc text-tp-SteelBlue">
           <li>Modul Materi</li>
           <li>Latihan Pada Setiap Materi</li>
         </ul>
-        <div className="container rounded-xl border border-gray-300 mt-3 mb-3">
+        <div className="container mb-3 mt-3 rounded-xl border border-gray-300">
           {detail_moduls.map((detail_modul, index) => (
-            <div key={index} className="w-[97%] m-auto">
+            <div key={index} className="m-auto w-[97%]">
               {/* Render your content for each detail_modul here */}
 
               {/* Conditionally render content for the last item */}
@@ -198,17 +198,17 @@ const page = () => {
               )} */}
 
               <div>
-                <p className="text-tp-SlateGray mt-2">{detail_modul.materi}</p>
-                <div className="flex justify-between gap-4 mt-2">
+                <p className="mt-2 text-tp-SlateGray">{detail_modul.materi}</p>
+                <div className="mt-2 flex justify-between gap-4">
                   <div className="flex">
                     <Image
                       width={25}
                       height={25}
                       src="/img/modul/stationery.png"
-                      className={`object-cover w-10 md:w-10 inline-block`}
+                      className={`inline-block w-10 object-cover md:w-10`}
                       alt="Logo CSW"
                     />
-                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
+                    <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
                       {detail_modul.isi}
                     </p>
                   </div>
@@ -216,16 +216,16 @@ const page = () => {
                   <div className="">{checkStatus(detail_modul.isiStatus)}</div>
                 </div>
 
-                <div className="flex justify-between gap-4 mt-2">
+                <div className="mt-2 flex justify-between gap-4">
                   <div className="flex">
                     <Image
                       width={25}
                       height={25}
                       src="/img/modul/assignment.png"
-                      className={`object-cover w-10 md:w-10 inline-block`}
+                      className={`inline-block w-10 object-cover md:w-10`}
                       alt="Logo CSW"
                     />
-                    <p className="text-tp-Gunmetal mt-1 inline-block ml-4">
+                    <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
                       {detail_modul.latihan}
                     </p>
                   </div>
@@ -238,14 +238,14 @@ const page = () => {
                 {index === detail_moduls.length - 1 ? (
                   ""
                 ) : (
-                  <hr className="m-auto border-y-1 border-y-gray-300 mt-2" />
+                  <hr className="border-y-1 m-auto mt-2 border-y-gray-300" />
                 )}
               </div>
             </div>
           ))}
         </div>
       </section>
-    </Studentlayout>
+    </StudentLayout>
   );
 };
 

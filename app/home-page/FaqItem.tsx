@@ -18,15 +18,15 @@ const FaqItem = (props: FaqItemProps) => {
 
   return (
     <div
-      className="flex items-start justify-between gap-x-3 lg:gap-x-4 bg-white p-4 lg:px-4 lg:py-6 rounded-xl cursor-pointer select-none w-full md:w-[600px] lg:w-[880px]"
+      className="flex w-full cursor-pointer select-none items-start justify-between gap-x-3 rounded-xl bg-white p-4 md:w-[600px] lg:w-[880px] lg:gap-x-4 lg:px-4 lg:py-6"
       onClick={toggleOpen}
     >
       <div>
-        <h3 className="text-[#334155] font-medium text-base lg:text-lg">
+        <h3 className="text-base font-medium text-[#334155] lg:text-lg">
           {title}
         </h3>
         {isOpen && (
-          <p className="mt-4 text-[#1E293B]/40 text-sm lg:text-base">{text}</p>
+          <p className="mt-4 text-sm text-[#1E293B]/40 lg:text-base">{text}</p>
         )}
       </div>
 
@@ -36,7 +36,7 @@ const FaqItem = (props: FaqItemProps) => {
           alt="ic-arrow"
           width={13}
           height={24}
-          className={` mt-[2px] w-5 h-5 lg:w-7 lg:h-7 transform  ${
+          className={` mt-[2px] h-5 w-5 transform lg:h-7 lg:w-7  ${
             isOpen ? "" : "rotate-180"
           }`}
         />

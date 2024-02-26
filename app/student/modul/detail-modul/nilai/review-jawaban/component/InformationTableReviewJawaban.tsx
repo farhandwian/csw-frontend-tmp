@@ -22,7 +22,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableHead = styled(TableHead)`
-  border: ;
+  border:;
 `;
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -43,7 +43,7 @@ export default function InformationTable({
   reviewJawaban: ReviewJawaban;
 }) {
   return (
-    <TableContainer className="mt-3 mb-3 w-[90%]" component={Paper}>
+    <TableContainer className="mb-3 mt-3 w-[90%]" component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead className="border">
           <TableRow>

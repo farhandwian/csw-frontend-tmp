@@ -10,12 +10,12 @@ const page = () => {
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string
+    newAlignment: string,
   ) => {
     setAlignment(newAlignment);
   };
   return (
-    <Studentlayout menuPage={"modul"}>
+    <Studentlayout isBreadCrumb={true}>
       <ModulFAB
         alignment={alignment}
         handleChange={(e) => handleChange(e, alignment)}
