@@ -15,7 +15,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const dashboards = {
   id: 1,
-  status: "newbieee", // ganti ini jadi newbie klo mau buat tampilan user newbie
+  status: "newbie", // ganti ini jadi newbie klo mau buat tampilan user newbie
 };
 
 interface TableColor {
@@ -110,7 +110,7 @@ const page = () => {
                       </h2>
                     </div>
                     <div className="w-100% text-md mb-4 mt-3 flex items-center justify-center">
-                      <RedButton className="m-auto" variant="contained">
+                      <RedButton className="m-auto">
                         <h1 className="text-black">Lihat Paket Belajar</h1>
                       </RedButton>
                     </div>
@@ -231,7 +231,7 @@ const page = () => {
                       </div>
 
                       <div className="w-100% mb-4 mt-3 flex items-center justify-center">
-                        <RedButton className="m-auto" variant="contained">
+                        <RedButton className="m-auto">
                           <h1 className="text-black">Lihat Paket Belajar</h1>
                         </RedButton>
                       </div>
@@ -416,7 +416,7 @@ const page = () => {
                       </div>
 
                       <div className="w-100% mb-4 mt-3 flex items-center justify-center">
-                        <RedButton className="m-auto" variant="contained">
+                        <RedButton className="m-auto">
                           <h1 className="text-black">Lihat Paket Belajar</h1>
                         </RedButton>
                       </div>

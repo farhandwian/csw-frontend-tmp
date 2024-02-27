@@ -1,23 +1,23 @@
 import React from "react";
+
 import { Button } from "flowbite-react";
 
-interface RedButtonProps {
-  className?: string;
+interface GreenButtonProps {
   children?: React.ReactNode;
   onClick?: () => void;
+  className?: string;
 }
 
-export const RedButton = ({
-  className,
+export const GrayButton = ({
   children,
   onClick,
+  className,
   ...props
-}: RedButtonProps) => {
+}: GreenButtonProps) => {
   return (
     <Button
       onClick={onClick}
-      className={`hover:!bg-[#f3736ccc ] mx-auto mt-2 bg-[#f3736c]
-      text-white focus:ring-0 ${className}`}
+      className={`m-auto bg-gray-400 text-white hover:!bg-gray-500 focus:ring-0 ${className}`}
       {...props}
     >
       {children}
@@ -25,4 +25,4 @@ export const RedButton = ({
   );
 };
 
-export default RedButton;
+export default GrayButton;

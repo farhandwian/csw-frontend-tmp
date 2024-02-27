@@ -1,13 +1,29 @@
-import { grey } from "@mui/material/colors";
-import { styled } from "@mui/material/styles";
-import Button, { ButtonProps } from "@mui/material/Button";
+import React from "react";
 
-const BlueButton = styled(Button)<ButtonProps>(({ theme }) => ({
-  color: theme.palette.getContrastText(grey[500]),
-  backgroundColor: grey[500],
-  "&:hover": {
-    backgroundColor: grey[700],
-  },
-}));
+import { Button } from "flowbite-react";
+import { ClassNames } from "@emotion/react";
+
+interface BlueButtonProps {
+  className?: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}
+
+export const BlueButton = ({
+  className,
+  children,
+  onClick,
+  ...props
+}: BlueButtonProps) => {
+  return (
+    <Button
+      onClick={onClick}
+      className={`ml-2 inline bg-pl-RoyalBlue text-white hover:!bg-[#0d6ed9] focus:ring-0 ${className}`}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+};
 
 export default BlueButton;

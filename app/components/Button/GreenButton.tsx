@@ -1,14 +1,27 @@
-import { green } from "@mui/material/colors";
-import { styled } from "@mui/material/styles";
+import React from "react";
+import { Button } from "flowbite-react";
 
-import Button, { ButtonProps } from "@mui/material/Button";
+interface GreenButtonProps {
+  className?: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}
 
-const GreenButton = styled(Button)<ButtonProps>(({ theme }) => ({
-  color: theme.palette.getContrastText(green[500]),
-  backgroundColor: green[500],
-  "&:hover": {
-    backgroundColor: green[700],
-  },
-}));
+export const GreenButton = ({
+  className,
+  children,
+  onClick,
+  ...props
+}: GreenButtonProps) => {
+  return (
+    <Button
+      onClick={onClick}
+      className={`mx-auto mt-2 bg-pl-GreenButton text-white hover:!bg-[#8ad423] focus:ring-0 ${className}`}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+};
 
 export default GreenButton;

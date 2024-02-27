@@ -1,17 +1,18 @@
 "use client";
-import Studentlayout from "@/app/student/components/StudentLayout";
-import PrevButton from "@/app/components/Button/BlueButton";
-import SubmitButton from "@/app/components/Button/GreenButton";
-import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import GlobalStyles from "@/app/Globals.module.css";
+import SubmitButton, { GreenButton } from "@/app/components/Button/GreenButton";
+import Studentlayout from "@/app/student/components/StudentLayout";
+import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
 import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
-import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
-import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
-import { v4 as uuidv4 } from "uuid";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
+import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
+import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
+import { Button } from "flowbite-react";
+import { v4 as uuidv4 } from "uuid";
+import BlueButton from "@/app/components/Button/BlueButton";
+import GrayButton from "@/app/components/Button/GrayButton";
 
 interface Option {
   id: string;
@@ -416,33 +417,27 @@ const page = () => {
               <div className="mt-3 flex justify-between">
                 <div>
                   {activeQuestion !== 0 && (
-                    <PrevButton
-                      className="bg-gray-400 text-white"
+                    <GrayButton
+                      className="inline"
                       onClick={() => onClickPrev()}
-                      variant="contained"
                     >
                       prev
-                    </PrevButton>
+                    </GrayButton>
                   )}
 
                   {activeQuestion !== questions.length - 1 && (
-                    <Button
-                      className="ml-2 bg-pl-RoyalBlue text-white"
+                    <BlueButton
+                      className="inline"
                       onClick={() => onClickNext()}
-                      variant="contained"
                     >
                       next
-                    </Button>
+                    </BlueButton>
                   )}
                 </div>
                 <div>
-                  <SubmitButton
-                    className="bg-pl-GreenButton text-white"
-                    onClick={() => onClickSubmit()}
-                    variant="contained"
-                  >
+                  <GreenButton onClick={() => onClickSubmit()}>
                     SUBMIT
-                  </SubmitButton>
+                  </GreenButton>
                 </div>
               </div>
               {/* akhir button section */}
@@ -494,7 +489,7 @@ const page = () => {
         </div>
 
         <ModalSubmitModul
-          isOpen={isOpenSubmitModal}
+          isOpenProp={isOpenSubmitModal}
           formattedTime={formattedTime}
           unAnsweredQuestions={unAnsweredQuestions}
           onClose={onCloseModalSubmit}
