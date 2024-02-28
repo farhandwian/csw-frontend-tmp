@@ -1,7 +1,7 @@
 "use client";
 
 import StudentLayout from "@/app/student/components/StudentLayout";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";

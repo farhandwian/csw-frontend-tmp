@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
 
 let detail_moduls: {
   materi: string;

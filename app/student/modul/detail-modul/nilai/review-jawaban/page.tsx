@@ -12,7 +12,7 @@ import { ReviewJawaban } from "@/app/student/modul/detail-modul/nilai/review-jaw
 import { Quiz } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
 
 const quiz: Quiz = {
   id: "1",

@@ -1,26 +1,22 @@
 "use client";
 import GlobalStyles from "@/app/Globals.module.css";
-import SubmitButton, { GreenButton } from "@/app/components/Button/GreenButton";
 import Studentlayout from "@/app/student/components/StudentLayout";
-import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/component/ModalSubmitModul";
-import Divider from "@mui/material/Divider";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/component/ModulFAB";
-import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
-import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
-import { Button } from "flowbite-react";
+import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
+import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
+import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import QuestionNavigation from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionNavigation";
+import QuestionSection from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionSection";
+import useTimer from "@/app/student/modul/detail-modul/latihan-soal/hooks/useTimer";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import BlueButton from "@/app/components/Button/BlueButton";
-import GrayButton from "@/app/components/Button/GrayButton";
 
-interface Option {
+export interface Option {
   id: string;
   letter: string;
   text: string;
 }
 
-interface Question {
+export interface Question {
   id: string;
   question: string;
   options: Option[];
@@ -31,7 +27,7 @@ interface Question {
   userAnswer?: string;
 }
 
-interface Quiz {
+export interface Quiz {
   id: string;
   topic: string;
   modul: string;
@@ -125,49 +121,29 @@ const quiz: Quiz = {
 const page = () => {
   const [alignment, setAlignment] = useState("modul_home");
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
-  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
-  const [stopQuiz, setStopQuiz] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [formattedTime, setFormattedTime] = useState("");
   const [result, setResult] = useState(quiz);
   const [isMark, setIsMark] = useState(false);
   const [isOpenSubmitModal, setIsOpenSubmitModal] = useState(false);
   const [unAnsweredQuestions, setisUnAnsweredQuestions] = useState(
     quiz.questions.length,
   );
-  // Ambil waktu dari server, misalnya melalui fetch atau prop
-  const serverTime = 600000; // Contoh waktu dalam milidetik (10 menit)
+
+  const serverTime = 60000; // Contoh waktu dalam milidetik (10 menit)
+
+  const submitQuiz = () => {};
+
+  const onTimerEnd = () => {
+    submitQuiz();
+    console.log("quiz berhasi di submit");
+  };
+
+  const { formattedTime } = useTimer({
+    time: serverTime,
+    onTimerEnd,
+  });
 
   const { questions } = quiz;
-  const { question, options } = questions[activeQuestion];
-  // let unAnsweredQuestions = questions.length;
-  useEffect(() => {
-    console.log("testestes");
-    let countdown = timeLeft;
 
-    const interval = setInterval(() => {
-      countdown -= 1000;
-      const minutes = Math.floor(countdown / 60000);
-      const seconds = Math.floor((countdown % 60000) / 1000);
-
-      setFormattedTime(`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
-    }, 1000);
-
-    const redirectTimeout = setTimeout(() => {
-      clearInterval(interval);
-    }, serverTime);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(redirectTimeout);
-    };
-  }, [serverTime, timeLeft]);
-
-  useEffect(() => {
-    setTimeLeft(serverTime);
-  }, [serverTime]);
-
-  // const router = useRouter();
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string,
@@ -185,8 +161,6 @@ const page = () => {
 
     setisUnAnsweredQuestions(i);
   };
-
-  const submitQuiz = () => {};
 
   const onClickNext = () => {
     if (activeQuestion !== questions.length - 1) {
@@ -209,6 +183,7 @@ const page = () => {
     // Memperbarui state menggunakan setResult
     setResult(updateResult);
   };
+
   const onClickTandaiPertanyaan = () => {
     const updateResult = { ...result };
     // Mengganti userAnswer pada pertanyaan yang sedang aktif
@@ -216,35 +191,6 @@ const page = () => {
     updateResult.questions[activeQuestion].isMark = !isMark;
     // Memperbarui state menggunakan setResult
     setResult(updateResult);
-  };
-
-  const checkColorNavigation = (question: Question, index: number) => {
-    let style: string = "";
-    if (question.noSoal === activeQuestion + 1) {
-      style += `border-green-400 `;
-    } //belum-dijawab,sudah-dijawab,ditandai
-
-    let isStatusNull = typeof question.status;
-    if (question.status === "belum-dijawab" || isStatusNull === "undefined") {
-      style += `bg-white `;
-    }
-    if (question.status === "sudah-dijawab") {
-      style += "bg-green-200 ";
-    }
-    if (question.status === "ditandai") {
-      style += "bg-blue-200";
-    }
-    return style;
-  };
-
-  const checkFlagMark = (question: Question, index: number) => {
-    let style: string = "";
-    if (question.isMark === true) {
-      style += "block ";
-    } else {
-      style += "hidden ";
-    }
-    return style;
   };
 
   const onClickNavigation = (noSoal: number, index: number) => {
@@ -278,213 +224,37 @@ const page = () => {
 
         <div className="flex">
           <div className="w-[80%]">
-            {/* awal section informasi kuis */}
-            <div className="mb-5 inline-flex rounded-2xl border-2 bg-white">
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                    PERTANYAAN
-                  </p>
-                  <p
-                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                  >
-                    NOMOR {addLeadingZero(activeQuestion + 1)}/
-                    {addLeadingZero(questions.length)}
-                  </p>
-                </div>
-
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  className="h-8"
-                  sx={{ borderRightWidth: 3 }}
-                />
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                    STATUS
-                  </p>
-                  <p
-                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                  >
-                    {result.questions[activeQuestion].status}
-                  </p>
-                </div>
-
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  className="ml-3 h-8"
-                  sx={{ borderRightWidth: 3 }}
-                />
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                    MARK
-                  </p>
-                  <p
-                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                  >
-                    1.00
-                  </p>
-                </div>
-
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  className="ml-3 h-8"
-                  sx={{ borderRightWidth: 3 }}
-                />
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                    TANDA
-                    <HelpIcon className="ml-2 pb-1"></HelpIcon>
-                  </p>
-                  <button onClick={() => onClickTandaiPertanyaan()}>
-                    <p
-                      className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                    >
-                      <EmojiFlagsIcon className="mr-1 pb-1"></EmojiFlagsIcon>
-                      TANDAI PERTANYAAN
-                    </p>
-                  </button>
-                </div>
-
-                <Divider
-                  orientation="vertical"
-                  variant="middle"
-                  flexItem
-                  className="ml-3 h-8"
-                  sx={{ borderRightWidth: 3 }}
-                />
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                    WAKTU TERSISA
-                  </p>
-                  <p
-                    className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                  >
-                    {formattedTime}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* akhir section informasi kuis */}
-            {/* awal section soal dan jawaban */}
-            <div className="bg-white-400 w-[100%] rounded-2xl border-2 p-4">
-              <h2 className="mb-2">{question}</h2>
-              <div>
-                {options.map((option, index) => (
-                  <div
-                    onClick={() => onOptionSelected(option, index)}
-                    key={option.id}
-                    className={`mb-2 flex rounded-lg border-2 ${
-                      option.letter ===
-                      result.questions[activeQuestion].userAnswer
-                        ? "border-green-400"
-                        : ""
-                    }`}
-                  >
-                    <div
-                      className={`inline-block rounded-l-sm px-3 ${
-                        option.letter ===
-                        result.questions[activeQuestion].userAnswer
-                          ? "bg-green-400"
-                          : ""
-                      }`}
-                    >
-                      {option.letter}
-                    </div>
-                    <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
-                    <div className="ml-3 inline-block text-left">
-                      {option.text}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* awal button section */}
-              <div className="mt-3 flex justify-between">
-                <div>
-                  {activeQuestion !== 0 && (
-                    <GrayButton
-                      className="inline"
-                      onClick={() => onClickPrev()}
-                    >
-                      prev
-                    </GrayButton>
-                  )}
-
-                  {activeQuestion !== questions.length - 1 && (
-                    <BlueButton
-                      className="inline"
-                      onClick={() => onClickNext()}
-                    >
-                      next
-                    </BlueButton>
-                  )}
-                </div>
-                <div>
-                  <GreenButton onClick={() => onClickSubmit()}>
-                    SUBMIT
-                  </GreenButton>
-                </div>
-              </div>
-              {/* akhir button section */}
-            </div>
-            {/* akhir section soal dan jawaban */}
+            <InformationQuiz
+              {...{
+                addLeadingZero,
+                activeQuestion,
+                questions,
+                result,
+                onClickTandaiPertanyaan,
+                formattedTime,
+              }}
+            />
+            <QuestionSection
+              {...{
+                activeQuestion,
+                questions,
+                result,
+                formattedTime,
+                onOptionSelected,
+                onClickNext,
+                onClickPrev,
+                onClickSubmit,
+              }}
+            />
           </div>
           <div className="w-[20%]">
-            {/* section navigasi soal */}
-            <div className="ml-2 w-[92%] rounded-sm border-2 bg-white">
-              <div className="flex justify-between gap-1 p-3">
-                <div>
-                  <Image
-                    width={60}
-                    height={60}
-                    src="/img/uji-kemampuan/ic_navigation.png"
-                    className={`inline-block`}
-                    alt="Logo CSW"
-                  />
-                </div>
-
-                <div className="ml-3">
-                  <h1>NAVIGASI LATIHAN</h1>
-                </div>
-              </div>
-
-              <div className="flex justify-center py-1">
-                <div className="grid w-[90%] grid-cols-4 gap-2">
-                  {result.questions.map((question, index) => (
-                    <button
-                      key={index}
-                      onClick={() => onClickNavigation(question.noSoal, index)}
-                      className={`inline-block h-[55px] rounded-sm border-2 ${checkColorNavigation(
-                        question,
-                        index,
-                      )}`}
-                    >
-                      {index + 1}
-                      <div className={`${checkFlagMark(question, index)}`}>
-                        <EmojiFlagsIcon className="mr-1 pb-1"></EmojiFlagsIcon>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* akhir navigasi soal */}
+            <QuestionNavigation
+              {...{
+                result,
+                activeQuestion,
+                onClickNavigation,
+              }}
+            />
           </div>
         </div>
 
