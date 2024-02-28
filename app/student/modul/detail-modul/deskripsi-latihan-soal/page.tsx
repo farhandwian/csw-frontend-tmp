@@ -1,6 +1,6 @@
 "use client";
 
-import Studentlayout from "@/app/student/_components/StudentLayout";
+import Studentlayout from "@/app/student/_components/layout";
 import React, { useState } from "react";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";

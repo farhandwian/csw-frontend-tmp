@@ -16,8 +16,8 @@ export const RedButton = ({
   return (
     <Button
       onClick={onClick}
-      className={`mx-auto mt-2 bg-yellow-400 text-white
-      hover:bg-yellow-500 focus:ring-0 ${className}`}
+      className={`mt-2 bg-yellow-400 text-white
+      hover:!bg-yellow-500 focus:ring-0 ${className}`}
       {...props}
     >
       {children}

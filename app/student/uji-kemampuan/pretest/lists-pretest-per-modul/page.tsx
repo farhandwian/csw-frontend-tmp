@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Studentlayout from "@/app/student/_components/StudentLayout";
+import Studentlayout from "@/app/student/_components/layout";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
 import CardPreTestItem from "./_components/CardPreTestItem";

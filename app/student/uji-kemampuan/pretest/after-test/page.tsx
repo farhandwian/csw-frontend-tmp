@@ -1,7 +1,7 @@
 "use client";
 
 import GlobalStyles from "@/app/Globals.module.css";
-import Studentlayout from "@/app/student/_components/StudentLayout";
+import Studentlayout from "@/app/student/_components/layout";
 import Image from "next/image";
 import Link from "next/link";
 import AttachFileIcon from "@mui/icons-material/AttachFile";

@@ -1,5 +1,5 @@
 import React from "react";
-import Studentlayout from "@/app/student/_components/StudentLayout";
+import Studentlayout from "@/app/student/_components/layout";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import CircularProgress from "@/app/student/uji-kemampuan/pretest/_components/CircularProgress/CircularProgress";
 import Image from "next/image";

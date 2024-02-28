@@ -1,7 +1,7 @@
 // Import necessary modules
 "use client";
 import Image from "next/image";
-import StudentLayout from "@/app/student/_components/StudentLayout";
+import StudentLayout from "@/app/student/_components/layout";
 import RedButton from "./_components/RedButton";
 import YellowButton from "./_components/YellowButton";
 import React from "react";

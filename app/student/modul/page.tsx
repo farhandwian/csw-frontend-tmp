@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Studentlayout from "@/app/student/_components/StudentLayout";
+import Studentlayout from "@/app/student/_components/layout";
 import Link from "next/link";
 import InfoIcon from "@mui/icons-material/Info";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
