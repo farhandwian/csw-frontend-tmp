@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import MateriModulLayout from "@/app/student/modul/detail-modul/materi-modul/component/MateriModulLayout";
+import MateriModulLayout from "@/app/student/modul/detail-modul/materi-modul/_components/MateriModulLayout";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import MateriTerkunciAlert from "./component/MateriTerkunciAlert";
+import MateriTerkunciAlert from "./_components/MateriTerkunciAlert";
 
 const page = () => {
   return (

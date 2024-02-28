@@ -1,8 +1,8 @@
 "use client";
 
-import Studentlayout from "@/app/student/components/StudentLayout";
+import Studentlayout from "@/app/student/_components/StudentLayout";
 import GlobalStyles from "@/app/Globals.module.css";
-import InformationTable from "@/app/student/modul/detail-modul/nilai/review-jawaban/component/InformationTableReviewJawaban";
+import InformationTable from "@/app/student/modul/detail-modul/nilai/review-jawaban/_components/InformationTableReviewJawaban";
 import React, { useState } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";

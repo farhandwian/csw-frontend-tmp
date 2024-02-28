@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/app/student/components/Breadcrumbs";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";

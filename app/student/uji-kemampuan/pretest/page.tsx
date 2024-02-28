@@ -1,7 +1,7 @@
 import React from "react";
-import Studentlayout from "@/app/student/components/StudentLayout";
+import Studentlayout from "@/app/student/_components/StudentLayout";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
-import CircularProgress from "@/app/student/uji-kemampuan/pretest/components/CircularProgress/CircularProgress";
+import CircularProgress from "@/app/student/uji-kemampuan/pretest/_components/CircularProgress/CircularProgress";
 import Image from "next/image";
 
 const percentage = 66;

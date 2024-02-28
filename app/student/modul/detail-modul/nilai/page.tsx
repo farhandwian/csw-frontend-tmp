@@ -1,7 +1,7 @@
 "use client";
 
-import Studentlayout from "@/app/student/components/StudentLayout";
-import TableNilai from "@/app/student/modul/detail-modul/nilai/component/TableNilai";
+import Studentlayout from "@/app/student/_components/StudentLayout";
+import TableNilai from "@/app/student/modul/detail-modul/nilai/_components/TableNilai";
 import React, { useState } from "react";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
 

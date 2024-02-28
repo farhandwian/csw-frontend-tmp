@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Studentlayout from "@/app/student/components/StudentLayout";
+import Studentlayout from "@/app/student/_components/StudentLayout";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
-import CardPreTestItem from "./components/CardPreTestItem";
+import CardPreTestItem from "./_components/CardPreTestItem";
 
-import CardHistoryPreTestItem from "./components/CardHistoryPreTestItem";
+import CardHistoryPreTestItem from "./_components/CardHistoryPreTestItem";
 import { Pagination } from "flowbite-react";
 
 const page = () => {

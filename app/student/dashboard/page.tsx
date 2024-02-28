@@ -1,9 +1,9 @@
 // Import necessary modules
 "use client";
 import Image from "next/image";
-import StudentLayout from "@/app/student/components/StudentLayout";
-import RedButton from "./components/RedButton";
-import YellowButton from "./components/YellowButton";
+import StudentLayout from "@/app/student/_components/StudentLayout";
+import RedButton from "./_components/RedButton";
+import YellowButton from "./_components/YellowButton";
 import React from "react";
 import Button from "@mui/material/Button";
 import LockIcon from "@mui/icons-material/Lock";

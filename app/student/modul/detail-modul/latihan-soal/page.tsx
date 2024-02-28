@@ -1,6 +1,6 @@
 "use client";
 import GlobalStyles from "@/app/Globals.module.css";
-import Studentlayout from "@/app/student/components/StudentLayout";
+import Studentlayout from "@/app/student/_components/StudentLayout";
 import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
