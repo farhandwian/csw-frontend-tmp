@@ -1,5 +1,5 @@
-import LoginForm from "../../Forms/LoginForm";
-import HeroImage from "../../HeroImage";
+import LoginForm from "../../../../components/Forms/LoginForm";
+import HeroImage from "../../../../components/HeroImage";
 import Image from "next/image";
 
 import React from "react";

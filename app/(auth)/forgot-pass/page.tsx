@@ -1,7 +1,7 @@
 "use client";
-import Navbar from "../components/organisms/Navbar";
+import Navbar from "../../home-page/_components/Navbar";
 import React from "react";
-import ForgotPassSection from "../components/organisms/ForgotPass";
+import ForgotPassSection from "./_components/ForgotPass";
 
 const Forgot: React.FC = () => {
   return (

@@ -1,8 +1,9 @@
-import ForgotPassForm from "../../Forms/ForgotPassForm";
-import HeroImage from "../../HeroImage";
+import ReTypePassFprm from "../../../../components/Forms/ReTypePassForm";
+import HeroImage from "../../../../components/HeroImage";
+import Image from "next/image";
 import React from "react";
 
-const ForgotPassSection = () => {
+const ReTypePassSection = () => {
   return (
     <div className="flex">
       <HeroImage
@@ -15,17 +16,19 @@ const ForgotPassSection = () => {
 
       <div className="flex h-screen w-1/2 flex-col justify-center bg-white px-28 pt-14">
         <div className="max-w-xl">
-          <h3 className="text-3xl font-semibold">Atur Ulang Password Anda</h3>
+          <h3 className="text-3xl font-semibold">
+            Buat Mimpimu Menjadi Kenyataan
+          </h3>
           <p className="mt-2 font-normal text-[#5E5252]">
-            Masukkan Email Yang Terdaftar Pada Civil Servan Warrior !
+            Yuk Daftarkan Akunmu Segera !
           </p>
         </div>
-        <div className="mt-6 max-w-md">
-          <ForgotPassForm />
+        <div className="mt-6">
+          <ReTypePassFprm />
         </div>
       </div>
     </div>
   );
 };
 
-export default ForgotPassSection;
+export default ReTypePassSection;

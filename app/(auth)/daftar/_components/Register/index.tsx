@@ -1,19 +1,18 @@
-import ReTypePassFprm from "../../Forms/ReTypePassForm";
-import HeroImage from "../../HeroImage";
+import RegisterForm from "../../../../components/Forms/RegisterForm";
+import HeroImage from "../../../../components/HeroImage";
 import Image from "next/image";
 import React from "react";
 
-const ReTypePassSection = () => {
+const RegisterSection = () => {
   return (
     <div className="flex">
       <HeroImage
-        src={"/image/bg-forgot-pass.png"}
-        width={3242}
-        height={2904}
-        alt="img-forgot-pass"
+        src={"/image/bg-register.png"}
+        width={1815}
+        height={1815 / (1815 / 1660)}
+        alt="img-register"
         classNameWrap="px-12"
       />
-
       <div className="flex h-screen w-1/2 flex-col justify-center bg-white px-28 pt-14">
         <div className="max-w-xl">
           <h3 className="text-3xl font-semibold">
@@ -24,11 +23,11 @@ const ReTypePassSection = () => {
           </p>
         </div>
         <div className="mt-6">
-          <ReTypePassFprm />
+          <RegisterForm />
         </div>
       </div>
     </div>
   );
 };
 
-export default ReTypePassSection;
+export default RegisterSection;

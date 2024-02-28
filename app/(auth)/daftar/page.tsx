@@ -1,7 +1,7 @@
 "use client";
-import Navbar from "../components/organisms/Navbar";
+import Navbar from "../../home-page/_components/Navbar";
 import React from "react";
-import RegisterSection from "../components/organisms/Register";
+import RegisterSection from "./_components/Register";
 
 const Daftar = () => {
   return (

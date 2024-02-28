@@ -3,15 +3,15 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import useDesktop from "./hooks/useDesktop";
-import MentorItem from "./home-page/MentorItem";
-import WhyUsItem from "./home-page/WhyUsItem";
-import PaketItem from "./home-page/PaketItem";
-import TestimoniItem from "./home-page/TestimoniItem";
-import useTablet from "./hooks/useTablet";
-import FaqItem from "./home-page/FaqItem";
+import useDesktop from "../hooks/useDesktop";
+import MentorItem from "./_components/MentorItem";
+import WhyUsItem from "./_components/WhyUsItem";
+import PaketItem from "./_components/PaketItem";
+import TestimoniItem from "./_components/TestimoniItem";
+import useTablet from "../hooks/useTablet";
+import FaqItem from "./_components/FaqItem";
 import Link from "next/link";
-import Navbar from "./components/organisms/Navbar";
+import Navbar from "./_components/Navbar";
 import { useRouter } from "next/router";
 
 const Beranda = () => {
