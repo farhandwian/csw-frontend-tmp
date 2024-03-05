@@ -6,7 +6,7 @@ import CardPreTestItem from "./_components/CardPreTestItem";
 import { Pagination } from "flowbite-react";
 import CardHistoryPreTestItem from "./_components/CardHistoryPreTestItem";
 
-const page = () => {
+const Page = () => {
   const [isHaveModul, setIsHaveModul] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -156,4 +156,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

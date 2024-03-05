@@ -84,7 +84,12 @@ const dataSidebar = [
 
 // Add remaining code for the drawer, app bar, and menu items as needed
 
-const SideBar = forwardRef(({ showNav, isMobile }, ref) => {
+interface sideBarProps {
+  showNav: boolean;
+  isMobile?: boolean;
+}
+
+const SideBar = forwardRef(({ showNav, isMobile }: sideBarProps, ref) => {
   const pathName = usePathname();
   const checkUrl = () => {
     const arr = pathName.split("/");

@@ -35,7 +35,7 @@ detail_moduls = [
     latihan: "Latihan Modul Materi 4",
   },
 ];
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
 
   const handleChange = (
@@ -166,4 +166,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

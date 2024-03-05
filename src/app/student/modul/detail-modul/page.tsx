@@ -76,7 +76,7 @@ const checkStatus = (status: string) => {
   }
 };
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -249,4 +249,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

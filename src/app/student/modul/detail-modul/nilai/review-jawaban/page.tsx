@@ -114,7 +114,7 @@ const reviewJawaban: ReviewJawaban = {
   quiz: quiz,
 };
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("nilai");
 
   function onClickModulHome() {}
@@ -389,4 +389,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

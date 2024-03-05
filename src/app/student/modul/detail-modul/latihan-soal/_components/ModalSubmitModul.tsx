@@ -73,9 +73,9 @@ export default function ModalSubmitModul({
                   </div>
                   <h1 className="text-center text-xl font-bold">PERHATIAN!!</h1>
                   <p className="mb-4 text-center">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book.
+                    Lorem Ipsum has been the industry&apos;s standard dummy text
+                    ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book.
                   </p>
 
                   <div

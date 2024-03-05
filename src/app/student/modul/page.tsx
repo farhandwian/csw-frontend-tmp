@@ -107,7 +107,7 @@ const moduls = [
   },
 ];
 
-const page = () => {
+const Page = () => {
   return (
     <Studentlayout>
       {/* <Breadcrumbs /> */}
@@ -150,4 +150,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

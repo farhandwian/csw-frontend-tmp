@@ -5,7 +5,7 @@ import TableNilai from "@/app/student/modul/detail-modul/nilai/_components/Table
 import React, { useState } from "react";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("nilai");
 
   const handleChange = (
@@ -28,4 +28,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -57,8 +57,8 @@ export default function ModalSubmitModul({
           </div>
           <h1 className="text-center text-xl font-bold">PERHATIAN!!</h1>
           <p className="mb-4 text-center">
-            Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
+            Lorem Ipsum has been the industry&apos;s standard dummy text ever
+            since the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book.
           </p>
 
@@ -83,7 +83,6 @@ export default function ModalSubmitModul({
           <PrevButton
             className="bg-gray-400 text-white"
             onClick={() => onClose()}
-            variant="contained"
           >
             Kembali Ke Latihan Soal
           </PrevButton>
@@ -149,8 +148,8 @@ function ChildModal() {
 
           <h3 className="mb-2">
             Nilai akan langsung muncul dan kamu bisa melihatnya di halaman awal
-            latihan modul materi 1 Lorem Ipsum has been the industry's standard
-            dummy text ever since the 1500s
+            latihan modul materi 1 Lorem Ipsum has been the industry&apos;s
+            standard dummy text ever since the 1500s
           </h3>
 
           <form className="m-auto" action={navigate}>
@@ -171,7 +170,7 @@ function ChildModal() {
 const Backdrop = React.forwardRef<
   HTMLDivElement,
   { open?: boolean; className: string }
->((props, ref) => {
+>(function Backdrop(props, ref) {
   const { open, className, ...other } = props;
   return (
     <div
@@ -181,6 +180,8 @@ const Backdrop = React.forwardRef<
     />
   );
 });
+
+Backdrop.displayName = "Backdrop";
 
 const blue = {
   200: "#99CCFF",

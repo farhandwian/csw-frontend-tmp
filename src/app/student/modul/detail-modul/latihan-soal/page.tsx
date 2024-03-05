@@ -118,7 +118,7 @@ const quiz: Quiz = {
   ],
 };
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
   const [result, setResult] = useState(quiz);
@@ -269,4 +269,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -41,7 +41,7 @@ const tableColor = (matkul: string): TableColor => {
   }
 };
 
-const page = () => {
+const Page = () => {
   return (
     <StudentLayout>
       <>
@@ -476,4 +476,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

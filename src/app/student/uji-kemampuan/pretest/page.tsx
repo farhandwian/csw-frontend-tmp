@@ -5,7 +5,7 @@ import CircularProgress from "@/app/student/uji-kemampuan/pretest/_components/Ci
 import Image from "next/image";
 
 const percentage = 66;
-const page = () => {
+const Page = () => {
   return (
     <Studentlayout>
       {/* <Breadcrumbs /> */}
@@ -99,4 +99,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
