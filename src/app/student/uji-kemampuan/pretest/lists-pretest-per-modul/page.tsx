@@ -1,20 +1,19 @@
 "use client";
-import Studentlayout from "@/app/student/_components/layout";
 import Image from "next/image";
 import { useState } from "react";
 import CardPreTestItem from "./_components/CardPreTestItem";
 import { Pagination } from "flowbite-react";
 import CardHistoryPreTestItem from "./_components/CardHistoryPreTestItem";
-
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 const Page = () => {
   const [isHaveModul, setIsHaveModul] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   const onPageChange = (page: number) => setCurrentPage(page);
   return (
-    <Studentlayout>
-      {/* <Breadcrumbs /> */}
-      <section className="relative min-w-36 ">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+      <section className="relative min-w-36 p-4 md:p-5">
         <div className={`${!isHaveModul && "hidden"}`}>
           <h1>Pretest SKD Bagian TWK</h1>
           <h3>
@@ -152,7 +151,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 

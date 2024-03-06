@@ -30,7 +30,7 @@ const dataSidebar = [
     id: 1,
     label: "Uji Kemampuan",
     icon: <AssignmentAddIcon />,
-    path: "/student/uji-kemampuan",
+    path: "/student/uji-kemampuan/pretest",
   },
   {
     id: 2,

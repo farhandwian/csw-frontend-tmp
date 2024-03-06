@@ -1,15 +1,15 @@
-import React from "react";
-import Studentlayout from "@/app/student/_components/layout";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+"use client";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import CircularProgress from "@/app/student/uji-kemampuan/pretest/_components/CircularProgress/CircularProgress";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
 
 const percentage = 66;
 const Page = () => {
   return (
-    <Studentlayout>
-      {/* <Breadcrumbs /> */}
-      <section className="relative w-[100%]">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+      <section className="relative w-[100%]  p-4 md:p-5">
         <div className="mb-3">
           <h1 className="text-md font-bold">Pretest SKD</h1>
           <h2 className="text-sm">
@@ -95,7 +95,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 

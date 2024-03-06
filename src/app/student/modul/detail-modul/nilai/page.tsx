@@ -1,6 +1,6 @@
 "use client";
 
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import TableNilai from "@/app/student/modul/detail-modul/nilai/_components/TableNilai";
 import React, { useState } from "react";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";

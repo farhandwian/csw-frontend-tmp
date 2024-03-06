@@ -1,7 +1,7 @@
 "use client";
 
 import GlobalStyles from "@/app/Globals.module.css";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import InformationTable from "@/app/student/modul/detail-modul/nilai/review-jawaban/_components/InformationTableReviewJawaban";
 import {
   Quiz,

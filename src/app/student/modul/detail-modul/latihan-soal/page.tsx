@@ -3,7 +3,7 @@ import GlobalStyles from "@/app/Globals.module.css";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import QuestionNavigation from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionNavigation";
 import QuestionSection from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionSection";
 import useTimer from "@/app/student/modul/detail-modul/latihan-soal/_hooks/useTimer";

@@ -1,14 +1,15 @@
 "use client";
 
 import GlobalStyles from "@/app/Globals.module.css";
-import Studentlayout from "@/app/student/_components/layout";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 const Page = () => {
   return (
-    <Studentlayout isBreadCrumb={true}>
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
       <section className="relative p-4 md:p-5">
         <div className="flex flex-wrap">
           <div className="w-[100%] md:w-[60%]">
@@ -175,7 +176,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 

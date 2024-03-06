@@ -6,13 +6,9 @@ import { Transition } from "@headlessui/react";
 
 interface StudentLayoutProps {
   children?: ReactNode;
-  isBreadCrumb?: boolean;
 }
 
-export default function StudentLayout({
-  children,
-  isBreadCrumb,
-}: StudentLayoutProps) {
+export default function StudentLayout({ children }: StudentLayoutProps) {
   const [showNav, setShowNav] = useState(true);
   const [isMobile, setisMobile] = useState(false);
 

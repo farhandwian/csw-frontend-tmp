@@ -1,7 +1,7 @@
 "use client";
 
 import GlobalStyles from "@/app/Globals.module.css";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import LockIcon from "@mui/icons-material/Lock";
 import Checkbox from "@mui/material/Checkbox";
 import Image from "next/image";
