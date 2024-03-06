@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Button } from "flowbite-react";
-import { ClassNames } from "@emotion/react";
 
 interface BlueButtonProps {
   className?: string;
@@ -18,7 +17,7 @@ export const BlueButton = ({
   return (
     <Button
       onClick={onClick}
-      className={`ml-2 inline bg-pl-RoyalBlue text-white hover:!bg-[#0d6ed9] focus:ring-0 ${className}`}
+      className={` inline bg-pl-RoyalBlue text-white hover:!bg-[#0d6ed9] focus:ring-0 ${className}`}
       {...props}
     >
       {children}

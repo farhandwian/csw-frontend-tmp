@@ -6,6 +6,7 @@ import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 
 let detail_moduls: {
   materi: string;
@@ -46,8 +47,10 @@ const Page = () => {
   };
 
   return (
-    <Studentlayout isBreadCrumb={true}>
-      <section className="relative">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+
+      <section className="relative p-4 md:p-5">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -162,7 +165,7 @@ const Page = () => {
           Mulai Kerjakan
         </Button>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 

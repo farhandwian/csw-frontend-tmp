@@ -9,7 +9,7 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 const Page = () => {
   return (
     <Studentlayout isBreadCrumb={true}>
-      <section className="relative">
+      <section className="relative p-4 md:p-5">
         <div className="flex flex-wrap">
           <div className="w-[100%] md:w-[60%]">
             <h1 className={`text-lg text-[#267CDD]`}>

@@ -88,7 +88,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
           )}
 
           {activeQuestion !== questions.length - 1 && (
-            <BlueButton className="inline" onClick={handleNextClick}>
+            <BlueButton className="ml-2 inline" onClick={handleNextClick}>
               next
             </BlueButton>
           )}

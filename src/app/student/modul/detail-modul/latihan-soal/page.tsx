@@ -1,6 +1,6 @@
 "use client";
 import GlobalStyles from "@/app/Globals.module.css";
-import Studentlayout from "@/app/student/_components/layout";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
 import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
@@ -210,8 +210,10 @@ const Page = () => {
     number > 9 ? number : `0${number}`;
 
   return (
-    <Studentlayout isBreadCrumb={true}>
-      <section className="relative w-[100%]">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+
+      <section className="relative w-[100%] p-4 md:p-5">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -265,7 +267,7 @@ const Page = () => {
           onClose={onCloseModalSubmit}
         />
       </section>
-    </Studentlayout>
+    </>
   );
 };
 

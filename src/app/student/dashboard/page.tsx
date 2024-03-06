@@ -45,7 +45,7 @@ const Page = () => {
   return (
     <StudentLayout>
       <>
-        <section className="relative">
+        <section className="relative p-4 md:p-5">
           {dashboards.status === "newbie" && (
             <>
               <div className="relative mt-5 flex h-72 w-full items-center justify-center rounded-md border bg-pl-RedUserDahboard md:px-10 lg:w-full">
