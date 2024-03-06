@@ -8,7 +8,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import CancelIcon from "@mui/icons-material/Cancel";
 
-const CardPreTestItem = ({ isStillOpen }) => {
+const CardPreTestItem = ({ isStillOpen }: { isStillOpen: boolean }) => {
   return (
     <>
       <div className="relative px-3">

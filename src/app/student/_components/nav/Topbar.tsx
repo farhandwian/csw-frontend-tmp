@@ -26,7 +26,13 @@ const profiles = [
   },
 ];
 
-export default function TopBar({ showNav, setShowNav, isMobile }) {
+interface TopBarProps {
+  showNav: boolean;
+  setShowNav: (arg: boolean) => void;
+  isMobile: boolean;
+}
+
+export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
   return (
     <div
       className={`fixed ${

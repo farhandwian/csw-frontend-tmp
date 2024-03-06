@@ -6,7 +6,7 @@ const cleanPercentage = (percentage: number) => {
   return tooLow ? 0 : tooHigh ? 100 : +percentage;
 };
 
-const Circle = ({ colour, pct }) => {
+const Circle = ({ colour, pct = 0 }: { colour?: string; pct?: number }) => {
   const r = 25; // Mengubah nilai jari-jari lingkaran
   const circ = 2 * Math.PI * r;
   const strokePct = ((100 - pct) * circ) / 100;
@@ -25,7 +25,7 @@ const Circle = ({ colour, pct }) => {
   );
 };
 
-const Text = ({ percentage }) => {
+const Text = ({ percentage }: { percentage: number }) => {
   return (
     <text
       x="50%"
@@ -39,7 +39,13 @@ const Text = ({ percentage }) => {
   );
 };
 
-const Pie = ({ percentage, colour }) => {
+const Pie = ({
+  percentage,
+  colour,
+}: {
+  percentage: number;
+  colour: string;
+}) => {
   const pct = cleanPercentage(percentage);
   return (
     <svg

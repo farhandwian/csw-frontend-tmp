@@ -174,7 +174,7 @@ const Page = () => {
     }
   };
 
-  const onOptionSelected = (option, index) => {
+  const onOptionSelected = (option: Option, index: number) => {
     const updateResult = { ...result };
     // Mengganti userAnswer pada pertanyaan yang sedang aktif
     updateResult.questions[activeQuestion].userAnswer = option.letter;

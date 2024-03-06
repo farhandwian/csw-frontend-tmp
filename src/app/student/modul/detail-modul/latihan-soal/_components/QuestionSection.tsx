@@ -43,7 +43,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
     }
   };
 
-  const handleOptionSelected = (option, index) => {
+  const handleOptionSelected = (option: Option, index: number) => {
     return () => {
       onOptionSelected(option, index);
     };
