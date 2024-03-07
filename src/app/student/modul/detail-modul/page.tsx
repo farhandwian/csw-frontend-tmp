@@ -1,16 +1,12 @@
 "use client";
 
-import StudentLayout from "@/app/student/_components/layout";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
-import React, { useState } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import GlobalStyles from "@/app/Globals.module.css";
-import Checkbox from "@mui/material/Checkbox";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import LockIcon from "@mui/icons-material/Lock";
+import Checkbox from "@mui/material/Checkbox";
+import Image from "next/image";
+import React, { useState } from "react";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 
 let detail_moduls: {
   materi: string;
@@ -76,7 +72,7 @@ const checkStatus = (status: string) => {
   }
 };
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -86,8 +82,9 @@ const page = () => {
   };
 
   return (
-    <StudentLayout isBreadCrumb={true}>
-      <section className="relative z-10">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+      <section className="relative z-10 p-4 md:p-5">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -245,8 +242,8 @@ const page = () => {
           ))}
         </div>
       </section>
-    </StudentLayout>
+    </>
   );
 };
 
-export default page;
+export default Page;

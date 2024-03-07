@@ -1,19 +1,14 @@
 "use client";
 import { useState, useEffect, Fragment, ReactNode } from "react";
-import SideBar from "./nav/Sidebar";
-import TopBar from "./nav/Topbar";
+import SideBar from "./_components/nav/Sidebar";
+import TopBar from "./_components/nav/Topbar";
 import { Transition } from "@headlessui/react";
-import Breadcrumbs from "./Breadcrumbs";
 
 interface StudentLayoutProps {
   children?: ReactNode;
-  isBreadCrumb?: boolean;
 }
 
-export default function StudentLayout({
-  children,
-  isBreadCrumb,
-}: StudentLayoutProps) {
+export default function StudentLayout({ children }: StudentLayoutProps) {
   const [showNav, setShowNav] = useState(true);
   const [isMobile, setisMobile] = useState(false);
 
@@ -57,9 +52,7 @@ export default function StudentLayout({
           showNav && !isMobile ? "pl-56" : ""
         }`}
       >
-        {isBreadCrumb && <Breadcrumbs widthReduction={"54px"} />}
-
-        <div className="p-4 md:p-5">{children}</div>
+        <div className="">{children}</div>
       </main>
     </>
   );

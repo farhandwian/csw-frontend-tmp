@@ -1,15 +1,16 @@
 "use client";
 
 import GlobalStyles from "@/app/Globals.module.css";
-import Studentlayout from "@/app/student/_components/layout";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import Image from "next/image";
 import Link from "next/link";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 
-const page = () => {
+const Page = () => {
   return (
-    <Studentlayout isBreadCrumb={true}>
-      <section className="relative">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+      <section className="relative p-4 md:p-5">
         <div className="flex flex-wrap">
           <div className="w-[100%] md:w-[60%]">
             <h1 className={`text-lg text-[#267CDD]`}>
@@ -90,9 +91,9 @@ const page = () => {
             </h1>
             <p className={`text-sm font-semibold text-[#64748B]`}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book...
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book...
             </p>
 
             <div className="mt-6 w-[100%] rounded-md border-2 p-3">
@@ -175,8 +176,8 @@ const page = () => {
           </div>
         </div>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 
-export default page;
+export default Page;

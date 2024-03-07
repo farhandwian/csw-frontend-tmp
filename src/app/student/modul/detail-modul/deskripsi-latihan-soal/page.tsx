@@ -1,11 +1,10 @@
 "use client";
-
-import Studentlayout from "@/app/student/_components/layout";
 import React, { useState } from "react";
 import GlobalStyles from "@/app/Globals.module.css";
 import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 
 let detail_moduls: {
   materi: string;
@@ -35,7 +34,7 @@ detail_moduls = [
     latihan: "Latihan Modul Materi 4",
   },
 ];
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
 
   const handleChange = (
@@ -46,8 +45,10 @@ const page = () => {
   };
 
   return (
-    <Studentlayout isBreadCrumb={true}>
-      <section className="relative">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+
+      <section className="relative p-4 md:p-5">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -162,8 +163,8 @@ const page = () => {
           Mulai Kerjakan
         </Button>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 
-export default page;
+export default Page;

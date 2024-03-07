@@ -14,7 +14,7 @@ export default function App() {
   });
 
   const generateRandomValues = () => {
-    const rand = (n) => Math.random() * n;
+    const rand = (n: number) => Math.random() * n;
     setRandom({
       percentage: rand(100),
       colour: `hsl(${rand(360)}, ${rand(50) + 50}%, ${rand(30) + 20}%)`,

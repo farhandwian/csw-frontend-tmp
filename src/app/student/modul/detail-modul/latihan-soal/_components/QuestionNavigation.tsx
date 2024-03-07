@@ -5,6 +5,8 @@ import {
   Quiz,
 } from "@/app/student/modul/detail-modul/latihan-soal/page";
 
+import Image from "next/image";
+
 interface QuestionNavigationProps {
   result: Quiz;
   activeQuestion: number;
@@ -58,7 +60,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
     <div className="ml-2 w-[92%] rounded-sm border-2 bg-white">
       <div className="flex justify-between gap-1 p-3">
         <div>
-          <img
+          <Image
             width={60}
             height={60}
             src="/img/uji-kemampuan/ic_navigation.png"

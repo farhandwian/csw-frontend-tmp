@@ -1,18 +1,21 @@
 "use client";
 
-import Studentlayout from "@/app/student/_components/layout";
 import GlobalStyles from "@/app/Globals.module.css";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import InformationTable from "@/app/student/modul/detail-modul/nilai/review-jawaban/_components/InformationTableReviewJawaban";
-import React, { useState } from "react";
-import Image from "next/image";
-import { v4 as uuidv4 } from "uuid";
-import Divider from "@mui/material/Divider";
+import {
+  Quiz,
+  ReviewJawaban,
+} from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
 import SubmitButton from "@/components/Button/GreenButton";
-import { ReviewJawaban } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
-import { Quiz } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
+import BlueButton from "@/components/Button/BlueButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import Divider from "@mui/material/Divider";
+import Image from "next/image";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 
 const quiz: Quiz = {
   id: "1",
@@ -114,7 +117,7 @@ const reviewJawaban: ReviewJawaban = {
   quiz: quiz,
 };
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("nilai");
 
   function onClickModulHome() {}
@@ -128,12 +131,13 @@ const page = () => {
     setAlignment(newAlignment);
   };
   return (
-    <Studentlayout isBreadCrumb={true}>
-      <ModulFAB
-        alignment={alignment}
-        handleChange={(e) => handleChange(e, alignment)}
-      ></ModulFAB>
-      <section className="relative">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+      <section className="relative p-4 md:p-5">
+        <ModulFAB
+          alignment={alignment}
+          handleChange={(e) => handleChange(e, alignment)}
+        ></ModulFAB>
         <div className="mb-3 flex">
           <div className="w-[80%]">
             <InformationTable reviewJawaban={reviewJawaban} />
@@ -331,17 +335,16 @@ const page = () => {
             {/* akhir section soal */}
 
             <div className="mt-3 flex justify-between">
-              <Button
-                className="ml-2 bg-pl-RoyalBlue text-white"
+              <BlueButton
+                className="ml-2 bg-pl-RoyalBlue  text-white"
                 onClick={() => onClickModulHome()}
-                variant="contained"
               >
-                <ArrowBackIosIcon style={{ fontSize: 15 }} /> Modul Home
-              </Button>
+                {" "}
+                Modul Home
+              </BlueButton>
               <SubmitButton
-                className="bg-pl-GreenButton text-white"
+                className="mx-0 bg-pl-GreenButton text-white"
                 onClick={() => onClickFinish()}
-                variant="contained"
               >
                 Finish Review
               </SubmitButton>
@@ -385,8 +388,8 @@ const page = () => {
           </div>
         </div>
       </section>
-    </Studentlayout>
+    </>
   );
 };
 
-export default page;
+export default Page;

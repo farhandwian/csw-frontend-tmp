@@ -4,7 +4,7 @@ import MateriModulLayout from "@/app/student/modul/detail-modul/materi-modul/_co
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import MateriTerkunciAlert from "./_components/MateriTerkunciAlert";
 
-const page = () => {
+const Page = () => {
   return (
     <MateriModulLayout>
       <MateriTerkunciAlert />
@@ -67,4 +67,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

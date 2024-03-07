@@ -1,9 +1,9 @@
 "use client";
 import GlobalStyles from "@/app/Globals.module.css";
-import Studentlayout from "@/app/student/_components/layout";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
 import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
-import ModulFAB from "@/app/student/modul/detail-modul/latihan-soal/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import QuestionNavigation from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionNavigation";
 import QuestionSection from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionSection";
 import useTimer from "@/app/student/modul/detail-modul/latihan-soal/_hooks/useTimer";
@@ -118,7 +118,7 @@ const quiz: Quiz = {
   ],
 };
 
-const page = () => {
+const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
   const [result, setResult] = useState(quiz);
@@ -174,7 +174,7 @@ const page = () => {
     }
   };
 
-  const onOptionSelected = (option, index) => {
+  const onOptionSelected = (option: Option, index: number) => {
     const updateResult = { ...result };
     // Mengganti userAnswer pada pertanyaan yang sedang aktif
     updateResult.questions[activeQuestion].userAnswer = option.letter;
@@ -210,8 +210,10 @@ const page = () => {
     number > 9 ? number : `0${number}`;
 
   return (
-    <Studentlayout isBreadCrumb={true}>
-      <section className="relative w-[100%]">
+    <>
+      <Breadcrumbs widthReduction={"54px"} />
+
+      <section className="relative w-[100%] p-4 md:p-5">
         <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
@@ -265,8 +267,8 @@ const page = () => {
           onClose={onCloseModalSubmit}
         />
       </section>
-    </Studentlayout>
+    </>
   );
 };
 
-export default page;
+export default Page;
