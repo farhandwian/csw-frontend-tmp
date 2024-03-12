@@ -53,7 +53,7 @@ const SideTopbarMateriModul = ({
       <div
         className={`fixed z-20 h-12 ${isShowNavDashboard && !isMobile ? "w-[calc(100%-14rem)]" : "w-[100%]"} ${
           isShowNavDashboard && "right-0"
-        }`}
+        } transition-all duration-[400ms]`}
       >
         <div className="flex h-12 w-[100%] items-center justify-between bg-white shadow-md">
           {/* hamburger button */}
