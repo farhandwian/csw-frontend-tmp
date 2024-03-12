@@ -34,7 +34,6 @@ const SearchModal = ({ open, handleOpen, handleClose }: SearchModalProps) => {
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
     // Handle the search logic here
-    console.log(searchTerm);
   };
   return (
     <div style={{ textAlign: "center" }}>

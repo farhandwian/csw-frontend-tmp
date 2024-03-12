@@ -101,7 +101,7 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
     return (
       <div
         ref={ref}
-        className="w-30 fixed z-20 mt-16 h-[37.5rem]  overflow-y-scroll bg-white text-xs shadow-sm md:mt-0 md:h-full md:w-56 md:text-sm"
+        className="fixed z-20 mt-16 h-[37.5rem] w-32  overflow-y-scroll bg-white text-xs shadow-sm md:mt-0 md:h-full md:w-56 md:text-sm"
       >
         <div className="mb-3 mt-1 flex justify-center md:mt-6">
           {/* profile jika sidebar terbuka */}

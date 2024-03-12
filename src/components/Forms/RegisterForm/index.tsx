@@ -1,11 +1,25 @@
 // RegisterForm.tsx
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../Input";
 import Button from "../../Button";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@/store";
+import { registerUser } from "@/store/auth/authActions";
+import { Alert } from "flowbite-react";
+
+import { HiInformationCircle } from "react-icons/hi";
+import { Spinner } from "flowbite-react";
+
+import { useRouter } from "next/navigation";
 
 const RegisterForm: React.FC = () => {
+  const { loading, userInfo, error, success } = useAppSelector(
+    (state) => state.auth,
+  );
+  const dispatch = useDispatch<AppDispatch>();
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -36,14 +50,33 @@ const RegisterForm: React.FC = () => {
       konfPassword: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log("Login submitted with values:", values);
+    onSubmit: (data) => {
+      console.log("Register submitted with values:", data);
       // Add your login logic here
+
+      // check if passwords match
+      if (data.password !== data.konfPassword) {
+        alert("Password mismatch");
+      }
+      dispatch(registerUser(data));
     },
   });
+  const router = useRouter();
+
+  useEffect(() => {
+    // redirect user to login page if registration was successful
+    if (success) router.push("/login");
+    // redirect authenticated user to profile screen
+    if (userInfo) router.push("/user-profile");
+  }, [router, userInfo, success]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      {error && (
+        <Alert color="failure" icon={HiInformationCircle}>
+          <span className="font-medium">Info alert!</span> {error}
+        </Alert>
+      )}
       <div className="grid grid-cols-2 gap-x-8 gap-y-4">
         <Input
           placeHolder="Masukkan Nama Anda"
@@ -145,7 +178,7 @@ const RegisterForm: React.FC = () => {
           touched={formik.touched.kelas || false}
         />
       </div>
-      <Button type="submit">Daftar</Button>
+      <Button type="submit">{loading ? <Spinner /> : "Register"}</Button>
     </form>
   );
 };
