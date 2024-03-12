@@ -6,6 +6,7 @@ import { useState } from "react";
 import SearchModal from "../SearchModal";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
+import { AppDispatch, useAppSelector } from "@/store";
 
 interface SidebarMateriModulProps {
   sidebar: boolean;
@@ -20,6 +21,11 @@ const SideTopbarMateriModul = ({
   subnav,
   showSubnav,
 }: SidebarMateriModulProps) => {
+  const isShowNavDashboard = useAppSelector((state) => state.layout.showNav);
+  const isMobile = useAppSelector((state) => state.layout.isMobile);
+
+  console.log("ini didalam sidebar materimodul" + isShowNavDashboard);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -27,11 +33,29 @@ const SideTopbarMateriModul = ({
   const handleClose = () => {
     setOpen(false);
   };
+
+  const sidebarPosition = () => {
+    if (!isShowNavDashboard && sidebar) {
+      return "left-0";
+    } else if (isShowNavDashboard && sidebar) {
+      return "left-56";
+    } else if (isShowNavDashboard && !sidebar) {
+      return "-left-full";
+    } else if (!isShowNavDashboard && !sidebar) {
+      return "-left-full";
+    }
+  };
+
+  console.log("ini sidebarPosition() " + sidebarPosition());
   return (
     <div className="text-md">
       {/* TOPBAR */}
-      <div className="fixed z-20 h-12 w-[100%]">
-        <div className="flex h-12 items-center justify-between bg-white shadow-md">
+      <div
+        className={`fixed z-20 h-12 ${isShowNavDashboard && !isMobile ? "w-[calc(100%-14rem)]" : "w-[100%]"} ${
+          isShowNavDashboard && "right-0"
+        }`}
+      >
+        <div className="flex h-12 w-[100%] items-center justify-between bg-white shadow-md">
           {/* hamburger button */}
           <div className="ml-4 mr-3 cursor-pointer" onClick={showSidebar}>
             {sidebar ? <CloseIcon /> : <MenuIcon />}
@@ -58,9 +82,7 @@ const SideTopbarMateriModul = ({
       {/* END TOPBAR */}
       {/* SIDEBAR */}
       <nav
-        className={`fixed top-12 z-10 h-screen w-64 overflow-x-hidden text-wrap bg-white shadow-lg transition-all ${
-          sidebar ? "left-0" : "-left-full"
-        }`}
+        className={`fixed top-12 z-10 h-screen w-64 overflow-x-hidden text-wrap bg-white shadow-lg transition-all ${sidebarPosition()}`}
         style={{ overflowWrap: "break-word" }}
       >
         <div className="p-3">

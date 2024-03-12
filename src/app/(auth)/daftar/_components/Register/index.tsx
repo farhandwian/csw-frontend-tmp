@@ -1,3 +1,4 @@
+"use client";
 import RegisterForm from "../../../../../components/Forms/RegisterForm";
 import HeroImage from "../../../../../components/HeroImage";
 import Image from "next/image";

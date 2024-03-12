@@ -1,14 +1,13 @@
 "use client";
-import React, { ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 import SideTopbarMateriModul from "./nav/SideTopBarMateriModul";
-
 interface MateriModulLayoutProps {
   children?: ReactNode;
 }
 
 const MateriModulLayout = ({ children }: MateriModulLayoutProps) => {
+  // materi modul layout sidebar state
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
   const [subnav, setSubnav] = useState(false);
 
