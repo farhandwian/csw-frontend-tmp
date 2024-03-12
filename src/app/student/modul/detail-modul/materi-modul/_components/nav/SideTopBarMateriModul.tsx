@@ -24,8 +24,6 @@ const SideTopbarMateriModul = ({
   const isShowNavDashboard = useAppSelector((state) => state.layout.showNav);
   const isMobile = useAppSelector((state) => state.layout.isMobile);
 
-  console.log("ini didalam sidebar materimodul" + isShowNavDashboard);
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -46,7 +44,6 @@ const SideTopbarMateriModul = ({
     }
   };
 
-  console.log("ini sidebarPosition() " + sidebarPosition());
   return (
     <div className="text-md">
       {/* TOPBAR */}

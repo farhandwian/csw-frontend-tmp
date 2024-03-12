@@ -89,68 +89,6 @@ interface UserLoginArgs {
   password: string;
 }
 
-// export const userLogin = createAsyncThunk(
-//   "auth/login",
-//   async ({ email, password }: UserLoginArgs, { rejectWithValue }) => {
-//     try {
-//       // configure header's Content-Type as JSON
-//       const config = {
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       };
-//       // const { data } = await axios.post(
-//       //   `${backendURL}/api/v1/account/login`,
-//       //   { email, password },
-//       //   config,
-//       // );
-
-//       // const data = fetch("https://dummyjson.com/auth/login", {
-//       //   method: "POST",
-//       //   headers: { "Content-Type": "application/json" },
-//       //   body: JSON.stringify({
-//       //     username: "kminchelle",
-//       //     password: "0lelplR",
-//       //     // expiresInMins: 60, // optional
-//       //   }),
-//       // })
-//       //   .then((res) => res.json())
-//       //   .then(console.log);
-
-//       // try {
-//       //   const response = await axios.post("https://dummyjson.com/auth/login", {
-//       //     username: "kminchelle",
-//       //     password: "0lelplR",
-//       //     // expiresInMins: 60, // optional
-//       //   });
-
-//       //   console.log(response.data);
-//       //   return response;
-//       // } catch (error) {
-//       //   console.error("An error occurred:", error);
-//       // }
-
-//       const response = await axios.post("https://dummyjson.com/auth/login", {
-//         username: "kminchelle",
-//         password: "0lelplR",
-//         // expiresInMins: 60, // optional
-//       });
-
-//       console.log(response.data);
-//       return response;
-//       // store user's token in local storage
-//       // localStorage.setItem("userToken", data.token);
-//     } catch (error: any) {
-//       // return custom error message from API if any
-//       if (error.response && error.response.data.message) {
-//         return rejectWithValue(error.response.data.message);
-//       } else {
-//         return rejectWithValue(error.message);
-//       }
-//     }
-//   },
-// );
-
 interface UserLoginDataFromResponse {
   id: number;
   username: string;
@@ -191,9 +129,7 @@ export const userLogin = createAsyncThunk(
       });
 
       const transformedResponse = transformLoginData(response.data);
-      console.log(
-        "ini transformedResponsenya di authactions" + transformedResponse,
-      );
+
       return transformedResponse;
     } catch (error: any) {
       if (error.response && error.response.data.message) {

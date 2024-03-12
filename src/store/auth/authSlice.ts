@@ -40,9 +40,7 @@ const authSlice = createSlice({
     });
     builder.addCase(registerUser.fulfilled, (state) => {
       state.loading = false;
-      state.success = true; // registration successful
-      console.log("ini statenya");
-      console.log(state);
+      state.success = true;
     });
     builder.addCase(
       registerUser.rejected,
@@ -66,12 +64,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.userInfo = action.payload.userInfo;
         state.userToken = action.payload.userToken;
-        // console.log("ini statenya di authslice   " + state);
-        console.log("Login successful!"); // Informative message
-        console.log(
-          "ini statenya di authslice  ,State after login:",
-          JSON.stringify(state, null, 2),
-        ); // Log state with formatting
       },
     );
     builder.addCase(
