@@ -101,7 +101,9 @@ export default function ModalSubmitModul({
                   <GrayButton onClick={closeModal}>
                     Kembali Ke Latihan Soal
                   </GrayButton>
-                  <GreenButton onClick={closeModal}>SUBMIT</GreenButton>
+                  <GreenButton onClick={closeModal} className="mx-auto mt-3">
+                    SUBMIT
+                  </GreenButton>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

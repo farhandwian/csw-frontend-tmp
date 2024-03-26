@@ -4,11 +4,11 @@ import ModalSubmitModul from "@/app/student/_components/CBT/ModalSubmitModul";
 import QuestionNavigation from "@/app/student/_components/CBT/QuestionNavigation";
 import QuestionSection from "@/app/student/_components/CBT/QuestionSection";
 import React, { useState, createContext, useContext, useEffect } from "react";
-import useTimer from "@/app/student/modul/detail-modul/latihan-soal/_hooks/useTimer";
+import useTimer from "@/hooks/useTimer";
 import {
   Option,
   Quiz,
-} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
+} from "@/app/student/_components/CBT/_interface/interface";
 
 interface CBTProps {
   quiz: Quiz;
@@ -126,7 +126,7 @@ const CBT = ({ quiz }: CBTProps) => {
   return (
     <TipeUjianContext.Provider value={navigasiSoalType}>
       <div className="flex">
-        <div className="w-[80%]">
+        <div className="w-[70%]">
           <InformationQuiz
             {...{
               addLeadingZero,
@@ -150,7 +150,7 @@ const CBT = ({ quiz }: CBTProps) => {
             }}
           />
         </div>
-        <div className="w-[20%]">
+        <div className="w-[30%]">
           <QuestionNavigation
             {...{
               result,

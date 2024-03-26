@@ -1,7 +1,7 @@
 import {
   Option,
   Quiz,
-} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
+} from "@/app/student/_components/CBT/_interface/interface";
 import { v4 as uuidv4 } from "uuid";
 
 export const quizDikit: Quiz = {

@@ -3,7 +3,7 @@ import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import {
   Question,
   Quiz,
-} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
+} from "@/app/student/_components/CBT/_interface/interface";
 import { TipeUjianContext } from "@/app/student/_components/CBT/CBT";
 import { useContext } from "react";
 import Image from "next/image";
@@ -60,7 +60,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
 
   return (
     <div className="ml-2 w-[92%] rounded-md border-2 bg-white">
-      <div className="flex justify-between gap-1 p-3 shadow-md">
+      <div className="flex justify-between gap-2 p-3 shadow-md">
         <div>
           <Image
             width={60}
@@ -71,13 +71,14 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
           />
         </div>
 
-        <div className="ml-3">
-          <h1>NAVIGASI LATIHAN {tipeUjianContext}</h1>
+        <div className="">
+          <h1 className="font-semibold">NAVIGASI LATIHAN</h1>
+          <h1>Latihan Soal Matematika Paket 1</h1>
         </div>
       </div>
 
-      <div className="flex justify-center py-3">
-        <div className="grid w-[90%] grid-cols-4 gap-2">
+      <div className=" flex justify-center overflow-hidden py-3">
+        <div className="grid max-h-[17rem] w-[90%] grid-cols-5 gap-2 overflow-y-scroll pr-2">
           {result.questions.map((question, index) => (
             <button
               key={index}

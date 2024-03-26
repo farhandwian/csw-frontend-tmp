@@ -6,7 +6,7 @@ import {
   Question,
   Quiz,
   Option,
-} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
+} from "@/app/student/_components/CBT/_interface/interface";
 
 interface QuestionSectionProps {
   activeQuestion: number;

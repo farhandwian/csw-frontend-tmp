@@ -1,12 +1,11 @@
 "use client";
-import GlobalStyles from "@/app/Globals.module.css";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
-import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import CBT from "@/app/student/_components/CBT/CBT";
-import { quizBanyak } from "@/app/student/modul/detail-modul/latihan-soal/dummyData/data";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
+import { quizDikit } from "@/app/student/_components/CBT/dummyData/data";
 import React, { useState } from "react";
 
-const quiz = quizBanyak;
+const quiz = quizDikit;
 
 const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
@@ -26,9 +25,7 @@ const Page = () => {
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
         ></ModulFAB>
-        <h1
-          className={`${GlobalStyles["bold-3xl-typography"]} text-tp-Gunmetal`}
-        >
+        <h1 className={`text-[1.75rem] leading-normal text-tp-Gunmetal`}>
           Latihan Modul Materi 1 Pancasila
         </h1>
         <CBT quiz={quiz} />
