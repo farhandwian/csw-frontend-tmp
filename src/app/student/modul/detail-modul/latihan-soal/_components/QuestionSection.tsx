@@ -6,7 +6,7 @@ import {
   Question,
   Quiz,
   Option,
-} from "@/app/student/modul/detail-modul/latihan-soal/page";
+} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
 
 interface QuestionSectionProps {
   activeQuestion: number;
@@ -50,7 +50,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
   };
 
   return (
-    <div className="bg-white-400 w-[100%] rounded-2xl border-2 p-4">
+    <div className="w-[100%] rounded-2xl border-2 bg-white p-4">
       <h2 className="mb-2">{question}</h2>
       <div>
         {options.map((option, index) => (
@@ -61,7 +61,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
               option.letter === result.questions[activeQuestion].userAnswer
                 ? "border-green-400"
                 : ""
-            }`}
+            } cursor-pointer`}
           >
             <div
               className={`inline-block rounded-l-sm px-3 ${

@@ -1,15 +1,13 @@
 "use client";
 
 import GlobalStyles from "@/app/Globals.module.css";
-import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import Image from "next/image";
 import Link from "next/link";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 const Page = () => {
   return (
     <>
-      <Breadcrumbs widthReduction={"54px"} />
       <section className="relative p-4 md:p-5">
         <div className="flex flex-wrap">
           <div className="w-[100%] md:w-[60%]">

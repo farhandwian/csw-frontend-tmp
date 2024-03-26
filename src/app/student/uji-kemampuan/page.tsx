@@ -1,40 +1,61 @@
+// ini adalah page uji kemampuan latihan soal
 "use client";
-import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
-import CircularProgress from "@/app/student/uji-kemampuan/pretest/_components/CircularProgress/CircularProgress";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
-import UjiKemampuanNavigationTest from "../_components/UjiKemampuanNavigationTest";
 
 const percentage = 66;
 
+const color = [
+  "#E5E5FE",
+  "#E3F3FF",
+  "#FFDDCF",
+  "#FFF1B6",
+  "#FFFFFF",
+  "#F4F2EE",
+];
+
 const srcItemCards = [
   {
-    color: "#D9A720",
-    iconColor: "#F9BF3B",
+    color: "#E5E5FE",
+    iconColor: "#D7D5FC",
     iconImageUrl: "/img/uji-kemampuan/latihan-soal/ic_uji_1.png",
   },
   {
-    color: "#9C67F5",
-    iconColor: "#3F51B5",
+    color: "#E3F3FF",
+    iconColor: "#D7EAFF",
     iconImageUrl: "/img/uji-kemampuan/latihan-soal/ic_uji_2.png",
   },
   {
-    color: "#E55CA1",
-    iconColor: "#F48891",
+    color: "#FFDDCF",
+    iconColor: "#F8CFC2",
     iconImageUrl: "/img/uji-kemampuan/latihan-soal/ic_uji_3.png",
   },
   {
-    color: "#FF7244",
-    iconColor: "#D42E35",
+    color: "#FFF1B6",
+    iconColor: "#FDE47D",
     iconImageUrl: "/img/uji-kemampuan/latihan-soal/ic_uji_4.png",
   },
+  {
+    color: "#FFFFFF",
+    iconColor: "#F6F6F6",
+    iconImageUrl: "/img/uji-kemampuan/latihan-soal/ic_uji_5.png",
+  },
+  {
+    color: "#F4F2EE",
+    iconColor: "#E9E4DA",
+    iconImageUrl: "/img/uji-kemampuan/latihan-soal/ic_uji_6.png",
+  },
 ];
+
 const Page = () => {
   return (
     <>
+      {/* <UjiKemampuanNavigationTest />
+      <UjiKemampuanNavigationModul />
+      <Breadcrumbs widthReduction={"54px"} fontSize="7px" /> */}
       <section className="relative w-[100%]  p-4 md:p-5">
         <div className="mb-3">
-          <h1 className="text-md font-bold">Pretest SKD</h1>
+          <h1 className="text-md font-bold">Paket Latihan Soal Matematika</h1>
           <h2 className="text-sm">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.{" "}
@@ -49,56 +70,45 @@ const Page = () => {
                 <div
                   key={index}
                   style={{ backgroundColor: srcItemCard.color }}
-                  className={`rounded-md px-6 pb-2 pt-6`}
+                  className=" rounded-md px-6 pb-2 pt-3"
                 >
-                  <div className="mb-3 flex justify-between text-sm">
-                    <h3>TWK </h3>
-                    <ArrowCircleRightIcon sx={{ color: "white" }} />
+                  <Image
+                    src={srcItemCard.iconImageUrl}
+                    alt="ic-banner"
+                    width={165}
+                    height={165}
+                    className="mt-1 inline h-[2.3rem] w-[2.3rem]"
+                  />
+
+                  <div className="my-6">
+                    <h1 className="text-base font-semibold text-[#F9BF3B]">
+                      Latihan Soal
+                    </h1>
+                    <h1 className="text-lg font-bold">Paket {index + 1}</h1>
+                    <p className="text-xs">
+                      Berisi tentang latihan soal matematika yang dapat
+                      dikerjakan berkali - kali
+                    </p>
                   </div>
 
-                  <h1 className="text-md font-bold">
-                    Wawasan Seputar Kebangsaan
-                  </h1>
-                  <h3 className="text-xs">36 Pertemuan | 36 Pretest</h3>
                   <div className="flex justify-between">
-                    <div className="w-[50%]">
-                      <CircularProgress colour={srcItemCard.iconColor} />
-                      <div className="ml-3 min-h-5 w-fit rounded-md bg-white p-1 shadow-md">
-                        <h3 className="text-xs">
-                          <Image
-                            src={"/img/uji-kemampuan/pretest/ic_pretest_1.png"}
-                            width={165}
-                            height={165}
-                            alt="ic-banner"
-                            className="mr-1 inline h-[1.3rem] w-[1.3rem]"
-                          />
-                          18 of 36
-                        </h3>
-                      </div>
-                    </div>
-                    <div className="50%">
-                      <Image
-                        src={"/img/uji-kemampuan/pretest/img_pretest_1.png"}
-                        width={165}
-                        height={165}
-                        alt="ic-banner"
-                        className="ml-3 h-[9.3rem] w-[9.3rem]"
-                      />
-                    </div>
+                    <h3>40 Soal</h3>
+                    <ArrowCircleRightIcon sx={{ color: "black" }} />
                   </div>
                 </div>
               ))}
             </div>
           </div>
+          {/* papan informasi */}
           <div className="w-[30%]">
             <div className="ml-5 h-[22.5rem] max-w-[23rem] rounded-md bg-white shadow-md">
               <div className="flex h-[20%] p-2 shadow-md">
                 <div className="mr-2 w-[20%]">
                   <Image
                     src={"/img/uji-kemampuan/ic_info_uji.png"}
+                    alt="ic-banner"
                     width={165}
                     height={165}
-                    alt="ic-banner"
                     className="mt-1 inline h-[2.3rem] w-[2.3rem]"
                   />
                 </div>

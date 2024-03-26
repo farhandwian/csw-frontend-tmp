@@ -39,7 +39,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
         showNav && !isMobile ? "w-[calc(100%-14rem)]" : "w-[100%]"
       }  ${
         showNav && "right-0"
-      } z-[100] flex h-16 items-center justify-between bg-white shadow-md transition-all duration-[400ms]`}
+      } z-[100] flex h-16 items-center justify-between border-b-[1px]  bg-white transition-all duration-[400ms]`}
     >
       <div className="flex items-center pl-4 md:pl-4">
         {/* <Bars3CenterLeftIcon

@@ -3,8 +3,9 @@ import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import {
   Question,
   Quiz,
-} from "@/app/student/modul/detail-modul/latihan-soal/page";
-
+} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
+import { TipeUjianContext } from "@/app/student/modul/detail-modul/latihan-soal/_components/QuizController";
+import { useContext } from "react";
 import Image from "next/image";
 
 interface QuestionNavigationProps {
@@ -18,6 +19,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
   activeQuestion,
   onClickNavigation,
 }) => {
+  const tipeUjianContext = useContext(TipeUjianContext);
   const checkColorNavigation = (question: Question, index: number) => {
     let style: string = "";
     if (question.noSoal === activeQuestion + 1) {
@@ -57,8 +59,8 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
   };
 
   return (
-    <div className="ml-2 w-[92%] rounded-sm border-2 bg-white">
-      <div className="flex justify-between gap-1 p-3">
+    <div className="ml-2 w-[92%] rounded-md border-2 bg-white">
+      <div className="flex justify-between gap-1 p-3 shadow-md">
         <div>
           <Image
             width={60}
@@ -70,11 +72,11 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
         </div>
 
         <div className="ml-3">
-          <h1>NAVIGASI LATIHAN</h1>
+          <h1>NAVIGASI LATIHAN {tipeUjianContext}</h1>
         </div>
       </div>
 
-      <div className="flex justify-center py-1">
+      <div className="flex justify-center py-3">
         <div className="grid w-[90%] grid-cols-4 gap-2">
           {result.questions.map((question, index) => (
             <button

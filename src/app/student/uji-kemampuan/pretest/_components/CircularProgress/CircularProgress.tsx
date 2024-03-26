@@ -7,7 +7,10 @@ interface CircularProgressProps {
   percentage?: number;
 }
 
-export default function App() {
+export default function CircularProgress({
+  colour = "D9A720",
+  percentage,
+}: CircularProgressProps) {
   const [random, setRandom] = useState({
     percentage: 0,
     colour: "hsl(0, 0%, 0%)",
@@ -24,7 +27,7 @@ export default function App() {
   return (
     <>
       {/* <Pie percentage={random.percentage} colour={random.colour} /> */}
-      <Pie percentage={85} colour="#F9BF3B" />
+      <Pie percentage={85} colour={colour} />
       {/* other examples... */}
       {/* <Pie percentage={43.6} colour="#3e0" />
       <Pie percentage={"63"} colour="hsl(0,95%,40%)" />

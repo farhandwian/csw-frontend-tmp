@@ -16,8 +16,8 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
   const [showNavLocal, setShowNavLocal] = useState(true);
   const [isMobileLocal, setIsMobileLocal] = useState(false);
 
-  const showNav = useAppSelector((state) => state.layout.showNav);
-  const isMobile = useAppSelector((state) => state.layout.isMobile);
+  const showNav = useAppSelector((state) => state.studentLayout.showNav);
+  const isMobile = useAppSelector((state) => state.studentLayout.isMobile);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -71,7 +71,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
           showNavLocal && !isMobileLocal ? "pl-56" : ""
         }`}
       >
-        <div className="">{children}</div>
+        <div className="bg-[#FAF8FD]">{children}</div>
       </main>
     </>
   );

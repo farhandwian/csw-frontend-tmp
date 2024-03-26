@@ -1,14 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import Divider from "@mui/material/Divider";
-import GlobalStyles from "@/app/Globals.module.css";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
+import { Alert } from "flowbite-react";
+import GlobalStyles from "@/app/Globals.module.css";
 import {
   Question,
   Quiz,
-} from "@/app/student/modul/detail-modul/latihan-soal/page";
+} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
 
-interface InformationQuiz {
+interface InformationQuizProps {
   addLeadingZero: (number: number) => number | string;
   activeQuestion: number;
   questions: Question[];
@@ -16,6 +17,7 @@ interface InformationQuiz {
   onClickTandaiPertanyaan: () => void;
   formattedTime: string;
 }
+
 const InformationQuiz = ({
   addLeadingZero,
   activeQuestion,
@@ -23,14 +25,19 @@ const InformationQuiz = ({
   result,
   onClickTandaiPertanyaan,
   formattedTime,
-}: InformationQuiz) => {
+}: InformationQuizProps) => {
   const handleTandaiPertanyaan = () => {
     onClickTandaiPertanyaan();
   };
 
+  const [isTandaClicked, setIsTandaClicked] = useState(false);
+
+  const handleHelpIconClick = () => {
+    setIsTandaClicked(true);
+  };
+
   return (
     <>
-      {/* awal section informasi kuis */}
       <div className="mb-5 inline-flex rounded-2xl border-2 bg-white">
         <div className="flex p-3">
           <div className="mr-3">
@@ -51,6 +58,7 @@ const InformationQuiz = ({
             sx={{ borderRightWidth: 3 }}
           />
         </div>
+        {/* Penambahan informasi status, mark, tandai, dan waktu tersisa */}
         <div className="flex p-3">
           <div className="mr-3">
             <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
@@ -60,7 +68,6 @@ const InformationQuiz = ({
               {result.questions[activeQuestion].status}
             </p>
           </div>
-
           <Divider
             orientation="vertical"
             variant="middle"
@@ -70,6 +77,17 @@ const InformationQuiz = ({
           />
         </div>
         <div className="flex p-3">
+          {isTandaClicked && (
+            <Alert
+              className="absolute h-[6.25rem] w-[20rem] bg-white text-xs shadow-md"
+              color="gray"
+              onDismiss={() => setIsTandaClicked(false)}
+            >
+              Jika Anda ragu - ragu dalam menjawab soal, Anda dapat memberikan
+              tanda “Flag” pada navigasi latihan soal dengan cara mengklik pada
+              “TANDAI PERTANYAAN”
+            </Alert>
+          )}
           <div className="mr-3">
             <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
               MARK
@@ -78,7 +96,6 @@ const InformationQuiz = ({
               1.00
             </p>
           </div>
-
           <Divider
             orientation="vertical"
             variant="middle"
@@ -91,7 +108,10 @@ const InformationQuiz = ({
           <div className="mr-3">
             <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
               TANDA
-              <HelpIcon className="ml-2 pb-1"></HelpIcon>
+              <HelpIcon
+                className="ml-2 cursor-pointer pb-1"
+                onClick={handleHelpIconClick}
+              />
             </p>
             <button onClick={handleTandaiPertanyaan}>
               <p
@@ -102,7 +122,6 @@ const InformationQuiz = ({
               </p>
             </button>
           </div>
-
           <Divider
             orientation="vertical"
             variant="middle"
@@ -122,8 +141,6 @@ const InformationQuiz = ({
           </div>
         </div>
       </div>
-
-      {/* akhir section informasi kuis */}
     </>
   );
 };

@@ -1,10 +1,9 @@
 "use client";
+import { Pagination } from "flowbite-react";
 import Image from "next/image";
 import { useState } from "react";
-import CardPreTestItem from "./_components/CardPreTestItem";
-import { Pagination } from "flowbite-react";
 import CardHistoryPreTestItem from "./_components/CardHistoryPreTestItem";
-import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
+import CardPreTestItem from "./_components/CardPreTestItem";
 const Page = () => {
   const [isHaveModul, setIsHaveModul] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +11,6 @@ const Page = () => {
   const onPageChange = (page: number) => setCurrentPage(page);
   return (
     <>
-      <Breadcrumbs widthReduction={"54px"} />
       <section className="relative min-w-36 p-4 md:p-5">
         <div className={`${!isHaveModul && "hidden"}`}>
           <h1>Pretest SKD Bagian TWK</h1>

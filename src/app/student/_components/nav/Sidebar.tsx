@@ -12,6 +12,7 @@ import {
   ListAlt as ListAltIcon,
   Logout as LogoutIcon,
   Settings as SettingsIcon,
+  Class as CalendarMonthIcon,
 } from "@mui/icons-material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -28,54 +29,60 @@ const dataSidebar = [
   },
   {
     id: 1,
-    label: "Uji Kemampuan",
-    icon: <AssignmentAddIcon />,
-    path: "/student/uji-kemampuan/pretest",
+    label: "Kelas",
+    icon: <CalendarMonthIcon />,
+    path: "/student/kelas",
   },
   {
     id: 2,
+    label: "Uji Kemampuan",
+    icon: <AssignmentAddIcon />,
+    path: "/student/uji-kemampuan",
+  },
+  {
+    id: 3,
     label: "Modul",
     icon: <LibraryBooksIcon />,
     path: "/student/modul",
   },
   {
-    id: 3,
+    id: 4,
     label: "Try Out",
     icon: <ListAltIcon />,
     path: "/Contact",
   },
   {
-    id: 4,
+    id: 5,
     label: "Grafik",
     icon: <BarChartIcon />,
     path: "/Contact",
   },
   {
-    id: 5,
+    id: 6,
     label: "Record Zoom",
     icon: <FiberSmartRecordIcon />,
     path: "/Contact",
   },
   {
-    id: 6,
+    id: 7,
     label: "Profile Mentor",
     icon: <EmojiPeopleIcon />,
     path: "/Contact",
   },
   {
-    id: 7,
+    id: 8,
     label: "Jadwal",
     icon: <DateRangeIcon />,
     path: "/Contact",
   },
   {
-    id: 8,
+    id: 9,
     label: "Pengaturan",
     icon: <SettingsIcon />,
     path: "/Contact",
   },
   {
-    id: 9,
+    id: 10,
     label: "Logout",
     icon: <LogoutIcon />,
     path: "/Contact",
