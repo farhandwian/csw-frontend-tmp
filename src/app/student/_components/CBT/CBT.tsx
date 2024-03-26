@@ -1,8 +1,8 @@
 "use client";
-import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
-import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
-import QuestionNavigation from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionNavigation";
-import QuestionSection from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionSection";
+import InformationQuiz from "@/app/student/_components/CBT/InformationQuiz";
+import ModalSubmitModul from "@/app/student/_components/CBT/ModalSubmitModul";
+import QuestionNavigation from "@/app/student/_components/CBT/QuestionNavigation";
+import QuestionSection from "@/app/student/_components/CBT/QuestionSection";
 import React, { useState, createContext, useContext, useEffect } from "react";
 import useTimer from "@/app/student/modul/detail-modul/latihan-soal/_hooks/useTimer";
 import {
@@ -10,7 +10,7 @@ import {
   Quiz,
 } from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
 
-interface QuizControllerProps {
+interface CBTProps {
   quiz: Quiz;
 }
 
@@ -18,7 +18,7 @@ type NavigasiSoalContextType = "besar" | "kecil";
 
 export const TipeUjianContext = createContext<NavigasiSoalContextType>("kecil");
 
-const QuizController = ({ quiz }: QuizControllerProps) => {
+const CBT = ({ quiz }: CBTProps) => {
   const [alignment, setAlignment] = useState("modul_home");
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
   const [result, setResult] = useState(quiz);
@@ -171,4 +171,4 @@ const QuizController = ({ quiz }: QuizControllerProps) => {
   );
 };
 
-export default QuizController;
+export default CBT;

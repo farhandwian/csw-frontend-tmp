@@ -4,7 +4,7 @@ import {
   Question,
   Quiz,
 } from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
-import { TipeUjianContext } from "@/app/student/modul/detail-modul/latihan-soal/_components/QuizController";
+import { TipeUjianContext } from "@/app/student/_components/CBT/CBT";
 import { useContext } from "react";
 import Image from "next/image";
 

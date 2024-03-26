@@ -1,24 +1,10 @@
 "use client";
 import GlobalStyles from "@/app/Globals.module.css";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
-import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
-import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
 import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
-import QuestionNavigation from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionNavigation";
-import QuestionSection from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionSection";
-import {
-  Option,
-  Quiz,
-} from "@/app/student/modul/detail-modul/latihan-soal/_interface/interface";
-import useTimer from "@/app/student/modul/detail-modul/latihan-soal/_hooks/useTimer";
-
-import QuizController from "@/app/student/modul/detail-modul/latihan-soal/_components/QuizController";
+import CBT from "@/app/student/_components/CBT/CBT";
+import { quizBanyak } from "@/app/student/modul/detail-modul/latihan-soal/dummyData/data";
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import {
-  quizDikit,
-  quizBanyak,
-} from "@/app/student/modul/detail-modul/latihan-soal/dummyData/data";
 
 const quiz = quizBanyak;
 
@@ -45,7 +31,7 @@ const Page = () => {
         >
           Latihan Modul Materi 1 Pancasila
         </h1>
-        <QuizController quiz={quiz} />
+        <CBT quiz={quiz} />
       </section>
     </>
   );

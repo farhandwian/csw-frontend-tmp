@@ -1,11 +1,11 @@
 "use client";
 import GlobalStyles from "@/app/Globals.module.css";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
-import InformationQuiz from "@/app/student/modul/detail-modul/latihan-soal/_components/InformationQuiz";
-import ModalSubmitModul from "@/app/student/modul/detail-modul/latihan-soal/_components/ModalSubmitModul";
+import InformationQuiz from "@/app/student/_components/CBT/InformationQuiz";
+import ModalSubmitModul from "@/app/student/_components/CBT/ModalSubmitModul";
 import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
-import QuestionNavigation from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionNavigation";
-import QuestionSection from "@/app/student/modul/detail-modul/latihan-soal/_components/QuestionSection";
+import QuestionNavigation from "@/app/student/_components/CBT/QuestionNavigation";
+import QuestionSection from "@/app/student/_components/CBT/QuestionSection";
 import {
   Option,
   Quiz,
