@@ -25,9 +25,6 @@ const Page = () => {
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
         ></ModulFAB>
-        <h1 className={`text-[1.75rem] leading-normal text-tp-Gunmetal`}>
-          Latihan Modul Materi 1 Pancasila
-        </h1>
         <CBT quiz={quiz} />
       </section>
     </>

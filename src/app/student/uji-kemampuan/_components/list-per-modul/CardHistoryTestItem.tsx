@@ -4,13 +4,35 @@ import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const CardHistoryPreTestItem = () => {
+type TypeTest = "pretest" | "posttest";
+
+interface CardHistoryTestItemProps {
+  typeTest: TypeTest;
+  isDone: boolean;
+}
+const CardHistoryTestItem = ({
+  typeTest,
+  isDone,
+}: CardHistoryTestItemProps) => {
+  const BgColor = () => {
+    if (typeTest === "pretest" && !isDone) {
+      return "#7547FF";
+    } else if (typeTest === "pretest" && isDone) {
+      return "#5E6A2E";
+    } else if (typeTest === "posttest" && !isDone) {
+      return "#5E6A2E";
+    } else if (typeTest === "posttest" && isDone) {
+      return "#7547FF";
+    }
+  };
+
   return (
     <>
       <div className="relative">
         {/* carditem pretest user jika sudah beli modul */}
         <div
-          className={`min-h-28 w-[100%] rounded-md bg-[#7547FF] bg-cover bg-center p-2 text-white`}
+          className={`min-h-28 w-[100%] rounded-md bg-[${BgColor()}]
+          bg-cover bg-center p-2 text-white`}
         >
           <div className="mb-2 flex w-fit items-center justify-center gap-1 text-[11px] text-neutral-100">
             <AccessTimeFilledIcon sx={{ color: "white" }} fontSize="small" />
@@ -44,4 +66,4 @@ const CardHistoryPreTestItem = () => {
   );
 };
 
-export default CardHistoryPreTestItem;
+export default CardHistoryTestItem;

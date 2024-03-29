@@ -125,6 +125,9 @@ const CBT = ({ quiz }: CBTProps) => {
 
   return (
     <TipeUjianContext.Provider value={navigasiSoalType}>
+      <h1 className={`text-[1.75rem] leading-normal text-tp-Gunmetal`}>
+        Latihan Pretest 1 Pancasila
+      </h1>
       <div className="flex">
         <div className="w-[70%]">
           <InformationQuiz

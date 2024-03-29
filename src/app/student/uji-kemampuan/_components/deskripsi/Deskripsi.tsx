@@ -2,10 +2,28 @@
 
 import GlobalStyles from "@/app/Globals.module.css";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
-import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import Nilai from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/Nilai";
 
-const Page = () => {
+export type TypeNilai = "latihan-soal" | "pretest" | "posttest";
+
+export interface DataNilai {
+  id: number;
+  deskripsi: string;
+}
+interface DeskripsiProps {
+  typeNilai: TypeNilai;
+}
+
+const dataNilai: DataNilai[] = []; // ada datanya arr len != 0
+
+const dataNilai2: DataNilai[] = [
+  { id: 0, deskripsi: "Nilai" },
+  { id: 1, deskripsi: "Nilai 2" },
+];
+const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
+  const [isDone, setIsDone] = useState(false);
   return (
     <>
       <section className="relative p-4 md:p-5">
@@ -100,12 +118,22 @@ const Page = () => {
                 Sudah belajar dengan mengikuti pelajaran yang disediakan?
                 Lanjutkan dan mulai kerjakan pretest dengan sungguh-sungguh
               </h2>
-              <button
-                type="button"
-                className="me-2 mt-2 rounded-lg border border-gray-200 bg-[#E5E7EB] px-5 py-2.5 text-sm font-medium text-[#9CA3AF] hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 "
-              >
-                Tidak Bisa Dikerjakan Kembali
-              </button>
+
+              {isDone ? (
+                <button
+                  type="button"
+                  className="me-2 mt-2 rounded-lg border border-gray-200 bg-[#E5E7EB] px-5 py-2.5 text-sm font-medium text-[#9CA3AF] hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 "
+                >
+                  Tidak Bisa Dikerjakan Kembali
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="mb-2 me-2 mt-2 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Mulai Kerjakan
+                </button>
+              )}
             </div>
           </div>
           <div className="w-[100%] text-sm md:w-[40%] md:pl-6">
@@ -133,44 +161,8 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="mt-3 w-[100%] rounded-md border-[2px]">
-              <div className="border-b-[2px] p-2">
-                <h1 className="text-md text-[#267DDD]">NILAI</h1>
-              </div>
-              <div className="p-3">
-                <div className="rounded-md bg-white">
-                  <Image
-                    src={"/img/uji-kemampuan/ic_nilai_mtk.png"}
-                    width={538}
-                    height={638}
-                    alt="img-banner"
-                    className="min-h-[4rem] max-w-[4rem] "
-                  />
-                  <div className="flex items-center justify-between">
-                    <div className="mt-3 w-[60%]">
-                      <div className="mb-1 flex justify-between">
-                        <span className="text-base font-medium text-blue-700 dark:text-white">
-                          Nilai
-                        </span>
-                        <span className="text-sm font-medium text-blue-700 dark:text-white">
-                          45/100
-                        </span>
-                      </div>
-                      <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-                        <div className="h-2.5 w-[45%] rounded-full bg-blue-600"></div>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="mb-2 me-2 mt-3 rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
-                    >
-                      Review
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* bagian nilai */}
+            <Nilai typeNilai={typeNilai} dataNilai={dataNilai2} />
           </div>
         </div>
       </section>
@@ -178,4 +170,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Deskripsi;

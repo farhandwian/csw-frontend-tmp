@@ -3,9 +3,9 @@ import { createSlice, PayloadAction, AsyncThunkAction } from "@reduxjs/toolkit";
 import { registerUser, userLogin } from "./authActions";
 
 // initialize userToken from local storage
-const userToken = localStorage.getItem("userToken")
-  ? localStorage.getItem("userToken")
-  : null;
+// const userToken = localStorage.getItem("userToken")
+//   ? localStorage.getItem("userToken")
+//   : null;
 
 type UserInfo = {
   name: string;

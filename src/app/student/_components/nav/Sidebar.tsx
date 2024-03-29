@@ -37,7 +37,7 @@ const dataSidebar = [
     id: 2,
     label: "Uji Kemampuan",
     icon: <AssignmentAddIcon />,
-    path: "/student/uji-kemampuan",
+    path: "/student/uji-kemampuan/latihan-soal",
   },
   {
     id: 3,
@@ -101,7 +101,13 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
     const pathName = usePathname();
     const checkUrl = () => {
       const arr = pathName.split("/");
-      const firstTwoWords = "/" + arr.slice(1, 3).join("/");
+      let firstTwoWords;
+      // karena fitur uji kemampuan page nya agak beda
+      if (arr[2] == "uji-kemampuan") {
+        firstTwoWords = "/student/uji-kemampuan/latihan-soal";
+      } else {
+        firstTwoWords = "/" + arr.slice(1, 3).join("/");
+      }
       return firstTwoWords;
     };
 

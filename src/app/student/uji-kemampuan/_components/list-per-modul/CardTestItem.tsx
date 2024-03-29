@@ -3,22 +3,35 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import QuizIcon from "@mui/icons-material/Quiz";
 import YellowButton from "@/app/student/dashboard/_components/YellowButton";
-
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 import CancelIcon from "@mui/icons-material/Cancel";
 
-const CardPreTestItem = ({ isStillOpen }: { isStillOpen: boolean }) => {
+type TypeTest = "pretest" | "posttest";
+
+interface CardTestItemProps {
+  isStillOpen: boolean;
+  typeTest: TypeTest;
+}
+
+const CardTestItem = ({ isStillOpen, typeTest }: CardTestItemProps) => {
+  const BgColor = () => {
+    if (typeTest === "pretest" && isStillOpen) {
+      return "bg-[url('/img/dashboard-user/card_recently_pretest.png')]";
+    } else if (typeTest === "pretest" && !isStillOpen) {
+      return "#FD6073";
+    } else if (typeTest === "posttest" && !isStillOpen) {
+      return "#D3D3D3";
+    } else if (typeTest === "posttest" && isStillOpen) {
+      return "bg-[url('/img/dashboard-user/card_recently_posttest.png')]";
+    }
+  };
+
   return (
     <>
       <div className="relative px-3">
         {/* carditem pretest user jika sudah beli modul */}
         <div
-          className={`min-h-32 w-[100%] rounded-md bg-cover bg-center p-2 ${
-            isStillOpen
-              ? "bg-[url('/img/dashboard-user/card_recently_pretest.png')]"
-              : "#FD6073"
-          }  text-white`}
+          className={`min-h-32 w-[100%] rounded-md bg-cover bg-center p-2 ${BgColor()}  text-white`}
         >
           <div className="mb-2 flex w-fit items-center justify-center gap-1 text-xs text-neutral-100">
             <AccessTimeFilledIcon sx={{ color: "white" }} />
@@ -33,12 +46,12 @@ const CardPreTestItem = ({ isStillOpen }: { isStillOpen: boolean }) => {
             <h3>1 kali pengerjaan</h3>
           </div>
 
-          <h1 className="text-sm font-bold">Judul Pretest</h1>
+          <h1 className="text-sm font-bold">Judul {typeTest}</h1>
           <h3 className="mb-2 text-left text-xs">
             Pada pretest kali ini akan membahas seputar materi yang akan kita
             pelajari nanti di pertemuan, kerjakan dengan...
           </h3>
-          <YellowButton className="text-sm">Kerjakan Pretest</YellowButton>
+          <YellowButton className="text-sm">Kerjakan {typeTest}</YellowButton>
         </div>
 
         <div className="absolute right-1 top-2 h-[50px] w-[100%] max-w-[150px] rounded-md bg-[#fbe360] p-1">
@@ -51,4 +64,4 @@ const CardPreTestItem = ({ isStillOpen }: { isStillOpen: boolean }) => {
   );
 };
 
-export default CardPreTestItem;
+export default CardTestItem;
