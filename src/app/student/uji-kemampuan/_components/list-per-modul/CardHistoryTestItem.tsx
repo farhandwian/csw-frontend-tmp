@@ -16,16 +16,21 @@ const CardHistoryTestItem = ({
 }: CardHistoryTestItemProps) => {
   const BgColor = () => {
     if (typeTest === "pretest" && !isDone) {
+      console.log("masuk sini1");
       return "#7547FF";
     } else if (typeTest === "pretest" && isDone) {
-      return "#5E6A2E";
+      console.log("masuk sini2");
+      return "#7547FF";
     } else if (typeTest === "posttest" && !isDone) {
-      return "#5E6A2E";
+      console.log("masuk sini3");
+      return "#7547FF";
     } else if (typeTest === "posttest" && isDone) {
+      console.log("masuk sini4");
       return "#7547FF";
     }
   };
 
+  console.log(`bg-[${BgColor()}]`);
   return (
     <>
       <div className="relative">

@@ -54,7 +54,10 @@ const config: Config = {
       serif: ["Merriweather", "serif"],
     },
   },
-  plugins: [require("flowbite/plugin"), require("tailwind-scrollbar")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
 };
 
 export default config;

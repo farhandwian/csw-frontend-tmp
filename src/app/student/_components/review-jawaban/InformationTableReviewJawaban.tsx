@@ -7,8 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { ReviewJawaban } from "@/app/student/modul/detail-modul/nilai/review-jawaban/interface/reviewJawabanInterface";
-
+import { ReviewJawaban } from "@/app/student/_components/review-jawaban/ReviewJawabanInterface";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.white,

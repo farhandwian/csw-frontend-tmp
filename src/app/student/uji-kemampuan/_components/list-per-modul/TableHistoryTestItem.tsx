@@ -61,7 +61,7 @@ const TableHistoryTestItem = ({
         {[...Array(5)].map((_, index) => (
           <div
             key={index}
-            className="border-tp.SteelBlue w-full border border-x-0 px-2 py-3"
+            className="w-full border border-x-0 border-t px-2 py-3"
           >
             <h1 className="mb-1 text-sm">
               Judul Pertemuan - Tanggal Pertemuan
