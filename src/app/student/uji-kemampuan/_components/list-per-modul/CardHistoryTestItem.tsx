@@ -16,27 +16,22 @@ const CardHistoryTestItem = ({
 }: CardHistoryTestItemProps) => {
   const BgColor = () => {
     if (typeTest === "pretest" && !isDone) {
-      console.log("masuk sini1");
-      return "#7547FF";
+      return "bg-[#7547FF]";
     } else if (typeTest === "pretest" && isDone) {
-      console.log("masuk sini2");
-      return "#7547FF";
+      return "bg-[#5E6A2E]";
     } else if (typeTest === "posttest" && !isDone) {
-      console.log("masuk sini3");
-      return "#7547FF";
+      return "bg-[#7547FF]";
     } else if (typeTest === "posttest" && isDone) {
-      console.log("masuk sini4");
-      return "#7547FF";
+      return "bg-[#5E6A2E]";
     }
   };
 
-  console.log(`bg-[${BgColor()}]`);
   return (
     <>
       <div className="relative">
         {/* carditem pretest user jika sudah beli modul */}
         <div
-          className={`min-h-28 w-[100%] rounded-md bg-[${BgColor()}]
+          className={`min-h-28 w-[100%] rounded-md ${BgColor()}
           bg-cover bg-center p-2 text-white`}
         >
           <div className="mb-2 flex w-fit items-center justify-center gap-1 text-[11px] text-neutral-100">

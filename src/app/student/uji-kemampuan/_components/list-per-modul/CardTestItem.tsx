@@ -18,9 +18,9 @@ const CardTestItem = ({ isStillOpen, typeTest }: CardTestItemProps) => {
     if (typeTest === "pretest" && isStillOpen) {
       return "bg-[url('/img/dashboard-user/card_recently_pretest.png')]";
     } else if (typeTest === "pretest" && !isStillOpen) {
-      return "#FD6073";
+      return "bg-[#FD6073]";
     } else if (typeTest === "posttest" && !isStillOpen) {
-      return "#D3D3D3";
+      return "bg-[#FD6073]";
     } else if (typeTest === "posttest" && isStillOpen) {
       return "bg-[url('/img/dashboard-user/card_recently_posttest.png')]";
     }

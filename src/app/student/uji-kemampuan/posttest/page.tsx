@@ -3,6 +3,8 @@ import CircularProgress from "@/app/student/uji-kemampuan/pretest/_components/Ci
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
 
+import PapanInformasi from "@/app/student/uji-kemampuan/_components/PapanInformasi";
+
 const percentage = 66;
 const Page = () => {
   return (
@@ -66,30 +68,7 @@ const Page = () => {
             </div>
           </div>
           <div className="w-[30%]">
-            <div className="ml-5 h-[22.5rem] max-w-[23rem] rounded-md bg-white shadow-md">
-              <div className="flex h-[20%] p-2 shadow-md">
-                <div className="mr-2 w-[20%]">
-                  <Image
-                    src={"/img/uji-kemampuan/ic_info_uji.png"}
-                    width={165}
-                    height={165}
-                    alt="ic-banner"
-                    className="mt-1 inline h-[2.3rem] w-[2.3rem]"
-                  />
-                </div>
-
-                <div className="">
-                  <h1 className="text-sm font-bold">Papan Informasi</h1>
-                  <h3 className="text-[10px]">
-                    Informasi seputar pelaksanan posttest dan rules untuk
-                    mengerjakan posttest
-                  </h3>
-                </div>
-              </div>
-              <div className="relative h-[80%] max-w-full overflow-y-scroll bg-[#F9F9F9] p-2">
-                <h3>Tulis informasi disini</h3>
-              </div>
-            </div>
+            <PapanInformasi />
           </div>
         </div>
       </section>

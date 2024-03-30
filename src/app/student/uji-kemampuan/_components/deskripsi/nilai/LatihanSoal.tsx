@@ -72,10 +72,10 @@ const LatihanSoal = ({ dataNilai, typeNilai }: PostTestOrPretestArgs) => {
                         </div>
 
                         <div className="flex gap-3">
-                          <p className="flex">
+                          <div className="flex">
                             <h1 className="p-0 text-[#FFA056]">500</h1>
                             <h1 className="text-[#FF2985]">/550</h1>
-                          </p>
+                          </div>
                           <div className="">
                             {subnav ? (
                               <ArrowDropDownIcon />

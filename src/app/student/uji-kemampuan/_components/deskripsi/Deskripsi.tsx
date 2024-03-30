@@ -112,7 +112,7 @@ const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
               of type and scrambled it to make a type specimen book...
             </p>
 
-            <div className="mt-6 w-[100%] rounded-md border-2 p-3">
+            <div className=" mt-6 w-[100%] rounded-md border-2 p-3">
               <h1 className=" text-sm text-[#9CA3AF]">BERSIAP MENGERJAKAN</h1>
               <h2 className="text-sm text-[#B4B4B4]">
                 Sudah belajar dengan mengikuti pelajaran yang disediakan?

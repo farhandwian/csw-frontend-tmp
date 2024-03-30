@@ -22,7 +22,7 @@ const TableTestItem = ({
         {[...Array(6)].map((index) => (
           // container card item pretest
           <div
-            key={index}
+            key={`test_${index}`}
             className="w-[95%] rounded-md bg-[#F1F1F1] shadow-md"
           >
             <div className="w-[100%] bg-white pl-4">
