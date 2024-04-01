@@ -1,30 +1,30 @@
 import { createSlice, PayloadAction, AsyncThunkAction } from "@reduxjs/toolkit";
 
-import { registerUser, userLogin } from "./authActions";
+import { registerUser, userLogin } from "./ujiKemampuanNavigationAction";
 
 // initialize userToken from local storage
 // const userToken = localStorage.getItem("userToken")
 //   ? localStorage.getItem("userToken")
 //   : null;
 
-type UserInfo = {
+type UjiKemampuanData = {
+  postId: number;
+  id: number;
   name: string;
-  username: string;
-  image: string;
+  email: string;
+  body: string;
 };
 
-export interface AuthState {
+export interface UjiKemampuanState {
   loading: boolean;
-  userInfo: null | UserInfo; // You will need to define the UserInfo type
-  userToken: null | string; // You will need to define the type for userToken
+  ujiKemampuanData: null | UjiKemampuanData; // You will need to define the UserInfo type
   error: null | string;
   success: boolean;
 }
 
-const initialState: AuthState = {
+const initialState: UjiKemampuanState = {
   loading: false,
-  userInfo: null,
-  userToken: null,
+  ujiKemampuanData: null,
   error: null,
   success: false,
 };
@@ -60,7 +60,7 @@ const authSlice = createSlice({
     });
     builder.addCase(
       userLogin.fulfilled,
-      (state, action: PayloadAction<AuthState>) => {
+      (state, action: PayloadAction<UjiKemampuanState>) => {
         state.loading = false;
         state.userInfo = action.payload.userInfo;
         state.userToken = action.payload.userToken;
@@ -68,7 +68,7 @@ const authSlice = createSlice({
     );
     builder.addCase(
       userLogin.rejected,
-      (state, action: PayloadAction<AuthState | any>) => {
+      (state, action: PayloadAction<UjiKemampuanState | any>) => {
         state.loading = false;
         state.error = action.payload;
       },

@@ -21,8 +21,10 @@ const SideTopbarMateriModul = ({
   subnav,
   showSubnav,
 }: SidebarMateriModulProps) => {
-  const isShowNavDashboard = useAppSelector((state) => state.layout.showNav);
-  const isMobile = useAppSelector((state) => state.layout.isMobile);
+  const isShowNavDashboard = useAppSelector(
+    (state) => state.studentLayout.showNav,
+  );
+  const isMobile = useAppSelector((state) => state.studentLayout.isMobile);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {

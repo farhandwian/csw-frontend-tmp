@@ -1,14 +1,14 @@
 // app/store.js
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/authSlice";
-import layoutReducer from "./student/layout/layoutSlice";
+import studentLayoutReducer from "./student/layout/layoutSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       auth: authReducer,
-      layout: layoutReducer,
+      studentLayout: studentLayoutReducer,
     },
   });
 };
