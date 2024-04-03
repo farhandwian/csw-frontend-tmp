@@ -279,9 +279,12 @@ const Beranda = () => {
           </div>
 
           <div className="mt-2 flex w-full items-center justify-center px-2 md:mt-5 lg:mt-24">
-            <button className="w-[50%] rounded-lg bg-[#FFC007] py-2 font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4">
+            <Link
+              href="/mentor"
+              className="w-[50%] rounded-lg bg-[#FFC007] py-2 font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4"
+            >
               Meet All Mentor
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -348,9 +351,12 @@ const Beranda = () => {
               <h4 className="text-sm font-medium text-[#323062] md:text-base lg:text-lg">
                 Tertarik untuk membeli paket bimbel kami?
               </h4>
-              <button className="hover:bg-[#36367e]1 flex w-fit flex-none items-center justify-center rounded-full bg-[#090963] px-3 py-1 text-sm font-semibold text-[#E2E8F0] md:px-4 md:py-2 lg:h-[52px] lg:w-[218px] lg:py-0 xl:text-base">
+              <Link
+                href="/paket"
+                className="hover:bg-[#36367e]1 flex w-fit flex-none items-center justify-center rounded-full bg-[#090963] px-3 py-1 text-sm font-semibold text-[#E2E8F0] md:px-4 md:py-2 lg:h-[52px] lg:w-[218px] lg:py-0 xl:text-base"
+              >
                 Semua Paket
-              </button>
+              </Link>
             </div>
             {/* mode desktop */}
             <div className="hidden md:flex lg:gap-x-5 xl:gap-x-10">
@@ -514,7 +520,10 @@ const Beranda = () => {
                 Ayo temukan minat dan potensi dirimu bersama{" "}
                 <br className="block md:hidden" /> Pilih Jurusan sekarang!
               </h2>
-              <button className="mt-2 flex items-center justify-center gap-x-3 rounded-full bg-[#1A69F0] px-4 py-2 hover:bg-[#164fb0] md:mt-4 lg:mt-8 lg:gap-x-4 lg:px-16 lg:py-3 xl:mt-10 xl:gap-x-6 xl:px-24 xl:py-5">
+              <Link
+                href="/daftar"
+                className="mt-2 flex items-center justify-center gap-x-3 rounded-full bg-[#1A69F0] px-4 py-2 hover:bg-[#164fb0] md:mt-4 lg:mt-8 lg:gap-x-4 lg:px-16 lg:py-3 xl:mt-10 xl:gap-x-6 xl:px-24 xl:py-5"
+              >
                 <Image
                   src={"/icon/ic-arrow-circle.svg"}
                   alt="ic-arrow-circle"
@@ -525,7 +534,7 @@ const Beranda = () => {
                 <h3 className="text-xs font-bold text-white lg:text-base xl:text-xl">
                   Daftar Sekarang
                 </h3>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

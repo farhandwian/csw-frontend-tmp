@@ -15,7 +15,7 @@ const Navbar = () => {
   };
   const navbarItems = [
     { text: "Beranda", href: "/home-page" },
-    { text: "Kelas", href: "/kelas" },
+    { text: "Paket", href: "/paket" },
     { text: "Mentor", href: "/mentor" },
     { text: "Testimoni", href: "#" },
     { text: "Hubungi Kami", href: "#" },
@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex h-[3.75rem] w-full items-center justify-between  ">
           {/* logo */}
           <div className=" flex w-[15%] flex-none">
-            <Link href={"/"}>
+            <Link href={"/home-page"}>
               <Image
                 src={"/img/img-logo.png"}
                 width={72}
