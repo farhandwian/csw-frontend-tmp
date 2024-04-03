@@ -7,16 +7,17 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-
+  const pathName = usePathname();
+  const temp = pathName.split("/");
+  const rootPathName = "/" + temp[1];
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
   };
   const navbarItems = [
-    { text: "Beranda", href: "/" },
-    { text: "Produk", href: "/" },
+    { text: "Beranda", href: "/home-page" },
+    { text: "Kelas", href: "/kelas" },
+    { text: "Mentor", href: "/mentor" },
     { text: "Testimoni", href: "#" },
-    { text: "Informasi", href: "#" },
     { text: "Hubungi Kami", href: "#" },
   ];
 
@@ -65,7 +66,11 @@ const Navbar = () => {
                 <Link
                   key={index}
                   href={item.href}
-                  className="rounded-full  px-5 py-3 hover:text-[#010101] focus:bg-[#E9EFFD] focus:text-[#1D4EDF]"
+                  className={`rounded-full ${
+                    rootPathName === item.href
+                      ? "border-none bg-[#E9EFFD] "
+                      : "hover:text-[#5E5ED0]"
+                  } px-3 py-2 hover:text-[#010101] focus:bg-[#E9EFFD] focus:text-[#1D4EDF]`}
                 >
                   {item.text}
                 </Link>
@@ -77,7 +82,7 @@ const Navbar = () => {
             <Link href={"/login"}>
               <button
                 className={`${
-                  pathname === "/login"
+                  rootPathName === "/login"
                     ? "border-none bg-[#090963] text-white"
                     : "hover:text-[#5E5ED0]"
                 } rounded-full border-2 border-solid border-[#090963] px-3 py-2 hover:border-[#5E5ED0]`}
@@ -88,7 +93,7 @@ const Navbar = () => {
             <Link href={"/daftar"}>
               <button
                 className={`${
-                  pathname === "/daftar"
+                  rootPathName === "/daftar"
                     ? "border-none bg-[#090963] text-white"
                     : "hover:text-[#5E5ED0]"
                 } rounded-full border-2 border-solid border-[#090963] px-3 py-2 hover:border-[#5E5ED0]`}
@@ -119,7 +124,7 @@ const Navbar = () => {
               <Link href={"/login"}>
                 <button
                   className={`${
-                    pathname === "/login"
+                    rootPathName === "/login"
                       ? "border-none bg-[#090963] text-white"
                       : "hover:text-[#5E5ED0]"
                   } rounded-full border-2 border-solid border-[#090963] p-2 text-sm hover:border-[#5E5ED0]`}
@@ -130,7 +135,7 @@ const Navbar = () => {
               <Link href={"/daftar"}>
                 <button
                   className={`${
-                    pathname === "/daftar"
+                    rootPathName === "/daftar"
                       ? "border-none bg-[#090963] text-white"
                       : "hover:text-[#5E5ED0]"
                   } rounded-full border-2 border-solid border-[#090963] p-2 text-sm hover:border-[#5E5ED0]`}

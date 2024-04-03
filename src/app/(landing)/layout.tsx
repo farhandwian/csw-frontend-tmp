@@ -9,7 +9,9 @@ const LandingLayout = ({ children }: LandingLayoutProps) => {
   return (
     <>
       <Navbar />
-      <section className="relative top-[3.75rem]">{children}</section>
+      <section className="relative top-[3.75rem] bg-[#FAF8FD]">
+        {children}
+      </section>
     </>
   );
 };

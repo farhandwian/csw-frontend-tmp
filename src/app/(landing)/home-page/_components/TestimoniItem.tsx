@@ -32,7 +32,9 @@ const TestimoniItem = (props: TestimoniItemProps) => {
             className="h-20 w-20 lg:h-fit lg:w-fit"
           />
           <div className=" text-[#393934]">
-            <h2 className="text-lg font-bold lg:text-2xl">{name}</h2>
+            <h2 className="text-base font-bold md:text-lg lg:text-2xl">
+              {name}
+            </h2>
             <p className="mt-1 lg:text-xl">{student}</p>
           </div>
         </div>

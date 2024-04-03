@@ -16,25 +16,33 @@ import WhyUsItem from "./_components/WhyUsItem";
 const Beranda = () => {
   const tabletView = useTablet();
   const desktopView = useDesktop();
-
-  const [ref] = useKeenSlider<HTMLDivElement>({
+  const [currentSlideMentor, setCurrentSlideMentor] = React.useState(0);
+  const [loadedMentor, setLoadedMentor] = useState(false);
+  const [refMentor, instanceRefMentor] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
       "(min-width: 768px)": {
         slides: {
           perView: 2,
-          spacing: 10,
+          spacing: 8,
         },
       },
     },
-
     slides: {
       perView: 1,
-      spacing: 10,
+      spacing: 0,
     },
     initial: 0,
+    slideChanged(slider) {
+      setCurrentSlideMentor(slider.track.details.rel);
+    },
+    created() {
+      setLoadedMentor(true);
+    },
   });
+  const [currentSlidePaket, setCurrentSlidePaket] = React.useState(0);
+  const [loadedPaket, setLoadedPaket] = useState(false);
 
-  const [refPaket] = useKeenSlider<HTMLDivElement>({
+  const [refPaket, instanceRefPaket] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
       "(min-width: 768px)": {
         slides: {
@@ -48,6 +56,12 @@ const Beranda = () => {
       spacing: 0,
     },
     initial: 0,
+    slideChanged(slider) {
+      setCurrentSlidePaket(slider.track.details.rel);
+    },
+    created() {
+      setLoadedPaket(true);
+    },
   });
 
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -78,10 +92,18 @@ const Beranda = () => {
     e.stopPropagation();
     instanceRef.current?.next();
   };
+  const handleNextClickMentor = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    instanceRefMentor.current?.next();
+  };
 
   const handlePrevClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     instanceRef.current?.prev();
+  };
+  const handlePrevClickMentor = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    instanceRefMentor.current?.prev();
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -111,9 +133,9 @@ const Beranda = () => {
       {/* Banner */}
       <div className="relative flex h-[calc(100vh-3.75rem)] w-full items-center">
         <div className="relative h-full w-full  bg-gradient-to-br from-[#090963] via-[#090963] to-[#3333A1]">
-          <div className="absolute z-20 flex h-full w-full items-center  px-2 text-white md:px-10 lg:px-0 lg:pl-16 lg:pt-28 xl:pl-32">
-            <div className="md:max-w-[400px] lg:max-w-[420px] xl:max-w-[550px]">
-              <h1 className="text-xl font-bold lg:text-[24px] xl:text-[32px] xl:leading-snug">
+          <div className="absolute z-20 flex h-full w-full items-start  px-2 text-white   md:items-center md:px-10 lg:px-0 lg:pl-16 lg:pt-28 xl:pl-32">
+            <div className="mt-8 px-3 md:mt-0 md:max-w-[400px] md:px-0 lg:max-w-[420px] xl:max-w-[550px]">
+              <h1 className="text-sm font-bold md:text-xl lg:text-[24px] xl:text-[32px] xl:leading-snug">
                 Masih Bingung Untuk Belajar Test Masuk Sekolah Kedinasan?
                 Belajar Sekarang
               </h1>
@@ -121,11 +143,11 @@ const Beranda = () => {
                 Kami menyediakan modul untuk Anda mengenal dan mempelajari
                 seputar sekolah kedinasan
               </p>
-              <p className="mt-14 text-sm font-medium md:text-base">
+              <p className="mt-4 text-xs font-medium md:mt-14 md:text-base">
                 #Platform Bimbel Kedinasan Online Terbaik
               </p>
               <Link href={"/daftar"}>
-                <button className="mt-8 w-full rounded-xl bg-[#FFC007] py-3 font-bold text-[#090963] hover:bg-[#CAA022] md:w-fit md:px-10 md:py-4">
+                <button className="mt-2 w-[40%] rounded-xl bg-[#FFC007] py-2 text-xs font-bold text-[#090963] hover:bg-[#CAA022] md:mt-8 md:w-fit md:px-10 md:py-4 md:text-base">
                   Daftar Sekarang
                 </button>
               </Link>
@@ -144,7 +166,7 @@ const Beranda = () => {
           </div>
 
           {/* Image Banner */}
-          <div className="absolute bottom-0 z-10 hidden items-end justify-end md:right-5 md:flex md:h-full md:w-full lg:right-16  xl:right-36 ">
+          <div className="absolute bottom-28 right-6 z-10 h-[30px] w-[120px] md:bottom-0 md:right-5 md:flex md:h-full md:w-full md:items-end md:justify-end lg:right-16  xl:right-36 ">
             <Image
               src={"/img/img-banner.png"}
               width={538}
@@ -157,17 +179,17 @@ const Beranda = () => {
       </div>
 
       {/* Mentor */}
-      <div className="mt-10 h-full w-full lg:mt-20">
-        <div className="flex flex-col items-center justify-center px-2 md:px-10 lg:px-20">
-          <h2 className="text-center text-2xl font-bold leading-normal text-[#323062] lg:max-w-2xl lg:text-4xl">
+      <div className="mt-5 h-full w-full md:mt-10 lg:mt-20">
+        <div className="flex flex-col items-center justify-center px-4 md:px-10 lg:px-20">
+          <h2 className="text-center text-base font-black leading-normal text-[#323062] md:text-2xl lg:max-w-2xl lg:text-4xl">
             Gapai Impianmu Bersama Mentor Berpengalaman
           </h2>
         </div>
 
-        <div className="mt-10 lg:mt-16 lg:w-full lg:items-center lg:justify-center">
+        <div className="mt-3 md:mt-10 lg:mt-16 lg:w-full lg:items-center lg:justify-center">
           <div className="md:flex-row lg:relative lg:mx-20 lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-x-7 lg:pt-32 xl:mx-32">
-            <div className="left-0 top-10 px-2 md:px-10 lg:absolute lg:px-0">
-              <h4 className="text-base font-medium text-[#323062] lg:text-2xl">
+            <div className="left-0 top-10 px-4 md:px-10 lg:absolute lg:px-0">
+              <h4 className="text-sm font-semibold text-[#323062] md:text-base md:font-medium lg:text-2xl">
                 Mau belajar bersama mentor terbaik dari kami?
               </h4>
               <p className="mt-2 text-xs font-light lg:mt-3 lg:max-w-3xl lg:text-base">
@@ -175,66 +197,89 @@ const Beranda = () => {
                 kedinasan secara teratur, terarah dan terorganisir
               </p>
             </div>
+            {/* gk pake desktopView state karena terdapat error ketika mode mobile ketika mode mobile  */}
+            {/* mode desktop */}
+            <div className="mt-10 hidden h-full w-full items-center justify-center md:flex lg:gap-x-5 xl:gap-x-10">
+              <MentorItem
+                img="mentor1"
+                name="Ayu Lestari"
+                job="Matematika"
+                quote="Matematika itu mudah, asik, dan seru"
+              />
+              <MentorItem
+                img="mentor2"
+                name="Budi Pangestu"
+                job="TWK"
+                quote="TWK lebih banyak logika, jadi pahamilah setiap pertanyaan dan
+              jawabannya"
+              />
+              <MentorItem
+                img="mentor3"
+                name="Annisa"
+                job="TIU"
+                quote="Tes Intelegensi Umum merupakan salah satu test SKD yang
+              gampang banget"
+              />
+            </div>
 
-            {desktopView ? (
-              <div className="mt-10 flex h-full w-full items-center justify-center lg:gap-x-5 xl:gap-x-10">
-                <MentorItem
-                  img="mentor1"
-                  name="Ayu Lestari"
-                  job="Matematika"
-                  quote="Matematika itu mudah, asik, dan seru"
-                />
-                <MentorItem
-                  img="mentor2"
-                  name="Budi Pangestu"
-                  job="TWK"
-                  quote="TWK lebih banyak logika, jadi pahamilah setiap pertanyaan dan
+            {/* mode mobile */}
+            <div className="relative mt-3 flex w-full flex-col items-center justify-center md:hidden">
+              <div ref={refMentor} className="keen-slider">
+                <div className="keen-slider__slide number-slide1 px-2 md:px-0 lg:py-20">
+                  <MentorItem
+                    img="mentor1"
+                    name="Ayu Lestari"
+                    job="Matematika"
+                    quote="Matematika itu mudah, asik, dan seru"
+                  />
+                </div>
+                <div className="keen-slider__slide number-slide2 px-2 md:px-0 lg:py-20">
+                  <MentorItem
+                    img="mentor2"
+                    name="Budi Pangestu"
+                    job="TWK"
+                    quote="TWK lebih banyak logika, jadi pahamilah setiap pertanyaan dan
               jawabannya"
-                />
-                <MentorItem
-                  img="mentor3"
-                  name="Annisa"
-                  job="TIU"
-                  quote="Tes Intelegensi Umum merupakan salah satu test SKD yang
+                  />
+                </div>
+                <div className="keen-slider__slide number-slide3 px-2 md:px-0 lg:py-20">
+                  <MentorItem
+                    img="mentor3"
+                    name="Annisa"
+                    job="TIU"
+                    quote="Tes Intelegensi Umum merupakan salah satu test SKD yang
               gampang banget"
-                />
-              </div>
-            ) : (
-              <div className="relative flex w-full items-center justify-center md:px-10 xl:px-32">
-                <div ref={ref} className="keen-slider">
-                  <div className="keen-slider__slide number-slide1 px-2 md:px-0 lg:py-20">
-                    <MentorItem
-                      img="mentor1"
-                      name="Ayu Lestari"
-                      job="Matematika"
-                      quote="Matematika itu mudah, asik, dan seru"
-                    />
-                  </div>
-                  <div className="keen-slider__slide number-slide2 px-2 md:px-0 lg:py-20">
-                    <MentorItem
-                      img="mentor2"
-                      name="Budi Pangestu"
-                      job="TWK"
-                      quote="TWK lebih banyak logika, jadi pahamilah setiap pertanyaan dan
-              jawabannya"
-                    />
-                  </div>
-                  <div className="keen-slider__slide number-slide3 px-2 md:px-0 lg:py-20">
-                    <MentorItem
-                      img="mentor3"
-                      name="Annisa"
-                      job="TIU"
-                      quote="Tes Intelegensi Umum merupakan salah satu test SKD yang
-              gampang banget"
-                    />
-                  </div>
+                  />
                 </div>
               </div>
-            )}
+
+              {loadedMentor && instanceRefMentor.current && (
+                <div className="flex justify-center py-3 md:hidden">
+                  {Array.from(
+                    {
+                      length:
+                        instanceRefMentor.current.track.details.slides.length,
+                    },
+                    (_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          instanceRefMentor.current?.moveToIdx(idx);
+                        }}
+                        className={
+                          "h-1 w-1 rounded-[50%] bg-[#c5c5c5] p-1" +
+                          (currentSlideMentor === idx ? " bg-[#323062]" : "")
+                        }
+                      ></button>
+                    ),
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="mt-5 flex w-full items-center justify-center px-2 lg:mt-24">
-            <button className="w-full rounded-lg bg-[#FFC007] py-3 font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4">
+          <div className="mt-2 flex w-full items-center justify-center px-2 md:mt-5 lg:mt-24">
+            <button className="w-[50%] rounded-lg bg-[#FFC007] py-2 font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4">
               Meet All Mentor
             </button>
           </div>
@@ -242,12 +287,12 @@ const Beranda = () => {
       </div>
 
       {/* WhyUs */}
-      <div className="mt-14 h-full w-full px-2 md:px-5 lg:mt-32 lg:px-16 xl:px-28">
+      <div className="mt-5 h-full w-full px-2 md:mt-14 md:px-5 lg:mt-32 lg:px-16 xl:px-28">
         <div className="flex flex-col items-center justify-center">
-          <h4 className="text-lg font-medium text-[#0D0D68] lg:text-[26px]">
+          <h4 className="text-base font-medium text-[#0D0D68] md:text-lg lg:text-[1.625rem]">
             Kenapa memilih kami?
           </h4>
-          <h2 className="mt-1 max-w-4xl text-center text-xl font-semibold leading-tight text-[#1A69F0] lg:text-3xl">
+          <h2 className="mt-1 max-w-4xl text-center text-base font-semibold leading-tight text-[#1A69F0] md:text-xl lg:text-3xl">
             Platform Bimbel Kedinasan Online Menggunakan Kurikulum Terbaru
           </h2>
         </div>
@@ -287,52 +332,72 @@ const Beranda = () => {
       </div>
 
       {/* Paket */}
-      <div className="mt-14 h-full w-full px-2 md:px-0 lg:mt-32 lg:px-10 xl:px-0">
+      <div className="mt-7 h-full w-full px-2 md:mt-14 md:px-0 lg:mt-32 lg:px-10 xl:px-0">
         <div className="flex flex-col items-center justify-center">
-          <h4 className="text-lg font-medium text-[#0D0D68] lg:text-[26px]">
+          <h4 className="text-base font-medium text-[#0D0D68] md:text-lg lg:text-[26px]">
             Paket Unggulan Teratas
           </h4>
-          <h2 className="mt-1 max-w-4xl text-center text-xl font-semibold leading-tight text-[#1A69F0] lg:text-3xl">
+          <h2 className="mt-1 max-w-4xl text-center text-base font-semibold leading-tight text-[#1A69F0] md:text-xl lg:text-3xl">
             Pilih Paket Unggulan untuk Meningkatkan Ilmu
           </h2>
         </div>
 
-        <div className="mt-10 lg:mt-36 lg:flex lg:w-full lg:items-center lg:justify-center">
+        <div className="mt-5 md:mt-10 lg:mt-36 lg:flex lg:w-full lg:items-center lg:justify-center">
           <div className="lg:relative lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-x-4 xl:gap-x-14">
-            <div className="-top-20 flex w-full flex-row items-center justify-between gap-x-10 md:px-10 lg:absolute lg:px-0">
-              <h4 className="text-base font-medium text-[#323062] lg:text-lg">
+            <div className="-top-20 flex w-full flex-row items-center justify-between gap-x-10 px-1 md:px-10 lg:absolute lg:px-0">
+              <h4 className="text-sm font-medium text-[#323062] md:text-base lg:text-lg">
                 Tertarik untuk membeli paket bimbel kami?
               </h4>
-              <button className="hover:bg-[#36367e]1 flex w-fit flex-none items-center justify-center rounded-full bg-[#090963] px-4 py-2 text-sm font-semibold text-[#E2E8F0] lg:h-[52px] lg:w-[218px] lg:py-0 xl:text-base">
+              <button className="hover:bg-[#36367e]1 flex w-fit flex-none items-center justify-center rounded-full bg-[#090963] px-3 py-1 text-sm font-semibold text-[#E2E8F0] md:px-4 md:py-2 lg:h-[52px] lg:w-[218px] lg:py-0 xl:text-base">
                 Semua Paket
               </button>
             </div>
-
-            {desktopView ? (
-              <div className="flex lg:gap-x-5 xl:gap-x-10">
-                <div>
+            {/* mode desktop */}
+            <div className="hidden md:flex lg:gap-x-5 xl:gap-x-10">
+              <div>
+                <PaketItem />
+              </div>{" "}
+              <div>
+                <PaketItem />
+              </div>{" "}
+              <div>
+                <PaketItem />
+              </div>
+            </div>
+            {/* mode mobile */}
+            <div className=" relative mt-5 flex w-full items-center justify-center md:hidden md:px-10 lg:w-fit">
+              <div ref={refPaket} className="keen-slider">
+                <div className="keen-slider__slide number-slide1 w-fit px-2 md:px-0">
                   <PaketItem />
-                </div>{" "}
-                <div>
+                </div>
+                <div className="keen-slider__slide number-slide2 w-fit px-2 md:px-0">
                   <PaketItem />
-                </div>{" "}
-                <div>
+                </div>
+                <div className="keen-slider__slide number-slide3 w-fit px-2 md:px-0">
                   <PaketItem />
                 </div>
               </div>
-            ) : (
-              <div className="relative mt-5 flex w-full items-center justify-center md:px-10 lg:w-fit">
-                <div ref={refPaket} className="keen-slider">
-                  <div className="keen-slider__slide number-slide1 w-fit px-2 md:px-0">
-                    <PaketItem />
-                  </div>
-                  <div className="keen-slider__slide number-slide2 w-fit px-2 md:px-0">
-                    <PaketItem />
-                  </div>
-                  <div className="keen-slider__slide number-slide3 w-fit px-2 md:px-0">
-                    <PaketItem />
-                  </div>
-                </div>
+            </div>
+            {loadedPaket && instanceRefPaket.current && (
+              <div className="flex justify-center py-3 md:hidden">
+                {Array.from(
+                  {
+                    length:
+                      instanceRefPaket.current.track.details.slides.length,
+                  },
+                  (_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        instanceRefPaket.current?.moveToIdx(idx);
+                      }}
+                      className={
+                        "h-1 w-1 rounded-[50%] bg-[#c5c5c5] p-1" +
+                        (currentSlidePaket === idx ? " bg-[#323062]" : "")
+                      }
+                    ></button>
+                  ),
+                )}
               </div>
             )}
           </div>
@@ -341,21 +406,21 @@ const Beranda = () => {
 
       {/* Testimoni */}
       <div className="relative h-full" id="testimoni">
-        <div className="mt-10 h-full w-full lg:mt-32 ">
+        <div className="mt-5 h-full w-full md:mt-10 lg:mt-32 ">
           <div className="flex flex-col items-center justify-center px-2 text-center lg:px-20">
-            <h4 className="text-lg font-medium text-[#0D0D68] lg:text-[26px]">
+            <h4 className="text-base font-medium text-[#0D0D68] md:text-lg lg:text-[26px]">
               Testimoni dan Kisah Sukses Orang-orang Yang Belajar di CSW
             </h4>
-            <h2 className="mt-1 text-center text-xl font-semibold leading-tight text-[#1A69F0] lg:text-4xl">
+            <h2 className="mt-1 text-center text-base font-semibold leading-tight text-[#1A69F0] md:text-xl lg:text-4xl">
               Menjadikan Ilmu Semakin Bermanfaat
             </h2>
           </div>
 
           {/* Button Left & Right */}
           {loaded && instanceRef.current && (
-            <div className="mt-10 flex w-full items-center justify-center gap-x-5 lg:mt-[70px]">
+            <div className="mt-5 flex w-full items-center justify-center gap-x-5 md:mt-10 lg:mt-[4.375rem]">
               <button
-                className="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#0D0D68] hover:bg-[#36367e] disabled:bg-gray-400"
+                className="flex h-[2.575rem] w-[2.575rem] items-center justify-center rounded-full bg-[#0D0D68] hover:bg-[#36367e] disabled:bg-gray-400 md:h-[3.375rem] md:w-[3.375rem]"
                 onClick={handlePrevClick}
                 disabled={currentSlide === 0}
               >
@@ -368,7 +433,7 @@ const Beranda = () => {
                 />
               </button>
               <button
-                className="pointer flex h-[54px] w-[54px] items-center justify-center rounded-full bg-[#0D0D68] hover:bg-[#36367e] disabled:bg-gray-400"
+                className="pointer flex h-[2.575rem] w-[2.575rem] items-center justify-center rounded-full bg-[#0D0D68] hover:bg-[#36367e] disabled:bg-gray-400 md:h-[3.375rem] md:w-[3.375rem]"
                 onClick={handleNextClick}
                 disabled={
                   // currentSlide >=
@@ -393,7 +458,7 @@ const Beranda = () => {
           )}
 
           {/* Card Testimoni */}
-          <div className="mt-5 flex items-center justify-center md:px-10 lg:mt-11 lg:px-20 xl:px-32">
+          <div className="mt-2 flex items-center justify-center md:mt-5 md:px-10 lg:mt-11 lg:px-20 xl:px-32">
             <div ref={refTestimoni} className="keen-slider">
               <div className="keen-slider__slide number-slide1 w-fit px-2 py-5">
                 <TestimoniItem
@@ -404,30 +469,30 @@ const Beranda = () => {
                   rating={5}
                 />
               </div>
-              <div className="keen-slider__slide number-slide1 w-fit px-2 py-5">
+              <div className="keen-slider__slide number-slide2 w-fit px-2 py-5">
                 <TestimoniItem
                   img="profile"
                   name="Siti Permatasari"
                   student="Mahasiswa STAN 2023"
-                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. "
+                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Setelah mengikuti bimbel ini alhamdulillah sekarang saya bisa diterima di lembaga yang saya inginkan."
                   rating={4}
                 />
               </div>
-              <div className="keen-slider__slide number-slide1 w-fit px-2 py-5">
+              <div className="keen-slider__slide number-slide3 w-fit px-2 py-5">
                 <TestimoniItem
                   img="profile"
                   name="Siti Permatasari"
                   student="Mahasiswa STAN 2023"
-                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. "
+                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Setelah mengikuti bimbel ini alhamdulillah sekarang saya bisa diterima di lembaga yang saya inginkan."
                   rating={4}
                 />
               </div>
-              <div className="keen-slider__slide number-slide1 w-fit px-2 py-5">
+              <div className="keen-slider__slide number-slide4 w-fit px-2 py-5">
                 <TestimoniItem
                   img="profile"
                   name="Siti Permatasari"
                   student="Mahasiswa STAN 2023"
-                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui."
+                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Setelah mengikuti bimbel ini alhamdulillah sekarang saya bisa diterima di lembaga yang saya inginkan."
                   rating={3}
                 />
               </div>
@@ -435,16 +500,16 @@ const Beranda = () => {
           </div>
         </div>
 
-        <div className="mt-3">
+        <div className="mt-1 md:mt-3">
           <div className="relative w-full">
             <Image
               src={"/img/bg-testimoni.png"}
               width={1440}
               height={680}
               alt="bg-testimoni"
-              className="h-[180px] w-full lg:h-full lg:max-h-[680px]"
+              className="h-[13.75rem] w-full lg:h-full lg:max-h-[680px]"
             />
-            <div className="absolute bottom-3 flex w-full flex-col items-center md:bottom-4 lg:bottom-10 xl:bottom-20">
+            <div className="absolute bottom-4 flex w-full flex-col items-center md:bottom-4 lg:bottom-10 xl:bottom-20">
               <h2 className="text-center text-xs font-semibold text-[#393934] lg:text-xl xl:text-3xl">
                 Ayo temukan minat dan potensi dirimu bersama{" "}
                 <br className="block md:hidden" /> Pilih Jurusan sekarang!
@@ -468,7 +533,7 @@ const Beranda = () => {
 
       {/* Faq */}
       <div className="mt-10 flex flex-col items-center justify-center px-2 lg:mt-32 lg:px-0">
-        <h2 className="text-center text-xl font-semibold text-[#323062] lg:text-4xl">
+        <h2 className="text-center text-base font-semibold text-[#323062] md:text-xl lg:text-4xl">
           Pertanyaan yang Paling Sering Ditanyakan
         </h2>
         <div className="mt-5 flex w-full flex-col items-center justify-center gap-y-4 lg:mt-20 lg:gap-y-6">
@@ -500,7 +565,7 @@ const Beranda = () => {
       </div>
 
       {/* Having Problem */}
-      <div className="relative mt-10 flex h-[210px] w-full items-center justify-center bg-[#1A69F0] lg:mt-32 lg:h-[400px]">
+      <div className="relative mt-5 flex h-[210px] w-full items-center justify-center bg-[#1A69F0] md:mt-10 lg:mt-32 lg:h-[400px]">
         <Image
           src={"/img/img-contactus.png"}
           alt="bg-contact-me"
@@ -509,7 +574,9 @@ const Beranda = () => {
           className="h-full"
         />
         <div className="absolute max-w-3xl px-2 text-center text-white lg:px-0">
-          <h1 className="text-xl font-bold lg:text-5xl">Memiliki Kesulitan?</h1>
+          <h1 className="text-lg font-bold md:text-xl lg:text-5xl">
+            Memiliki Kesulitan?
+          </h1>
           <p className="mt-3 text-xs font-medium lg:mt-6 lg:text-base">
             Kami tahu Anda memiliki beberapa pertanyaan, kami telah mencoba
             membuat daftar yang paling penting sekali dan Anda bisa mengajukan
