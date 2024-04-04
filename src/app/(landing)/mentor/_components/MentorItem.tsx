@@ -42,20 +42,20 @@ const MentorItem = (props: MentorItemProps) => {
           </p>
         </div>
         <div className="mt-1 md:mt-2">
-          <h3 className="text-justify text-2xs leading-tight text-[#828282] md:leading-normal">
+          <h3 className="text-justify text-3xs leading-tight text-[#828282] md:leading-normal">
             Saya salah satu mentor yang ahli dalam mengajarkan seputar
             matematika untuk salah satu syarat test di sekolah kedinasan STIS
             dan alumni di STIS sehingga tergolong orang yang kompeten di
             bidangnya{" "}
           </h3>
         </div>
-        <h4 className="mt-2 text-3xs italic  md:mt-4 md:text-sm">
+        <h4 className="mt-2 text-4xs italic  md:mt-4 md:text-sm">
           &quot;{quote}&quot;
         </h4>
         <div className="mt-1 flex items-center justify-center md:mt-3">
           <button
             type="button"
-            className="mb-2 me-2 w-full rounded-2xl border border-gray-300 bg-white px-2 py-[2px] text-2xs font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 md:px-4 md:py-2 md:text-sm"
+            className="mb-2 me-2 w-full rounded-2xl border border-gray-300 bg-white px-2 py-[2px] text-3xs font-bold text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 md:px-4 md:py-2 md:text-sm"
           >
             Lihat Detail
           </button>

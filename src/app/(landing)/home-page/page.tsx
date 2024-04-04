@@ -260,28 +260,32 @@ const Beranda = () => {
                       length:
                         instanceRefMentor.current.track.details.slides.length,
                     },
-                    (_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          instanceRefMentor.current?.moveToIdx(idx);
-                        }}
-                        className={
-                          "h-1 w-1 rounded-[50%] bg-[#c5c5c5] p-1" +
-                          (currentSlideMentor === idx ? " bg-[#323062]" : "")
-                        }
-                      ></button>
-                    ),
+                    (_, idx) => {
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            instanceRefMentor.current?.moveToIdx(idx);
+                          }}
+                          className={
+                            "h-1 w-1 rounded-[50%]  p-1" +
+                            (currentSlideMentor === idx
+                              ? " bg-[#323062]"
+                              : " h-2 w-2 bg-[#c5c5c5]")
+                          }
+                        ></button>
+                      );
+                    },
                   )}
                 </div>
               )}
             </div>
           </div>
 
-          <div className="mt-2 flex w-full items-center justify-center px-2 md:mt-5 lg:mt-24">
+          <div className="mt-2 flex w-full items-center justify-center  px-2 md:mt-5 lg:mt-24">
             <Link
               href="/mentor"
-              className="w-[50%] rounded-lg bg-[#FFC007] py-2 font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4"
+              className="w-[50%] rounded-lg bg-[#FFC007] py-2 text-center font-bold text-[#0D0D68] hover:bg-[#CAA022] md:w-fit md:px-5 md:py-4"
             >
               Meet All Mentor
             </Link>
@@ -398,8 +402,10 @@ const Beranda = () => {
                         instanceRefPaket.current?.moveToIdx(idx);
                       }}
                       className={
-                        "h-1 w-1 rounded-[50%] bg-[#c5c5c5] p-1" +
-                        (currentSlidePaket === idx ? " bg-[#323062]" : "")
+                        "h-1 w-1 rounded-[50%]  p-1" +
+                        (currentSlidePaket === idx
+                          ? " bg-[#323062]"
+                          : " h-2 w-2 bg-[#c5c5c5]")
                       }
                     ></button>
                   ),
