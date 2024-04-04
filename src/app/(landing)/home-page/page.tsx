@@ -131,8 +131,8 @@ const Beranda = () => {
       {/* Navbar */}
       {/* <Navbar /> */}
       {/* Banner */}
-      <div className="relative flex h-[calc(100vh-3.75rem)] w-full items-center">
-        <div className="relative h-full w-full  bg-gradient-to-br from-[#090963] via-[#090963] to-[#3333A1]">
+      <div className="relative flex h-[19.6875rem] w-full md:h-[calc(100vh-3.75rem)]">
+        <div className="relative  h-full w-full  bg-gradient-to-br from-[#090963] via-[#090963] to-[#3333A1]">
           <div className="absolute z-20 flex h-full w-full items-start  px-2 text-white   md:items-center md:px-10 lg:px-0 lg:pl-16 lg:pt-28 xl:pl-32">
             <div className="mt-8 px-3 md:mt-0 md:max-w-[400px] md:px-0 lg:max-w-[420px] xl:max-w-[550px]">
               <h1 className="text-sm font-bold md:text-xl lg:text-[24px] xl:text-[32px] xl:leading-snug">

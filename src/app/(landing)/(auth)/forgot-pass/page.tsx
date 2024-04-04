@@ -6,7 +6,6 @@ import ForgotPassSection from "./_components/ForgotPass";
 const Forgot: React.FC = () => {
   return (
     <>
-      <Navbar />
       <ForgotPassSection />
     </>
   );

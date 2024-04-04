@@ -6,7 +6,6 @@ import ReTypePassSection from "./_components/ReTypePass";
 const ReTypePass: React.FC = () => {
   return (
     <>
-      <Navbar />
       <ReTypePassSection />
     </>
   );

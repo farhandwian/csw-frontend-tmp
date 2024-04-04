@@ -77,7 +77,7 @@ const RegisterForm: React.FC = () => {
           <span className="font-medium">Info alert!</span> {error}
         </Alert>
       )}
-      <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+      <div className="flex grid-cols-2 flex-col gap-x-8 gap-y-4 md:grid">
         <Input
           placeHolder="Masukkan Nama Anda"
           fieldName="nama"
