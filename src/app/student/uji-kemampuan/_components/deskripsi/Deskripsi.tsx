@@ -1,12 +1,18 @@
 "use client";
 
-import GlobalStyles from "@/app/Globals.module.css";
+import Nilai from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/Nilai";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import Link from "next/link";
 import { useState } from "react";
-import Nilai from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/Nilai";
+import InformationTest from "@/app/student/_components/InformationTest";
 
 export type TypeNilai = "latihan-soal" | "pretest" | "posttest";
+const informasi = {
+  PENGERJAAN: "DAPAT DIKERJAKAN BERKALI-KALI",
+  STATUS: "SUDAH DIKERJAKAN",
+  WAKTU: "6 MENIT",
+  JUMLAH_SOAL: "5 SOAL",
+};
 
 export interface DataNilai {
   id: number;
@@ -33,76 +39,10 @@ const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
               Pretest SKD Bagian TWK - Judul Pretest
             </h1>
             {/* informasi test */}
-            <div className="mb-5 flex max-w-max flex-wrap rounded-2xl border bg-white md:flex-nowrap">
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    PHASE
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    DAPAT DIKERJAKAN BERKALI - KALI
-                  </p>
-                </div>
-                {/* horizontal line */}
-                <div className="h-[90%] w-[3px] bg-[#E5E7EB]"></div>
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    STATUS
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    SUDAH DIKERJAKAN
-                  </p>
-                </div>
-
-                {/* horizontal line */}
-                <div className="h-[90%] w-[3px] bg-[#E5E7EB]"></div>
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    WAKTU
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    6 MENIT
-                  </p>
-                </div>
-
-                <div className="h-[90%] w-[3px] bg-[#E5E7EB]"></div>
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    JUMLAH SOAL
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    5 SOAL
-                  </p>
-                </div>
-              </div>
-            </div>
+            <InformationTest informasi={informasi} />
             {/* horizontal line */}
             <hr className="border-y-1 my-3 border-y-gray-300" />
-            <h1
-              className={`${GlobalStyles["light-base-gray-typography"]} text-tp-SlateGray`}
-            >
+            <h1 className="text-xl leading-normal text-tp-SlateGray">
               Overview
             </h1>
             <p className={`text-sm font-semibold text-[#64748B]`}>

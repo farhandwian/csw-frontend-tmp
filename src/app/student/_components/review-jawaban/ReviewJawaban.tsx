@@ -1,115 +1,89 @@
 "use client";
 
-import GlobalStyles from "@/app/Globals.module.css";
 import InformationTable from "@/app/student/_components/review-jawaban/InformationTableReviewJawaban";
-import BlueButton from "@/components/Button/BlueButton";
-import SubmitButton from "@/components/Button/GreenButton";
-import Divider from "@mui/material/Divider";
-import Image from "next/image";
 import {
   Quiz,
-  ReviewJawaban,
+  ReviewJawaban as ReviewJawabanInterface,
 } from "@/app/student/_components/review-jawaban/ReviewJawabanInterface";
+import BlueButton from "@/components/Button/BlueButton";
+import SubmitButton from "@/components/Button/GreenButton";
+import Image from "next/image";
 import { Link } from "react-scroll";
+import { ReactNode, useState } from "react";
 
 interface ReviewJawabanProps {
   quiz: Quiz;
-  reviewJawaban: ReviewJawaban;
+  reviewJawaban: ReviewJawabanInterface;
 }
+
+const informasi = {
+  PENGERJAAN: "DAPAT DIKERJAKAN BERKALI-KALI",
+  STATUS: "BELUM DIKERJAKAN",
+  WAKTU: "6 MENIT",
+  JUMLAH_SOAL: "5 SOAL",
+};
 
 const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
   function onClickModulHome() {}
 
   function onClickFinish() {}
 
+  const [navSoal, setNavSoal] = useState(false);
+
   return (
-    <section className="relative">
+    <section className="relative ">
       <div className="mb-3 flex">
-        <div className="w-[75%]">
+        <div className="w-full md:w-[75%]">
           <InformationTable reviewJawaban={reviewJawaban} />
           {/* awal section soal */}
           {reviewJawaban.quiz.questions.map((question, index) => (
             <div key={index} id={`soal-${question.noSoal}`}>
-              <div className="mb-8">
+              <div className="mb-4 md:mb-8">
                 {/* awal section informasi kuis */}
-                <div className="mb-5 inline-flex rounded-2xl border-2 bg-white">
+                <div className="mb-3 inline-flex rounded-2xl border-2 bg-white md:mb-5">
                   <div className="flex p-3">
                     <div className="mr-3">
-                      <p
-                        className={`${GlobalStyles["normal-xs-gray-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold text-[#9ca3af] md:text-sm">
                         PERTANYAAN
                       </p>
-                      <p
-                        className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
                         NOMOR {question.noSoal}
                       </p>
                     </div>
 
-                    <Divider
-                      orientation="vertical"
-                      variant="middle"
-                      flexItem
-                      className="ml-3 h-8"
-                      sx={{ borderRightWidth: 3 }}
-                    />
+                    <div className="ml-2 h-[100%] w-[2px] bg-[#E5E7EB] md:block"></div>
                   </div>
-                  <div className="flex p-3">
+                  <div className="hidden p-3 md:flex">
                     <div className="mr-3">
-                      <p
-                        className={`${GlobalStyles["normal-xs-gray-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold text-[#9ca3af] md:text-sm">
                         STATUS
                       </p>
-                      <p
-                        className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
                         {question.status}
                       </p>
                     </div>
 
-                    <Divider
-                      orientation="vertical"
-                      variant="middle"
-                      flexItem
-                      className="ml-3 h-8"
-                      sx={{ borderRightWidth: 3 }}
-                    />
+                    <div className="ml-2 h-[100%] w-[2px] bg-[#E5E7EB] md:block"></div>
                   </div>
                   <div className="flex p-3">
                     <div className="mr-3">
-                      <p
-                        className={`${GlobalStyles["normal-xs-gray-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold text-[#9ca3af] md:text-sm">
                         MARK
                       </p>
-                      <p
-                        className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
                         1.00
                       </p>
                     </div>
 
-                    <Divider
-                      orientation="vertical"
-                      variant="middle"
-                      flexItem
-                      className="ml-3 h-8"
-                      sx={{ borderRightWidth: 3 }}
-                    />
+                    <div className="ml-2 h-[100%] w-[2px] bg-[#E5E7EB] md:block"></div>
                   </div>
 
                   <div className="flex p-3">
                     <div className="mr-3">
-                      <p
-                        className={`${GlobalStyles["normal-xs-gray-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold text-[#9ca3af] md:text-sm">
                         JAWABAN
                       </p>
-                      <p
-                        className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-                      >
+                      <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
                         {question.userAnswer === question.rightAnswer
                           ? "benar"
                           : "salah"}
@@ -117,25 +91,27 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                     </div>
                   </div>
                 </div>
+                {/* informasi soal */}
+
                 {/* akhir section informasi kuis */}
 
                 {/* awal section soal dan jawaban */}
-                <div className="w-[100%] rounded-2xl border-2 bg-white p-4">
+                <div className="w-[100%] rounded-2xl border-2 bg-white p-3 text-2xs md:p-4 md:text-sm">
                   <h2 className="mb-2">{question.question}</h2>
-                  <div>
+                  <div className="">
                     {question.options.map((option, index) => (
                       <>
                         {question.userAnswer === question.rightAnswer ? (
                           <>
                             <div
                               key={option.id}
-                              className={`mb-2 flex justify-between rounded-lg border-2 ${
+                              className={`mb-2 flex justify-between rounded-lg border-2  ${
                                 option.letter === question.userAnswer
                                   ? "border-green-400"
                                   : ""
                               }`}
                             >
-                              <div className="flex">
+                              <div className="flex ">
                                 <div
                                   className={`inline-block rounded-l-sm px-3  ${
                                     option.letter === question.userAnswer
@@ -154,7 +130,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                               </div>
                               {option.letter === question.userAnswer ? (
                                 <>
-                                  <div className="my-auto block px-3">
+                                  <div className="my-auto hidden px-3 md:block">
                                     jawaban anda benar
                                   </div>
                                 </>
@@ -201,14 +177,14 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
 
                               {option.letter === question.rightAnswer && (
                                 <>
-                                  <div className="my-auto block px-3">
+                                  <div className="my-auto hidden px-3 md:block">
                                     jawaban yang benar
                                   </div>
                                 </>
                               )}
                               {option.letter === question.userAnswer && (
                                 <>
-                                  <div className="my-auto block px-3">
+                                  <div className="my-auto hidden px-3 md:block">
                                     jawaban anda
                                   </div>
                                 </>
@@ -229,27 +205,27 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
 
           <div className="mt-3 flex justify-between">
             <BlueButton
-              className="ml-2 bg-pl-RoyalBlue  text-white"
+              className=" ml-2 bg-pl-RoyalBlue text-white"
               onClick={() => onClickModulHome()}
             >
               {" "}
-              Modul Home
+              <h1 className="text-2xs md:text-sm">Modul Home</h1>
             </BlueButton>
             <SubmitButton
               className="mx-0 bg-pl-GreenButton text-white"
               onClick={() => onClickFinish()}
             >
-              Finish Review
+              <h1 className="text-2xs md:text-sm">Finish Review</h1>
             </SubmitButton>
           </div>
         </div>
 
-        <div className="relative w-[25%]">
+        <div className="hidden md:relative md:block ">
           {/* section navigasi soal */}
-          <div className="sticky right-4 top-20">
+          <div className="fixed right-4 top-20 md:sticky">
             <div className=" ml-2 mt-3 w-[92%] rounded-md border-2 bg-white">
               {/* header navigasi soal */}
-              <div className="flex  p-3 shadow-md">
+              <div className="flex p-3 shadow-md">
                 <div>
                   <Image
                     width={45}
@@ -287,6 +263,10 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
           </div>
 
           {/* akhir navigasi soal */}
+        </div>
+
+        <div className="fixed right-0 top-[130px] z-[999999999]">
+          <div className="h-7 w-7 bg-red-300"></div>
         </div>
       </div>
     </section>

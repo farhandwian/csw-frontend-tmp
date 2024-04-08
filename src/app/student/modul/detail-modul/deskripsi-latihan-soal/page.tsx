@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import GlobalStyles from "@/app/Globals.module.css";
-import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
-import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
+import InformationTest from "@/app/student/_components/InformationTest";
+import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
+import BlueButton from "@/components/Button/BlueButton";
+import React, { useState } from "react";
 
 let detail_moduls: {
   materi: string;
@@ -34,8 +33,17 @@ detail_moduls = [
     latihan: "Latihan Modul Materi 4",
   },
 ];
+
+const informasi = {
+  PENGERJAAN: "DAPAT DIKERJAKAN BERKALI-KALI",
+  STATUS: "BELUM DIKERJAKAN",
+  WAKTU: "6 MENIT",
+  JUMLAH_SOAL: "5 SOAL",
+};
+
 const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
+  const informasiArray = Object.entries(informasi);
 
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -49,98 +57,17 @@ const Page = () => {
       <Breadcrumbs widthReduction={"54px"} />
 
       <section className="relative p-4 md:p-5">
-        <ModulFAB
-          alignment={alignment}
-          handleChange={(e) => handleChange(e, alignment)}
-        ></ModulFAB>
-        <h1
-          className={`${GlobalStyles["bold-3xl-typography"]} text-tp-Gunmetal`}
-        >
+        <ModulFAB></ModulFAB>
+        <h1 className="my-2 text-lg font-bold leading-normal text-tp-Gunmetal md:text-2xl">
           Latihan Modul Materi 1
         </h1>
-        <div className="mb-5 flex max-w-max rounded-2xl border bg-white">
-          <div className="flex p-3">
-            <div className="mr-3">
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                PENGERJAAN DIPERBOLEHKAN
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                DAPAT DIKERJAKAN BERKALI - KALI
-              </p>
-            </div>
-
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
-          </div>
-          <div className="flex p-3">
-            <div className="mr-3">
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                STATUS
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                BELUM DIKERJAKAN
-              </p>
-            </div>
-
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
-          </div>
-          <div className="flex p-3">
-            <div className="mr-3">
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                WAKTU
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                6 MENIT
-              </p>
-            </div>
-
-            <Divider
-              orientation="vertical"
-              variant="middle"
-              flexItem
-              className="ml-3 h-8"
-              sx={{ borderRightWidth: 3 }}
-            />
-          </div>
-          <div className="flex p-3">
-            <div className="mr-3">
-              <p className={`${GlobalStyles["normal-xs-gray-typography"]}`}>
-                JUMLAH SOAL
-              </p>
-              <p
-                className={`${GlobalStyles["normal-xs-steelblue-typography"]}`}
-              >
-                5 SOAL
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* informasi soal */}
+        <InformationTest informasi={informasi} />
         <hr className="border-y-1 border-y-gray-300" />
-        <h1
-          className={`${GlobalStyles["light-base-gray-typography"]} text-tp-SlateGray`}
-        >
+        <h1 className="text-base text-tp-SlateGray md:text-xl">
           Deskripsi Latihan
         </h1>
-        <p
-          className={`${GlobalStyles["light-sm-typography"]} text-tp-SteelBlue`}
-        >
+        <p className={`text-sm leading-normal text-tp-SteelBlue md:text-base`}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil et
           voluptate quos fuga tempora laborum voluptatibus cumque nobis mollitia
           facere facilis natus labore ad perspiciatis ut repellendus, aut amet
@@ -153,15 +80,13 @@ const Page = () => {
           mollitia! Enim doloremque velit molestiae eum illo possimus quod ab,
           minus accusamus placeat laudantium suscipit maiores consequuntur quas.
         </p>
-        <p className={`${GlobalStyles["bold-sm-gray-typography"]} mt-3`}>
+        <p className="mt-3 text-sm font-semibold text-[#b4b4b4] md:text-base">
           Persiapkan diri kamu sebelum mengerjakan latihan dengan mempelajari
           dan memahami modul materi 1. Sudah belajar sebelumnya? Lanjutkan dan
           mulai kerjakan latihan!
         </p>
 
-        <Button variant="contained" className="my-3 bg-pl-RoyalBlue">
-          Mulai Kerjakan
-        </Button>
+        <BlueButton className="my-3 bg-pl-RoyalBlue">Mulai Kerjakan</BlueButton>
       </section>
     </>
   );

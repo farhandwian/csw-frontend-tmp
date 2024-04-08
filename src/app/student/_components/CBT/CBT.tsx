@@ -90,11 +90,21 @@ const CBT = ({ quiz }: CBTProps) => {
 
   const onOptionSelected = (option: Option, index: number) => {
     const updateResult = { ...result };
-    // Mengganti userAnswer pada pertanyaan yang sedang aktif
-    updateResult.questions[activeQuestion].userAnswer = option.letter;
 
-    updateResult.questions[activeQuestion].status = "sudah-dijawab";
-    // Memperbarui state menggunakan setResult
+    if (updateResult.questions[activeQuestion].userAnswer === option.letter) {
+      // Mengganti userAnswer pada pertanyaan yang sedang aktif
+      updateResult.questions[activeQuestion].userAnswer = "";
+
+      updateResult.questions[activeQuestion].status = "belum-dijawab";
+      // Memperbarui state menggunakan setResult
+    } else {
+      // Mengganti userAnswer pada pertanyaan yang sedang aktif
+      updateResult.questions[activeQuestion].userAnswer = option.letter;
+
+      updateResult.questions[activeQuestion].status = "sudah-dijawab";
+      // Memperbarui state menggunakan setResult
+    }
+
     setResult(updateResult);
   };
 
@@ -125,11 +135,13 @@ const CBT = ({ quiz }: CBTProps) => {
 
   return (
     <TipeUjianContext.Provider value={navigasiSoalType}>
-      <h1 className={`text-[1.75rem] leading-normal text-tp-Gunmetal`}>
+      <h1
+        className={`my-2 text-lg leading-normal text-tp-Gunmetal md:text-2xl`}
+      >
         Latihan Pretest 1 Pancasila
       </h1>
-      <div className="flex">
-        <div className="w-[70%]">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-[73%]">
           <InformationQuiz
             {...{
               addLeadingZero,
@@ -153,7 +165,7 @@ const CBT = ({ quiz }: CBTProps) => {
             }}
           />
         </div>
-        <div className="w-[30%]">
+        <div className="md:w-[27%]">
           <QuestionNavigation
             {...{
               result,

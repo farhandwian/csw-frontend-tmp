@@ -57,7 +57,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
           <div
             onClick={handleOptionSelected(option, index)}
             key={option.id}
-            className={`mb-2 flex rounded-lg border-2 ${
+            className={`mb-2 flex justify-between rounded-lg border-2 ${
               option.letter === result.questions[activeQuestion].userAnswer
                 ? "border-green-400"
                 : ""
@@ -70,10 +70,12 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
                   : ""
               }`}
             >
-              {option.letter}
+              <div className="mt-[2px]">{option.letter}</div>
             </div>
             <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
-            <div className="ml-3 inline-block text-left">{option.text}</div>
+            <div className="m-auto ml-3 inline-block text-left">
+              {option.text}
+            </div>
           </div>
         ))}
       </div>

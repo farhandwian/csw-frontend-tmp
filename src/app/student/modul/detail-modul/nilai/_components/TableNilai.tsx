@@ -8,6 +8,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+import Image from "next/image";
+import Link from "next/link";
+
 interface TableData {
   id: number;
   modul: Modul[];
@@ -160,6 +163,14 @@ export default function TableNilai() {
             <React.Fragment key={row.id}>
               <StyledTableRow>
                 <StyledTableCell component="th" scope="row" colSpan={5}>
+                  <Image
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    src="/img/modul/nilai/ic-document.svg"
+                    className={`mr-2 inline-block h-5 w-5 object-fill md:h-5 md:w-5`}
+                    alt="ic document"
+                  />{" "}
                   {row.modulName}
                 </StyledTableCell>
               </StyledTableRow>
@@ -170,6 +181,14 @@ export default function TableNilai() {
                     {index + 1}
                   </StyledTableCell>
                   <StyledTableCell align="center">
+                    <Image
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      src="/img/modul/nilai/ic-latihan.svg"
+                      className={`mr-2 inline-block h-7 w-7 object-fill md:h-7 md:w-7`}
+                      alt="ic document"
+                    />{" "}
                     {quiz.taskName}
                   </StyledTableCell>
                   <StyledTableCell align="center">
@@ -184,7 +203,11 @@ export default function TableNilai() {
                     </h1>
                     /25
                   </StyledTableCell>
-                  <StyledTableCell align="center">review</StyledTableCell>
+                  <StyledTableCell align="center">
+                    <Link href="" className="text-[#2563EB]">
+                      REVIEW
+                    </Link>
+                  </StyledTableCell>
                 </StyledTableRow>
               ))}
             </React.Fragment>

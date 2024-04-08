@@ -2,10 +2,13 @@
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import CBT from "@/app/student/_components/CBT/CBT";
 import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
-import { quizDikit } from "@/app/student/_components/CBT/dummyData/data";
+import {
+  quizDikit,
+  quizBanyak,
+} from "@/app/student/_components/CBT/dummyData/data";
 import React, { useState } from "react";
 
-const quiz = quizDikit;
+const quiz = quizBanyak;
 
 const Page = () => {
   const [alignment, setAlignment] = useState("modul_home");
@@ -21,10 +24,10 @@ const Page = () => {
       <Breadcrumbs widthReduction={"54px"} />
 
       <section className="relative w-[100%] p-4 md:p-5">
-        <ModulFAB
+        {/* <ModulFAB
           alignment={alignment}
           handleChange={(e) => handleChange(e, alignment)}
-        ></ModulFAB>
+        ></ModulFAB> */}
         <CBT quiz={quiz} />
       </section>
     </>

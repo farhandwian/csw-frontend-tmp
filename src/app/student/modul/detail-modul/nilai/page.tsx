@@ -19,10 +19,7 @@ const Page = () => {
       <Breadcrumbs widthReduction={"54px"} />
 
       <section className="relative p-4 md:p-5">
-        <ModulFAB
-          alignment={alignment}
-          handleChange={(e) => handleChange(e, alignment)}
-        ></ModulFAB>
+        <ModulFAB></ModulFAB>
         <TableNilai />
         <h1></h1>
       </section>

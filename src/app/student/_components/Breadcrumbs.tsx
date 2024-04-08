@@ -47,11 +47,14 @@ export default function Breadcrumbs({
         const isLast = index === array.length - 1;
         if (crumb !== "student") {
           return (
-            <div className="ml-2 inline-flex items-center" key={crumb}>
-              <ArrowBackIosIcon style={{ fontSize: 15 }} />
+            <div
+              className="ml-2 inline-flex items-center text-xs md:text-base"
+              key={crumb}
+            >
+              <ArrowBackIosIcon fontSize="inherit" />
               <div
                 className={`text-tp-SlateGray ${
-                  fontSize ? `text-${fontSize}` : "text-base"
+                  fontSize && `text-${fontSize}`
                 }`}
               >
                 <Link
@@ -72,7 +75,7 @@ export default function Breadcrumbs({
       className={`relative  ${
         bgColor ? `bg-${bgColor}` : "bg-white"
       } rounded-sm ${isShadow ? "shadow-md" : ""} text-left ${
-        padding ? `p-${padding}` : "p-3"
+        padding ? `p-${padding}` : "px-1 py-2 md:p-3"
       } text-black`}
     >
       <div className="inline">{crumbs}</div>

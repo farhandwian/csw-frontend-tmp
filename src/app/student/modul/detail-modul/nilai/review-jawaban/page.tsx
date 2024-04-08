@@ -2,7 +2,7 @@
 
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import {
-  quiz,
+  quiz2,
   reviewJawaban,
 } from "@/app/student/_components/review-jawaban/DummyData";
 import ReviewJawabanComponent from "@/app/student/_components/review-jawaban/ReviewJawaban";
@@ -26,11 +26,8 @@ const Page = () => {
     <>
       <Breadcrumbs widthReduction={"54px"} />
       <section className="relative p-4 md:p-5">
-        <ModulFAB
-          alignment={alignment}
-          handleChange={(e) => handleChange(e, alignment)}
-        ></ModulFAB>
-        <ReviewJawabanComponent quiz={quiz} reviewJawaban={reviewJawaban} />
+        <ModulFAB></ModulFAB>
+        <ReviewJawabanComponent quiz={quiz2} reviewJawaban={reviewJawaban} />
       </section>
     </>
   );

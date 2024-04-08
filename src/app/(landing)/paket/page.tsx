@@ -39,13 +39,13 @@ const Page = () => {
       <div className="relative flex h-72 w-full items-center">
         <div className="relative h-full w-full overflow-hidden bg-[#1A69F0]">
           {/*  Background for Banner */}
-          <div className="absolute bottom-0 right-0 top-11 z-0 overflow-hidden md:h-full md:w-full  ">
+          <div className="absolute bottom-0 right-0 top-14 z-0 overflow-hidden md:h-full md:w-full  ">
             <Image
               src={"/img/landing-paket/ic-banner-paket.svg"}
               width={0}
               height={0}
               alt="ic-banner"
-              className="absolute bottom-0 h-full w-full lg:scale-150 xl:scale-100"
+              className="absolute bottom-0 h-full w-full xl:scale-100"
             />
           </div>
           <div className="absolute bottom-0 top-0 z-0 h-full w-full md:h-full md:w-full  ">
@@ -54,7 +54,7 @@ const Page = () => {
               width={0}
               height={0}
               alt="ic-banner"
-              className="absolute bottom-0 left-1/2 top-24 h-[200px] w-[200px]  -translate-x-1/2 transform md:bottom-0 md:left-96 md:right-0 md:top-16 md:h-full md:w-full md:-translate-x-0 lg:scale-150 xl:scale-100"
+              className="absolute bottom-0 left-1/2 top-24 h-[200px] w-[200px]  -translate-x-1/2 transform md:bottom-0 md:left-96 md:right-0 md:top-16 md:h-full md:w-full md:-translate-x-0 xl:scale-100"
             />
           </div>
           <div className="absolute left-5 top-5  text-white md:left-24 md:top-1/2 md:-translate-y-1/2 md:transform ">

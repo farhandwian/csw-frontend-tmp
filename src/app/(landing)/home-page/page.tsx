@@ -166,13 +166,13 @@ const Beranda = () => {
           </div>
 
           {/* Image Banner */}
-          <div className="absolute bottom-28 right-6 z-10 h-[30px] w-[120px] md:bottom-0 md:right-5 md:flex md:h-full md:w-full md:items-end md:justify-end lg:right-16  xl:right-36 ">
+          <div className="absolute bottom-28 right-6 z-10 h-[30px] w-[120px] md:bottom-0 md:right-5 md:flex md:h-full md:w-full md:items-end md:justify-end lg:right-14  xl:right-36 ">
             <Image
               src={"/img/img-banner.png"}
               width={538}
               height={638}
               alt="img-banner"
-              className="md:h-[438px] md:w-[380px] lg:h-[538px] lg:w-[438px] xl:h-[500px] xl:w-auto 2xl:h-[85%] 2xl:w-auto"
+              className="md:h-[438px] md:w-[380px] lg:h-[438px] lg:w-[338px] xl:h-[500px] xl:w-auto 2xl:h-[85%] 2xl:w-auto"
             />
           </div>
         </div>
