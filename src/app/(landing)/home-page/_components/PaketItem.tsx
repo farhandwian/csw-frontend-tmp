@@ -1,23 +1,23 @@
 import Image from "next/image";
 import React from "react";
+import { TPaket } from "@/types/home-page";
 
-interface PaketItemProps {
-  paket: string;
-  price: number;
-}
+const PaketItem = ({ props, key }: { props: TPaket; key?: string }) => {
+  const { module_name, name, price } = props;
+  const DetailsData = [
+    props.access > 0 ? `${props.access} Bulan Akses Web` : null,
+    props.zoom ? `${props.zoom} Pertemuan Zoom` : null,
+    props.exercise > 0 ? `${props.exercise} Latihan Soal` : null,
+    props.group ? "Grup dengan Mentor" : null,
+    props.try_out > 0 ? `${props.try_out} Try Out` : null,
+    props.module ? "Modul" : null,
+  ].filter(Boolean);
 
-const DetailsData = [
-  "3 Bulan Akses Web",
-  "36 Pertemuan Zoom",
-  "660 Latihan Soal",
-  "Grup dengan Mentor",
-  "2x Tryout",
-  "Modul",
-];
-
-const PaketItem = () => {
   return (
-    <div className="w-full rounded-[1.25rem] bg-white p-6 shadow-md lg:w-fit">
+    <div
+      key={key}
+      className="w-full rounded-[1.25rem] bg-white p-6 shadow-md lg:w-fit"
+    >
       <div className="flex  items-center justify-center md:h-[16rem] md:w-[19.5rem]">
         <Image
           src={"/img/img-paket1.png"}
@@ -29,13 +29,13 @@ const PaketItem = () => {
         />
       </div>
       <div className="mt-6 flex items-center justify-between">
-        <h2 className="text-sm font-semibold md:text-xl">Paket D</h2>
+        <h2 className="text-sm font-semibold md:text-xl">{module_name}</h2>
         <div className="rounded-full border border-[#6255A4] px-1 py-1 md:px-3">
-          <h4 className="text-2xs font-medium md:text-xs">Paket SKD Teratas</h4>
+          <h4 className="text-2xs font-medium md:text-xs">{name}</h4>
         </div>
       </div>
       <h1 className="pt-1 text-sm font-semibold text-[#E23535] md:pt-2 md:text-3xl">
-        Rp 285.000,00
+        {price}
       </h1>
       <p className="pt-1 text-xs text-[#0A0A65] md:pt-2 md:text-sm">
         Sesuai untuk mengasah kemampuan

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
+import { TPaket } from "@/types/home-page";
 interface PaketItemProps {
   paket: string;
   price: number;
@@ -14,9 +15,21 @@ const DetailsData = [
   "2x Tryout",
   "Modul",
 ];
-const PaketItem = () => {
+const PaketItem = ({ props, key }: { props: TPaket; key?: string }) => {
+  const DetailsData = [
+    props.access > 0 ? `${props.access} Bulan Akses Web` : null,
+    props.zoom ? `${props.zoom} Pertemuan Zoom` : null,
+    props.exercise > 0 ? `${props.exercise} Latihan Soal` : null,
+    props.group ? "Grup dengan Mentor" : null,
+    props.try_out > 0 ? `${props.try_out} Try Out` : null,
+    props.module ? "Modul" : null,
+  ].filter(Boolean);
+
   return (
-    <div className="flex flex-col items-center rounded-sm bg-white p-2 shadow-md md:rounded-[20px] md:p-4 lg:w-fit">
+    <div
+      key={key}
+      className="flex flex-col items-center rounded-sm bg-white p-2 shadow-md md:rounded-[20px] md:p-4 lg:w-fit"
+    >
       {/* card image */}
       <div className="relative flex h-[80px] w-[120px] items-center justify-center  md:h-[146px] md:w-[226px]">
         <Image
@@ -30,13 +43,15 @@ const PaketItem = () => {
       </div>
       <div className="mt-2 md:mt-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xs font-semibold md:text-sm">Paket D</h2>
+          <h2 className="text-2xs font-semibold md:text-sm">
+            {props.module_name}
+          </h2>
           <div className=" rounded-full border border-[#6255A4] px-1 md:block md:px-3 md:py-1">
-            <h4 className="text-3xs font-medium">Paket SKD Teratas</h4>
+            <h4 className="text-3xs font-medium">{props.name}</h4>
           </div>
         </div>
         <h1 className="pt-1 text-xs font-semibold text-[#E23535] md:pt-2 md:text-base">
-          Rp 285.000,00
+          {props.price}
         </h1>
         <p className="text-3xs text-[#0A0A65] md:mt-1 md:text-xs">
           Sesuai untuk mengasah kemampuan

@@ -1,22 +1,24 @@
 "use client";
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import Footer from "@/app/(landing)/_components/Footer";
+import MentorItem from "@/app/(landing)/mentor/_components/MentorItem";
 import useDesktop from "@/hooks/useDesktop";
 import useTablet from "@/hooks/useTablet";
-import MentorItem from "@/app/(landing)/mentor/_components/MentorItem";
-import Footer from "@/app/(landing)/_components/Footer";
+import "keen-slider/keen-slider.min.css";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+import { useGetAllMentors } from "@/hooks/mentor/hook";
+import Error from "@/components/Error";
 const Page = () => {
   const tabletView = useTablet();
   const desktopView = useDesktop();
-
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpenMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const {
+    data: dataAllMentors,
+    isLoading: isLoadingAllMentors,
+    isError: isErrorAllMentors,
+  } = useGetAllMentors();
 
   useEffect(() => {
     const body = document.body;
@@ -31,6 +33,10 @@ const Page = () => {
       body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  if (isErrorAllMentors) {
+    return <Error message="error while fetching data" />;
+  }
 
   return (
     <>
@@ -84,30 +90,18 @@ const Page = () => {
           <div className="relative mt-5  md:mt-8 ">
             {desktopView ? (
               <div className="grid grid-cols-3 gap-4 ">
-                {Array.from({ length: 10 }).map((_, index) => (
+                {dataAllMentors?.data.map((mentor, index) => (
                   <div key={index}>
-                    <MentorItem
-                      img="mentor1"
-                      name="Ayu Lestari"
-                      deskripsi="Saya salah satu mentor yang ahli dalam mengajarkan seputar matematika untuk salah satu syarat test di sekolah kedinasan STIS dan alumni di STIS sehingga tergolong orang yang kompeten di bidangnya"
-                      job="Matematika"
-                      quote="Matematika itu mudah, asik, dan seru"
-                    />
+                    <MentorItem mentor={mentor} key={`mentor-${index}`} />
                   </div>
                 ))}
               </div>
             ) : (
               <>
                 <div className="grid grid-cols-2 gap-3  ">
-                  {Array.from({ length: 10 }).map((_, index) => (
+                  {dataAllMentors?.data.map((mentor, index) => (
                     <div key={index}>
-                      <MentorItem
-                        img="mentor1"
-                        deskripsi="Saya salah satu mentor yang ahli dalam mengajarkan seputar matematika untuk salah satu syarat test di sekolah kedinasan STIS dan alumni di STIS sehingga tergolong orang yang kompeten di bidangnya"
-                        name="Ayu Lestari"
-                        job="Matematika"
-                        quote="Matematika itu mudah, asik, dan seru"
-                      />
+                      <MentorItem mentor={mentor} key={`mentor-${index}`} />
                     </div>
                   ))}
                 </div>

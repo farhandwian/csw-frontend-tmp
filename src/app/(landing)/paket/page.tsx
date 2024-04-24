@@ -8,16 +8,33 @@ import useDesktop from "@/hooks/useDesktop";
 import useTablet from "@/hooks/useTablet";
 import PaketItem from "@/app/(landing)/paket/_components/PaketItem";
 import Footer from "@/app/(landing)/_components/Footer";
+import { useGetSearchPakets } from "@/hooks/paket/hook";
+import { TPaket } from "@/types/home-page";
 
 const Page = () => {
   const tabletView = useTablet();
   const desktopView = useDesktop();
-
   const [isOpen, setIsOpen] = useState(false);
+
+  const [filter, setFilter] = useState("");
+  const [searchText, setSearchText] = useState("");
+
+  const {
+    data: dataSearchPakets,
+    isLoading: isLoadingSearchPakets,
+    isError: isErrorSearchPakets,
+  } = useGetSearchPakets(filter, searchText);
+
+  const [pakets, setPakets] = useState<TPaket[]>(
+    dataSearchPakets ? dataSearchPakets.data : [],
+  );
 
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    if (dataSearchPakets) setPakets(dataSearchPakets.data);
+  }, []);
 
   useEffect(() => {
     const body = document.body;
@@ -32,6 +49,42 @@ const Page = () => {
       body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (dataSearchPakets) {
+      setPakets(dataSearchPakets.data);
+    }
+  }, [dataSearchPakets]);
+
+  const filteredPakets = pakets.filter((paket) => {
+    if (filter === "") {
+      return true;
+    }
+    // Filter berdasarkan module
+    if (filter !== "all" && paket.module_name !== filter) {
+      return false;
+    }
+    // Filter berdasarkan pencarian text
+    if (
+      searchText &&
+      !paket.name.toLowerCase().includes(searchText.toLowerCase())
+    ) {
+      return false;
+    }
+    return true;
+  });
+
+  if (isErrorSearchPakets) {
+    return <div>Error occurred while fetching data.</div>;
+  }
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilter(event.target.value);
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+  };
 
   return (
     <>
@@ -96,10 +149,11 @@ const Page = () => {
                   id="jenis-modul"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-xs text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 md:text-sm"
                   defaultValue="all"
+                  onChange={handleFilterChange}
                 >
                   <option value="all">All Jenis Modul</option>
                   <option value="SKD">Paket SKD</option>
-                  <option value="matematika">Paket Matematika</option>
+                  <option value="Matematika">Paket Matematika</option>
                 </select>
               </form>
 
@@ -115,6 +169,7 @@ const Page = () => {
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-xs text-gray-900  focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 md:text-sm"
                     placeholder="Search"
                     required
+                    onChange={handleSearchChange}
                   />
                 </div>
                 <button
@@ -144,19 +199,15 @@ const Page = () => {
 
             {desktopView ? (
               <div className="grid grid-cols-3 gap-4  ">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <div key={index}>
-                    <PaketItem />
-                  </div>
+                {filteredPakets?.map((paket, index) => (
+                  <PaketItem props={paket} key={`${index}`} />
                 ))}
               </div>
             ) : (
               <>
                 <div className="grid grid-cols-2 gap-3  ">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <div key={index}>
-                      <PaketItem />
-                    </div>
+                  {filteredPakets?.map((paket, index) => (
+                    <PaketItem props={paket} key={`${index}`} />
                   ))}
                 </div>
               </>

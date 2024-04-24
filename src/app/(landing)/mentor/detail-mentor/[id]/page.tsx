@@ -1,30 +1,13 @@
 "use client";
-import "keen-slider/keen-slider.min.css";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import Footer from "@/app/(landing)/_components/Footer";
+import { useGetDetailMentor } from "@/hooks/mentor/hook";
 import useDesktop from "@/hooks/useDesktop";
 import useTablet from "@/hooks/useTablet";
-import MentorItem from "@/app/(landing)/mentor/_components/MentorItem";
-import Footer from "@/app/(landing)/_components/Footer";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-
-import { green } from "@mui/material/colors";
-
-const keunikan = [
-  "Keahlian Mendalam",
-  "Metode Pembelajaran Inovatif",
-  "Dukungan Personal",
-  "Rekam Jejak Keberhasilan",
-];
-
-interface DetailMentorProps {
-  img: "mentor1" | "mentor2" | "mentor3";
-  name: string;
-  deskripsi: string;
-  job: string;
-  quote: string;
-}
+import "keen-slider/keen-slider.min.css";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import Error from "@/components/Error";
 
 const DetailTest = {
   title: "Tes Logika Verbal",
@@ -54,16 +37,15 @@ const DetailTest = {
   ],
 };
 
-const DetailMentor = (props: DetailMentorProps) => {
-  let { img, name, job, quote } = props;
-  img = "mentor1";
-  let deskripsi =
-    "Saya salah satu mentor yang ahli dalam mengajarkan seputar matematika untuk salah satu syarat test di sekolah kedinasan STIS dan alumni di STIS sehingga tergolong orang yang kompeten di bidangnya";
-  name = "Ayu Lestari";
-  job = "Matematika";
-  quote = "Matematika itu mudah, asik, dan seru";
+const Page = ({ params }: { params: { id: string } }) => {
+  const {
+    data,
+    isLoading: isLoadingDetailMentor,
+    isError: isErrorDetailMentor,
+  } = useGetDetailMentor(params.id);
 
-  //==================================================
+  const dataDetailMentor = data?.data;
+
   const tabletView = useTablet();
   const desktopView = useDesktop();
 
@@ -87,6 +69,9 @@ const DetailMentor = (props: DetailMentorProps) => {
     };
   }, [isOpen]);
 
+  if (isErrorDetailMentor) {
+    return <Error message="error while fetching data" />;
+  }
   return (
     <>
       {/* Banner */}
@@ -136,15 +121,15 @@ const DetailMentor = (props: DetailMentorProps) => {
                   src={`/img/landing-mentor/ic-bg-mentor-card.svg`}
                   width={0}
                   height={0}
-                  alt={`img-${img}`}
+                  alt={`ic-bg-mentor-card.svg`}
                   className="h-full w-full object-fill"
                 />
               </div>
               <Image
-                src={`/img/img-${img}.png`}
+                src={`/${dataDetailMentor?.profile_picture}`}
                 width={288}
                 height={281}
-                alt={`img-${img}`}
+                alt={`/${dataDetailMentor?.profile_picture}`}
                 className=" z-10 h-[208px] w-[211px] object-fill md:h-[258px] md:w-[261px]"
               />
             </div>
@@ -156,7 +141,7 @@ const DetailMentor = (props: DetailMentorProps) => {
           {/* bagian informasi */}
           <div className="0 w-full">
             <h1 className="mt-2 text-sm font-extrabold md:text-4xl">
-              Anisa Permatasari
+              {dataDetailMentor?.name}
             </h1>
             <h3 className="mt-3 text-justify text-xs">
               Dalam dunia persiapan kedinasan, Annisa Permatasari adalah lebih
@@ -170,7 +155,7 @@ const DetailMentor = (props: DetailMentorProps) => {
               <h2>Keunikan Ayu : </h2>
               <div className="mt-3">
                 <div className="flex flex-col  gap-2">
-                  {keunikan.map((unik, index) => (
+                  {dataDetailMentor?.uniques.map((unik, index) => (
                     <div className="flex items-center gap-3" key={index}>
                       <CheckCircleOutlineIcon
                         color="success"
@@ -194,7 +179,7 @@ const DetailMentor = (props: DetailMentorProps) => {
                 src={`/img/landing-mentor/ic-workshop.svg`}
                 width={60}
                 height={60}
-                alt={`img-${img}`}
+                alt={`ic-workshop.svg`}
                 className=" z-10 h-[50px] w-[50px] object-fill md:h-[60px] md:w-[60px]"
               />
               <div className="">
@@ -211,7 +196,7 @@ const DetailMentor = (props: DetailMentorProps) => {
                 src={`/img/landing-mentor/ic-mata-pelajaran.svg`}
                 width={60}
                 height={60}
-                alt={`img-${img}`}
+                alt={`ic-mata-pelajaran.svg`}
                 className=" z-10 h-[50px] w-[50px] object-fill md:h-[60px] md:w-[60px]"
               />
               <div className="">
@@ -233,7 +218,7 @@ const DetailMentor = (props: DetailMentorProps) => {
                     src={`/img/landing-mentor/ic-pensil.svg`}
                     width={20}
                     height={20}
-                    alt={`img-${img}`}
+                    alt={`ic-pensil.svg`}
                     className=" z-10 h-[15px] w-[15px] object-fill  md:h-[20px] md:w-[20px]"
                   />
                   <div>
@@ -256,4 +241,4 @@ const DetailMentor = (props: DetailMentorProps) => {
   );
 };
 
-export default DetailMentor;
+export default Page;
