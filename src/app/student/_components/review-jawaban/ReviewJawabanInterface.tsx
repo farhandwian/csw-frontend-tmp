@@ -13,6 +13,9 @@ interface Question {
   status?: string; //belum-dijawab,sudah-dijawab,ditandai
   noSoal: number;
   userAnswer?: string;
+
+  rightAnswerText?: string;
+  pembahasan?: string;
 }
 
 export interface Quiz {

@@ -20,8 +20,11 @@ export const quiz: Quiz = {
       ],
       userAnswer: "c",
       rightAnswer: "c",
+      rightAnswerText: "Matahari",
       noSoal: 1,
-      status: "belum-dijawab",
+      status: "sudah-dijawab",
+      pembahasan:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.",
     },
     {
       id: "4",
@@ -35,8 +38,11 @@ export const quiz: Quiz = {
       ],
       userAnswer: "d",
       rightAnswer: "d",
+      rightAnswerText: "Paris",
       noSoal: 2,
-      status: "belum-dijawab",
+      status: "sudah-dijawab",
+      pembahasan:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.",
     },
     {
       id: "5",
@@ -50,8 +56,11 @@ export const quiz: Quiz = {
       ],
       userAnswer: "e",
       rightAnswer: "c",
+      rightAnswerText: "Isaac Newton",
       noSoal: 3,
-      status: "belum-dijawab",
+      status: "sudah-dijawab",
+      pembahasan:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.",
     },
     {
       id: uuidv4(),
@@ -64,10 +73,13 @@ export const quiz: Quiz = {
         { id: uuidv4(), letter: "d", text: "Mahkamah Agung" },
         { id: uuidv4(), letter: "e", text: "Mahkamah Agung" },
       ],
-      userAnswer: "a",
+      userAnswer: "",
       rightAnswer: "a",
+      rightAnswerText: "MPR",
       noSoal: 4,
       status: "belum-dijawab",
+      pembahasan:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.",
     },
     {
       id: uuidv4(),
@@ -76,14 +88,17 @@ export const quiz: Quiz = {
       options: [
         { id: uuidv4(), letter: "a", text: "MPR" },
         { id: uuidv4(), letter: "b", text: "Mahkamah Agung" },
-        { id: uuidv4(), letter: "c", text: "Mahkamah Agung" },
-        { id: uuidv4(), letter: "d", text: "Mahkamah Agung" },
-        { id: uuidv4(), letter: "e", text: "Mahkamah Agung" },
+        { id: uuidv4(), letter: "c", text: "Mahkamah Konsitusi" },
+        { id: uuidv4(), letter: "d", text: "Komisi Yudikatfi" },
+        { id: uuidv4(), letter: "e", text: "KPK" },
       ],
       userAnswer: "b",
       rightAnswer: "b",
+      rightAnswerText: "Mahkamah Agung",
       noSoal: 5,
-      status: "belum-dijawab",
+      status: "sudah-dijawab",
+      pembahasan:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veniam necessitatibus sit optio consectetur quasi impedit? Explicabo veniam adipisci et, commodi eius aperiam accusantium autem debitis reiciendis harum voluptatem sint.",
     },
   ],
 };
@@ -108,7 +123,7 @@ for (let i = 1; i <= 50; i++) {
       { id: uuidv4(), letter: "d", text: `Option D for question ${i}` },
       { id: uuidv4(), letter: "e", text: `Option E for question ${i}` },
     ],
-    userAnswer: "", // Kosongkan untuk jawaban pengguna
+    userAnswer: "c", // Kosongkan untuk jawaban pengguna
     rightAnswer: "a", // Ganti dengan jawaban yang benar
     noSoal: i,
     status: "belum-dijawab",

@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  quiz2 as quiz,
-  reviewJawaban2 as reviewJawaban,
+  quiz as quiz,
+  reviewJawaban as reviewJawaban,
 } from "@/app/student/_components/review-jawaban/DummyData";
 import ReviewJawabanComponent from "@/app/student/_components/review-jawaban/ReviewJawaban";
 

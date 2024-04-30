@@ -63,16 +63,30 @@ const Navbar = () => {
           <div className="hidden w-[65%] lg:flex lg:flex-none ">
             <ul className="w-full flex-none text-[#909090] md:flex lg:justify-between lg:gap-x-1 lg:text-sm xl:gap-x-4 xl:text-base">
               {navbarItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={`rounded-full ${
-                    rootPathName === item.href
-                      ? "border-none bg-[#E9EFFD] "
-                      : "hover:text-[#5E5ED0]"
-                  } px-3 py-2 hover:text-[#010101] focus:bg-[#E9EFFD] focus:text-[#1D4EDF]`}
-                >
-                  {item.text}
+                <Link key={`nav-item-${index}`} href={item.href}>
+                  <button
+                    key={index}
+                    className={`rounded-full ${
+                      rootPathName === item.href
+                        ? "border-none bg-[#E9EFFD] "
+                        : "hover:text-[#5E5ED0]"
+                    } px-3 py-2  ${
+                      item.text === "Testimoni" || item.text === "Hubungi Kami"
+                        ? " hover:text cursor-default text-gray-200 hover:text-gray-200"
+                        : " hover:text-[#010101] focus:bg-[#E9EFFD] focus:text-[#1D4EDF]"
+                    }`}
+                  >
+                    <h1
+                      className={
+                        item.text === "Testimoni" ||
+                        item.text === "Hubungi Kami"
+                          ? "select-none"
+                          : "select-text"
+                      }
+                    >
+                      {item.text}
+                    </h1>
+                  </button>
                 </Link>
               ))}
             </ul>

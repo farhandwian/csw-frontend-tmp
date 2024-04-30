@@ -1,6 +1,8 @@
 "use client";
 
 import InformationTable from "@/app/student/_components/review-jawaban/InformationTableReviewJawaban";
+import Pembahasan from "@/app/student/_components/review-jawaban/Pembahasan";
+
 import {
   Quiz,
   ReviewJawaban as ReviewJawabanInterface,
@@ -30,6 +32,14 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
 
   const [navSoal, setNavSoal] = useState(false);
 
+  function isAnswerCorrect(userAnswer?: string, rightAnswer?: string) {
+    if (userAnswer == rightAnswer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   return (
     <section className="relative ">
       <div className="mb-3 flex">
@@ -38,7 +48,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
           {/* awal section soal */}
           {reviewJawaban.quiz.questions.map((question, index) => (
             <div key={index} id={`soal-${question.noSoal}`}>
-              <div className="mb-4 md:mb-8">
+              <div className="mb-1">
                 {/* awal section informasi kuis */}
                 <div className="mb-3 inline-flex rounded-2xl border-2 bg-white md:mb-5">
                   <div className="flex p-3">
@@ -198,6 +208,10 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                 </div>
                 {/* akhir section soal dan jawaban */}
               </div>
+              <Pembahasan
+                jawaban={question.rightAnswerText}
+                pembahasan={question.pembahasan}
+              />
             </div>
           ))}
 
@@ -251,7 +265,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                     <Link
                       to={`soal-${question.noSoal}`}
                       key={index}
-                      className={`flex h-[55px] cursor-pointer items-center justify-center rounded-sm border-2 bg-green-200`}
+                      className={`flex h-[55px] cursor-pointer items-center justify-center rounded-sm border-2 ${isAnswerCorrect(question.userAnswer, question.rightAnswer) ? "bg-green-300" : "bg-red-300"}`}
                       offset={-70}
                     >
                       <h1 className="m-auto">{index + 1}</h1>
