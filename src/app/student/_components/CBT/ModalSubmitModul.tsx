@@ -12,6 +12,7 @@ interface ModalSubmitModul {
   formattedTime: string;
   unAnsweredQuestions?: number;
   onClose: () => void;
+  onSubmit: () => void;
 }
 
 export default function ModalSubmitModul({
@@ -19,6 +20,7 @@ export default function ModalSubmitModul({
   formattedTime,
   unAnsweredQuestions,
   onClose,
+  onSubmit,
 }: ModalSubmitModul) {
   let [isOpen, setIsOpen] = useState(false);
 
@@ -101,7 +103,7 @@ export default function ModalSubmitModul({
                   <GrayButton onClick={closeModal}>
                     Kembali Ke Latihan Soal
                   </GrayButton>
-                  <GreenButton onClick={closeModal} className="mx-auto mt-3">
+                  <GreenButton onClick={onSubmit} className="mx-auto mt-3">
                     SUBMIT
                   </GreenButton>
                 </Dialog.Panel>

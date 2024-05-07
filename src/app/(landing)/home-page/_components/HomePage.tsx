@@ -1,5 +1,4 @@
 "use client";
-import Loading from "@/components/Loading";
 import { useGetTopMentors, useGetTopPakets } from "@/hooks/home-page/hook";
 import useDesktop from "@/hooks/useDesktop";
 import useTablet from "@/hooks/useTablet";
@@ -13,6 +12,10 @@ import MentorItem from "./MentorItem";
 import PaketItem from "./PaketItem";
 import TestimoniItem from "./TestimoniItem";
 import WhyUsItem from "./WhyUsItem";
+
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 
 const HomePage = () => {
   const tabletView = useTablet();
@@ -141,11 +144,11 @@ const HomePage = () => {
   } = useGetTopPakets();
 
   if (isErrorTopMentors) {
-    return <div>Error occurred while fetching data.</div>;
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
   }
 
   if (isErrorTopPakets) {
-    return <div>Error occurred while fetching data.</div>;
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
   }
 
   return (
@@ -223,7 +226,7 @@ const HomePage = () => {
             {/* mode desktop */}
             <div className="mt-10 hidden h-full w-full items-center justify-center md:flex lg:gap-x-5 xl:gap-x-10">
               {isLoadingTopMentors ? (
-                <Loading />
+                <Loading>{loadingMessage}</Loading>
               ) : (
                 dataTopMentors?.data.map((item, index) => {
                   return (
@@ -237,7 +240,7 @@ const HomePage = () => {
             <div className="relative mt-3 flex w-full flex-col items-center justify-center md:hidden">
               <div ref={refMentor} className="keen-slider">
                 {isLoadingTopMentors ? (
-                  <Loading />
+                  <Loading>{loadingMessage}</Loading>
                 ) : (
                   dataTopMentors?.data.map((item, index) => (
                     <div
@@ -365,7 +368,7 @@ const HomePage = () => {
             {/* mode desktop */}
             <div className="hidden md:flex lg:gap-x-5 xl:gap-x-10">
               {isLoadingTopPakets ? (
-                <Loading />
+                <Loading>{loadingMessage}</Loading>
               ) : (
                 dataTopPakets?.data.map((item, index) => {
                   return <PaketItem key={`paket-item-${index}`} props={item} />;
@@ -376,7 +379,7 @@ const HomePage = () => {
             <div className=" relative mt-5 flex w-full items-center justify-center md:hidden md:px-10 lg:w-fit">
               <div ref={refPaket} className="keen-slider">
                 {isLoadingTopPakets ? (
-                  <Loading />
+                  <Loading>{loadingMessage}</Loading>
                 ) : (
                   dataTopPakets?.data.map((item, index) => (
                     <div

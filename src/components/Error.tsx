@@ -1,7 +1,7 @@
 import React from "react";
 
-const Error = ({ message }: { message: string }) => {
-  return <div>{message}</div>;
+export const ErrorComponent = ({ children }: { children: React.ReactNode }) => {
+  return <div>{children}</div>;
 };
 
-export default Error;
+export default ErrorComponent;

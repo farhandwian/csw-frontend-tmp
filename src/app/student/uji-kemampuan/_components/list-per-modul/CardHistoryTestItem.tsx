@@ -1,5 +1,5 @@
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-import QuizIcon from "@mui/icons-material/Quiz";
+import QuizIcon from "@mui/icons-material/TQuiz";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";

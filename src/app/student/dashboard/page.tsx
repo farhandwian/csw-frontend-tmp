@@ -4,7 +4,7 @@ import Image from "next/image";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import LockIcon from "@mui/icons-material/Lock";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import QuizIcon from "@mui/icons-material/Quiz";
+import QuizIcon from "@mui/icons-material/TQuiz";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";

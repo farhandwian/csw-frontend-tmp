@@ -1,7 +1,7 @@
-import { Quiz, ReviewJawaban } from "./ReviewJawabanInterface";
+import { TQuiz, ReviewJawaban } from "./ReviewJawabanInterface";
 
 import { v4 as uuidv4 } from "uuid";
-export const quiz: Quiz = {
+export const quiz: TQuiz = {
   id: "1",
   topic: "kewarganegaraan",
   modul: "TWK",
@@ -103,7 +103,7 @@ export const quiz: Quiz = {
   ],
 };
 
-export const quiz2: Quiz = {
+export const quiz2: TQuiz = {
   id: "1",
   topic: "kewarganegaraan",
   modul: "TWK",
@@ -117,11 +117,11 @@ for (let i = 1; i <= 50; i++) {
     id: uuidv4(),
     question: `Pertanyaan ke-${i}`,
     options: [
-      { id: uuidv4(), letter: "a", text: `Option A for question ${i}` },
-      { id: uuidv4(), letter: "b", text: `Option B for question ${i}` },
-      { id: uuidv4(), letter: "c", text: `Option C for question ${i}` },
-      { id: uuidv4(), letter: "d", text: `Option D for question ${i}` },
-      { id: uuidv4(), letter: "e", text: `Option E for question ${i}` },
+      { id: uuidv4(), letter: "a", text: `TOption A for question ${i}` },
+      { id: uuidv4(), letter: "b", text: `TOption B for question ${i}` },
+      { id: uuidv4(), letter: "c", text: `TOption C for question ${i}` },
+      { id: uuidv4(), letter: "d", text: `TOption D for question ${i}` },
+      { id: uuidv4(), letter: "e", text: `TOption E for question ${i}` },
     ],
     userAnswer: "c", // Kosongkan untuk jawaban pengguna
     rightAnswer: "a", // Ganti dengan jawaban yang benar

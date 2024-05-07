@@ -50,7 +50,7 @@ const MentorItem: React.FC<MentorItemProps> = ({ mentor, key }) => {
             </div>
             <div className="mt-1  md:mt-2">
               <h3 className=" text-justify text-3xs leading-tight text-[#828282] md:text-xs md:leading-normal">
-                {TruncateText(mentor.description, 120)}
+                {mentor.description}
               </h3>
             </div>
             <h4 className="mt-2 text-4xs italic  md:mt-4 md:text-sm">

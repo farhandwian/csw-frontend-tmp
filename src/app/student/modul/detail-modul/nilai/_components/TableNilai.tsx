@@ -16,7 +16,7 @@ interface TableData {
   modul: Modul[];
 }
 
-interface Quiz {
+interface TQuiz {
   id: number;
   taskName: string;
   rightQuestion: number;
@@ -27,7 +27,7 @@ interface Quiz {
 interface Modul {
   id: number;
   modulName: string;
-  quizs: Quiz[];
+  quizs: TQuiz[];
 }
 
 const tableDatas: TableData = {

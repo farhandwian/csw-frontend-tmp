@@ -2,18 +2,14 @@ import React from "react";
 import GrayButton from "@/components/Button/GrayButton";
 import BlueButton from "@/components/Button/BlueButton";
 import GreenButton from "@/components/Button/GreenButton";
-import {
-  Question,
-  Quiz,
-  Option,
-} from "@/app/student/_components/CBT/_interface/interface";
+import { TQuestion, TQuiz, TOption } from "@/types/quiz";
 
 interface QuestionSectionProps {
   activeQuestion: number;
-  questions: Question[];
-  result: Quiz;
+  questions: TQuestion[];
+  result: TQuiz;
   formattedTime: string;
-  onOptionSelected: (option: Option, index: number) => void;
+  onOptionSelected: (option: TOption, index: number) => void;
   onClickNext: () => void;
   onClickPrev: () => void;
   onClickSubmit: () => void;
@@ -43,7 +39,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
     }
   };
 
-  const handleOptionSelected = (option: Option, index: number) => {
+  const handleOptionSelected = (option: TOption, index: number) => {
     return () => {
       onOptionSelected(option, index);
     };
@@ -58,14 +54,14 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
             onClick={handleOptionSelected(option, index)}
             key={option.id}
             className={`mb-2 flex justify-between rounded-lg border-2 ${
-              option.letter === result.questions[activeQuestion].userAnswer
+              option.id === result.questions[activeQuestion].user_answer
                 ? "border-green-400"
                 : ""
             } cursor-pointer`}
           >
             <div
               className={`inline-block rounded-l-sm px-3 ${
-                option.letter === result.questions[activeQuestion].userAnswer
+                option.id === result.questions[activeQuestion].user_answer
                   ? "bg-green-400"
                   : ""
               }`}

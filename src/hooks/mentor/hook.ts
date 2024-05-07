@@ -20,9 +20,9 @@ export const useGetAllMentors = (): UseQueryResult<
   });
 
 export const useGetDetailMentor = (
-  id: string,
+  uuid: string,
 ): UseQueryResult<TDetailMentorResponse, TMetaErrorResponse> =>
   useQuery({
     queryKey: ["get-detail-mentors"],
-    queryFn: async () => await getDetailMentorRequest(id),
+    queryFn: async () => await getDetailMentorRequest(uuid),
   });

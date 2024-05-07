@@ -8,18 +8,20 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { useGetAllMentors } from "@/hooks/mentor/hook";
-import Error from "@/components/Error";
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 const Page = () => {
   const tabletView = useTablet();
   const desktopView = useDesktop();
   const [isOpen, setIsOpen] = useState(false);
 
   const {
-    data: dataAllMentors,
+    data,
     isLoading: isLoadingAllMentors,
     isError: isErrorAllMentors,
   } = useGetAllMentors();
-
+  const dataAllMentors = data?.data;
   useEffect(() => {
     const body = document.body;
 
@@ -34,8 +36,12 @@ const Page = () => {
     };
   }, [isOpen]);
 
+  if (isLoadingAllMentors) {
+    return <Loading>{loadingMessage}</Loading>;
+  }
+
   if (isErrorAllMentors) {
-    return <Error message="error while fetching data" />;
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
   }
 
   return (
@@ -90,7 +96,7 @@ const Page = () => {
           <div className="relative mt-5  md:mt-8 ">
             {desktopView ? (
               <div className="grid grid-cols-3 gap-4 ">
-                {dataAllMentors?.data.map((mentor, index) => (
+                {dataAllMentors?.map((mentor, index) => (
                   <div key={index}>
                     <MentorItem mentor={mentor} key={`mentor-${index}`} />
                   </div>
@@ -99,7 +105,7 @@ const Page = () => {
             ) : (
               <>
                 <div className="grid grid-cols-2 gap-3  ">
-                  {dataAllMentors?.data.map((mentor, index) => (
+                  {dataAllMentors?.map((mentor, index) => (
                     <div key={index}>
                       <MentorItem mentor={mentor} key={`mentor-${index}`} />
                     </div>

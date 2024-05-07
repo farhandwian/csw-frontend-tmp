@@ -1,7 +1,4 @@
-import {
-  Question,
-  Quiz,
-} from "@/app/student/_components/CBT/_interface/interface";
+import { TQuestion, TQuiz } from "@/types/quiz";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { Alert } from "flowbite-react";
@@ -10,8 +7,8 @@ import { useState } from "react";
 interface InformationQuizProps {
   addLeadingZero: (number: number) => number | string;
   activeQuestion: number;
-  questions: Question[];
-  result: Quiz;
+  questions: TQuestion[];
+  result: TQuiz;
   onClickTandaiPertanyaan: () => void;
   formattedTime: string;
 }
@@ -78,7 +75,7 @@ const InformationQuiz = ({
             <p
               className={`mt-[6px] whitespace-nowrap text-2xs font-bold text-[#64748B] md:text-sm`}
             >
-              1.00
+              {result.questions[activeQuestion].mark}
             </p>
           </div>
 

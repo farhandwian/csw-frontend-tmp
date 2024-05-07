@@ -8,6 +8,7 @@ interface BreadCrumbsProps {
   bgColor?: string;
   isShadow?: boolean;
   padding?: string;
+  paramsIndexPosition?: number[];
 }
 
 export default function Breadcrumbs({
@@ -16,6 +17,7 @@ export default function Breadcrumbs({
   bgColor,
   isShadow = true,
   padding,
+  paramsIndexPosition = [], //paramsIndexPosition adalah index param untuk menghapus data nya dari array agar tidak ditampilkan
 }: BreadCrumbsProps) {
   const pathname = usePathname();
   let currentLink = "";
@@ -41,31 +43,34 @@ export default function Breadcrumbs({
   } else {
     crumbs = pathname
       .split("/")
-      .filter((crumb) => crumb !== "")
+      .filter((crumb) => crumb !== "" && !crumb.includes(":"))
       .map((crumb, index, array) => {
         currentLink += `/${crumb}`;
         const isLast = index === array.length - 1;
-        if (crumb !== "student") {
-          return (
-            <div
-              className="ml-2 inline-flex items-center text-xs md:text-base"
-              key={crumb}
-            >
-              <ArrowBackIosIcon fontSize="inherit" />
+        if (!paramsIndexPosition.includes(index)) {
+          // Check jika index tidak ada dalam paramsIndexPosition
+          if (crumb !== "student") {
+            return (
               <div
-                className={`text-tp-SlateGray ${
-                  fontSize && `text-${fontSize}`
-                }`}
+                className="ml-2 inline-flex items-center text-xs md:text-base"
+                key={crumb}
               >
-                <Link
-                  href={currentLink}
-                  className={`hover:underline ${isLast ? "font-bold" : ""}`}
+                <ArrowBackIosIcon fontSize="inherit" />
+                <div
+                  className={`text-tp-SlateGray ${
+                    fontSize && `text-${fontSize}`
+                  }`}
                 >
-                  {crumb}
-                </Link>
+                  <Link
+                    href={currentLink}
+                    className={`hover:underline ${isLast ? "font-bold" : ""}`}
+                  >
+                    {crumb}
+                  </Link>
+                </div>
               </div>
-            </div>
-          );
+            );
+          }
         }
       });
   }

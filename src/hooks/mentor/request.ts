@@ -14,10 +14,11 @@ export const getAllMentorsRequest = async (): Promise<TMentorsResponse> => {
 };
 
 export const getDetailMentorRequest = async (
-  id: string,
+  uuid: string,
 ): Promise<TDetailMentorResponse> => {
   try {
-    const { data } = await api.get(`home/mentor/${id}`);
+    console.log("ini getDetailMentorRequest");
+    const { data } = await api.get(`home/mentor/${uuid}`);
     return data;
   } catch (error) {
     console.error("Error in getDetailMentorRequest:", error);

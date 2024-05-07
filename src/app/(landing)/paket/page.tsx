@@ -11,6 +11,10 @@ import Footer from "@/app/(landing)/_components/Footer";
 import { useGetSearchPakets } from "@/hooks/paket/hook";
 import { TPaket } from "@/types/home-page";
 
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+
 const Page = () => {
   const tabletView = useTablet();
   const desktopView = useDesktop();
@@ -74,13 +78,17 @@ const Page = () => {
     return true;
   });
 
-  if (isErrorSearchPakets) {
-    return <div>Error occurred while fetching data.</div>;
-  }
-
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
   };
+
+  if (isErrorSearchPakets) {
+    return <ErrorComponent> {errMessageDataFetching}</ErrorComponent>;
+  }
+
+  if (isLoadingSearchPakets) {
+    return <Loading> {loadingMessage}</Loading>;
+  }
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);

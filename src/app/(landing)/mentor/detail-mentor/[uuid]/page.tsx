@@ -7,7 +7,10 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Error from "@/components/Error";
+
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 
 const DetailTest = {
   title: "Tes Logika Verbal",
@@ -37,12 +40,12 @@ const DetailTest = {
   ],
 };
 
-const Page = ({ params }: { params: { id: string } }) => {
+const Page = ({ params }: { params: { uuid: string } }) => {
   const {
     data,
     isLoading: isLoadingDetailMentor,
     isError: isErrorDetailMentor,
-  } = useGetDetailMentor(params.id);
+  } = useGetDetailMentor(params.uuid);
 
   const dataDetailMentor = data?.data;
 
@@ -70,7 +73,11 @@ const Page = ({ params }: { params: { id: string } }) => {
   }, [isOpen]);
 
   if (isErrorDetailMentor) {
-    return <Error message="error while fetching data" />;
+    return <ErrorComponent> {errMessageDataFetching}</ErrorComponent>;
+  }
+
+  if (isLoadingDetailMentor) {
+    return <Loading> {errMessageDataFetching}</Loading>;
   }
   return (
     <>

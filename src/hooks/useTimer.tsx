@@ -35,9 +35,12 @@ const useTimer = ({ time, onTimerEnd }: UseTimerProps) => {
   }, [time, onTimerEnd]);
 
   useEffect(() => {
-    const minutes = Math.floor(timeLeft / 60000);
+    const hours = Math.floor(timeLeft / 3600000);
+    const minutes = Math.floor((timeLeft % 3600000) / 60000);
     const seconds = Math.floor((timeLeft % 60000) / 1000);
-    setFormattedTime(`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
+    setFormattedTime(
+      `${hours}:${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`,
+    );
   }, [timeLeft]);
 
   useEffect(() => {

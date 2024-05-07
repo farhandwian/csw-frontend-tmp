@@ -4,7 +4,7 @@ import InformationTable from "@/app/student/_components/review-jawaban/Informati
 import Pembahasan from "@/app/student/_components/review-jawaban/Pembahasan";
 
 import {
-  Quiz,
+  TQuiz,
   ReviewJawaban as ReviewJawabanInterface,
 } from "@/app/student/_components/review-jawaban/ReviewJawabanInterface";
 import BlueButton from "@/components/Button/BlueButton";
@@ -14,7 +14,7 @@ import { Link } from "react-scroll";
 import { ReactNode, useState } from "react";
 
 interface ReviewJawabanProps {
-  quiz: Quiz;
+  quiz: TQuiz;
   reviewJawaban: ReviewJawabanInterface;
 }
 
