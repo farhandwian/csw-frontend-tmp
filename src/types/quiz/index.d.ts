@@ -1,4 +1,6 @@
 import { TAddQuizSubmissionResponse } from "./index.d";
+import { TMetaResponse, TMetaResponseSingle } from "@/types";
+
 // interface dan type untuk quiz content
 export interface TOption {
   id: number;
@@ -24,6 +26,7 @@ export interface TQuiz {
   uuid: string;
   topic: string;
   modul: string;
+  description: string;
   total_questions: number;
   total_time: number;
   questions: TQuestion[];
@@ -74,3 +77,75 @@ interface TAddQuizSubmissionPayload {
 // }
 
 export type TAddQuizSubmissionResponse = TMetaResponseSingle<>;
+
+// ================================================================
+// interface dan type untuk quiz detail
+
+enum QuizStatus {
+  BelumDikerjakan = "belum-dikerjakan",
+  SudahDikerjakan = "sudah-dikerjakan",
+}
+
+interface TQuizDetail {
+  id: number;
+  uuid: string;
+  sub_subject: string;
+  modul: string;
+  description: string;
+  total_questions: number;
+  total_time: number;
+  status: QuizStatus;
+  attempt_allowed: number;
+  quiz_submission_uuid: string;
+  score?: number;
+  score_max: number;
+  attempt?: number;
+}
+
+export type TQuizDetailResponse = TMetaResponseSingle<TQuizDetail>;
+
+// ==========================================================================
+// interface dan type untuk quiz review
+
+interface TQuizReview {
+  id: number;
+  uuid: string;
+  topic: string;
+  modul: string;
+  total_questions: number;
+  started_at: string;
+  total_time: string;
+  total_right_answers: number;
+  score: number;
+  max_score: number;
+  attempt: number;
+  questions: TQuestionReview[];
+}
+
+interface TQuestionReview {
+  question_review_item: TQuestionReviewItem;
+  user_answer: number;
+  right_answer: number;
+  right_answer_text: string;
+}
+
+interface TQuestionReviewItem {
+  id: number;
+  uuid: string;
+  question: string;
+  options: TOptionReview[];
+  no_soal: number;
+  status: string;
+  mark: number;
+  explanation: string;
+}
+
+interface TOptionReview {
+  id: number;
+  uuid: string;
+  text: string;
+  letter: string;
+  is_correct: boolean;
+}
+
+export type TQuizReviewResponse = TMetaResponseSingle<TQuizReview>;

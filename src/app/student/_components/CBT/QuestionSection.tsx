@@ -80,7 +80,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
       <div className="mt-3 flex justify-between">
         <div>
           {activeQuestion !== 0 && (
-            <GrayButton className="inline" onClick={handlePrevClick}>
+            <GrayButton className="m-auto inline" onClick={handlePrevClick}>
               prev
             </GrayButton>
           )}

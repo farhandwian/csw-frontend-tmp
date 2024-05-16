@@ -8,7 +8,12 @@ interface BreadCrumbsProps {
   bgColor?: string;
   isShadow?: boolean;
   padding?: string;
-  paramsIndexPosition?: number[];
+  paramsIndexPosition?: number[]; // untuk menghapus crumb berdasarkan index
+}
+
+interface BreadCrumbData {
+  link: string;
+  uiCrumbs: string;
 }
 
 export default function Breadcrumbs({
@@ -17,7 +22,7 @@ export default function Breadcrumbs({
   bgColor,
   isShadow = true,
   padding,
-  paramsIndexPosition = [], //paramsIndexPosition adalah index param untuk menghapus data nya dari array agar tidak ditampilkan
+  paramsIndexPosition = [],
 }: BreadCrumbsProps) {
   const pathname = usePathname();
   let currentLink = "";
@@ -41,38 +46,63 @@ export default function Breadcrumbs({
       </div>
     );
   } else {
-    crumbs = pathname
+    let arrayCrumbs = pathname
       .split("/")
-      .filter((crumb) => crumb !== "" && !crumb.includes(":"))
-      .map((crumb, index, array) => {
-        currentLink += `/${crumb}`;
-        const isLast = index === array.length - 1;
-        if (!paramsIndexPosition.includes(index)) {
-          // Check jika index tidak ada dalam paramsIndexPosition
-          if (crumb !== "student") {
-            return (
-              <div
-                className="ml-2 inline-flex items-center text-xs md:text-base"
-                key={crumb}
-              >
-                <ArrowBackIosIcon fontSize="inherit" />
-                <div
-                  className={`text-tp-SlateGray ${
-                    fontSize && `text-${fontSize}`
-                  }`}
-                >
-                  <Link
-                    href={currentLink}
-                    className={`hover:underline ${isLast ? "font-bold" : ""}`}
-                  >
-                    {crumb}
-                  </Link>
-                </div>
-              </div>
-            );
-          }
+      .filter((crumb) => crumb !== "" && !crumb.includes(":"));
+
+    let breadCrumbsData: BreadCrumbData[] = [];
+
+    //deleting unwanted crumbs
+    if (paramsIndexPosition.length > 0) {
+      for (let i = 0; i < paramsIndexPosition.length; i++) {
+        arrayCrumbs.splice(paramsIndexPosition[i], 1);
+      }
+    }
+
+    for (let i = 1, k = 0; i < arrayCrumbs.length; ) {
+      if (arrayCrumbs[i].length <= 30 && arrayCrumbs[i + 1]?.length > 30) {
+        breadCrumbsData.push({
+          link: `${breadCrumbsData[k - 1]?.link ?? ""}/${arrayCrumbs[i]}/${arrayCrumbs[i + 1]}`,
+          uiCrumbs: `${arrayCrumbs[i]}`,
+        });
+        i += 2;
+      } else {
+        if (arrayCrumbs[i].length <= 30) {
+          breadCrumbsData.push({
+            link: `${breadCrumbsData[k - 1]?.link ?? ""}/${arrayCrumbs[i]}`,
+            uiCrumbs: `${arrayCrumbs[i]}`,
+          });
+        } else {
+          breadCrumbsData.push({
+            link: `${breadCrumbsData[k - 1]?.link ?? ""}/${arrayCrumbs[i]}`,
+            uiCrumbs: ``,
+          });
         }
-      });
+
+        i++;
+      }
+      console.log(JSON.stringify(breadCrumbsData[k]));
+      console.log(k);
+      k++;
+    }
+    crumbs = breadCrumbsData.map(({ link, uiCrumbs }) => (
+      <div
+        className={`ml-2 inline-flex items-center text-xs md:text-base text-[${fontSize}]`}
+        key={link}
+      >
+        <ArrowBackIosIcon fontSize="inherit" />
+        <div
+          className={`text-tp-SlateGray ${fontSize && `text-[${fontSize}]`}`}
+        >
+          <Link
+            href={`/student/${link}`}
+            className={`font-bold hover:underline`}
+          >
+            {uiCrumbs}
+          </Link>
+        </div>
+      </div>
+    ));
   }
 
   return (
@@ -81,7 +111,7 @@ export default function Breadcrumbs({
         bgColor ? `bg-${bgColor}` : "bg-white"
       } rounded-sm ${isShadow ? "shadow-md" : ""} text-left ${
         padding ? `p-${padding}` : "px-1 py-2 md:p-3"
-      } text-black`}
+      } text-black `}
     >
       <div className="inline">{crumbs}</div>
     </div>

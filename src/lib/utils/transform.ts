@@ -1,11 +1,15 @@
 import { TAddQuizSubmissionPayload, TQuiz } from "@/types/quiz/";
+import { formatSecondToTime } from "./formateSecondToTime";
 
 export const TransformQuizToPayloadQuizSubmission = (
   quiz: TQuiz,
   user_id: number,
-  time_required: string,
+  time_left: number,
 ): TAddQuizSubmissionPayload => {
   const { id, topic, modul, total_questions, total_time, questions } = quiz;
+
+  const total_time_in_seconds = total_time * 600000;
+  const time_required = formatSecondToTime(total_time_in_seconds - time_left);
 
   const questionsSubmission = questions.map((question) => {
     const {

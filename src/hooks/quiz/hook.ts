@@ -13,16 +13,23 @@ import {
   TAddQuizSubmissionPayload,
   TAddQuizSubmissionResponse,
   TQuiz,
+  TQuizDetailResponse,
+  TQuizReviewResponse,
 } from "@/types/quiz";
 
-import { getQuizContentRequest, addQuizSubmission } from "@/hooks/quiz/request";
+import {
+  getQuizContentRequest,
+  addQuizSubmission,
+  getQuizDetailRequest,
+  getQuizReviewRequest,
+} from "@/hooks/quiz/request";
 
 export const useGetQuizContent = (
   uuid: string,
   type: typeQuiz,
 ): UseQueryResult<TQuizContentResponse, TMetaErrorResponse> =>
   useQuery({
-    queryKey: ["get-content-quiz"],
+    queryKey: ["get-quiz-content"],
     queryFn: async () => await getQuizContentRequest(uuid),
   });
 
@@ -48,3 +55,23 @@ export const useAddQuizSubmission = (): UseMutationResult<
     },
   });
 };
+
+export const useGetQuizDetail = (
+  uuid: string,
+  test_type_id: number,
+): UseQueryResult<TQuizDetailResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-quiz-detail"],
+    queryFn: async () => await getQuizDetailRequest(uuid, test_type_id),
+  });
+
+export const useGetQuizReview = (
+  quiz_submission_uuid: string,
+  quiz_uuid: string,
+  test_type_id: number,
+): UseQueryResult<TQuizReviewResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-quiz-review"],
+    queryFn: async () =>
+      await getQuizReviewRequest(quiz_submission_uuid, quiz_uuid, test_type_id),
+  });

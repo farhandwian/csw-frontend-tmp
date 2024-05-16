@@ -2,37 +2,23 @@
 
 import InformationTable from "@/app/student/_components/review-jawaban/InformationTableReviewJawaban";
 import Pembahasan from "@/app/student/_components/review-jawaban/Pembahasan";
-
-import {
-  TQuiz,
-  ReviewJawaban as ReviewJawabanInterface,
-} from "@/app/student/_components/review-jawaban/ReviewJawabanInterface";
 import BlueButton from "@/components/Button/BlueButton";
 import SubmitButton from "@/components/Button/GreenButton";
+import { TQuizReview } from "@/types/quiz";
 import Image from "next/image";
-import { Link } from "react-scroll";
-import { ReactNode, useState } from "react";
+import { Link as LinkReactScroll } from "react-scroll";
+
+import Link from "next/link";
 
 interface ReviewJawabanProps {
-  quiz: TQuiz;
-  reviewJawaban: ReviewJawabanInterface;
+  dataQuizReview: TQuizReview;
+  prevButtonText: string;
+  prevButtonLink: string;
+  finishButtonLink: string;
 }
 
-const informasi = {
-  PENGERJAAN: "DAPAT DIKERJAKAN BERKALI-KALI",
-  STATUS: "BELUM DIKERJAKAN",
-  WAKTU: "6 MENIT",
-  JUMLAH_SOAL: "5 SOAL",
-};
-
-const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
-  function onClickModulHome() {}
-
-  function onClickFinish() {}
-
-  const [navSoal, setNavSoal] = useState(false);
-
-  function isAnswerCorrect(userAnswer?: string, rightAnswer?: string) {
+const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
+  function isAnswerCorrect(userAnswer?: number, rightAnswer?: number) {
     if (userAnswer == rightAnswer) {
       return true;
     } else {
@@ -44,10 +30,10 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
     <section className="relative ">
       <div className="mb-3 flex">
         <div className="w-full md:w-[75%]">
-          <InformationTable reviewJawaban={reviewJawaban} />
+          <InformationTable dataQuizReview={props.dataQuizReview} />
           {/* awal section soal */}
-          {reviewJawaban.quiz.questions.map((question, index) => (
-            <div key={index} id={`soal-${question.noSoal}`}>
+          {props.dataQuizReview.questions.map((question, index) => (
+            <div key={index} id={`soal-${question.question_review_item.id}`}>
               <div className="mb-1">
                 {/* awal section informasi kuis */}
                 <div className="mb-3 inline-flex rounded-2xl border-2 bg-white md:mb-5">
@@ -57,7 +43,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                         PERTANYAAN
                       </p>
                       <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
-                        NOMOR {question.noSoal}
+                        NOMOR {question.question_review_item.no_soal}
                       </p>
                     </div>
 
@@ -69,7 +55,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                         STATUS
                       </p>
                       <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
-                        {question.status}
+                        {question.question_review_item.status}
                       </p>
                     </div>
 
@@ -78,10 +64,10 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                   <div className="flex p-3">
                     <div className="mr-3">
                       <p className="text-2xs font-semibold text-[#9ca3af] md:text-sm">
-                        MARK
+                        Point
                       </p>
                       <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
-                        1.00
+                        {question.question_review_item.mark}
                       </p>
                     </div>
 
@@ -94,7 +80,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                         JAWABAN
                       </p>
                       <p className="text-2xs font-semibold leading-normal text-[#64748b] md:text-[.9375rem]">
-                        {question.userAnswer === question.rightAnswer
+                        {question.user_answer === question.right_answer
                           ? "benar"
                           : "salah"}
                       </p>
@@ -107,110 +93,116 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
 
                 {/* awal section soal dan jawaban */}
                 <div className="w-[100%] rounded-2xl border-2 bg-white p-3 text-2xs md:p-4 md:text-sm">
-                  <h2 className="mb-2">{question.question}</h2>
+                  <h2 className="mb-2">
+                    {question.question_review_item.question}
+                  </h2>
                   <div className="">
-                    {question.options.map((option, index) => (
-                      <>
-                        {question.userAnswer === question.rightAnswer ? (
-                          <>
-                            <div
-                              key={option.id}
-                              className={`mb-2 flex justify-between rounded-lg border-2  ${
-                                option.letter === question.userAnswer
-                                  ? "border-green-400"
-                                  : ""
-                              }`}
-                            >
-                              <div className="flex ">
-                                <div
-                                  className={`inline-block rounded-l-sm px-3  ${
-                                    option.letter === question.userAnswer
-                                      ? "bg-green-400"
-                                      : ""
-                                  }`}
-                                >
-                                  <div className="mt-[2px]">
-                                    {option.letter}
+                    {question.question_review_item.options.map(
+                      (option, index) => (
+                        <>
+                          {/* jawabannya benar */}
+                          {question.user_answer === question.right_answer ? (
+                            <>
+                              <div
+                                key={option.id}
+                                className={`mb-2 flex justify-between rounded-lg border-2  ${
+                                  option.id === question.user_answer
+                                    ? "border-green-400"
+                                    : ""
+                                }`}
+                              >
+                                <div className="flex ">
+                                  <div
+                                    className={`inline-block rounded-l-sm px-3  ${
+                                      option.id === question.user_answer
+                                        ? "bg-green-400"
+                                        : ""
+                                    }`}
+                                  >
+                                    <div className="mt-[2px]">
+                                      {option.letter}
+                                    </div>
+                                  </div>
+                                  <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
+                                  <div className="m-auto ml-3 inline-block text-left">
+                                    {option.text}
                                   </div>
                                 </div>
-                                <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
-                                <div className="m-auto ml-3 inline-block text-left">
-                                  {option.text}
-                                </div>
+                                {option.id === question.user_answer ? (
+                                  <>
+                                    <div className="my-auto hidden px-3 md:block">
+                                      jawaban anda benar
+                                    </div>
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
                               </div>
-                              {option.letter === question.userAnswer ? (
-                                <>
-                                  <div className="my-auto hidden px-3 md:block">
-                                    jawaban anda benar
+                            </>
+                          ) : (
+                            // jawabannya salah
+                            <>
+                              <div
+                                key={option.id}
+                                className={`mb-2 flex justify-between rounded-lg border-2 ${
+                                  option.id === question.right_answer
+                                    ? "border-green-400"
+                                    : ""
+                                } ${
+                                  option.id === question.user_answer
+                                    ? "border-red-400"
+                                    : ""
+                                }`}
+                              >
+                                <div className="flex">
+                                  <div
+                                    className={` inline-block rounded-l-sm px-3 ${
+                                      option.id === question.user_answer
+                                        ? "bg-red-400"
+                                        : ""
+                                    } ${
+                                      option.id === question.right_answer
+                                        ? "bg-green-400"
+                                        : ""
+                                    }`}
+                                  >
+                                    <div className="mt-[2px]">
+                                      {option.letter}
+                                    </div>
                                   </div>
-                                </>
-                              ) : (
-                                <></>
-                              )}
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div
-                              key={option.id}
-                              className={`mb-2 flex justify-between rounded-lg border-2 ${
-                                option.letter === question.rightAnswer
-                                  ? "border-green-400"
-                                  : ""
-                              } ${
-                                option.letter === question.userAnswer
-                                  ? "border-red-400"
-                                  : ""
-                              }`}
-                            >
-                              <div className="flex">
-                                <div
-                                  className={` inline-block rounded-l-sm px-3 ${
-                                    option.letter === question.userAnswer
-                                      ? "bg-red-400"
-                                      : ""
-                                  } ${
-                                    option.letter === question.rightAnswer
-                                      ? "bg-green-400"
-                                      : ""
-                                  }`}
-                                >
-                                  <div className="mt-[2px]">
-                                    {option.letter}
+                                  <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
+                                  <div className="m-auto ml-3 inline-block text-left">
+                                    {option.text}
                                   </div>
                                 </div>
-                                <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
-                                <div className="m-auto ml-3 inline-block text-left">
-                                  {option.text}
-                                </div>
-                              </div>
 
-                              {option.letter === question.rightAnswer && (
-                                <>
-                                  <div className="my-auto hidden px-3 md:block">
-                                    jawaban yang benar
-                                  </div>
-                                </>
-                              )}
-                              {option.letter === question.userAnswer && (
-                                <>
-                                  <div className="my-auto hidden px-3 md:block">
-                                    jawaban anda
-                                  </div>
-                                </>
-                              )}
-                            </div>
-                          </>
-                        )}
-                      </>
-                    ))}
+                                {option.id === question.right_answer && (
+                                  <>
+                                    <div className="my-auto hidden px-3 md:block">
+                                      jawaban yang benar
+                                    </div>
+                                  </>
+                                )}
+                                {option.id === question.user_answer && (
+                                  <>
+                                    <div className="my-auto hidden px-3 md:block">
+                                      jawaban anda
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            </>
+                          )}
+                        </>
+                      ),
+                    )}
                   </div>
                 </div>
                 {/* akhir section soal dan jawaban */}
               </div>
               <Pembahasan
-                jawaban={question.rightAnswerText}
-                pembahasan={question.pembahasan}
+                jawaban={question.right_answer_text}
+                pembahasan={question.question_review_item.explanation}
               />
             </div>
           ))}
@@ -218,19 +210,18 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
           {/* akhir section soal */}
 
           <div className="mt-3 flex justify-between">
-            <BlueButton
-              className=" ml-2 bg-pl-RoyalBlue text-white"
-              onClick={() => onClickModulHome()}
-            >
-              {" "}
-              <h1 className="text-2xs md:text-sm">Modul Home</h1>
-            </BlueButton>
-            <SubmitButton
-              className="mx-0 bg-pl-GreenButton text-white"
-              onClick={() => onClickFinish()}
-            >
-              <h1 className="text-2xs md:text-sm">Finish Review</h1>
-            </SubmitButton>
+            <Link href={props.prevButtonLink}>
+              <BlueButton className=" ml-2 bg-pl-RoyalBlue text-white">
+                {" "}
+                <h1 className="text-2xs md:text-sm">{props.prevButtonText}</h1>
+              </BlueButton>
+            </Link>
+
+            <Link href={props.finishButtonLink}>
+              <SubmitButton className="mx-0 bg-pl-GreenButton text-white">
+                <h1 className="text-2xs md:text-sm">Finish Review</h1>
+              </SubmitButton>
+            </Link>
           </div>
         </div>
 
@@ -253,7 +244,7 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
                 <div className="ml-3">
                   <h2>NAVIGASI LATIHAN</h2>
                   <h3 className="text-xs">
-                    Latihan Modul Materi 1 - Pancasila
+                    {props.dataQuizReview.topic} - {props.dataQuizReview.modul}
                   </h3>
                 </div>
               </div>
@@ -261,15 +252,15 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
               {/* content navigasi soal */}
               <div className="flex justify-center py-3">
                 <div className="grid max-h-[17rem] w-[90%] grid-cols-5 gap-2 overflow-y-scroll pr-2 scrollbar-thin">
-                  {quiz.questions.map((question, index) => (
-                    <Link
-                      to={`soal-${question.noSoal}`}
+                  {props.dataQuizReview.questions.map((question, index) => (
+                    <LinkReactScroll
+                      to={`soal-${question.question_review_item.id}`}
                       key={index}
-                      className={`flex h-[55px] cursor-pointer items-center justify-center rounded-sm border-2 ${isAnswerCorrect(question.userAnswer, question.rightAnswer) ? "bg-green-300" : "bg-red-300"}`}
+                      className={`flex h-[55px] cursor-pointer items-center justify-center rounded-sm border-2 ${isAnswerCorrect(question.user_answer, question.right_answer) ? "bg-green-300" : "bg-red-300"}`}
                       offset={-70}
                     >
                       <h1 className="m-auto">{index + 1}</h1>
-                    </Link>
+                    </LinkReactScroll>
                   ))}
                 </div>
               </div>
@@ -278,10 +269,10 @@ const ReviewJawaban = ({ quiz, reviewJawaban }: ReviewJawabanProps) => {
 
           {/* akhir navigasi soal */}
         </div>
-
-        <div className="fixed right-0 top-[130px] z-[999999999]">
+        {/* kotak merah untuk mode mobile */}
+        {/* <div className="fixed right-0 top-[130px] z-[999999999]">
           <div className="h-7 w-7 bg-red-300"></div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

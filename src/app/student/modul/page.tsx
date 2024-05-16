@@ -4,95 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import InfoIcon from "@mui/icons-material/Info";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 import { useGetAllModuls } from "@/hooks/modul/hook";
-
 import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
-const moduls = [
-  {
-    name: "Ayu Lestari",
-    title: "Mentor Matematika Terbaik",
-    description:
-      "Saya salah satu mentor yang ahli dalam mengajarkan seputar matematika untuk salah satu syarat test di sekolah kedinasan STIS. “Matematika itu mudah, asik dan seru”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-01",
-    dateTime: "2023-11-01T09:00",
-  },
-  {
-    name: "Budi Darmawan",
-    title: "Mentor Fisika Terapan",
-    description:
-      "Dengan pengalaman mengajar yang luas, saya siap membantu anda menguasai fisika terapan untuk berbagai tes sekolah kedinasan. “Fisika adalah tentang memahami alam semesta.”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-02",
-    dateTime: "2023-11-02T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-  {
-    name: "Citra Kirana",
-    title: "Mentor Kimia Analitik",
-    description:
-      "Menyukai kimia sejak kecil, saya berdedikasi untuk mengajar anda konsep-konsep kimia analitik yang kompleks dengan cara yang sederhana dan menarik. “Kimia bukan”",
-    imageUrl: "/img/img_mentor.png",
-    date: "2023-11-03",
-    dateTime: "2023-11-03T09:00",
-  },
-];
 
 const Page = () => {
   const {
@@ -136,7 +51,7 @@ const Page = () => {
               />
               <div className="absolute bottom-0 right-1 text-4xs md:right-2 md:text-xs">
                 <Link
-                  href={`${modul.uuid}`}
+                  href={`/student/modul/detail-modul/${modul.uuid}`}
                   type="button"
                   className="mb-2 rounded-2xl border border-gray-300 bg-white px-[3px] py-[1px] text-4xs  font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 md:py-[2px] md:pl-2 md:text-2xs"
                 >

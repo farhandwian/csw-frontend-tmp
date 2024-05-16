@@ -2,8 +2,14 @@
 import React from "react";
 import { BlueButton } from "@/components/Button/BlueButton";
 import Image from "next/image";
+import { TAfterTestParams } from "@/types/modul";
+import Link from "next/link";
 
-const AfterTest = () => {
+interface AfterTestProps {
+  params: TAfterTestParams;
+}
+
+const AfterTest = ({ params }: AfterTestProps) => {
   return (
     <div className="mx-auto mt-3 flex w-[80%] flex-col gap-5 md:w-[50%]">
       <div className="mx-auto">
@@ -16,25 +22,24 @@ const AfterTest = () => {
         />
       </div>
       <h2 className="text-center text-lg font-bold md:text-xl">
-        Yeay!!! Selamat kamu telah menyelesaikan Latihan
+        Yeay!!! Selamat kamu telah menyelesaikan {params.quiz_title}
       </h2>
 
       <h3 className="mb-2 text-xs md:text-sm">
-        Nilai akan langsung muncul dan kamu bisa melihatnya di halaman awal
-        latihan modul materi 1 Lorem Ipsum has been the industry&apos;s standard
-        dummy text ever since the 1500s
+        Nilai akan langsung muncul dan kamu bisa melihatnya di halaman deskripsi{" "}
+        {params.quiz_title}
       </h3>
 
-      <form className="m-auto">
+      <Link href={""} className="m-auto">
         <BlueButton
           className="ml-2 bg-pl-RoyalBlue  text-white "
           onClick={() => {}}
         >
           <h1 className="text-xs md:text-sm">
-            Kembali ke Latihan Modul Materi 1{" "}
+            Kembali ke deskripsi {params.quiz_title}
           </h1>
         </BlueButton>
-      </form>
+      </Link>
     </div>
   );
 };

@@ -1,12 +1,17 @@
 "use client";
 
-import ModulFAB from "@/app/student/modul/detail-modul/_components/ModulFAB";
+import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
+import ModulFAB from "@/app/student/modul/detail-modul/[modul_uuid]/_components/ModulFAB";
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { useGetDetailModul } from "@/hooks/modul/hook";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+import { TDetailModulParams } from "@/types/modul";
 import LockIcon from "@mui/icons-material/Lock";
 import Checkbox from "@mui/material/Checkbox";
 import Image from "next/image";
-import React, { useState } from "react";
-import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 
+import Link from "next/link";
 let detail_moduls: {
   materi: string;
   isiStatus: string;
@@ -49,6 +54,7 @@ detail_moduls = [
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
+// diIsi,belumDiIsi,terkunci
 const checkStatus = (status: string) => {
   if (status === "diIsi") {
     return (
@@ -70,42 +76,38 @@ const checkStatus = (status: string) => {
     );
   }
 };
+// params: TDetailModulParams
+const Page = ({ params }: { params: TDetailModulParams }) => {
+  const {
+    data,
+    isLoading: isLoadingDetailModul,
+    isError: isErrorDetailModul,
+  } = useGetDetailModul(params.modul_uuid);
 
-const Page = () => {
-  const [alignment, setAlignment] = useState("modul_home");
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string,
-  ) => {
-    setAlignment(newAlignment);
-  };
+  const dataDetailModul = data?.data;
 
+  if (isErrorDetailModul) {
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
+  }
+
+  if (isLoadingDetailModul) {
+    return <Loading>{loadingMessage}</Loading>;
+  }
   return (
     <>
       <Breadcrumbs widthReduction={"54px"} />
       <section className="relative z-10 p-4 md:p-5">
-        <ModulFAB></ModulFAB>
+        <ModulFAB modulUUID={params.modul_uuid}></ModulFAB>
         <div className="leading-normal">
           <h1 className="text-lg font-bold leading-normal text-tp-Gunmetal md:text-2xl">
-            Modul Tes Wawasan Kebangsaan
+            Modul {dataDetailModul?.sub_module_name}
           </h1>
           <hr className="border-y-1 border-y-gray-300" />
           <h1 className="text-base leading-normal  text-tp-SlateGray md:text-xl">
             pengenalan
           </h1>
           <p className="lead-normal text-xs text-tp-SteelBlue md:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil et
-            voluptate quos fuga tempora laborum voluptatibus cumque nobis
-            mollitia facere facilis natus labore ad perspiciatis ut repellendus,
-            aut amet quae nostrum. Possimus libero at veritatis distinctio,
-            similique quasi voluptate, pariatur ab nemo id, minima voluptas.
-            Exercitationem ea animi odit aperiam consectetur consequuntur,
-            eaque, sit aspernatur quisquam laudantium sed possimus corporis
-            magni modi placeat quae eligendi repudiandae officiis maiores dicta?
-            Unde sit fugit hic deserunt cum. Qui maxime repellendus molestias
-            possimus itaque at mollitia! Enim doloremque velit molestiae eum
-            illo possimus quod ab, minus accusamus placeat laudantium suscipit
-            maiores consequuntur quas.
+            {dataDetailModul?.description}
           </p>
           <ul className="ml-3 mt-2 list-disc text-tp-SteelBlue">
             <li>Modul Materi</li>
@@ -114,10 +116,10 @@ const Page = () => {
         </div>
 
         <div className="container mb-3 mt-3 rounded-xl border border-gray-300 px-1">
-          {detail_moduls.map((detail_modul, index) => (
+          {dataDetailModul?.subjects.map((detail_modul, index) => (
             <div key={index} className="m-auto w-[97%]">
               <div>
-                <p className="mt-2 text-tp-SlateGray">{detail_modul.materi}</p>
+                <p className="mt-2 text-tp-SlateGray">{`Modul Materi ${index + 1} - ${detail_modul.name}`}</p>
                 <div className="flex items-center justify-between  md:mt-2 md:gap-4">
                   <div className="flex">
                     <Image
@@ -128,12 +130,17 @@ const Page = () => {
                       className={`inline-block h-7 w-7 object-fill md:h-10 md:w-10`}
                       alt="Logo stationery"
                     />
-                    <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
-                      {detail_modul.isi}
-                    </p>
+
+                    <Link
+                      href={`/student/modul/detail-modul/${params.modul_uuid}/materi-modul/${detail_modul.uuid}/1234`}
+                    >
+                      <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
+                        {`isi Modul Materi ${index + 1}`}
+                      </p>
+                    </Link>
                   </div>
 
-                  <div className="">{checkStatus(detail_modul.isiStatus)}</div>
+                  <div className="">{checkStatus("belumDiIsi")}</div>
                 </div>
 
                 <div className="flex items-center justify-between gap-4 md:mt-2">
@@ -146,14 +153,16 @@ const Page = () => {
                       className={`inline-block h-7 w-7 object-fill md:h-10 md:w-10`}
                       alt="Logo assignment"
                     />
-                    <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
-                      {detail_modul.latihan}
-                    </p>
+                    <Link
+                      href={`/student/modul/detail-modul//${params.modul_uuid}/deskripsi-latihan-soal/${dataDetailModul.quizzes[index].uuid}/${dataDetailModul.test_type_id}`}
+                    >
+                      <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
+                        {`Latihan Modul Materi ${index + 1}`}
+                      </p>
+                    </Link>
                   </div>
 
-                  <div className="">
-                    {checkStatus(detail_modul.latihanStatus)}
-                  </div>
+                  <div className="">{checkStatus("belumDiIsi")}</div>
                 </div>
 
                 {index === detail_moduls.length - 1 ? (

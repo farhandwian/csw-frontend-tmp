@@ -3,29 +3,15 @@ import InformationQuiz from "@/app/student/_components/CBT/InformationQuiz";
 import ModalSubmitModul from "@/app/student/_components/CBT/ModalSubmitModul";
 import QuestionNavigation from "@/app/student/_components/CBT/QuestionNavigation";
 import QuestionSection from "@/app/student/_components/CBT/QuestionSection";
-import React, { useState, createContext, useContext, useEffect } from "react";
 import useTimer from "@/hooks/useTimer";
-import { TOption, TQuiz } from "@/types/quiz";
-import { useAddQuizSubmission } from "@/hooks/quiz/hook";
+import { TAddQuizSubmissionPayload, TOption, TQuiz } from "@/types/quiz";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
-import {
-  TQuizContentResponse,
-  typeQuiz,
-  TAddQuizSubmissionPayload,
-} from "@/types/quiz";
 
-import { TMetaResponseSingle, TMetaErrorResponse } from "@/types";
-import Loading from "@/components/Loading";
-import ErrorComponent from "@/components/Error";
-import { errMessagePostData, loadingMessage } from "@/lib/const";
 import logger from "@/lib/logger";
 import { TransformQuizToPayloadQuizSubmission } from "@/lib/utils/transform";
-import {
-  UseMutateFunction,
-  useQuery,
-  useMutation,
-} from "@tanstack/react-query";
-import { addQuizSubmission } from "@/hooks/quiz/request";
+import { TMetaErrorResponse, TMetaResponseSingle } from "@/types";
+import { UseMutateFunction } from "@tanstack/react-query";
 
 interface CBTProps {
   quiz: TQuiz;
@@ -74,7 +60,7 @@ const CBT = ({ quiz, mutate, router }: CBTProps) => {
   const onSubmit = () => {
     try {
       const payload: TAddQuizSubmissionPayload =
-        TransformQuizToPayloadQuizSubmission(result, 40, formattedTime);
+        TransformQuizToPayloadQuizSubmission(result, 40, timeLeft);
 
       console.log(payload);
       mutate(payload, {
@@ -101,7 +87,7 @@ const CBT = ({ quiz, mutate, router }: CBTProps) => {
   const onTimerEnd = () => {
     onSubmit();
   };
-  const { formattedTime } = useTimer({
+  const { formattedTime, timeLeft } = useTimer({
     time: serverTime,
     onTimerEnd,
   });
@@ -223,6 +209,7 @@ const CBT = ({ quiz, mutate, router }: CBTProps) => {
         isOpenProp={isOpenSubmitModal}
         formattedTime={formattedTime}
         unAnsweredQuestions={unAnsweredQuestions}
+        quiz={quiz}
         onClose={onCloseModalSubmit}
         onSubmit={onSubmit}
       />

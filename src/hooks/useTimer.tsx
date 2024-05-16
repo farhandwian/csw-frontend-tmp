@@ -50,7 +50,7 @@ const useTimer = ({ time, onTimerEnd }: UseTimerProps) => {
     };
   }, []);
 
-  return { formattedTime };
+  return { formattedTime, timeLeft };
 };
 
 export default useTimer;

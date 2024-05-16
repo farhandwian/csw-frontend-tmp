@@ -4,16 +4,16 @@ import Image from "next/image";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import LockIcon from "@mui/icons-material/Lock";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import QuizIcon from "@mui/icons-material/TQuiz";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import RedButton from "./_components/RedButton";
 import YellowButton from "./_components/YellowButton";
+import QuizIcon from "@mui/icons-material/Quiz";
 
 const dashboards = {
   id: 1,
-  status: "newbie", // ganti ini jadi newbie klo mau buat tampilan user newbie
+  status: "newbiee", // ganti ini jadi newbie klo mau buat tampilan user newbie
 };
 
 interface TableColor {

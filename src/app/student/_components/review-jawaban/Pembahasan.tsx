@@ -22,7 +22,7 @@ const Pembahasan = (props: PembahasanProps) => {
       onClick={toggleOpen}
     >
       <div>
-        <h3 className="text-sm font-medium text-[#334155] md:text-base lg:text-lg">
+        <h3 className="text-sm font-medium text-[#334155] md:text-base">
           {jawaban}
         </h3>
         {isOpen && (
