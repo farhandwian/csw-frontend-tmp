@@ -149,3 +149,30 @@ interface TOptionReview {
 }
 
 export type TQuizReviewResponse = TMetaResponseSingle<TQuizReview>;
+
+// ==========================================================================
+// interface dan type untuk quiz nilai bagian modul
+
+interface TQuizScoreDetail {
+  quiz_submission_uuid: string;
+  quiz_uuid: string;
+  quiz: string;
+  score: number;
+  max_score: number;
+  total_right_answers: number;
+  total_questions: number;
+}
+
+interface TQuizScoreAllItem {
+  subject_id: number;
+  subject: string;
+  quiz_scores_detail: TQuizScoreDetail[];
+}
+
+interface TQuizScoreAll {
+  id: number;
+  sub_modul: string;
+  quiz_score_all_item: TQuizScoreAllItem[];
+}
+
+export type TQuizScoreAllResponse = TMetaResponseSingle<TQuizScoreAll>;

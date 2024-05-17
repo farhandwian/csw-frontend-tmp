@@ -14,6 +14,7 @@ import {
   TAddQuizSubmissionResponse,
   TQuiz,
   TQuizDetailResponse,
+  TQuizScoreAllResponse,
   TQuizReviewResponse,
 } from "@/types/quiz";
 
@@ -22,6 +23,7 @@ import {
   addQuizSubmission,
   getQuizDetailRequest,
   getQuizReviewRequest,
+  getQuizScoreAllRequest,
 } from "@/hooks/quiz/request";
 
 export const useGetQuizContent = (
@@ -31,6 +33,34 @@ export const useGetQuizContent = (
   useQuery({
     queryKey: ["get-quiz-content"],
     queryFn: async () => await getQuizContentRequest(uuid),
+  });
+
+export const useGetQuizDetail = (
+  uuid: string,
+  test_type_id: number,
+): UseQueryResult<TQuizDetailResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-quiz-detail"],
+    queryFn: async () => await getQuizDetailRequest(uuid, test_type_id),
+  });
+
+export const useGetQuizReview = (
+  quiz_submission_uuid: string,
+  quiz_uuid: string,
+  test_type_id: number,
+): UseQueryResult<TQuizReviewResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-quiz-review"],
+    queryFn: async () =>
+      await getQuizReviewRequest(quiz_submission_uuid, quiz_uuid, test_type_id),
+  });
+
+export const useGetQuizScoreAll = (
+  sub_modul_uuid: string,
+): UseQueryResult<TQuizScoreAllResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-quiz-score-all"],
+    queryFn: async () => await getQuizScoreAllRequest(sub_modul_uuid),
   });
 
 export const useAddQuizSubmission = (): UseMutationResult<
@@ -55,23 +85,3 @@ export const useAddQuizSubmission = (): UseMutationResult<
     },
   });
 };
-
-export const useGetQuizDetail = (
-  uuid: string,
-  test_type_id: number,
-): UseQueryResult<TQuizDetailResponse, TMetaErrorResponse> =>
-  useQuery({
-    queryKey: ["get-quiz-detail"],
-    queryFn: async () => await getQuizDetailRequest(uuid, test_type_id),
-  });
-
-export const useGetQuizReview = (
-  quiz_submission_uuid: string,
-  quiz_uuid: string,
-  test_type_id: number,
-): UseQueryResult<TQuizReviewResponse, TMetaErrorResponse> =>
-  useQuery({
-    queryKey: ["get-quiz-review"],
-    queryFn: async () =>
-      await getQuizReviewRequest(quiz_submission_uuid, quiz_uuid, test_type_id),
-  });

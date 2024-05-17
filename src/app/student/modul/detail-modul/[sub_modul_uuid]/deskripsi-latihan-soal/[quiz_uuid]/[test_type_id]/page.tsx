@@ -1,7 +1,7 @@
 "use client";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import InformationTest from "@/app/student/_components/InformationTest";
-import ModulFAB from "@/app/student/modul/detail-modul/[modul_uuid]/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/[sub_modul_uuid]/_components/ModulFAB";
 import BlueButton from "@/components/Button/BlueButton";
 import { TDeskripsiLatihanSoalParams } from "@/types/modul";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
@@ -25,16 +25,16 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
     informasi.PENGERJAAN =
       `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
     informasi.STATUS =
-      `${dataQuizDetail?.status} ${dataQuizDetail?.attempt}x` || "";
+      `${dataQuizDetail?.status} ${dataQuizDetail?.attempt ? `${dataQuizDetail?.attempt}x` : ""}` ||
+      "";
     informasi.WAKTU = `${dataQuizDetail?.total_time} MENIT` || "";
     informasi.JUMLAH_SOAL = `${dataQuizDetail?.total_questions} SOAL` || "";
-    informasi.Nilai =
-      `${dataQuizDetail?.score}/${dataQuizDetail?.score_max}` || "-";
+    informasi.Nilai = `${dataQuizDetail?.score ? `${dataQuizDetail?.score}/${dataQuizDetail?.score_max}` : "-"}`;
   };
   const {
     data,
-    isLoading: isLoadingDetailQuiz,
-    isError: isErrorDetailQuiz,
+    isLoading: isLoadingQuizDetail,
+    isError: isErrorQuizDetail,
   } = useGetQuizDetail(params.quiz_uuid, params.test_type_id);
   // params.test_type_id
   const dataQuizDetail = data?.data!;
@@ -44,10 +44,10 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
 
   //   const informasiArray = Object.entries(informasi);
 
-  if (isLoadingDetailQuiz) {
+  if (isLoadingQuizDetail) {
     return <Loading>{loadingMessage}</Loading>;
   }
-  if (isErrorDetailQuiz) {
+  if (isErrorQuizDetail) {
     return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
   }
   return (
@@ -55,7 +55,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
       <Breadcrumbs widthReduction={"54px"} paramsIndexPosition={[6]} />
 
       <section className="relative p-4 md:p-5">
-        <ModulFAB modulUUID={params.modul_uuid}></ModulFAB>
+        <ModulFAB modulUUID={params.sub_modul_uuid}></ModulFAB>
         <h1 className="my-2 text-lg font-bold leading-normal text-tp-Gunmetal md:text-2xl">
           {`Latihan soal ${dataQuizDetail?.sub_subject}`}
         </h1>
@@ -76,7 +76,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
 
         <div className="flex gap-3">
           <Link
-            href={`/student/modul/detail-modul/${params.modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}/CBT`}
+            href={`/student/modul/detail-modul/${params.sub_modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}/CBT`}
           >
             <BlueButton className="my-3 bg-pl-RoyalBlue">
               {dataQuizDetail?.attempt! > 0
@@ -86,7 +86,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
           </Link>
 
           <Link
-            href={`/student/modul/detail-modul/${params.modul_uuid}/nilai/review-jawaban/${dataQuizDetail.quiz_submission_uuid}/${params.quiz_uuid}/${params.test_type_id}`}
+            href={`/student/modul/detail-modul/${params.sub_modul_uuid}/nilai/review-jawaban/${dataQuizDetail.quiz_submission_uuid}/${params.quiz_uuid}/${params.test_type_id}`}
           >
             <GrayButton
               className={`my-3 ${dataQuizDetail?.attempt! < 1 && "hidden"}`}

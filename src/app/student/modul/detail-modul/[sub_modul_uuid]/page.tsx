@@ -1,7 +1,7 @@
 "use client";
 
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
-import ModulFAB from "@/app/student/modul/detail-modul/[modul_uuid]/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/[sub_modul_uuid]/_components/ModulFAB";
 import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { useGetDetailModul } from "@/hooks/modul/hook";
@@ -82,7 +82,7 @@ const Page = ({ params }: { params: TDetailModulParams }) => {
     data,
     isLoading: isLoadingDetailModul,
     isError: isErrorDetailModul,
-  } = useGetDetailModul(params.modul_uuid);
+  } = useGetDetailModul(params.sub_modul_uuid);
 
   const dataDetailModul = data?.data;
 
@@ -97,7 +97,7 @@ const Page = ({ params }: { params: TDetailModulParams }) => {
     <>
       <Breadcrumbs widthReduction={"54px"} />
       <section className="relative z-10 p-4 md:p-5">
-        <ModulFAB modulUUID={params.modul_uuid}></ModulFAB>
+        <ModulFAB modulUUID={params.sub_modul_uuid}></ModulFAB>
         <div className="leading-normal">
           <h1 className="text-lg font-bold leading-normal text-tp-Gunmetal md:text-2xl">
             Modul {dataDetailModul?.sub_module_name}
@@ -132,7 +132,7 @@ const Page = ({ params }: { params: TDetailModulParams }) => {
                     />
 
                     <Link
-                      href={`/student/modul/detail-modul/${params.modul_uuid}/materi-modul/${detail_modul.uuid}/1234`}
+                      href={`/student/modul/detail-modul/${params.sub_modul_uuid}/materi-modul/${detail_modul.uuid}/1234`}
                     >
                       <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
                         {`isi Modul Materi ${index + 1}`}
@@ -154,7 +154,7 @@ const Page = ({ params }: { params: TDetailModulParams }) => {
                       alt="Logo assignment"
                     />
                     <Link
-                      href={`/student/modul/detail-modul//${params.modul_uuid}/deskripsi-latihan-soal/${dataDetailModul.quizzes[index].uuid}/${dataDetailModul.test_type_id}`}
+                      href={`/student/modul/detail-modul//${params.sub_modul_uuid}/deskripsi-latihan-soal/${dataDetailModul.quizzes[index].uuid}/${dataDetailModul.test_type_id}`}
                     >
                       <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
                         {`Latihan Modul Materi ${index + 1}`}

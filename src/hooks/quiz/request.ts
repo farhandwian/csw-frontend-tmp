@@ -61,6 +61,23 @@ export const getQuizReviewRequest = async (
   }
 };
 
+export const getQuizScoreAllRequest = async (
+  sub_modul_uuid: string,
+): Promise<TQuizReviewResponse> => {
+  try {
+    const { data } = await api.get(
+      `/dashboard/student/quiz/quiz_score_all/${sub_modul_uuid}`,
+    );
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    console.error("Error in getQuizScoreAllRequest:", error);
+    throw error;
+  }
+};
+
 export const addQuizSubmission = async (payload: TAddQuizSubmissionPayload) => {
   try {
     const { data } = await api.post<any>(

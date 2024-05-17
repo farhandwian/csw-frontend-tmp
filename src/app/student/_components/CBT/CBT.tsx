@@ -7,7 +7,9 @@ import useTimer from "@/hooks/useTimer";
 import { TAddQuizSubmissionPayload, TOption, TQuiz } from "@/types/quiz";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
-
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 import logger from "@/lib/logger";
 import { TransformQuizToPayloadQuizSubmission } from "@/lib/utils/transform";
 import { TMetaErrorResponse, TMetaResponseSingle } from "@/types";
@@ -22,13 +24,14 @@ interface CBTProps {
     unknown
   >;
   router: any;
+  status: any;
 }
 
 type NavigasiSoalContextType = "besar" | "kecil";
 
 export const TipeUjianContext = createContext<NavigasiSoalContextType>("kecil");
 
-const CBT = ({ quiz, mutate, router }: CBTProps) => {
+const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
 
   const [result, setResult] = useState(quiz);
@@ -46,7 +49,7 @@ const CBT = ({ quiz, mutate, router }: CBTProps) => {
     checkNavigasiSoalType();
   });
 
-  const serverTime = quiz.total_time * 600000; // Contoh waktu dalam milidetik (10 menit)
+  const serverTime = quiz.total_time * 6000; // Contoh waktu dalam milidetik (10 menit)
 
   // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
   const checkNavigasiSoalType = () => {
@@ -161,6 +164,14 @@ const CBT = ({ quiz, mutate, router }: CBTProps) => {
 
   const addLeadingZero = (number: number) =>
     number > 9 ? number : `0${number}`;
+
+  if (status === "pending") {
+    return <Loading>...Loading submit quiz submission</Loading>;
+  }
+
+  if (status === "error") {
+    return <ErrorComponent>error submit quiz submission</ErrorComponent>;
+  }
 
   return (
     <TipeUjianContext.Provider value={navigasiSoalType}>

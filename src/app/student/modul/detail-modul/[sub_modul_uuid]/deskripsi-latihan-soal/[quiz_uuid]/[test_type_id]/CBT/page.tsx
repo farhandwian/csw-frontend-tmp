@@ -27,21 +27,13 @@ const Page = ({ params }: { params: TCBTParams }) => {
 
   const dataQuizContent = data?.data!;
 
-  if (status === "pending") {
-    return <Loading>...Loading submit quiz submission</Loading>;
-  }
-
-  if (status === "error") {
-    return <ErrorComponent>error submit quiz submission</ErrorComponent>;
-  }
-
   // if (status === "idle") {
   //   return <ErrorComponent>...idle</ErrorComponent>;
   // }
 
   if (status === "success") {
     router.replace(
-      `/student/modul/detail-modul/${params.modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}/after-test/${dataQuizContent.topic}`,
+      `/student/modul/detail-modul/${params.sub_modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}/after-test/${dataQuizContent.topic}`,
     );
   }
 
@@ -50,7 +42,12 @@ const Page = ({ params }: { params: TCBTParams }) => {
       {/* <Breadcrumbs widthReduction={"54px"} paramsIndexPosition={[6]} /> */}
 
       <section className="relative w-[100%] p-4 md:p-5">
-        <CBT quiz={dataQuizContent} mutate={mutate} router={router} />
+        <CBT
+          quiz={dataQuizContent}
+          mutate={mutate}
+          status={status}
+          router={router}
+        />
       </section>
     </>
   );

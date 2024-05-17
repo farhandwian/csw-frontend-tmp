@@ -2,7 +2,7 @@
 
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
 import ReviewJawabanComponent from "@/app/student/_components/review-jawaban/ReviewJawaban";
-import ModulFAB from "@/app/student/modul/detail-modul/[modul_uuid]/_components/ModulFAB";
+import ModulFAB from "@/app/student/modul/detail-modul/[sub_modul_uuid]/_components/ModulFAB";
 import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { useGetQuizReview } from "@/hooks/quiz/hook";
@@ -12,8 +12,8 @@ import { TReviewJawabanParams } from "@/types/modul";
 const Page = ({ params }: { params: TReviewJawabanParams }) => {
   const {
     data,
-    isLoading: isLoadingDetailQuiz,
-    isError: isErrorDetailQuiz,
+    isLoading: isLoadingQuizReview,
+    isError: isErrorQuizReview,
   } = useGetQuizReview(
     params.quiz_submission_id,
     params.quiz_uuid,
@@ -21,15 +21,15 @@ const Page = ({ params }: { params: TReviewJawabanParams }) => {
   );
   const dataQuizReview = data?.data!;
   const prevButtonText = "Modul Home";
-  const prevButtonLink = `/student/modul/detail-modul/${params.modul_uuid}`;
-  const finishButtonLink = `/student/modul/detail-modul/${params.modul_uuid}/nilai`;
+  const prevButtonLink = `/student/modul/detail-modul/${params.sub_modul_uuid}`;
+  const finishButtonLink = `/student/modul/detail-modul/${params.sub_modul_uuid}/nilai`;
 
   console.log(dataQuizReview);
 
-  if (isLoadingDetailQuiz) {
+  if (isLoadingQuizReview) {
     return <Loading>{loadingMessage}</Loading>;
   }
-  if (isErrorDetailQuiz) {
+  if (isErrorQuizReview) {
     return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
   }
 
@@ -37,7 +37,7 @@ const Page = ({ params }: { params: TReviewJawabanParams }) => {
     <>
       <Breadcrumbs widthReduction={"54px"} paramsIndexPosition={[8]} />
       <section className="relative p-4 md:p-5">
-        <ModulFAB modulUUID={params.modul_uuid}></ModulFAB>
+        <ModulFAB modulUUID={params.sub_modul_uuid}></ModulFAB>
         <ReviewJawabanComponent
           props={{
             dataQuizReview,

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import MateriModulLayout from "@/app/student/modul/detail-modul/[modul_uuid]/materi-modul/_components/MateriModulLayout";
+import MateriModulLayout from "@/app/student/modul/detail-modul/[sub_modul_uuid]/materi-modul/_components/MateriModulLayout";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import MateriTerkunciAlert from "../../_components/MateriTerkunciAlert";

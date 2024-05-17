@@ -30,7 +30,7 @@ const Page = ({ params }: { params: TAfterTestParams }) => {
           </h3>
 
           <Link
-            href={`/student/modul/detail-modul/${params.modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}`}
+            href={`/student/modul/detail-modul/${params.sub_modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}`}
             className="m-auto"
           >
             <BlueButton className="ml-2 bg-pl-RoyalBlue text-white ">
