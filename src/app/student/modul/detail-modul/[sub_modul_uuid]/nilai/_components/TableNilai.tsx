@@ -75,7 +75,7 @@ export default function TableNilai({ params }: TableNilaiProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {dataQuizScoreAll.quiz_score_all_item.map((quiz_score) => (
+          {dataQuizScoreAll.quiz_score_all_item?.map((quiz_score) => (
             <React.Fragment key={quiz_score.subject_id}>
               <StyledTableRow>
                 <StyledTableCell component="th" scope="row" colSpan={5}>

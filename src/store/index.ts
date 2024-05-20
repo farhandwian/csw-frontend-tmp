@@ -2,6 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/authSlice";
 import studentLayoutReducer from "./student/layout/layoutSlice";
+import ujiKemampuanNavReducer from "./student/uji-kemampuan/navigationSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const makeStore = () => {
@@ -9,6 +10,7 @@ export const makeStore = () => {
     reducer: {
       auth: authReducer,
       studentLayout: studentLayoutReducer,
+      ujiKemampuanNav: ujiKemampuanNavReducer,
     },
   });
 };

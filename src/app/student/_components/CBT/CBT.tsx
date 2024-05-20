@@ -49,7 +49,7 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
     checkNavigasiSoalType();
   });
 
-  const serverTime = quiz.total_time * 6000; // Contoh waktu dalam milidetik (10 menit)
+  const serverTime = quiz.total_time * 600000; // Contoh waktu dalam milidetik (10 menit)
 
   // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
   const checkNavigasiSoalType = () => {

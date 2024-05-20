@@ -86,9 +86,11 @@ export default function Breadcrumbs({
       console.log(k);
       k++;
     }
+
+    console.log(fontSize);
     crumbs = breadCrumbsData.map(({ link, uiCrumbs }) => (
       <div
-        className={`ml-2 inline-flex items-center text-xs md:text-base text-[${fontSize}]`}
+        className={`ml-2 inline-flex items-center ${fontSize ? `text-[${fontSize}]` : "text-xs md:text-base"}`}
         key={link}
       >
         <ArrowBackIosIcon fontSize="inherit" />
@@ -97,7 +99,7 @@ export default function Breadcrumbs({
         >
           <Link
             href={`/student/${link}`}
-            className={`font-bold hover:underline`}
+            className={`font-bold hover:underline ${fontSize && `text-[${fontSize}]`}`}
           >
             {uiCrumbs}
           </Link>
@@ -111,7 +113,7 @@ export default function Breadcrumbs({
       className={`relative  ${
         bgColor ? `bg-${bgColor}` : "bg-white"
       } rounded-sm ${isShadow ? "shadow-md" : ""} text-left ${
-        padding ? `p-${padding}` : "px-1 py-2 md:p-3"
+        padding ? `p-${padding}` : "md:p-1"
       } text-black `}
     >
       <div className="inline">{crumbs}</div>
