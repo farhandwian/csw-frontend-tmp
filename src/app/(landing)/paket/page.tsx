@@ -24,21 +24,18 @@ const Page = () => {
   const [searchText, setSearchText] = useState("");
 
   const {
-    data: dataSearchPakets,
+    data: dataPakets,
     isLoading: isLoadingSearchPakets,
     isError: isErrorSearchPakets,
   } = useGetSearchPakets(filter, searchText);
 
   const [pakets, setPakets] = useState<TPaket[]>(
-    dataSearchPakets ? dataSearchPakets.data : [],
+    dataPakets ? dataPakets.data : [],
   );
 
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
   };
-  useEffect(() => {
-    if (dataSearchPakets) setPakets(dataSearchPakets.data);
-  }, []);
 
   useEffect(() => {
     const body = document.body;
@@ -55,10 +52,10 @@ const Page = () => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (dataSearchPakets) {
-      setPakets(dataSearchPakets.data);
+    if (dataPakets) {
+      setPakets(dataPakets.data);
     }
-  }, [dataSearchPakets]);
+  }, [dataPakets]);
 
   const filteredPakets = pakets.filter((paket) => {
     if (filter === "") {

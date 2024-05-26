@@ -1,12 +1,18 @@
 import { AxiosError } from "axios";
+export type TTestType =
+  | "latihan-soal"
+  | "pretest"
+  | "posttest"
+  | "paket-soal"
+  | "try-out";
 
 export interface TPaginationMeta {
-  totalRows: number;
-  totalPages: number;
-  thisPageRows: number;
-  currentPage: number;
-  prev: null | number;
-  next: null | number;
+  total_rows: number;
+  total_pages: number;
+  limit: number;
+  page: number;
+  // prev: null | number;
+  // next: null | number;
 }
 
 export type TMetaItem = {

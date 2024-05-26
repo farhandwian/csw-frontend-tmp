@@ -12,13 +12,14 @@ import { userLogin } from "@/store/auth/authActions";
 import { AppDispatch, useAppSelector } from "@/store";
 import { Alert } from "flowbite-react";
 import { toast } from "sonner";
+import { NextPage } from "next";
 
 import { HiInformationCircle } from "react-icons/hi";
 import { Spinner } from "flowbite-react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const LoginForm: React.FC = () => {
+const LoginForm: NextPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [error, setError] = useState<string | undefined | null>("");

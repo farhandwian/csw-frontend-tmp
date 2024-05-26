@@ -61,7 +61,13 @@ export default function Breadcrumbs({
     }
 
     for (let i = 1, k = 0; i < arrayCrumbs.length; ) {
-      if (arrayCrumbs[i].length <= 30 && arrayCrumbs[i + 1]?.length > 30) {
+      // Check if arrayCrumbs[i + 1] is an id that string containing a number
+      const isNextCrumbNumber = !isNaN(Number(arrayCrumbs[i + 1]));
+      // check if arrayCrumbs[i + 1] is a uuid that has more than 30 characters
+      if (
+        arrayCrumbs[i].length <= 30 &&
+        (arrayCrumbs[i + 1]?.length > 30 || isNextCrumbNumber)
+      ) {
         breadCrumbsData.push({
           link: `${breadCrumbsData[k - 1]?.link ?? ""}/${arrayCrumbs[i]}/${arrayCrumbs[i + 1]}`,
           uiCrumbs: `${arrayCrumbs[i]}`,
@@ -83,29 +89,34 @@ export default function Breadcrumbs({
         i++;
       }
       console.log(JSON.stringify(breadCrumbsData[k]));
+      1;
       console.log(k);
       k++;
     }
 
     console.log(fontSize);
-    crumbs = breadCrumbsData.map(({ link, uiCrumbs }) => (
-      <div
-        className={`ml-2 inline-flex items-center ${fontSize ? `text-[${fontSize}]` : "text-xs md:text-base"}`}
-        key={link}
-      >
-        <ArrowBackIosIcon fontSize="inherit" />
-        <div
-          className={`text-tp-SlateGray ${fontSize && `text-[${fontSize}]`}`}
-        >
-          <Link
-            href={`/student/${link}`}
-            className={`font-bold hover:underline ${fontSize && `text-[${fontSize}]`}`}
+    crumbs = breadCrumbsData.map(({ link, uiCrumbs }) => {
+      if (uiCrumbs !== "uji-kemampuan") {
+        return (
+          <div
+            className={`ml-2 inline-flex items-center ${fontSize ? `text-[${fontSize}]` : "text-xs md:text-base"}`}
+            key={link}
           >
-            {uiCrumbs}
-          </Link>
-        </div>
-      </div>
-    ));
+            <ArrowBackIosIcon fontSize="inherit" />
+            <div
+              className={`text-tp-SlateGray ${fontSize && `text-[${fontSize}]`}`}
+            >
+              <Link
+                href={`/student/${link}`}
+                className={`font-bold hover:underline ${fontSize && `text-[${fontSize}]`}`}
+              >
+                {uiCrumbs}
+              </Link>
+            </div>
+          </div>
+        );
+      }
+    });
   }
 
   return (

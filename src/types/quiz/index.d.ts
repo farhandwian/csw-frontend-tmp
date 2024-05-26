@@ -32,7 +32,7 @@ export interface TQuiz {
   questions: TQuestion[];
 }
 
-type typeQuiz = "Paket Soal" | "Pretest" | "Posttest";
+type typeQuiz = "PaketSoal" | "Pretest" | "Posttest";
 
 export interface TQuizContentParams {
   uuid: string;
@@ -89,8 +89,8 @@ enum QuizStatus {
 interface TQuizDetail {
   id: number;
   uuid: string;
-  sub_subject: string;
-  modul: string;
+  subject: string;
+  title: string;
   description: string;
   total_questions: number;
   total_time: number;
@@ -98,7 +98,7 @@ interface TQuizDetail {
   attempt_allowed: number;
   quiz_submission_uuid: string;
   score?: number;
-  score_max: number;
+  max_score: number;
   attempt?: number;
 }
 

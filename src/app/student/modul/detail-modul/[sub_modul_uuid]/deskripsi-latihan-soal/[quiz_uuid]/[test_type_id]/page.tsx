@@ -29,7 +29,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
       "";
     informasi.WAKTU = `${dataQuizDetail?.total_time} MENIT` || "";
     informasi.JUMLAH_SOAL = `${dataQuizDetail?.total_questions} SOAL` || "";
-    informasi.Nilai = `${dataQuizDetail?.score ? `${dataQuizDetail?.score}/${dataQuizDetail?.score_max}` : "-"}`;
+    informasi.Nilai = `${dataQuizDetail?.score ? `${dataQuizDetail?.score}/${dataQuizDetail?.max_score}` : "-"}`;
   };
   const {
     data,
@@ -57,7 +57,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
       <section className="relative p-4 md:p-5">
         <ModulFAB modulUUID={params.sub_modul_uuid}></ModulFAB>
         <h1 className="my-2 text-lg font-bold leading-normal text-tp-Gunmetal md:text-2xl">
-          {`Latihan soal ${dataQuizDetail?.sub_subject}`}
+          {`Latihan soal ${dataQuizDetail?.subject}`}
         </h1>
         {/* informasi soal */}
         <InformationTest informasi={informasi} />

@@ -48,8 +48,9 @@ export const getQuizReviewRequest = async (
   test_type_id: number,
 ): Promise<TQuizReviewResponse> => {
   try {
+    console.log(quiz_submission_uuid, test_type_id);
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_review/${quiz_submission_uuid}/${quiz_uuid}/${test_type_id}`,
+      `/dashboard/student/quiz/quiz_review/${quiz_submission_uuid}/${test_type_id}`,
     );
 
     console.log(data);

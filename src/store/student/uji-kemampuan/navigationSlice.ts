@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { typeUjiKemampuanTestURL } from "@/types/uji-kemampuan";
+import { TTypeUjiKemampuanTestURL } from "@/types/uji-kemampuan";
 interface navigationState {
   ujiKemampuanmoduleNav: number;
-  ujiKemampuanTestTypeNav: typeUjiKemampuanTestURL;
+  ujiKemampuanTestTypeNav: TTypeUjiKemampuanTestURL;
 }
 
 const initialState: navigationState = {

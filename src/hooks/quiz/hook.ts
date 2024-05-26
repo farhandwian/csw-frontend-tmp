@@ -28,7 +28,7 @@ import {
 
 export const useGetQuizContent = (
   uuid: string,
-  type: typeQuiz,
+  test_type_id: number,
 ): UseQueryResult<TQuizContentResponse, TMetaErrorResponse> =>
   useQuery({
     queryKey: ["get-quiz-content"],

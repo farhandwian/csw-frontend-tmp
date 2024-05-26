@@ -69,7 +69,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
 
         <div className="">
           <h1 className="font-semibold">NAVIGASI LATIHAN</h1>
-          <h1>Latihan Soal Matematika Paket 1</h1>
+          <h1>{result.topic}</h1>
         </div>
       </div>
 

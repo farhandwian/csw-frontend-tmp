@@ -13,8 +13,8 @@ import Link from "next/link";
 interface ReviewJawabanProps {
   dataQuizReview: TQuizReview;
   prevButtonText: string;
-  prevButtonLink: string;
-  finishButtonLink: string;
+  prevButtonURL: string;
+  finishButtonURL: string;
 }
 
 const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
@@ -210,14 +210,14 @@ const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
           {/* akhir section soal */}
 
           <div className="mt-3 flex justify-between">
-            <Link href={props.prevButtonLink}>
+            <Link href={props.prevButtonURL}>
               <BlueButton className=" ml-2 bg-pl-RoyalBlue text-white">
                 {" "}
                 <h1 className="text-2xs md:text-sm">{props.prevButtonText}</h1>
               </BlueButton>
             </Link>
 
-            <Link href={props.finishButtonLink}>
+            <Link href={props.finishButtonURL}>
               <SubmitButton className="mx-0 bg-pl-GreenButton text-white">
                 <h1 className="text-2xs md:text-sm">Finish Review</h1>
               </SubmitButton>

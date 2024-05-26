@@ -20,12 +20,6 @@ const Page = ({ params }: { params: TCBTParams }) => {
   const router = useRouter();
   const { mutate, status } = useAddQuizSubmission();
 
-  // useEffect(() => {
-  //   if (router) {
-  //     refetch(); // Refetch data whenever the router changes
-  //   }
-  // }, [router, refetch]);
-
   if (isLoadingQuizContent) {
     return <Loading>{loadingMessage}</Loading>;
   }
@@ -35,18 +29,10 @@ const Page = ({ params }: { params: TCBTParams }) => {
 
   const dataQuizContent = data?.data!;
 
-  // if (status === "idle") {
-  //   return <ErrorComponent>...idle</ErrorComponent>;
-  // }
-
   if (status === "success") {
-    // router.replace(
-    //   `/student/modul/detail-modul/${params.sub_modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}/after-test/${dataQuizContent.topic}`,
-    // );
     router.replace(
       `/student/modul/detail-modul/${params.sub_modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}/after-test/${dataQuizContent.topic}`,
     );
-
     refetch(); // Refetch data whenever the router changes
   }
 

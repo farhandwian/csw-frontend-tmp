@@ -44,7 +44,7 @@ interface TQuiz {
 export interface TDeskripsiLatihanSoalParams {
   sub_modul_uuid: string;
   quiz_uuid: string;
-  test_type_id: int;
+  test_type_id: number;
 }
 
 export interface TDetailModulParams {
@@ -60,21 +60,30 @@ export interface TMateriModulParams {
 export interface TCBTParams {
   sub_modul_uuid: string;
   quiz_uuid: string;
-  test_type_id: int;
+  test_type_id: number;
 }
 
 export interface TAfterTestParams {
   sub_modul_uuid: string;
   quiz_uuid: string;
-  test_type_id: int;
+  test_type_id: number;
   quiz_title: string;
 }
 
-export interface TReviewJawabanParams {
+export interface TAfterTestProps {
   sub_modul_uuid: string;
-  quiz_submission_id: string;
   quiz_uuid: string;
-  test_type_id: int;
+  test_type_id: number;
+  quiz_title: string;
+  redirect_url: string;
+}
+
+export interface TReviewJawabanParams {
+  module_id: number;
+  sub_modul_uuid: string;
+  quiz_submission_uuid: string;
+  quiz_uuid: string;
+  test_type_id: number;
 }
 
 export interface TNilaiParams {
