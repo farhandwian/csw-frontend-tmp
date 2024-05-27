@@ -5,8 +5,10 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { loginRequest } from "@/hooks/auth/request";
 
 import { TLoginData } from "@/types/auth";
+import { json } from "stream/consumers";
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
   },
@@ -58,29 +60,37 @@ export const authOptions: NextAuthOptions = {
     },
     async jwt({ token, user, account }) {
       const currentUser = user as TLoginData;
-
+      console.log(token);
+      console.log(user);
       if (account?.provider === "login" && currentUser) {
-        token.token = currentUser.data.token;
-        currentUser.email = currentUser.data.name;
+        token.token = currentUser.data.access_token;
       }
 
+      console.log(JSON.stringify(currentUser));
       return { ...token, ...currentUser };
     },
     async session({ session, token }) {
       const tempToken = token as unknown as TLoginData & JWT;
 
-      const jwt_token = {
-        token: token?.token as string,
-      };
+      console.log(tempToken);
+
       session = {
+        // expires: token?.exp as string,
+        // user: {
+        //   token: jwt_token,
+        //   id: tempToken?.data?.uuid as string,
+        //   email: tempToken?.data.email as string,
+        //   roles: tempToken?.data.roles as number[],
+        // },
+
         expires: token?.exp as string,
         user: {
-          token: jwt_token,
-          id: tempToken?.data?.uuid as string,
-          email: tempToken?.data.email as string,
-          roles: tempToken?.data.roles as number[],
+          id: "1",
+          access_token: token?.data.access_token as string,
         },
       };
+
+      console.log(JSON.stringify(session));
 
       return session;
     },

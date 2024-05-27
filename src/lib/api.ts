@@ -8,21 +8,21 @@ export const apiConfig: AxiosRequestConfig = {
 
 const api = axios.create(apiConfig);
 
-// api.interceptors.request.use(
-//   async (config) => {
-//     const session: Session = (await getSession()) as Session;
+api.interceptors.request.use(
+  async (config) => {
+    const session: Session = (await getSession()) as Session;
 
-//     const token = session?.user?.token?.token;
-
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   },
-// );
+    const token = session?.user?.access_token;
+    console.log(token);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 // api.interceptors.response.use(
 //   (response) => {

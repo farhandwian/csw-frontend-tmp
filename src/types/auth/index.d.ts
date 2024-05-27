@@ -2,10 +2,7 @@ import { TMetaResponseSingle } from "@/types";
 
 export type TLoginData = {
   data: {
-    uuid: string;
-    email: string;
-    token: string;
-    roles: number[];
+    access_token: string;
   };
 } & User;
 

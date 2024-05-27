@@ -16,6 +16,7 @@ import WhyUsItem from "./WhyUsItem";
 import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+import { useSession } from "next-auth/react";
 
 const HomePage = () => {
   const tabletView = useTablet();
@@ -43,6 +44,9 @@ const HomePage = () => {
       setLoadedMentor(true);
     },
   });
+
+  const { status, data } = useSession();
+  console.log("ini usesession" + JSON.stringify(data));
   const [currentSlidePaket, setCurrentSlidePaket] = React.useState(0);
   const [loadedPaket, setLoadedPaket] = useState(false);
 
