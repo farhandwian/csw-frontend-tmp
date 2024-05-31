@@ -11,32 +11,25 @@ export type TLoginPayload = {
   password: string;
 };
 
-export interface TWhoAmIData {
-  id: number;
-  email: string;
-  email: string;
-  roles: string[];
-  created_at: string;
-  updated_at: string;
-  awardee: Awardee;
+interface TMedia {
+  media_uuid: string;
+  original: string;
+  thumbnail: string;
+  desktop: string;
+  mobile: string;
 }
 
-export interface Awardee {
-  id: number;
+interface TUser {
+  uuid: string;
+  email: string;
   name: string;
-  photo: Photo;
-  department: string;
-  division: string;
-  position: string;
-}
-
-export interface Photo {
-  id: number;
-  alt: string;
-  file_url: string;
-  caption: string;
-  mimetype: string;
+  media: Media;
+  province: string;
+  regency: string;
+  district: string;
+  phone_number: string;
+  class: string;
 }
 
 export type TDataLoginResponse = TMetaResponseSingle<TLoginData>;
-export type TDataWhoAmIResponse = TMetaResponseSingle<TWhoAmIData>;
+export type TDataUserResponse = TMetaResponseSingle<TUser>;

@@ -6,6 +6,15 @@ export type TTestType =
   | "paket-soal"
   | "try-out";
 
+export type TModule = "Matematika" | "SKD";
+
+export type TTestTypeResponse =
+  | "Latihan Soal"
+  | "Pretest"
+  | "Posttest"
+  | "Paket Soal"
+  | "Try Out";
+
 export interface TPaginationMeta {
   total_rows: number;
   total_pages: number;

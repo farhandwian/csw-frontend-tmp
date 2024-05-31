@@ -85,6 +85,7 @@ const Page = ({ params }: { params: TDetailModulParams }) => {
   } = useGetDetailModul(params.sub_modul_uuid);
 
   const dataDetailModul = data?.data;
+  console.log(dataDetailModul);
 
   if (isErrorDetailModul) {
     return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
@@ -132,7 +133,7 @@ const Page = ({ params }: { params: TDetailModulParams }) => {
                     />
 
                     <Link
-                      href={`/student/modul/detail-modul/${params.sub_modul_uuid}/materi-modul/${detail_modul.uuid}/1234`}
+                      href={`/student/modul/detail-modul/${params.sub_modul_uuid}/materi-modul/${detail_modul.uuid}`}
                     >
                       <p className="ml-4 mt-1 inline-block text-tp-Gunmetal">
                         {`isi Modul Materi ${index + 1}`}

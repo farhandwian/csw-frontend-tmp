@@ -8,7 +8,7 @@ import Loading from "@/components/Loading";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 import { TQuizAllParams } from "@/types/uji-kemampuan";
 import { TTestType } from "@/types/index";
-import { convertTestTypeTittleToID } from "@/lib/utils/checkTestType";
+import { convertTestTypeNameToID } from "@/lib/utils/ConvertTestType";
 
 interface TableTestItemProps {
   sub_module_uuid: string;
@@ -18,7 +18,7 @@ interface TableTestItemProps {
 const TableTestItem = ({ sub_module_uuid, testType }: TableTestItemProps) => {
   const [page, setPage] = useState(1);
 
-  const testTypeID: number = convertTestTypeTittleToID(testType);
+  const testTypeID: number = convertTestTypeNameToID(testType);
 
   const {
     data,

@@ -6,11 +6,21 @@ import { Transition } from "@headlessui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { setShowNav, setIsMobile } from "@/store/student/layout/layoutSlice";
 import { AppDispatch, useAppSelector } from "@/store";
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { useGetUser } from "@/hooks/auth/hook";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+
 interface StudentLayoutProps {
   children?: ReactNode;
 }
 
 export default function StudentLayout({ children }: StudentLayoutProps) {
+  const { data, isLoading: isLoadingUser, isError: isErrorUser } = useGetUser();
+
+  const dataUser = data?.data;
+  console.log(dataUser);
+
   // const [showNav, setShowNav] = useState(true);
   // const [isMobile, setisMobile] = useState(false);
   const [showNavLocal, setShowNavLocal] = useState(true);
@@ -47,9 +57,18 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
     };
   }, []);
 
+  if (isErrorUser) {
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
+  }
+
+  if (isLoadingUser) {
+    return "";
+  }
+
   return (
     <>
       <TopBar
+        user={dataUser!}
         showNav={showNavLocal}
         setShowNav={setShowNavLocal}
         isMobile={isMobileLocal}
@@ -64,7 +83,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
         leaveFrom="translate-x-0"
         leaveTo="-translate-x-full"
       >
-        <SideBar showNav={showNavLocal} />
+        <SideBar user={dataUser!} showNav={showNavLocal} />
       </Transition>
       <main
         className={`pt-16 transition-all duration-[400ms] ${

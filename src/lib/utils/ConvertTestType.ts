@@ -1,5 +1,5 @@
 import { TTestType } from "@/types/index";
-export function convertTestTypeIDToTittle(testTypeID: number) {
+export function convertTestTypeIDToName(testTypeID: number) {
   if (testTypeID === 1) {
     return "latihan-soal";
   } else if (testTypeID === 2) {
@@ -13,7 +13,7 @@ export function convertTestTypeIDToTittle(testTypeID: number) {
   }
 }
 
-export function convertTestTypeTittleToID(testType: TTestType): number {
+export function convertTestTypeNameToID(testType: TTestType): number {
   if (testType === "latihan-soal") {
     return 1;
   } else if (testType === "pretest") {

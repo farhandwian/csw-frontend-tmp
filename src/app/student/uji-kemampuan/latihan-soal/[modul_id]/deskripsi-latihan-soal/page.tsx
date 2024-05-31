@@ -4,7 +4,7 @@ import Deskripsi from "@/app/student/uji-kemampuan/_components/deskripsi/Deskrip
 const Page = () => {
   return (
     <>
-      <Deskripsi typeNilai="latihan-soal" />
+      <Deskripsi quiz_uuid="" sub_module_uuid="" test_type="latihan-soal" />
     </>
   );
 };

@@ -30,7 +30,9 @@ export const getMateriModulRequest = async (
 ): Promise<TMateriModulResponse> => {
   try {
     console.log("ini getMateriModulRequest");
-    const { data } = await api.get(`/dashboard/student/module/${uuid}`);
+    const { data } = await api.get(
+      `/dashboard/student/module/material/${uuid}`,
+    );
     return data;
   } catch (error) {
     console.error("Error in getMateriModulRequest:", error);

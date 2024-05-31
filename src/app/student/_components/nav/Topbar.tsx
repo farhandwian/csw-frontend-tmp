@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { TUser } from "@/types/auth";
 
 const profiles = [
   {
@@ -27,12 +28,18 @@ const profiles = [
 ];
 
 interface TopBarProps {
+  user: TUser;
   showNav: boolean;
   setShowNav: (arg: boolean) => void;
   isMobile: boolean;
 }
 
-export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
+export default function TopBar({
+  user,
+  showNav,
+  setShowNav,
+  isMobile,
+}: TopBarProps) {
   return (
     <div
       className={`fixed ${
@@ -144,7 +151,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
             </Popover.Panel>
           </Transition>
         </Popover>
-        <Menu as="div" className="relative inline-block text-left">
+        <Menu as="div" className="relative mt-1 inline-block text-left">
           <div>
             <Menu.Button className="inline-flex w-full items-center justify-center">
               <picture>
@@ -155,7 +162,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
                 />
               </picture>
               <span className="hidden font-medium text-gray-700 md:block">
-                Username
+                {user.name}
               </span>
               <ExpandMoreIcon className="ml-2 h-4 w-4 text-gray-700" />
             </Menu.Button>
@@ -185,8 +192,10 @@ export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
                        rounded-full`}
                     />
                     <div>
-                      <h3>Login as {profiles[0].text}</h3>
-                      <h3>Newbie User</h3>
+                      {/* <h3>Login as {profiles[0].text}</h3>
+                      <h3>Newbie User</h3> */}
+
+                      <h3>Login sebagai {user.name}</h3>
                     </div>
                   </Link>
                 </Menu.Item>

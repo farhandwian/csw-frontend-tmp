@@ -8,7 +8,7 @@ export interface TModul {
 }
 
 interface TDetailModul {
-  uuid: string;
+  uuid: string; // subject uuid
   test_type_id: number;
   sub_module_name: string;
   module_name: string;

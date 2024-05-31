@@ -90,8 +90,8 @@ const CardTestItem = ({
           <div className="mt-5">
             <h1 className="text-sm font-bold">{quiz.title}</h1>
             <h3 className="mb-2 text-left text-xs">
-              Pada pretest kali ini akan membahas seputar materi yang akan kita
-              pelajari nanti di pertemuan, kerjakan dengan...
+              {testType} membahas seputar materi yang akan dipelajari nanti di
+              pertemuan {quiz.description}
             </h3>
             {quiz.status_pengerjaan === "belum-dikerjakan" ? (
               <Link href={urlRedirect()}>

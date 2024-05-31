@@ -6,12 +6,12 @@ import {
 } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
-import { getWhoAmI, loginRequest } from "@/hooks/auth/request";
+import { getUserRequest, loginRequest } from "@/hooks/auth/request";
 
 import { TMetaErrorResponse } from "@/types";
 import {
   TDataLoginResponse,
-  TDataWhoAmIResponse,
+  TDataUserResponse,
   TLoginPayload,
 } from "@/types/auth";
 
@@ -32,14 +32,12 @@ export const useLogin = (): UseMutationResult<
   });
 };
 
-export const useGetWhoAmI = (): UseQueryResult<
-  TDataWhoAmIResponse,
+export const useGetUser = (): UseQueryResult<
+  TDataUserResponse,
   TMetaErrorResponse
 > => {
-  const { data: session } = useSession();
   return useQuery({
-    enabled: !!session,
-    queryKey: ["get-who-am-i"],
-    queryFn: async () => await getWhoAmI(),
+    queryKey: ["get-user"],
+    queryFn: async () => await getUserRequest(),
   });
 };

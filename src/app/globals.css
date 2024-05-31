@@ -19,4 +19,5 @@
 body {
   background-color: white;
   font-family: var(--font-poppins);
+  cursor: default;
 }

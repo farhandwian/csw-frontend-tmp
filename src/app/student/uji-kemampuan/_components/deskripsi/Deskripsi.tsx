@@ -12,7 +12,7 @@ import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { useGetQuizDetail } from "@/hooks/quiz/hook";
 import { TTestType } from "@/types/index";
-import { convertTestTypeTittleToID } from "@/lib/utils/checkTestType";
+import { convertTestTypeNameToID } from "@/lib/utils/ConvertTestType";
 
 const informasi = {
   PENGERJAAN: "",
@@ -49,10 +49,10 @@ const Deskripsi = ({
     data,
     isLoading: isLoadingQuizDetail,
     isError: isErrorQuizDetail,
-  } = useGetQuizDetail(quiz_uuid, convertTestTypeTittleToID(test_type));
+  } = useGetQuizDetail(quiz_uuid, convertTestTypeNameToID(test_type));
 
   // params.test_type_id
-  console.log(convertTestTypeTittleToID(test_type));
+  console.log(convertTestTypeNameToID(test_type));
   const dataQuizDetail = data?.data!;
   console.log(dataQuizDetail);
 

@@ -61,3 +61,21 @@ export const getQuizAllRequest = async (
     throw error;
   }
 };
+
+// export const getExerciseAllRequest = async (
+//   sub_module_uuid: string,
+//   test_type_id: number,
+// ): Promise<TQuizAllResponse> => {
+//   console.log(sub_module_uuid, test_type_id);
+//   try {
+//     const { data } = await api.get(
+//       `/dashboard/student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}?page=${page}&limit=${limit}`,
+//     );
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//     console.error("Error in getQuizReviewRequest:", error);
+//     throw error;
+//   }
+// };

@@ -2,7 +2,7 @@ import { api } from "@/lib/api";
 
 import {
   TDataLoginResponse,
-  TDataWhoAmIResponse,
+  TDataUserResponse,
   TLoginPayload,
 } from "@/types/auth";
 
@@ -14,8 +14,10 @@ export const loginRequest = async (
   return data;
 };
 
-export const getWhoAmI = async (): Promise<TDataWhoAmIResponse | undefined> => {
-  const { data } = await api.get("/auth/whoami");
+export const getUserRequest = async (): Promise<
+  TDataUserResponse | undefined
+> => {
+  const { data } = await api.get("/dashboard/student/user/me");
 
   return data;
 };

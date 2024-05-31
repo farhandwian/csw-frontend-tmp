@@ -16,6 +16,7 @@ import {
 } from "@mui/icons-material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { TUser } from "@/types/auth";
 
 // height topbar:
 // xl: h-16 / 4rem
@@ -92,12 +93,13 @@ const dataSidebar = [
 // Add remaining code for the drawer, app bar, and menu items as needed
 
 interface SideBarProps {
+  user: TUser;
   showNav: boolean;
   isMobile?: boolean;
 }
 
 const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
-  ({ showNav, isMobile }: SideBarProps, ref) => {
+  ({ user, showNav, isMobile }: SideBarProps, ref) => {
     const pathName = usePathname();
     const checkUrl = () => {
       const arr = pathName.split("/");
@@ -129,7 +131,7 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
               />
               <p className="mt-2 text-center capitalize">
                 Dashboard Anda, <br />
-                <span className="font-semibold">Username</span>
+                <span className="font-semibold">{user.name}</span>
               </p>
             </div>
           </div>
