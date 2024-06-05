@@ -8,7 +8,6 @@ interface QuestionSectionProps {
   activeQuestion: number;
   questions: TQuestion[];
   result: TQuiz;
-  formattedTime: string;
   onOptionSelected: (option: TOption, index: number) => void;
   onClickNext: () => void;
   onClickPrev: () => void;
@@ -19,7 +18,6 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
   activeQuestion,
   questions,
   result,
-  formattedTime,
   onOptionSelected,
   onClickNext,
   onClickPrev,
@@ -47,7 +45,9 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
 
   return (
     <div className="w-[100%] rounded-2xl border-2 bg-white p-4">
-      <h2 className="mb-2">{question}</h2>
+      <h2 className="mb-2">
+        {activeQuestion + 1}.&nbsp;{question}
+      </h2>
       <div>
         {options.map((option, index) => (
           <div
@@ -60,7 +60,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
             } cursor-pointer`}
           >
             <div
-              className={`inline-block rounded-l-sm px-3 ${
+              className={`inline-block rounded-l-sm border-r-2 px-3 ${
                 option.id === result.questions[activeQuestion].user_answer
                   ? "bg-green-400"
                   : ""
@@ -68,9 +68,14 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
             >
               <div className="mt-[2px]">{option.letter}</div>
             </div>
-            <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
             <div className="m-auto ml-3 inline-block text-left">
-              {option.text}
+              {option.text} Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Veritatis numquam tempore cumque illum cum sapiente
+              voluptatum id quidem. Accusamus explicabo odio numquam eum,
+              commodi omnis excepturi expedita, unde suscipit tempore laborum,
+              perferendis facere sint aliquam. Veritatis rerum nisi ipsam nulla
+              corrupti dolorum recusandae consequuntur numquam blanditiis. Sed
+              facilis vero dicta.
             </div>
           </div>
         ))}
@@ -78,17 +83,15 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
 
       {/* awal button section */}
       <div className="mt-3 flex justify-between">
-        <div>
+        <div className="flex gap-1">
           {activeQuestion !== 0 && (
-            <GrayButton className="m-auto inline" onClick={handlePrevClick}>
+            <GrayButton className="" onClick={handlePrevClick}>
               prev
             </GrayButton>
           )}
 
           {activeQuestion !== questions.length - 1 && (
-            <BlueButton className="ml-2 inline" onClick={handleNextClick}>
-              next
-            </BlueButton>
+            <BlueButton onClick={handleNextClick}>next</BlueButton>
           )}
         </div>
         <div>

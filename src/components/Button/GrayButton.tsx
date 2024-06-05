@@ -17,10 +17,10 @@ export const GrayButton = ({
   return (
     <Button
       onClick={onClick}
-      className={`bg-gray-400 text-white hover:!bg-gray-500 focus:ring-0 ${className}`}
+      className={`h-7 w-fit bg-gray-400 text-white hover:!bg-gray-500 focus:ring-0 md:h-fit md:w-fit ${className}`}
       {...props}
     >
-      {children}
+      <h1 className="text-xs">{children}</h1>
     </Button>
   );
 };

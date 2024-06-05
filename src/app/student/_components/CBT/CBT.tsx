@@ -176,7 +176,7 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
   return (
     <TipeUjianContext.Provider value={navigasiSoalType}>
       <h1
-        className={`my-2 text-lg leading-normal text-tp-Gunmetal md:text-2xl`}
+        className={`my-2 text-xl font-semibold leading-normal text-tp-Gunmetal md:text-2xl`}
       >
         {quiz.topic}
       </h1>
@@ -197,7 +197,6 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
               activeQuestion,
               questions,
               result,
-              formattedTime,
               onOptionSelected,
               onClickNext,
               onClickPrev,

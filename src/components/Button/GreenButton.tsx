@@ -16,10 +16,10 @@ export const GreenButton = ({
   return (
     <Button
       onClick={onClick}
-      className={` bg-pl-GreenButton text-white hover:!bg-[#8ad423] focus:ring-0 ${className}`}
+      className={`h-7 w-fit bg-pl-GreenButton text-white hover:!bg-[#8ad423] focus:ring-0 md:h-fit md:w-fit ${className}`}
       {...props}
     >
-      {children}
+      <h1 className="text-xs">{children}</h1>
     </Button>
   );
 };
