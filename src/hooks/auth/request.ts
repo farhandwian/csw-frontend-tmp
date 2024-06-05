@@ -4,6 +4,8 @@ import {
   TDataLoginResponse,
   TDataUserResponse,
   TLoginPayload,
+  TDataRegisterResponse,
+  TRegisterPayload,
 } from "@/types/auth";
 
 export const loginRequest = async (
@@ -12,6 +14,29 @@ export const loginRequest = async (
   const { data } = await api.post<TDataLoginResponse>("/auth/login", payload);
 
   return data;
+};
+
+export const registerRequest = async (
+  payload: TRegisterPayload,
+): Promise<TDataRegisterResponse | null> => {
+  try {
+    const { data } = await api.post<TDataRegisterResponse>(
+      "/auth/register",
+      payload,
+    );
+
+    return data;
+  } catch (error: any) {
+    if (error.response.status === 422) {
+      throw new Error(error.response.data.message);
+    }
+
+    throw new Error(
+      typeof error.response.data === "string"
+        ? error.response.data
+        : error.response.data?.message,
+    );
+  }
 };
 
 export const getUserRequest = async (): Promise<

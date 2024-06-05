@@ -6,9 +6,25 @@ export type TLoginData = {
   };
 } & User;
 
+export type TRegisterData = {
+  access_token: string;
+};
+
 export type TLoginPayload = {
   email: string;
   password: string;
+};
+
+export type TRegisterPayload = {
+  name: string;
+  class: string;
+  district: string;
+  regency: string;
+  province: string;
+  phone: string;
+  email: string;
+  password: string;
+  confirm_password: string;
 };
 
 interface TMedia {
@@ -32,4 +48,5 @@ interface TUser {
 }
 
 export type TDataLoginResponse = TMetaResponseSingle<TLoginData>;
+export type TDataRegisterResponse = TMetaResponseSingle<TRegisterData>;
 export type TDataUserResponse = TMetaResponseSingle<TUser>;

@@ -45,8 +45,6 @@ const LoginForm: NextPage = () => {
     validationSchema,
     onSubmit: async (data) => {
       console.log("Login submitted with values:", data);
-      // Add your login logic here
-      // dispatch(userLogin(data));
       setLoading(true);
       try {
         const response = await signIn("login", {
@@ -60,7 +58,6 @@ const LoginForm: NextPage = () => {
         }
 
         if (response?.ok && response?.url !== null) {
-          console.log("tes login");
           toast.success(`Login Success. Welcome ${data.email}`);
           router.push(searchParams.get("callbackUrl") || "/home-page");
         } else {

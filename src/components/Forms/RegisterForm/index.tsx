@@ -14,6 +14,8 @@ import { HiInformationCircle } from "react-icons/hi";
 import { Spinner } from "flowbite-react";
 
 import { useRouter } from "next/navigation";
+import { registerRequest } from "@/hooks/auth/request";
+import { signIn } from "next-auth/react";
 
 const RegisterForm: React.FC = () => {
   const { loading, userInfo, error, success } = useAppSelector(
@@ -50,15 +52,36 @@ const RegisterForm: React.FC = () => {
       konfPassword: "",
     },
     validationSchema,
-    onSubmit: (data) => {
-      console.log("Register submitted with values:", data);
-      // Add your login logic here
-
-      // check if passwords match
+    onSubmit: async (data) => {
       if (data.password !== data.konfPassword) {
         alert("Password mismatch");
       }
-      dispatch(registerUser(data));
+      try {
+        const response = await registerRequest({
+          name: data.nama,
+          email: data.email,
+          phone: data.nomorWA,
+          province: data.provinsi,
+          regency: data.kabupatenKota,
+          district: data.kecamatan,
+          password: data.password,
+          confirm_password: data.konfPassword,
+          class: data.kelas,
+        });
+
+        if (response) {
+          const response = await signIn("login", {
+            email: data.email,
+            password: data.password,
+            redirect: false,
+          });
+          if (response?.ok && response?.url !== null) {
+            router.push("/home-page");
+          }
+        }
+      } catch (error: any) {
+        console.error("Registration failed:", error.message);
+      }
     },
   });
   const router = useRouter();
