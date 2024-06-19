@@ -8,7 +8,7 @@ import {
 export const getMaterialAllRequest =
   async (): Promise<TMaterialAllResponse> => {
     try {
-      const { data } = await api.get(`dashboard/student`);
+      const { data } = await api.get(`dashboard-student`);
       console.log(data);
       return data;
     } catch (error) {
@@ -19,7 +19,7 @@ export const getMaterialAllRequest =
 
 export const getQuizAllRequest = async (): Promise<TQuizAllResponse> => {
   try {
-    const { data } = await api.get(`dashboard/student/dashboard-quiz-all`);
+    const { data } = await api.get(`dashboard-student/dashboard-quiz-all`);
     console.log(data);
     return data;
   } catch (error) {

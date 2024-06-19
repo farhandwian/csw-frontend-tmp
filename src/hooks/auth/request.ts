@@ -42,7 +42,7 @@ export const registerRequest = async (
 export const getUserRequest = async (): Promise<
   TDataUserResponse | undefined
 > => {
-  const { data } = await api.get("/dashboard/student/user/me");
+  const { data } = await api.get("/dashboard-student/user/me");
 
   return data;
 };

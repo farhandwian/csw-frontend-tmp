@@ -5,7 +5,7 @@ import { TDetailModulResponse, TMateriModulResponse } from "@/types/modul";
 
 export const getAllModulsRequest = async (): Promise<TModulsResponse> => {
   try {
-    const { data } = await api.get(`/dashboard/student/module/all`);
+    const { data } = await api.get(`/dashboard-student/module/all`);
     return data;
   } catch (error) {
     console.error("Error in getAllModulsRequest:", error);
@@ -17,7 +17,7 @@ export const getDetailModulRequest = async (
   uuid: string,
 ): Promise<TDetailModulResponse> => {
   try {
-    const { data } = await api.get(`/dashboard/student/module/${uuid}`);
+    const { data } = await api.get(`/dashboard-student/module/${uuid}`);
     return data;
   } catch (error) {
     console.error("Error in getDetailModulRequest:", error);
@@ -31,7 +31,7 @@ export const getMateriModulRequest = async (
   try {
     console.log("ini getMateriModulRequest");
     const { data } = await api.get(
-      `/dashboard/student/module/material/${uuid}`,
+      `/dashboard-student/module/material/${uuid}`,
     );
     return data;
   } catch (error) {

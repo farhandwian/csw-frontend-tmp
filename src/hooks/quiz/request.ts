@@ -12,7 +12,7 @@ export const getQuizContentRequest = async (
     console.log("tes");
     const quiz_uuid = uuid;
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_content/${quiz_uuid}`,
+      `/dashboard-student/quiz/quiz_content/${quiz_uuid}`,
     );
 
     console.log(data);
@@ -30,7 +30,7 @@ export const getQuizDetailRequest = async (
   try {
     const quiz_uuid = uuid;
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_detail/${quiz_uuid}/${test_type_id}`,
+      `/dashboard-student/quiz/quiz_detail/${quiz_uuid}/${test_type_id}`,
     );
 
     console.log(data);
@@ -50,7 +50,7 @@ export const getQuizReviewRequest = async (
   try {
     console.log(quiz_submission_uuid, test_type_id);
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_review/${quiz_submission_uuid}/${test_type_id}`,
+      `/dashboard-student/quiz/quiz_review/${quiz_submission_uuid}/${test_type_id}`,
     );
 
     console.log(data);
@@ -67,7 +67,7 @@ export const getQuizScoreAllRequest = async (
 ): Promise<TQuizReviewResponse> => {
   try {
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_score_all/${sub_modul_uuid}`,
+      `/dashboard-student/quiz/quiz_score_all/${sub_modul_uuid}`,
     );
 
     console.log(data);
@@ -82,7 +82,7 @@ export const getQuizScoreAllRequest = async (
 export const addQuizSubmission = async (payload: TAddQuizSubmissionPayload) => {
   try {
     const { data } = await api.post<any>(
-      "/dashboard/student/quiz/quiz_submission",
+      "/dashboard-student/quiz/quiz_submission",
       payload,
     );
     return data;

@@ -12,7 +12,7 @@ export const getQuizSubModuleAllRequest = async (
   console.log(module_id, test_type_id);
   try {
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_sub_module_all/${module_id}/${test_type_id}`,
+      `/dashboard-student/quiz/quiz_sub_module_all/${module_id}/${test_type_id}`,
     );
 
     console.log(data);
@@ -31,7 +31,7 @@ export const getQuizSubModuleAllRequest = async (
 //   console.log(sub_module_uuid, test_type_id);
 //   try {
 //     const { data } = await api.get(
-//       `/dashboard/student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}`,
+//       `/dashboard-student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}`,
 //     );
 //     console.log(data);
 //     return data;
@@ -51,7 +51,7 @@ export const getQuizAllRequest = async (
   console.log(sub_module_uuid, test_type_id);
   try {
     const { data } = await api.get(
-      `/dashboard/student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}?page=${page}&limit=${limit}`,
+      `/dashboard-student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}?page=${page}&limit=${limit}`,
     );
     console.log(data);
     return data;
@@ -69,7 +69,7 @@ export const getQuizAllRequest = async (
 //   console.log(sub_module_uuid, test_type_id);
 //   try {
 //     const { data } = await api.get(
-//       `/dashboard/student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}?page=${page}&limit=${limit}`,
+//       `/dashboard-student/quiz/quiz_all/${sub_module_uuid}/${test_type_id}?page=${page}&limit=${limit}`,
 //     );
 //     console.log(data);
 //     return data;
