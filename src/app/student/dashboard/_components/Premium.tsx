@@ -83,7 +83,7 @@ const Page = () => {
                 Jam Pelaksanaan Bimbel SKD dan Matematika
               </h1>
               <h2 className="text-sm text-tp-GrayTabelJadwalUserDashboard">
-                Bulan September 2022
+                Bulan Agustus 2024
               </h2>
               {/* tabel */}
               <div className="max-h-[500px] overflow-y-scroll scrollbar-thin">
@@ -137,7 +137,7 @@ const Page = () => {
                                         alt="Logo CSW"
                                       />
                                       <h2 className="leading-tight text-[#013899]">
-                                        zoom dimulai
+                                        zoom
                                       </h2>
                                     </div>
                                   </div>

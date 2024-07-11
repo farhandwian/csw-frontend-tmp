@@ -1,25 +1,23 @@
-import {
-  useMutation,
-  UseMutationResult,
-  useQuery,
-  UseQueryResult,
-} from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 import { TMetaErrorResponse } from "@/types";
 
 import {
-  TQuizSubModuleAllResponse,
   TQuizAllResponse,
+  TQuizSubModuleAllResponse,
 } from "@/types/uji-kemampuan";
 
 import {
-  getQuizSubModuleAllRequest,
   getQuizAllRequest,
+  getQuizSubModuleAllRequest,
 } from "@/hooks/uji-kemampuan/request";
+import { TExerciseAllResponse } from "@/types/exercise";
+
+import { getExerciseAllRequest } from "@/hooks/uji-kemampuan/request";
 
 export const useGetQuizSubModuleAll = (
-  module_id: number,
-  test_type_id: number,
+  module_id: string,
+  test_type_id: string,
 ): UseQueryResult<TQuizSubModuleAllResponse, TMetaErrorResponse> =>
   useQuery({
     queryKey: ["get-quiz-sub-module-all"],
@@ -38,4 +36,13 @@ export const useGetQuizAll = (
     queryFn: async () =>
       await getQuizAllRequest(page, limit, sub_module_uuid, test_type_id),
     placeholderData: (prev) => prev,
+  });
+
+export const useGetExerciseAll = (
+  module_id: string,
+  test_type_id: string,
+): UseQueryResult<TExerciseAllResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-exercise-all", module_id, test_type_id],
+    queryFn: async () => await getExerciseAllRequest(module_id, test_type_id),
   });

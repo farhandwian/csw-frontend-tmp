@@ -98,7 +98,11 @@ const Page = () => {
               <div className="grid grid-cols-3 gap-4 ">
                 {dataAllMentors?.map((mentor, index) => (
                   <div key={index}>
-                    <MentorItem mentor={mentor} key={`mentor-${index}`} />
+                    <MentorItem
+                      img={`img-mentor${index + 1}`}
+                      mentor={mentor}
+                      key={`mentor-${index}`}
+                    />
                   </div>
                 ))}
               </div>
@@ -107,7 +111,11 @@ const Page = () => {
                 <div className="grid grid-cols-2 gap-3  ">
                   {dataAllMentors?.map((mentor, index) => (
                     <div key={index}>
-                      <MentorItem mentor={mentor} key={`mentor-${index}`} />
+                      <MentorItem
+                        img={`img-mentor${index + 1}`}
+                        mentor={mentor}
+                        key={`mentor-${index}`}
+                      />
                     </div>
                   ))}
                 </div>

@@ -22,6 +22,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
     Nilai: "",
   };
   const updateInformasi = (dataQuizDetail: TQuizDetail) => {
+    console.log(dataQuizDetail?.score);
     informasi.PENGERJAAN =
       `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
     informasi.STATUS =
@@ -29,7 +30,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
       "";
     informasi.WAKTU = `${dataQuizDetail?.total_time} MENIT` || "";
     informasi.JUMLAH_SOAL = `${dataQuizDetail?.total_questions} SOAL` || "";
-    informasi.Nilai = `${dataQuizDetail?.score ? `${dataQuizDetail?.score}/${dataQuizDetail?.max_score}` : "-"}`;
+    informasi.Nilai = `${dataQuizDetail?.score !== -1 ? `${dataQuizDetail?.score}/${dataQuizDetail?.max_score}` : "-"}`;
   };
   const {
     data,

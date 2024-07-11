@@ -1,6 +1,6 @@
 "use client";
 import PapanInformasi from "@/app/student/uji-kemampuan/_components/PapanInformasi";
-import { TQuizSubModuleAllParams } from "@/types/uji-kemampuan";
+import { TUjiKemampuanAllParams } from "@/types/uji-kemampuan";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
@@ -65,13 +65,13 @@ const srcItemCardsMap: SrcItemCardsMap = {
   },
 };
 
-const Page = ({ params }: { params: TQuizSubModuleAllParams }) => {
+const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
   console.log(params.module_id);
   const {
     data,
     isLoading: isLoadingAllPosttest,
     isError: isErrorAllPosttest,
-  } = useGetQuizSubModuleAll(params.module_id, 2);
+  } = useGetQuizSubModuleAll(params.module_id, "2");
 
   const dataAllPosttest = data?.data;
 

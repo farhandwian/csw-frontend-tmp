@@ -1,4 +1,3 @@
-import { TAddQuizSubmissionResponse } from "./index.d";
 import { TMetaResponse, TMetaResponseSingle } from "@/types";
 
 // interface dan type untuk quiz content

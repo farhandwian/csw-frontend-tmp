@@ -133,7 +133,7 @@ const Page = ({ params }: { params: { uuid: string } }) => {
                 />
               </div>
               <Image
-                src={`/${dataDetailMentor?.profile_picture}`}
+                src={`/img/img-mentor1.png`}
                 width={288}
                 height={281}
                 alt={`/${dataDetailMentor?.profile_picture}`}
@@ -151,7 +151,7 @@ const Page = ({ params }: { params: { uuid: string } }) => {
               {dataDetailMentor?.name}
             </h1>
             <h3 className="mt-3 text-justify text-xs">
-              Dalam dunia persiapan kedinasan, Annisa Permatasari adalah lebih
+              Dalam dunia persiapan kedinasan, Amanda Rahmadani adalah lebih
               dari sekadar mentor. Dia adalah pemandu yang berkomitmen untuk
               membimbing Anda mencapai keberhasilan. Dengan pengalaman dan
               dedikasi yang luar biasa, Annisa telah membantu ribuan calon
@@ -159,7 +159,7 @@ const Page = ({ params }: { params: { uuid: string } }) => {
               Inteligensi Umum dengan percaya diri.
             </h3>
             <div className="mt-3">
-              <h2>Keunikan Ayu : </h2>
+              <h2>Keunikan Amanda : </h2>
               <div className="mt-3">
                 <div className="flex flex-col  gap-2">
                   {dataDetailMentor?.uniques.map((unik, index) => (

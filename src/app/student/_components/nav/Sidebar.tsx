@@ -64,24 +64,24 @@ const dataSidebar = [
     icon: <FiberSmartRecordIcon />,
     path: "/Contact",
   },
-  {
-    id: 7,
-    label: "Profile Mentor",
-    icon: <EmojiPeopleIcon />,
-    path: "/Contact",
-  },
-  {
-    id: 8,
-    label: "Jadwal",
-    icon: <DateRangeIcon />,
-    path: "/Contact",
-  },
-  {
-    id: 9,
-    label: "Pengaturan",
-    icon: <SettingsIcon />,
-    path: "/Contact",
-  },
+  // {
+  //   id: 7,
+  //   label: "Profile Mentor",
+  //   icon: <EmojiPeopleIcon />,
+  //   path: "/Contact",
+  // },
+  // {
+  //   id: 8,
+  //   label: "Jadwal",
+  //   icon: <DateRangeIcon />,
+  //   path: "/Contact",
+  // },
+  // {
+  //   id: 9,
+  //   label: "Pengaturan",
+  //   icon: <SettingsIcon />,
+  //   path: "/Contact",
+  // },
   {
     id: 10,
     label: "Logout",
@@ -90,7 +90,11 @@ const dataSidebar = [
   },
 ];
 
-// Add remaining code for the drawer, app bar, and menu items as needed
+const enabledPaths = [
+  "/student/dashboard",
+  "/student/uji-kemampuan/latihan-soal/1",
+  "/student/modul",
+];
 
 interface SideBarProps {
   user: TUser;
@@ -138,22 +142,34 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
         </div>
 
         <div className="flex flex-col">
-          {dataSidebar.map((item) => (
-            <Link key={item.id} href={item.path}>
+          {dataSidebar.map((item) =>
+            enabledPaths.includes(item.path) ? (
+              <Link key={item.id} href={item.path}>
+                <div
+                  className={`mx-5 mb-3 flex cursor-pointer items-center rounded py-3 pl-2 text-center transition-colors ${
+                    item.path === checkUrl()
+                      ? "bg-red-100 text-red-500"
+                      : "text-gray-400 hover:bg-red-100 hover:text-red-500"
+                  }`}
+                >
+                  <div className="mr-2">{item.icon}</div>
+                  <div>
+                    <p>{item.label}</p>
+                  </div>
+                </div>
+              </Link>
+            ) : (
               <div
-                className={`mx-5 mb-3 flex cursor-pointer items-center rounded py-3 pl-2 text-center transition-colors ${
-                  item.path === checkUrl()
-                    ? "bg-red-100 text-red-500"
-                    : "text-gray-400 hover:bg-red-100 hover:text-red-500"
-                }`}
+                key={item.id}
+                className="mx-5 mb-3 flex cursor-not-allowed items-center rounded py-3 pl-2 text-center text-gray-400"
               >
                 <div className="mr-2">{item.icon}</div>
                 <div>
                   <p>{item.label}</p>
                 </div>
               </div>
-            </Link>
-          ))}
+            ),
+          )}
         </div>
       </div>
     );

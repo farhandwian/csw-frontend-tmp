@@ -7,36 +7,35 @@ import Link from "next/link";
 import React from "react";
 
 interface MentorItemProps {
+  img: string;
   mentor: TMentor;
   key: string;
 }
 
-const MentorItem: React.FC<MentorItemProps> = ({ mentor, key }) => {
+const MentorItem: React.FC<MentorItemProps> = ({ img, mentor, key }) => {
   return (
     <div
       key={key}
-      className="h-full w-full rounded-md bg-white shadow-md md:h-[90vh] md:rounded-xl"
+      className="h-full w-full rounded-md bg-white shadow-md md:min-h-[90vh] md:rounded-xl"
     >
-      <div className="h-[50%]">
-        <div className="relative flex w-full justify-center rounded-t-md bg-[#3838A4] md:rounded-t-xl">
-          {/* ic bg card */}
-          <div className="absolute -bottom-3 z-0 md:top-7">
-            <Image
-              src={`/img/landing-mentor/ic-bg-mentor-card.svg`}
-              width={0}
-              height={0}
-              alt={`img-img-mentor1`}
-              className="h-[130px] w-[130px] object-fill md:h-full md:w-full"
-            />
-          </div>
+      <div className="relative flex w-full justify-center rounded-t-md bg-[#3838A4] md:rounded-t-xl">
+        {/* ic bg card */}
+        <div className="absolute -bottom-3 z-0 md:top-7">
           <Image
-            src={`/img/img-mentor1.png`}
-            width={288}
-            height={281}
+            src={`/img/landing-mentor/ic-bg-mentor-card.svg`}
+            width={0}
+            height={0}
             alt={`img-img-mentor1`}
-            className=" z-10 h-[100px] md:h-[260px] md:w-[261px]"
+            className="h-[130px] w-[130px] object-fill md:h-full md:w-full"
           />
         </div>
+        <Image
+          src={`/img/${img}.png`}
+          width={288}
+          height={281}
+          alt={`img-img-mentor1`}
+          className=" z-10 h-[100px] md:h-[260px] md:w-[261px]"
+        />
       </div>
 
       <div className="h-[50%]">

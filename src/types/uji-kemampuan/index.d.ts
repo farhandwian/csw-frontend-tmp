@@ -14,9 +14,8 @@ interface TQuizSubModuleAll {
   quizzes_grouped_by_sub_module: TQuizGroupedBySubModule[];
 }
 
-export interface TQuizSubModuleAllParams {
-  module_id: number;
-  test_type_id: number;
+export interface TUjiKemampuanAllParams {
+  module_id: string;
 }
 export type TQuizSubModuleAllResponse = TMetaResponseSingle<TQuizSubModuleAll>;
 

@@ -7,3 +7,11 @@ export function convertModuleNameToID(moduleName: TModule): number {
   }
   return 0;
 }
+export function convertIDToModuleName(id: string): string {
+  if (id === "1") {
+    return "SKD";
+  } else if (id === "2") {
+    return "Matematika";
+  }
+  return "";
+}

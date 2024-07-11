@@ -3,6 +3,11 @@
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Image from "next/image";
 import PapanInformasi from "@/app/student/uji-kemampuan/_components/PapanInformasi";
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { useGetExerciseAll } from "@/hooks/uji-kemampuan/hook";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+import { TUjiKemampuanAllParams } from "@/types/uji-kemampuan";
 
 const percentage = 66;
 
@@ -48,7 +53,22 @@ const srcItemCards = [
   },
 ];
 
-const Page = () => {
+const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
+  console.log(params.module_id);
+  const {
+    data,
+    isLoading: isLoadingExerciseAll,
+    isError: isErrorExerciseAll,
+  } = useGetExerciseAll(params.module_id, "1");
+  const dataExercises = data?.data;
+
+  if (isErrorExerciseAll) {
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
+  }
+
+  if (isLoadingExerciseAll) {
+    return <Loading>{loadingMessage}</Loading>;
+  }
   return (
     <>
       {/* <UjiKemampuanNavigationTest />
@@ -67,14 +87,17 @@ const Page = () => {
             {/* container card pretest */}
             <div className="grid grid-cols-3 gap-2">
               {/* container item card pretest */}
-              {srcItemCards.map((srcItemCard, index) => (
+              {dataExercises?.map((exercise, index) => (
                 <div
                   key={index}
-                  style={{ backgroundColor: srcItemCard.color }}
+                  style={{
+                    backgroundColor:
+                      srcItemCards[index % srcItemCards.length].color,
+                  }}
                   className=" rounded-md px-6 pb-2 pt-3"
                 >
                   <Image
-                    src={srcItemCard.iconImageUrl}
+                    src={srcItemCards[index % srcItemCards.length].iconImageUrl}
                     alt="ic-banner"
                     width={165}
                     height={165}
@@ -85,15 +108,16 @@ const Page = () => {
                     <h1 className="text-base font-semibold text-[#F9BF3B]">
                       Latihan Soal
                     </h1>
-                    <h1 className="text-lg font-bold">Paket {index + 1}</h1>
+                    <h1 className="text-lg font-bold">{exercise.title}</h1>
                     <p className="text-xs">
-                      Berisi tentang latihan soal matematika yang dapat
-                      dikerjakan berkali - kali
+                      {exercise.description} yang dapat dikerjakan{" "}
+                      {exercise.attempt}
+                      kali
                     </p>
                   </div>
 
                   <div className="flex justify-between">
-                    <h3>40 Soal</h3>
+                    <h3>{exercise.total_question}</h3>
                     <ArrowCircleRightIcon sx={{ color: "black" }} />
                   </div>
                 </div>

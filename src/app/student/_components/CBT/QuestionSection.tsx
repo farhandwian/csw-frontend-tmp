@@ -3,6 +3,7 @@ import GrayButton from "@/components/Button/GrayButton";
 import BlueButton from "@/components/Button/BlueButton";
 import GreenButton from "@/components/Button/GreenButton";
 import { TQuestion, TQuiz, TOption } from "@/types/quiz";
+import { cleanHtmlContent } from "@/lib/utils/CleanHtmlContent";
 
 interface QuestionSectionProps {
   activeQuestion: number;
@@ -46,7 +47,11 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
   return (
     <div className="w-[100%] rounded-2xl border-2 bg-white p-4">
       <h2 className="mb-2">
-        {activeQuestion + 1}.&nbsp;{question}
+        {/* {activeQuestion + 1}.&nbsp;{question} */}
+        <div
+          className="prose"
+          dangerouslySetInnerHTML={{ __html: cleanHtmlContent(question) }}
+        ></div>
       </h2>
       <div>
         {options.map((option, index) => (

@@ -9,6 +9,7 @@ import { useGetMateriModul } from "@/hooks/modul/hook";
 import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+import { cleanHtmlContent } from "@/lib/utils/CleanHtmlContent";
 
 const Page = ({ params }: { params: TMateriModulParams }) => {
   console.log(params);
@@ -78,12 +79,20 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
           {/* horizontal line thin */}
           <div className="w-100% mt-2 h-1 bg-gray-100"></div>
 
-          <p>
+          <div
+            className="prose"
+            dangerouslySetInnerHTML={{
+              __html: cleanHtmlContent(
+                dataSubSubjects && dataSubSubjects[activeSubSubject].content,
+              ),
+            }}
+          ></div>
+          {/* <p>
             Lorem Ipsum has been the industrys standard dummy text ever since
             the 1500s.
             <br />
             <br />
-            {dataSubSubjects && dataSubSubjects[activeSubSubject].content}
+            {}
             When an unknown printer took a galley of type and scrambled it to
             make a type specimen book. It has survived not only five centuries,
             but also the leap into electronic typesetting, remaining essentially
@@ -125,7 +134,7 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
             the 1960s with the release of Letraset sheets containing Lorem Ipsum
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
+          </p> */}
         </div>
         {/* footer */}
         <div className=" min-h-8 w-[100%] p-1 shadow-md">
