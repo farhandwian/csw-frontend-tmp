@@ -2,18 +2,14 @@ import React from "react";
 import GrayButton from "@/components/Button/GrayButton";
 import BlueButton from "@/components/Button/BlueButton";
 import GreenButton from "@/components/Button/GreenButton";
-import {
-  Question,
-  Quiz,
-  Option,
-} from "@/app/student/_components/CBT/_interface/interface";
+import { TQuestion, TQuiz, TOption } from "@/types/quiz";
 
 interface QuestionSectionProps {
   activeQuestion: number;
-  questions: Question[];
-  result: Quiz;
+  questions: TQuestion[];
+  result: TQuiz;
   formattedTime: string;
-  onOptionSelected: (option: Option, index: number) => void;
+  onOptionSelected: (option: TOption, index: number) => void;
   onClickNext: () => void;
   onClickPrev: () => void;
   onClickSubmit: () => void;
@@ -43,7 +39,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
     }
   };
 
-  const handleOptionSelected = (option: Option, index: number) => {
+  const handleOptionSelected = (option: TOption, index: number) => {
     return () => {
       onOptionSelected(option, index);
     };
@@ -57,23 +53,25 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
           <div
             onClick={handleOptionSelected(option, index)}
             key={option.id}
-            className={`mb-2 flex rounded-lg border-2 ${
-              option.letter === result.questions[activeQuestion].userAnswer
+            className={`mb-2 flex justify-between rounded-lg border-2 ${
+              option.id === result.questions[activeQuestion].user_answer
                 ? "border-green-400"
                 : ""
             } cursor-pointer`}
           >
             <div
               className={`inline-block rounded-l-sm px-3 ${
-                option.letter === result.questions[activeQuestion].userAnswer
+                option.id === result.questions[activeQuestion].user_answer
                   ? "bg-green-400"
                   : ""
               }`}
             >
-              {option.letter}
+              <div className="mt-[2px]">{option.letter}</div>
             </div>
             <div className="h-[25px] w-[2px] bg-pl-GrayDefault"></div>
-            <div className="ml-3 inline-block text-left">{option.text}</div>
+            <div className="m-auto ml-3 inline-block text-left">
+              {option.text}
+            </div>
           </div>
         ))}
       </div>
@@ -82,7 +80,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
       <div className="mt-3 flex justify-between">
         <div>
           {activeQuestion !== 0 && (
-            <GrayButton className="inline" onClick={handlePrevClick}>
+            <GrayButton className="m-auto inline" onClick={handlePrevClick}>
               prev
             </GrayButton>
           )}

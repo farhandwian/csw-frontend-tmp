@@ -51,7 +51,7 @@ export default function TopBar({ showNav, setShowNav, isMobile }: TopBarProps) {
           onClick={() => setShowNav(!showNav)}
         />
 
-        <Link href={"/"} className="flex">
+        <Link href={"/home-page"} className="flex">
           <Image
             width={40}
             height={40}

@@ -1,24 +1,27 @@
+import { GreenButton } from "@/components/Button/GreenButton";
 import { Dialog, Transition } from "@headlessui/react";
-import { Button } from "flowbite-react";
 import Image from "next/image";
 import * as React from "react";
 import { Fragment, useState } from "react";
-import { GreenButton } from "@/components/Button/GreenButton";
-
 import { GrayButton } from "@/components/Button/GrayButton";
+import { TQuiz } from "@/types/quiz";
 
 interface ModalSubmitModul {
   isOpenProp: boolean;
   formattedTime: string;
   unAnsweredQuestions?: number;
+  quiz: TQuiz;
   onClose: () => void;
+  onSubmit: () => void;
 }
 
 export default function ModalSubmitModul({
   isOpenProp,
   formattedTime,
   unAnsweredQuestions,
+  quiz,
   onClose,
+  onSubmit,
 }: ModalSubmitModul) {
   let [isOpen, setIsOpen] = useState(false);
 
@@ -73,9 +76,7 @@ export default function ModalSubmitModul({
                   </div>
                   <h1 className="text-center text-xl font-bold">PERHATIAN!!</h1>
                   <p className="mb-4 text-center">
-                    Lorem Ipsum has been the industry&apos;s standard dummy text
-                    ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen book.
+                    {`Modul ${quiz.modul} - ${quiz.topic} : ${quiz.description} `}
                   </p>
 
                   <div
@@ -98,10 +99,10 @@ export default function ModalSubmitModul({
                     </div>
                   </div>
 
-                  <GrayButton onClick={closeModal}>
+                  <GrayButton className="m-auto" onClick={closeModal}>
                     Kembali Ke Latihan Soal
                   </GrayButton>
-                  <GreenButton onClick={closeModal} className="mx-auto mt-3">
+                  <GreenButton onClick={onSubmit} className="mx-auto mt-3">
                     SUBMIT
                   </GreenButton>
                 </Dialog.Panel>

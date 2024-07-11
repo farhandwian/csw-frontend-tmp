@@ -1,19 +1,38 @@
 import React from "react";
 import Image from "next/image";
-import {
-  TypeNilai,
-  DataNilai,
-} from "@/app/student/uji-kemampuan/_components/deskripsi/Deskripsi";
+import { TTestType } from "@/types/index";
+import Link from "next/link";
 
 interface PostTestOrPretestArgs {
-  dataNilai?: DataNilai[];
-  typeNilai: TypeNilai;
+  score: number;
+  maxScore: number;
+  testType: TTestType;
+  quiz_uuid?: string;
+  quiz_submission_uuid?: string;
 }
 
-const PostTestOrPretest = ({ dataNilai, typeNilai }: PostTestOrPretestArgs) => {
+const PostTestOrPretest = ({
+  score,
+  maxScore,
+  testType,
+  quiz_uuid,
+  quiz_submission_uuid,
+}: PostTestOrPretestArgs) => {
+  const urlRedirect = () => {
+    if (testType === "pretest") {
+      return `${quiz_uuid}/review-jawaban/${quiz_submission_uuid}`;
+    } else if (testType === "posttest") {
+      return "bg-[#FD6073]";
+    }
+    return "";
+  };
+
+  const scorePercentage = () => {
+    return (score / maxScore) * 100;
+  };
   return (
     <>
-      {dataNilai ? (
+      {score >= 0 ? (
         <>
           <div className="border-b-[2px] p-2">
             <h1 className="text-md text-[#267DDD]">NILAI</h1>
@@ -34,20 +53,25 @@ const PostTestOrPretest = ({ dataNilai, typeNilai }: PostTestOrPretestArgs) => {
                       Nilai
                     </span>
                     <span className="text-sm font-medium text-blue-700 dark:text-white">
-                      45/100
+                      {score}
                     </span>
                   </div>
                   <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-                    <div className="h-2.5 w-[45%] rounded-full bg-blue-600"></div>
+                    <div
+                      className={`h-2.5 w-[${scorePercentage()}%]  rounded-full bg-blue-600`}
+                    ></div>
                   </div>
                 </div>
-
-                <button
-                  type="button"
-                  className="mb-2 me-2 mt-3 rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
+                <Link
+                  href={`${quiz_uuid}/review-jawaban/${quiz_submission_uuid}`}
                 >
-                  Review
-                </button>
+                  <button
+                    type="button"
+                    className="mb-2 me-2 mt-3 rounded-lg border border-blue-700 px-5 py-2.5 text-center text-sm font-medium text-blue-700 hover:bg-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
+                  >
+                    Review
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -59,7 +83,7 @@ const PostTestOrPretest = ({ dataNilai, typeNilai }: PostTestOrPretestArgs) => {
           </div>
           <div className="p-3">
             <div className="rounded-md">
-              Nilai belum muncul, harap kerjakan {typeNilai} terlebih dahulu
+              Nilai belum muncul, harap kerjakan {testType} terlebih dahulu
             </div>
           </div>
         </>

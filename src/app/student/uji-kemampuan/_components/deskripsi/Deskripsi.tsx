@@ -1,115 +1,120 @@
 "use client";
 
-import GlobalStyles from "@/app/Globals.module.css";
+import Nilai from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/Nilai";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import Link from "next/link";
-import { useState } from "react";
-import Nilai from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/Nilai";
+import { useState, useEffect } from "react";
+import InformationTest from "@/app/student/_components/InformationTest";
+import { TQuizDetail } from "@/types/quiz";
+import { TDeskripsiLatihanSoalParams } from "@/types/modul";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { useGetQuizDetail } from "@/hooks/quiz/hook";
+import { TTestType } from "@/types/index";
+import { convertTestTypeTittleToID } from "@/lib/utils/checkTestType";
 
-export type TypeNilai = "latihan-soal" | "pretest" | "posttest";
+const informasi = {
+  PENGERJAAN: "",
+  STATUS: "",
+  WAKTU: "",
+  JUMLAH_SOAL: "",
+};
 
-export interface DataNilai {
-  id: number;
-  deskripsi: string;
-}
+const updateInformasi = (dataQuizDetail: TQuizDetail) => {
+  informasi.PENGERJAAN =
+    `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
+  informasi.STATUS =
+    `${dataQuizDetail?.status} ${dataQuizDetail?.attempt ? `${dataQuizDetail?.attempt}x` : ""}` ||
+    "";
+  informasi.WAKTU = `${dataQuizDetail?.total_time} MENIT` || "";
+  informasi.JUMLAH_SOAL = `${dataQuizDetail?.total_questions} SOAL` || "";
+};
+
 interface DeskripsiProps {
-  typeNilai: TypeNilai;
+  test_type: TTestType;
+  quiz_uuid: string;
+  sub_module_uuid: string;
 }
 
-const dataNilai: DataNilai[] = []; // ada datanya arr len != 0
-
-const dataNilai2: DataNilai[] = [
-  { id: 0, deskripsi: "Nilai" },
-  { id: 1, deskripsi: "Nilai 2" },
-];
-const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
+const Deskripsi = ({
+  test_type,
+  quiz_uuid,
+  sub_module_uuid,
+}: DeskripsiProps) => {
   const [isDone, setIsDone] = useState(false);
+  const [singleScore, setSingleScore] = useState(0);
+  const [multipleScore, setMultipleScore] = useState([]);
+  const {
+    data,
+    isLoading: isLoadingQuizDetail,
+    isError: isErrorQuizDetail,
+  } = useGetQuizDetail(quiz_uuid, convertTestTypeTittleToID(test_type));
+
+  // params.test_type_id
+  console.log(convertTestTypeTittleToID(test_type));
+  const dataQuizDetail = data?.data!;
+  console.log(dataQuizDetail);
+
+  updateInformasi(dataQuizDetail);
+
+  //   const informasiArray = Object.entries(informasi);
+  useEffect(() => {
+    if (dataQuizDetail?.attempt && dataQuizDetail?.attempt > 0) {
+      setIsDone(true);
+    }
+    if (
+      dataQuizDetail?.score &&
+      (test_type === "pretest" || test_type === "posttest")
+    ) {
+      setSingleScore(dataQuizDetail?.score);
+      console.log(singleScore);
+    }
+  }, [dataQuizDetail, test_type]);
+
+  if (isLoadingQuizDetail) {
+    return <Loading>{loadingMessage}</Loading>;
+  }
+  if (isErrorQuizDetail) {
+    return <ErrorComponent>{errMessageDataFetching}</ErrorComponent>;
+  }
+
+  // const urlRedirectCBT = (test_type: TTestType) => {
+  //   if (test_type === "pretest") {
+  //     return `${quiz_uuid}/CBT`;
+  //   } else if (test_type === "posttest") {
+  //     return `${sub_module_uuid}/deskripsi-posttest/${quiz_uuid}/CBT`;
+  //   }
+  //   return "";
+  // };
+
+  const urlRedirectReview = (test_type: TTestType) => {
+    if (test_type === "pretest") {
+      return `${sub_module_uuid}/deskripsi-pretest/${quiz_uuid}/CBT`;
+    } else if (test_type === "posttest") {
+      return `${sub_module_uuid}/deskripsi-posttest/${quiz_uuid}/CBT`;
+    }
+  };
+
   return (
     <>
       <section className="relative p-4 md:p-5">
         <div className="flex flex-wrap">
           <div className="w-[100%] md:w-[60%]">
-            <h1 className={`text-lg text-[#267CDD]`}>
-              Pretest SKD Bagian TWK - Judul Pretest
-            </h1>
+            <h1 className={`text-lg text-[#267CDD]`}>{dataQuizDetail.title}</h1>
             {/* informasi test */}
-            <div className="mb-5 flex max-w-max flex-wrap rounded-2xl border bg-white md:flex-nowrap">
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    PHASE
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    DAPAT DIKERJAKAN BERKALI - KALI
-                  </p>
-                </div>
-                {/* horizontal line */}
-                <div className="h-[90%] w-[3px] bg-[#E5E7EB]"></div>
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    STATUS
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    SUDAH DIKERJAKAN
-                  </p>
-                </div>
-
-                {/* horizontal line */}
-                <div className="h-[90%] w-[3px] bg-[#E5E7EB]"></div>
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    WAKTU
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    6 MENIT
-                  </p>
-                </div>
-
-                <div className="h-[90%] w-[3px] bg-[#E5E7EB]"></div>
-              </div>
-              <div className="flex p-3">
-                <div className="mr-3">
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#9CA3AF] md:text-sm`}
-                  >
-                    JUMLAH SOAL
-                  </p>
-                  <p
-                    className={`text-[0.75rem] font-bold text-[#64748B] md:text-sm`}
-                  >
-                    5 SOAL
-                  </p>
-                </div>
-              </div>
-            </div>
+            <InformationTest informasi={informasi} />
             {/* horizontal line */}
             <hr className="border-y-1 my-3 border-y-gray-300" />
-            <h1
-              className={`${GlobalStyles["light-base-gray-typography"]} text-tp-SlateGray`}
-            >
+            <h1 className="text-xl leading-normal text-tp-SlateGray">
               Overview
             </h1>
             <p className={`text-sm font-semibold text-[#64748B]`}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
+              {/* Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book...
+              of type and scrambled it to make a type specimen book... */}
+              {dataQuizDetail.description}
             </p>
 
             <div className=" mt-6 w-[100%] rounded-md border-2 p-3">
@@ -120,19 +125,15 @@ const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
               </h2>
 
               {isDone ? (
-                <button
-                  type="button"
-                  className="me-2 mt-2 rounded-lg border border-gray-200 bg-[#E5E7EB] px-5 py-2.5 text-sm font-medium text-[#9CA3AF] hover:bg-gray-100 hover:text-gray-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 "
-                >
+                <button className="me-2 mt-2 cursor-auto rounded-lg border border-gray-200 bg-[#E5E7EB] px-5 py-2.5 text-sm font-medium text-[#9CA3AF]  ">
                   Tidak Bisa Dikerjakan Kembali
                 </button>
               ) : (
-                <button
-                  type="button"
-                  className="mb-2 me-2 mt-2 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Mulai Kerjakan
-                </button>
+                <Link href={`${quiz_uuid}/CBT`}>
+                  <button className="mb-2 me-2 mt-2 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Mulai Kerjakan
+                  </button>
+                </Link>
               )}
             </div>
           </div>
@@ -146,8 +147,10 @@ const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
                   <AttachFileIcon className="inline" fontSize="medium" />
                   <h3 className="inline">Soal(PDF)</h3>
                 </div>
-                <Link href={""}>
-                  <h3 className="inline text-right text-[#267DDD]">LIHAT</h3>
+                <Link href={""} className="cursor-default">
+                  <h3 className="inline cursor-default text-right text-[#267DDD]">
+                    LIHAT
+                  </h3>
                 </Link>
               </div>
               <div className="flex justify-between p-2">
@@ -155,14 +158,22 @@ const Deskripsi = ({ typeNilai }: DeskripsiProps) => {
                   <AttachFileIcon className="inline" fontSize="medium" />
                   <h3 className="inline">Soal(PDF) dan pemahasan</h3>
                 </div>
-                <Link href={""}>
-                  <h3 className="inline text-right text-[#267DDD]">LIHAT</h3>
+                <Link href={""} className="cursor-default">
+                  <h3 className="inline cursor-default text-right text-[#267DDD]">
+                    LIHAT
+                  </h3>
                 </Link>
               </div>
             </div>
 
             {/* bagian nilai */}
-            <Nilai typeNilai={typeNilai} dataNilai={dataNilai2} />
+            <Nilai
+              singleScore={singleScore}
+              testType={test_type}
+              maxScore={dataQuizDetail.max_score}
+              quiz_uuid={quiz_uuid}
+              quiz_submission_uuid={dataQuizDetail.quiz_submission_uuid}
+            />
           </div>
         </div>
       </section>

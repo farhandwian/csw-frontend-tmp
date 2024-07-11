@@ -3,30 +3,45 @@ import InformationQuiz from "@/app/student/_components/CBT/InformationQuiz";
 import ModalSubmitModul from "@/app/student/_components/CBT/ModalSubmitModul";
 import QuestionNavigation from "@/app/student/_components/CBT/QuestionNavigation";
 import QuestionSection from "@/app/student/_components/CBT/QuestionSection";
-import React, { useState, createContext, useContext, useEffect } from "react";
 import useTimer from "@/hooks/useTimer";
-import {
-  Option,
-  Quiz,
-} from "@/app/student/_components/CBT/_interface/interface";
+import { TAddQuizSubmissionPayload, TOption, TQuiz } from "@/types/quiz";
+import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
+import logger from "@/lib/logger";
+import { TransformQuizToPayloadQuizSubmission } from "@/lib/utils/transform";
+import { TMetaErrorResponse, TMetaResponseSingle } from "@/types";
+import { UseMutateFunction } from "@tanstack/react-query";
 
 interface CBTProps {
-  quiz: Quiz;
+  quiz: TQuiz;
+  mutate: UseMutateFunction<
+    TMetaResponseSingle<string>,
+    TMetaErrorResponse,
+    TAddQuizSubmissionPayload,
+    unknown
+  >;
+  router: any;
+  status: any;
 }
 
 type NavigasiSoalContextType = "besar" | "kecil";
 
 export const TipeUjianContext = createContext<NavigasiSoalContextType>("kecil");
 
-const CBT = ({ quiz }: CBTProps) => {
-  const [alignment, setAlignment] = useState("modul_home");
+const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
+
   const [result, setResult] = useState(quiz);
+  console.log(result);
   const [isMark, setIsMark] = useState(false);
   const [isOpenSubmitModal, setIsOpenSubmitModal] = useState(false);
   const [unAnsweredQuestions, setisUnAnsweredQuestions] = useState(
     quiz.questions.length,
   );
+  // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
   const [navigasiSoalType, setNavigasiSoalType] =
     useState<NavigasiSoalContextType>("kecil");
 
@@ -34,36 +49,53 @@ const CBT = ({ quiz }: CBTProps) => {
     checkNavigasiSoalType();
   });
 
-  const serverTime = 60000; // Contoh waktu dalam milidetik (10 menit)
+  const serverTime = quiz.total_time * 600000; // Contoh waktu dalam milidetik (10 menit)
 
+  // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
   const checkNavigasiSoalType = () => {
-    if (quiz.totalQuestions > 30) {
+    if (quiz.total_questions > 30) {
       setNavigasiSoalType("besar");
     } else {
       setNavigasiSoalType("kecil");
     }
   };
 
-  const submitQuiz = () => {};
+  const onSubmit = () => {
+    try {
+      const payload: TAddQuizSubmissionPayload =
+        TransformQuizToPayloadQuizSubmission(result, 40, timeLeft);
 
-  const onTimerEnd = () => {
-    submitQuiz();
-    console.log("quiz berhasi di submit");
+      console.log(payload);
+      mutate(payload, {
+        onSuccess: () => {
+          console.log("tes1");
+          // router.replace("/student/modul/detail-modul/after-test");
+
+          toast.success("quiz submission has been added");
+        },
+        onError: (error) => {
+          console.log("tes2");
+          logger(payload);
+          logger("add quiz submission Error:", error.response?.data.message);
+          toast.error(
+            error?.response?.data?.message || "Failed to add quiz submission",
+          );
+        },
+      });
+    } catch (error) {
+      throw new Error("Invalid response");
+    }
   };
 
-  const { formattedTime } = useTimer({
+  const onTimerEnd = () => {
+    onSubmit();
+  };
+  const { formattedTime, timeLeft } = useTimer({
     time: serverTime,
     onTimerEnd,
   });
 
   const { questions } = quiz;
-
-  const handleChange = (
-    event: React.MouseEvent<HTMLElement>,
-    newAlignment: string,
-  ) => {
-    setAlignment(newAlignment);
-  };
 
   const checkunAnsweredQuestions = () => {
     let i = 0;
@@ -88,13 +120,23 @@ const CBT = ({ quiz }: CBTProps) => {
     }
   };
 
-  const onOptionSelected = (option: Option, index: number) => {
+  const onOptionSelected = (option: TOption, index: number) => {
     const updateResult = { ...result };
-    // Mengganti userAnswer pada pertanyaan yang sedang aktif
-    updateResult.questions[activeQuestion].userAnswer = option.letter;
 
-    updateResult.questions[activeQuestion].status = "sudah-dijawab";
-    // Memperbarui state menggunakan setResult
+    if (updateResult.questions[activeQuestion].user_answer === option.id) {
+      // Mengganti user_answer pada pertanyaan yang sedang aktif
+      updateResult.questions[activeQuestion].user_answer = 0;
+
+      updateResult.questions[activeQuestion].status = "belum-dijawab";
+      // Memperbarui state menggunakan setResult
+    } else {
+      // Mengganti user_answer pada pertanyaan yang sedang aktif
+      updateResult.questions[activeQuestion].user_answer = option.id;
+
+      updateResult.questions[activeQuestion].status = "sudah-dijawab";
+      // Memperbarui state menggunakan setResult
+    }
+
     setResult(updateResult);
   };
 
@@ -123,13 +165,23 @@ const CBT = ({ quiz }: CBTProps) => {
   const addLeadingZero = (number: number) =>
     number > 9 ? number : `0${number}`;
 
+  if (status === "pending") {
+    return <Loading>...Loading submit quiz submission</Loading>;
+  }
+
+  if (status === "error") {
+    return <ErrorComponent>error submit quiz submission</ErrorComponent>;
+  }
+
   return (
     <TipeUjianContext.Provider value={navigasiSoalType}>
-      <h1 className={`text-[1.75rem] leading-normal text-tp-Gunmetal`}>
-        Latihan Pretest 1 Pancasila
+      <h1
+        className={`my-2 text-lg leading-normal text-tp-Gunmetal md:text-2xl`}
+      >
+        {quiz.topic}
       </h1>
-      <div className="flex">
-        <div className="w-[70%]">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-[73%]">
           <InformationQuiz
             {...{
               addLeadingZero,
@@ -153,7 +205,7 @@ const CBT = ({ quiz }: CBTProps) => {
             }}
           />
         </div>
-        <div className="w-[30%]">
+        <div className="md:w-[27%]">
           <QuestionNavigation
             {...{
               result,
@@ -168,7 +220,9 @@ const CBT = ({ quiz }: CBTProps) => {
         isOpenProp={isOpenSubmitModal}
         formattedTime={formattedTime}
         unAnsweredQuestions={unAnsweredQuestions}
+        quiz={quiz}
         onClose={onCloseModalSubmit}
+        onSubmit={onSubmit}
       />
     </TipeUjianContext.Provider>
   );

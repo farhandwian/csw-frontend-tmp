@@ -19,8 +19,7 @@ const PapanInformasi = () => {
           <div className="">
             <h1 className="text-sm font-bold">Papan Informasi</h1>
             <h3 className="text-[10px]">
-              Informasi seputar pelaksanan posttest dan rules untuk mengerjakan
-              posttest
+              Informasi seputar pelaksanan test dan rules untuk mengerjakan test
             </h3>
           </div>
         </div>

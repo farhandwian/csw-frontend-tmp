@@ -37,7 +37,7 @@ const dataSidebar = [
     id: 2,
     label: "Uji Kemampuan",
     icon: <AssignmentAddIcon />,
-    path: "/student/uji-kemampuan/latihan-soal",
+    path: "/student/uji-kemampuan/latihan-soal/1",
   },
   {
     id: 3,
@@ -104,7 +104,7 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
       let firstTwoWords;
       // karena fitur uji kemampuan page nya agak beda
       if (arr[2] == "uji-kemampuan") {
-        firstTwoWords = "/student/uji-kemampuan/latihan-soal";
+        firstTwoWords = "/student/uji-kemampuan/latihan-soal/1";
       } else {
         firstTwoWords = "/" + arr.slice(1, 3).join("/");
       }
@@ -114,7 +114,7 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
     return (
       <div
         ref={ref}
-        className="fixed z-20 mt-16 h-[37.5rem] w-32  overflow-y-scroll bg-white text-xs shadow-sm md:mt-0 md:h-full md:w-56 md:text-sm"
+        className="fixed z-20 mt-16 h-[37.5rem] w-40  overflow-y-scroll bg-white text-xs shadow-sm md:mt-0 md:h-full md:w-56 md:text-sm"
       >
         <div className="mb-3 mt-1 flex justify-center md:mt-6">
           {/* profile jika sidebar terbuka */}

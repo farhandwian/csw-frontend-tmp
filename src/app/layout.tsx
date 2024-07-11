@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { Provider } from "react-redux";
-import StoreProvider from "./StoreProvider";
+import Provider from "@/components/Provider";
 import "./globals.css";
 import GlobalStyles from "@/app/Globals.module.css";
 
@@ -23,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <StoreProvider>
+    <Provider>
       <html lang="en" className={`${poppins.variable}`}>
         <head>
           <meta
@@ -35,6 +34,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </StoreProvider>
+    </Provider>
   );
 }

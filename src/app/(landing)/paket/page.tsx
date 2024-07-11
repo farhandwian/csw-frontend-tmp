@@ -8,12 +8,30 @@ import useDesktop from "@/hooks/useDesktop";
 import useTablet from "@/hooks/useTablet";
 import PaketItem from "@/app/(landing)/paket/_components/PaketItem";
 import Footer from "@/app/(landing)/_components/Footer";
+import { useGetSearchPakets } from "@/hooks/paket/hook";
+import { TPaket } from "@/types/home-page";
+
+import ErrorComponent from "@/components/Error";
+import Loading from "@/components/Loading";
+import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 
 const Page = () => {
   const tabletView = useTablet();
   const desktopView = useDesktop();
-
   const [isOpen, setIsOpen] = useState(false);
+
+  const [filter, setFilter] = useState("");
+  const [searchText, setSearchText] = useState("");
+
+  const {
+    data: dataPakets,
+    isLoading: isLoadingSearchPakets,
+    isError: isErrorSearchPakets,
+  } = useGetSearchPakets(filter, searchText);
+
+  const [pakets, setPakets] = useState<TPaket[]>(
+    dataPakets ? dataPakets.data : [],
+  );
 
   const handleOpenMenu = () => {
     setIsOpen(!isOpen);
@@ -33,19 +51,59 @@ const Page = () => {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (dataPakets) {
+      setPakets(dataPakets.data);
+    }
+  }, [dataPakets]);
+
+  const filteredPakets = pakets.filter((paket) => {
+    if (filter === "") {
+      return true;
+    }
+    // Filter berdasarkan module
+    if (filter !== "all" && paket.module_name !== filter) {
+      return false;
+    }
+    // Filter berdasarkan pencarian text
+    if (
+      searchText &&
+      !paket.name.toLowerCase().includes(searchText.toLowerCase())
+    ) {
+      return false;
+    }
+    return true;
+  });
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilter(event.target.value);
+  };
+
+  if (isErrorSearchPakets) {
+    return <ErrorComponent> {errMessageDataFetching}</ErrorComponent>;
+  }
+
+  if (isLoadingSearchPakets) {
+    return <Loading> {loadingMessage}</Loading>;
+  }
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+  };
+
   return (
     <>
       {/* Banner */}
       <div className="relative flex h-72 w-full items-center">
         <div className="relative h-full w-full overflow-hidden bg-[#1A69F0]">
           {/*  Background for Banner */}
-          <div className="absolute bottom-0 right-0 top-11 z-0 overflow-hidden md:h-full md:w-full  ">
+          <div className="absolute bottom-0 right-0 top-14 z-0 overflow-hidden md:h-full md:w-full  ">
             <Image
               src={"/img/landing-paket/ic-banner-paket.svg"}
               width={0}
               height={0}
               alt="ic-banner"
-              className="absolute bottom-0 h-full w-full lg:scale-150 xl:scale-100"
+              className="absolute bottom-0 h-full w-full xl:scale-100"
             />
           </div>
           <div className="absolute bottom-0 top-0 z-0 h-full w-full md:h-full md:w-full  ">
@@ -54,7 +112,7 @@ const Page = () => {
               width={0}
               height={0}
               alt="ic-banner"
-              className="absolute bottom-0 left-1/2 top-24 h-[200px] w-[200px]  -translate-x-1/2 transform md:bottom-0 md:left-96 md:right-0 md:top-16 md:h-full md:w-full md:-translate-x-0 lg:scale-150 xl:scale-100"
+              className="absolute bottom-0 left-1/2 top-24 h-[200px] w-[200px]  -translate-x-1/2 transform md:bottom-0 md:left-96 md:right-0 md:top-16 md:h-full md:w-full md:-translate-x-0 xl:scale-100"
             />
           </div>
           <div className="absolute left-5 top-5  text-white md:left-24 md:top-1/2 md:-translate-y-1/2 md:transform ">
@@ -96,10 +154,11 @@ const Page = () => {
                   id="jenis-modul"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-xs text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 md:text-sm"
                   defaultValue="all"
+                  onChange={handleFilterChange}
                 >
                   <option value="all">All Jenis Modul</option>
                   <option value="SKD">Paket SKD</option>
-                  <option value="matematika">Paket Matematika</option>
+                  <option value="Matematika">Paket Matematika</option>
                 </select>
               </form>
 
@@ -115,6 +174,7 @@ const Page = () => {
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-xs text-gray-900  focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 md:text-sm"
                     placeholder="Search"
                     required
+                    onChange={handleSearchChange}
                   />
                 </div>
                 <button
@@ -144,19 +204,15 @@ const Page = () => {
 
             {desktopView ? (
               <div className="grid grid-cols-3 gap-4  ">
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <div key={index}>
-                    <PaketItem />
-                  </div>
+                {filteredPakets?.map((paket, index) => (
+                  <PaketItem props={paket} key={`${index}`} />
                 ))}
               </div>
             ) : (
               <>
                 <div className="grid grid-cols-2 gap-3  ">
-                  {Array.from({ length: 10 }).map((_, index) => (
-                    <div key={index}>
-                      <PaketItem />
-                    </div>
+                  {filteredPakets?.map((paket, index) => (
+                    <PaketItem props={paket} key={`${index}`} />
                   ))}
                 </div>
               </>

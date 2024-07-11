@@ -71,7 +71,7 @@ export default function StudentLayout({ children }: StudentLayoutProps) {
           showNavLocal && !isMobileLocal ? "pl-56" : ""
         }`}
       >
-        <div className="bg-[#FAF8FD]">{children}</div>
+        <div className="min-h-[calc(100vh-4rem)] bg-[#FAF8FD]">{children}</div>
       </main>
     </>
   );

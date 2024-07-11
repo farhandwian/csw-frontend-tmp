@@ -1,10 +1,10 @@
 import {
-  Option,
-  Quiz,
+  TOption,
+  TQuiz,
 } from "@/app/student/_components/CBT/_interface/interface";
 import { v4 as uuidv4 } from "uuid";
 
-export const quizDikit: Quiz = {
+export const quizDikit: TQuiz = {
   id: "1",
   topic: "kewarganegaraan",
   modul: "TWK",
@@ -86,7 +86,7 @@ export const quizDikit: Quiz = {
   ],
 };
 
-export const quizBanyak: Quiz = {
+export const quizBanyak: TQuiz = {
   id: "1",
   topic: "kewarganegaraan",
   modul: "TWK",

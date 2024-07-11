@@ -1,7 +1,7 @@
 // LoginForm.tsx
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Input from "../../Input";
@@ -11,20 +11,27 @@ import { useDispatch } from "react-redux";
 import { userLogin } from "@/store/auth/authActions";
 import { AppDispatch, useAppSelector } from "@/store";
 import { Alert } from "flowbite-react";
+import { toast } from "sonner";
+import { NextPage } from "next";
 
 import { HiInformationCircle } from "react-icons/hi";
 import { Spinner } from "flowbite-react";
+import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-import { useRouter } from "next/navigation";
+const LoginForm: NextPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [error, setError] = useState<string | undefined | null>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-const LoginForm: React.FC = () => {
-  const { loading, userInfo, error, success } = useAppSelector(
-    (state) => state.auth,
-  );
+  // const { loading, userInfo, error, success } = useAppSelector(
+  //   (state) => state.auth,
+  // );
   const dispatch = useDispatch<AppDispatch>();
   const validationSchema = Yup.object().shape({
-    username: Yup.string() // Change from "email" to "username"
-      .required("Harap masukkan username"),
+    email: Yup.string() // Change from "email" to "email"
+      .required("Harap masukkan email"),
     password: Yup.string()
       .min(5, "Password minimal 8 karakter")
       .required("Harap masukkan password"),
@@ -32,14 +39,37 @@ const LoginForm: React.FC = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "", // Change from "email" to "username"
+      email: "", // Change from "email" to "email"
       password: "",
     },
     validationSchema,
-    onSubmit: (data) => {
+    onSubmit: async (data) => {
       console.log("Login submitted with values:", data);
       // Add your login logic here
-      dispatch(userLogin(data));
+      // dispatch(userLogin(data));
+      setLoading(true);
+      try {
+        const response = await signIn("login", {
+          email: data.email,
+          password: data.password,
+          redirect: false,
+        });
+
+        if (response?.url === null) {
+          setError(response?.error);
+        }
+
+        if (response?.ok && response?.url !== null) {
+          console.log("tes login");
+          toast.success(`Login Success. Welcome ${data.email}`);
+          router.push(searchParams.get("callbackUrl") || "/home-page");
+        } else {
+          setError(response?.error);
+        }
+      } catch (error) {
+        setError(error as string);
+      }
+      setLoading(false);
     },
   });
 
@@ -58,15 +88,15 @@ const LoginForm: React.FC = () => {
       )}
       <div className="space-y-2">
         <Input
-          placeHolder="Masukkan Username Anda" // Change placeholder
-          fieldName="username" // Change from "email" to "username"
+          placeHolder="Masukkan Email Anda" // Change placeholder
+          fieldName="email" // Change from "email" to "email"
           fieldType="text" // Change from "email" to "text"
-          label="Username" // Change label
-          value={formik.values.username} // Change from "email" to "username"
+          label="Email" // Change label
+          value={formik.values.email} // Change from "email" to "email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.errors.username} // Change from "email" to "username"
-          touched={formik.touched.username || false} // Change from "email" to "username"
+          error={formik.errors.email} // Change from "email" to "email"
+          touched={formik.touched.email || false} // Change from "email" to "email"
         />
         <Input
           fieldType="password"

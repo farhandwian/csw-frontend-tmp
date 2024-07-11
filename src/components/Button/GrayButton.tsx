@@ -17,7 +17,7 @@ export const GrayButton = ({
   return (
     <Button
       onClick={onClick}
-      className={`m-auto bg-gray-400 text-white hover:!bg-gray-500 focus:ring-0 ${className}`}
+      className={`bg-gray-400 text-white hover:!bg-gray-500 focus:ring-0 ${className}`}
       {...props}
     >
       {children}

@@ -1,27 +1,30 @@
-interface Option {
+interface TOption {
   id: string;
   letter: string;
   text: string;
 }
 
-interface Question {
+interface TQuestion {
   id: string;
   question: string;
-  options: Option[];
+  options: TOption[];
   rightAnswer?: string;
   isMark?: boolean;
   status?: string; //belum-dijawab,sudah-dijawab,ditandai
   noSoal: number;
   userAnswer?: string;
+
+  rightAnswerText?: string;
+  pembahasan?: string;
 }
 
-export interface Quiz {
+export interface TQuiz {
   id: string;
   topic: string;
   modul: string;
   totalQuestions: number;
   totalTime: number;
-  questions: Question[];
+  questions: TQuestion[];
 }
 
 export interface ReviewJawaban {
@@ -34,5 +37,5 @@ export interface ReviewJawaban {
   score: number;
   maxScore: number;
   attempt: number;
-  quiz: Quiz;
+  quiz: TQuiz;
 }

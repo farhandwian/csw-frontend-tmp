@@ -1,15 +1,12 @@
 import React from "react";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
-import {
-  Question,
-  Quiz,
-} from "@/app/student/_components/CBT/_interface/interface";
+import { TQuestion, TQuiz } from "@/types/quiz";
 import { TipeUjianContext } from "@/app/student/_components/CBT/CBT";
 import { useContext } from "react";
 import Image from "next/image";
 
 interface QuestionNavigationProps {
-  result: Quiz;
+  result: TQuiz;
   activeQuestion: number;
   onClickNavigation: (noSoal: number, index: number) => void;
 }
@@ -20,9 +17,9 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
   onClickNavigation,
 }) => {
   const tipeUjianContext = useContext(TipeUjianContext);
-  const checkColorNavigation = (question: Question, index: number) => {
+  const checkColorNavigation = (question: TQuestion, index: number) => {
     let style: string = "";
-    if (question.noSoal === activeQuestion + 1) {
+    if (question.no_soal === activeQuestion + 1) {
       style += `border-green-400 `;
     }
 
@@ -40,11 +37,10 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
     if (question.status === "ditandai") {
       style += "bg-blue-200";
     }
-
     return style;
   };
 
-  const checkFlagMark = (question: Question) => {
+  const checkFlagMark = (question: TQuestion) => {
     let style: string = "";
     if (question.isMark === true) {
       style += "block ";
@@ -73,16 +69,16 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
 
         <div className="">
           <h1 className="font-semibold">NAVIGASI LATIHAN</h1>
-          <h1>Latihan Soal Matematika Paket 1</h1>
+          <h1>{result.topic}</h1>
         </div>
       </div>
 
-      <div className=" flex justify-center overflow-hidden py-3">
-        <div className="grid max-h-[17rem] w-[90%] grid-cols-5 gap-2 overflow-y-scroll pr-2">
+      <div className=" flex justify-center overflow-hidden py-3 ">
+        <div className="grid max-h-[17rem] w-[90%] grid-cols-5 gap-2 overflow-y-scroll pr-2 scrollbar-thin">
           {result.questions.map((question, index) => (
             <button
               key={index}
-              onClick={() => onClickNavigationButton(question.noSoal, index)}
+              onClick={() => onClickNavigationButton(question.no_soal, index)}
               className={`inline-block h-[55px] rounded-sm border-2 ${checkColorNavigation(
                 question,
                 index,

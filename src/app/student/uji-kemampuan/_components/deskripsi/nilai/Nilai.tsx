@@ -1,23 +1,41 @@
 import React from "react";
-import {
-  TypeNilai,
-  DataNilai,
-} from "@/app/student/uji-kemampuan/_components/deskripsi/Deskripsi";
+import { TTestType } from "@/types/index";
 
 import PostTestOrPretest from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/PostTestOrPretest";
 import LatihanSoal from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/LatihanSoal";
 
-interface NilaiArgs {
-  typeNilai: TypeNilai;
-  dataNilai?: DataNilai[];
+interface NilaiProps {
+  testType: TTestType;
+  singleScore?: number;
+  maxScore?: number;
+  multipleScore?: [];
+  quiz_uuid?: string;
+  quiz_submission_uuid?: string;
 }
 
-const Nilai = ({ typeNilai, dataNilai }: NilaiArgs) => {
+const Nilai = ({
+  testType,
+  singleScore,
+  maxScore,
+  multipleScore,
+  quiz_uuid,
+  quiz_submission_uuid,
+}: NilaiProps) => {
   const typeNilaiComponent = () => {
-    if (typeNilai === "latihan-soal") {
-      return <LatihanSoal dataNilai={dataNilai} typeNilai={typeNilai} />;
-    } else if (typeNilai === "pretest" || typeNilai === "posttest") {
-      return <PostTestOrPretest dataNilai={dataNilai} typeNilai={typeNilai} />;
+    if (testType === "latihan-soal") {
+      // return <LatihanSoal dataNilai={dataNilai} typeNilai={testType} />;
+      return "";
+    } else if (testType === "pretest" || testType === "posttest") {
+      console.log(singleScore);
+      return (
+        <PostTestOrPretest
+          score={singleScore!}
+          maxScore={maxScore!}
+          testType={testType}
+          quiz_uuid={quiz_uuid}
+          quiz_submission_uuid={quiz_submission_uuid}
+        />
+      );
     }
   };
 

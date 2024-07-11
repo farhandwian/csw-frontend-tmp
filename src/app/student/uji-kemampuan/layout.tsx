@@ -15,7 +15,6 @@ const UjiKemampuanLayout = ({ children }: UjiKemampuanProps) => {
       <UjiKemampuanNavigationTest />
       <UjiKemampuanNavigationModul />
 
-      <Breadcrumbs widthReduction={"54px"} fontSize="7px" />
       <div>{children}</div>
     </>
   );

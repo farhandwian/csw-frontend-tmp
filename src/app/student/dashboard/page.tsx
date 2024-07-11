@@ -4,16 +4,16 @@ import Image from "next/image";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import LockIcon from "@mui/icons-material/Lock";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import QuizIcon from "@mui/icons-material/Quiz";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import RedButton from "./_components/RedButton";
 import YellowButton from "./_components/YellowButton";
+import QuizIcon from "@mui/icons-material/Quiz";
 
 const dashboards = {
   id: 1,
-  status: "newbie", // ganti ini jadi newbie klo mau buat tampilan user newbie
+  status: "newbiee", // ganti ini jadi newbie klo mau buat tampilan user newbie
 };
 
 interface TableColor {
@@ -46,7 +46,7 @@ const Page = () => {
         {dashboards.status === "newbie" && (
           <>
             <div className="relative mt-5 flex h-72 w-full items-center justify-center rounded-md border bg-pl-RedUserDahboard md:px-10 lg:w-full">
-              <div className="h-[100%] w-[30%] py-8">
+              <div className="h-[100%] w-[100%]  px-8 py-8 md:w-[30%] md:px-0">
                 <h1 className="mt-4 text-2xl font-bold text-white">
                   Hello,Farhan
                 </h1>
@@ -54,20 +54,16 @@ const Page = () => {
                   Akun Anda saat ini masih berstatus newbie. Upgrade akun akan
                   menjadi pro dengan memilih pilihan paket yang tersedia
                 </h3>
-                <Button
-                  sx={{
-                    backgroundColor: "white",
-                    color: "black",
-                    "&:hover": {
-                      backgroundColor: "#F9FAFB",
-                    },
-                  }}
+
+                <button
+                  type="button"
+                  className="mb-2 me-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                 >
                   Beli Paket Sekarang
-                </Button>
+                </button>
               </div>
               {/* card paket */}
-              <div className="w-[70%]"></div>
+              <div className="hidden md:block md:h-full md:w-[70%] "></div>
             </div>
           </>
         )}
@@ -92,18 +88,15 @@ const Page = () => {
                     }
                     alt="Logo CSW"
                   />
-                  <div className="mt-3 text-center text-sm">
+                  <div className="mt-3 px-4 text-center text-sm">
                     <h2>
                       Oopss!! sepertinya mata pelajaranmu kosong, pasti kamu
                       belum membeli paket belajar ya?
-                    </h2>
-                  </div>
-
-                  <div className="mt-3 text-center text-sm">
-                    <h2>
+                      <br />
                       Tenang, kamu dapat membelinya sesuai dengan kebutuhanmu!
                     </h2>
                   </div>
+
                   <div className="w-100% text-md mb-4 mt-3 flex items-center justify-center">
                     <RedButton className="m-auto">
                       <h1 className="text-black">Lihat Paket Belajar</h1>
@@ -258,11 +251,8 @@ const Page = () => {
                           </YellowButton>
                         </div>
 
-                        <div className="absolute right-1 top-2 h-[50px] w-[80px] rounded-md bg-[#fbe360] p-1">
-                          <h4
-                            className="text-black"
-                            style={{ fontSize: "8px" }}
-                          >
+                        <div className="absolute bottom-1 right-1 h-[50px] w-[80px] rounded-md bg-[#fbe360] p-1 md:bottom-auto md:top-2">
+                          <h4 className="text-3xs leading-tight text-black">
                             Dibuka pada 20 September 2022 Pukul 07:00 WIB
                           </h4>
                         </div>
@@ -288,56 +278,74 @@ const Page = () => {
                 Bulan September 2022
               </h2>
               {/* tabel */}
-              <div>
+              <div className="max-h-[500px] overflow-y-scroll scrollbar-thin">
                 {[...Array(7)].map((_, index) => (
-                  <>
-                    <div className="flex min-h-28 w-[100%] items-center justify-center border border-gray-100">
-                      <div className="w-[20%] flex-col border-r-2 text-sm text-tp-GrayTabelJadwalUserDashboard">
-                        <div className="h-7 w-[100%] bg-gray-100 text-center ">
-                          Senin
-                        </div>
-
-                        <h3 className="mt-2 text-center">{index + 1}</h3>
+                  <div
+                    key={`itemtabel${index}`}
+                    className="flex min-h-[50px] w-[100%] justify-center border border-gray-100 "
+                  >
+                    <div className="w-[20%] flex-col border-r-2 text-sm text-tp-GrayTabelJadwalUserDashboard">
+                      <div className="h-7 w-[100%] bg-gray-100 text-center ">
+                        Senin
                       </div>
-                      <div className="w-[80%]">
-                        <div className="p-1">
-                          <div
-                            className="mb-2 flex h-[50px] w-[100%] rounded-md bg-pl-GreenUserDashboard p-1"
-                            style={{ fontSize: "10px" }}
-                          >
-                            <div className="flex w-[80%]">
-                              <Image
-                                src="/img/dashboard-user/skd.png"
-                                width={30}
-                                height={25}
-                                className={"ml-1 inline-block"}
-                                alt="Logo CSW"
-                              />
-                              <div className="ml-2 inline-block">
-                                <h1>TKP</h1>
-                                <h2>09:00-10.00 WIB</h2>
-                                <div className="flex">
-                                  <Image
-                                    src="/img/dashboard-user/zoom.png"
-                                    width={10}
-                                    height={10}
-                                    className={"mr-1"}
-                                    alt="Logo CSW"
-                                  />
-                                  <h2>zoom dimulai</h2>
+
+                      <h3 className="mt-2 text-center">{index + 1}</h3>
+                    </div>
+                    <div className="w-[80%]">
+                      <div className="p-1">
+                        {/* item card jadwal */}
+                        {dashboards.status !== "newbie" && (
+                          <>
+                            {[...Array(2)].map((_, index) => (
+                              <div
+                                key={`jadwal${index}`}
+                                className="mb-2 flex min-h-[50px] w-[100%] rounded-md bg-pl-GreenUserDashboard p-1 text-2xs"
+                              >
+                                <div className="relative flex w-[80%] items-center">
+                                  <div className="relative h-[25px] w-[30px]">
+                                    <Image
+                                      src="/img/dashboard-user/skd.png"
+                                      width={0}
+                                      height={0}
+                                      sizes="100vw"
+                                      className={
+                                        "ml-1 inline-block h-full w-full object-fill"
+                                      }
+                                      alt="Logo CSW"
+                                    />
+                                  </div>
+
+                                  <div className="ml-2 inline-block text-red-400 ">
+                                    <h1 className="leading-tight">TKP</h1>
+                                    <h2 className="leading-tight">
+                                      09:00-10.00 WIB
+                                    </h2>
+                                    <div className="flex">
+                                      <Image
+                                        src="/img/dashboard-user/zoom.png"
+                                        width={10}
+                                        height={10}
+                                        className={"mr-1"}
+                                        alt="Logo CSW"
+                                      />
+                                      <h2 className="leading-tight text-[#013899]">
+                                        zoom dimulai
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex w-[20%] items-center justify-end">
+                                  <div className="mr-1 h-fit w-fit rounded-xl bg-green-500 px-1">
+                                    SKD
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="flex w-[20%] items-center justify-end">
-                              <div className="mr-1 h-fit w-fit rounded-xl bg-green-500 px-1">
-                                SKD
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                            ))}
+                          </>
+                        )}
                       </div>
                     </div>
-                  </>
+                  </div>
                 ))}
                 {/* bagian bawah tabel */}
                 <div className="flex min-h-16 w-[100%] border border-gray-100">
@@ -441,11 +449,8 @@ const Page = () => {
                           </YellowButton>
                         </div>
 
-                        <div className="absolute right-1 top-2 h-[50px] w-[80px] rounded-md bg-[#fbe360] p-1">
-                          <h4
-                            className="text-black"
-                            style={{ fontSize: "8px" }}
-                          >
+                        <div className="absolute bottom-1 right-1 h-[50px] w-[80px] rounded-md bg-[#fbe360] p-1 md:bottom-auto md:right-1 md:top-2">
+                          <h4 className="text-3xs leading-tight text-black">
                             Dibuka pada 20 September 2022 Pukul 07:00 WIB
                           </h4>
                         </div>
