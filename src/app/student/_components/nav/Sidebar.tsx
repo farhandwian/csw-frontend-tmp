@@ -82,12 +82,12 @@ const dataSidebar = [
   //   icon: <SettingsIcon />,
   //   path: "/Contact",
   // },
-  {
-    id: 10,
-    label: "Logout",
-    icon: <LogoutIcon />,
-    path: "/Contact",
-  },
+  // {
+  //   id: 10,
+  //   label: "Logout",
+  //   icon: <LogoutIcon />,
+  //   path: "/Contact",
+  // },
 ];
 
 const enabledPaths = [
@@ -161,7 +161,7 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
             ) : (
               <div
                 key={item.id}
-                className="mx-5 mb-3 flex cursor-not-allowed items-center rounded py-3 pl-2 text-center text-gray-400"
+                className="mx-5 mb-3 flex cursor-default items-center rounded py-3 pl-2 text-center text-gray-400"
               >
                 <div className="mr-2">{item.icon}</div>
                 <div>

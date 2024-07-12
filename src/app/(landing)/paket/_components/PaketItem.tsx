@@ -51,14 +51,14 @@ const PaketItem = ({ props, key }: { props: TPaket; key?: string }) => {
           </div>
         </div>
         <h1 className="pt-1 text-xs font-semibold text-[#E23535] md:pt-2 md:text-base">
-          {props.price}
+          Rp {props.price}
         </h1>
         <p className="text-3xs text-[#0A0A65] md:mt-1 md:text-xs">
           Sesuai untuk mengasah kemampuan
         </p>
 
         {/* Isi Paket */}
-        <div className="md:mt-1">
+        <div className="min-h-[100px] md:mt-1 md:min-h-[130px]">
           <h2 className="text-3xs font-medium text-[#0A0A65] md:text-xs">
             Detail isi Paket :
           </h2>

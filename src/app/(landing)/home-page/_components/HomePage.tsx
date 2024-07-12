@@ -175,11 +175,19 @@ const HomePage = () => {
               <p className="mt-4 text-xs font-medium md:mt-14 md:text-base">
                 #Platform Bimbel Kedinasan Online Terbaik
               </p>
-              <Link href={"/daftar"}>
-                <button className="mt-2 w-[40%] rounded-xl bg-[#FFC007] py-2 text-xs font-bold text-[#090963] hover:bg-[#CAA022] md:mt-8 md:w-fit md:px-10 md:py-4 md:text-base">
-                  Daftar Sekarang
-                </button>
-              </Link>
+              {status === "authenticated" ? (
+                <Link href={"/student/dashboard"}>
+                  <button className="mt-2 w-[40%] rounded-xl bg-[#FFC007] py-2 text-xs font-bold text-[#090963] hover:bg-[#CAA022] md:mt-8 md:w-fit md:px-10 md:py-4 md:text-base">
+                    Mulai Belajar
+                  </button>
+                </Link>
+              ) : (
+                <Link href={"/daftar"}>
+                  <button className="mt-2 w-[40%] rounded-xl bg-[#FFC007] py-2 text-xs font-bold text-[#090963] hover:bg-[#CAA022] md:mt-8 md:w-fit md:px-10 md:py-4 md:text-base">
+                    Daftar Sekarang
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -234,7 +242,11 @@ const HomePage = () => {
               ) : (
                 dataTopMentors?.data.map((item, index) => {
                   return (
-                    <MentorItem key={`mentor-item-${index}`} props={item} />
+                    <MentorItem
+                      img={`img-mentor${index + 1}`}
+                      key={`mentor-item-${index}`}
+                      props={item}
+                    />
                   );
                 })
               )}
@@ -251,7 +263,7 @@ const HomePage = () => {
                       key={`mentor-item-${index}`}
                       className={`keen-slider__slide ${"number-slide" + (index + 1)} px-2 md:px-0 lg:py-20`}
                     >
-                      <MentorItem props={item} key={`mentor-item-${index}`} />
+                      <MentorItem img={`img-mentor${index + 1}`} props={item} key={`mentor-item-${index}`} />
                     </div>
                   ))
                 )}

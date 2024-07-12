@@ -123,13 +123,13 @@ const Page = ({ params }: { params: { uuid: string } }) => {
           <div className="flex flex-col gap-3">
             <div className="relative flex w-full justify-center bg-[#3838A4] px-3">
               {/* ic bg card */}
-              <div className="absolute top-7 z-0">
+              <div className="absolute -top-12 z-0 md:top-7">
                 <Image
                   src={`/img/landing-mentor/ic-bg-mentor-card.svg`}
                   width={0}
                   height={0}
                   alt={`ic-bg-mentor-card.svg`}
-                  className="h-full w-full object-fill"
+                  className="h-[300px] w-[300px] object-fill md:h-full md:w-full"
                 />
               </div>
               <Image

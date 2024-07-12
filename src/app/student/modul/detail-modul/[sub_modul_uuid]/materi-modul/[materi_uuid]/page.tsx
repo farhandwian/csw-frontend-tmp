@@ -10,6 +10,7 @@ import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 import { cleanHtmlContent } from "@/lib/utils/CleanHtmlContent";
+import Image from "next/image";
 
 const Page = ({ params }: { params: TMateriModulParams }) => {
   console.log(params);
@@ -87,54 +88,17 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
               ),
             }}
           ></div>
-          {/* <p>
-            Lorem Ipsum has been the industrys standard dummy text ever since
-            the 1500s.
-            <br />
-            <br />
-            {}
-            When an unknown printer took a galley of type and scrambled it to
-            make a type specimen book. It has survived not only five centuries,
-            but also the leap into electronic typesetting, remaining essentially
-            unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently
-            with desktop publishing software like Aldus PageMaker including
-            versions of Lorem Ipsum.
-            <br />
-            <br />
-            When an unknown printer took a galley of type and scrambled it to
-            make a type specimen book. It has survived not only five centuries,
-            but also the leap into electronic typesetting, remaining essentially
-            unchanged. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently
-            with desktop publishing software like Aldus PageMaker including
-            versions of Lorem Ipsum. When an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum. When an unknown
-            printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged.
-            It was popularised in the 1960s with the release of Letraset sheets
-            containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem
-            Ipsum. When an unknown printer took a galley of type and scrambled
-            it to make a type specimen book. It has survived not only five
-            centuries, but also the leap into electronic typesetting, remaining
-            essentially unchanged. It was popularised in the 1960s with the
-            release of Letraset sheets containing Lorem Ipsum passages, and more
-            recently with desktop publishing software like Aldus PageMaker
-            including versions of Lorem Ipsum. When an unknown printer took a
-            galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
-          </p> */}
+
+          <div className="w-full bg-red-400 text-right">
+            <Image
+              src={"/image/img-login.png"}
+              width={0}
+              height={0}
+              sizes="100vw"
+              alt="img-login"
+              className="h-[6.375rem] w-[6.375rem] object-fill"
+            />
+          </div>
         </div>
         {/* footer */}
         <div className=" min-h-8 w-[100%] p-1 shadow-md">

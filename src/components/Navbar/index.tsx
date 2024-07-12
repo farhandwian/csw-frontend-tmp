@@ -1,12 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
+import Profile from "@/components/Profile";
 // tinggi navbar:atau 60px atau 3.75 rem
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { status, data } = useSession();
+  console.log(status);
   const pathName = usePathname();
   const temp = pathName.split("/");
   const rootPathName = "/" + temp[1];
@@ -46,21 +51,13 @@ const Navbar = () => {
                 width={72}
                 height={57}
                 alt="img-logo"
-                className="h-[50px] w-[65px] lg:h-[57px] lg:w-[72px] 2xl:h-full 2xl:w-full"
+                className="h-[40px] w-[55px] lg:h-[47px] lg:w-[62px] 2xl:h-full 2xl:w-full"
               />
             </Link>
           </div>
-          {/* hamburge klo mode mobile */}
-          <div className="lg:hidden" onClick={handleOpenMenu}>
-            <Image
-              src={isOpen ? "/icon/ic-close.svg" : "/icon/ic-hamburger.svg"}
-              alt={isOpen ? "ic-close" : "ic-hamburger"}
-              width={32}
-              height={32}
-            />
-          </div>
+
           {/* navigasi */}
-          <div className="hidden w-[65%] lg:flex lg:flex-none ">
+          <div className="hidden w-[65%] lg:flex">
             <ul className="w-full flex-none text-[#909090] md:flex lg:justify-between lg:gap-x-1 lg:text-sm xl:gap-x-4 xl:text-base">
               {navbarItems.map((item, index) => (
                 <Link key={`nav-item-${index}`} href={item.href}>
@@ -91,30 +88,45 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
-          {/* daftar login */}
-          <div className="hidden w-[20%]  lg:flex lg:justify-end lg:gap-x-3 lg:text-sm xl:gap-x-5">
-            <Link href={"/login"}>
-              <button
-                className={`${
-                  rootPathName === "/login"
-                    ? "border-none bg-[#090963] text-white"
-                    : "hover:text-[#5E5ED0]"
-                } rounded-full border-2 border-solid border-[#090963] px-3 py-2 hover:border-[#5E5ED0]`}
-              >
-                Masuk
-              </button>
-            </Link>
-            <Link href={"/daftar"}>
-              <button
-                className={`${
-                  rootPathName === "/daftar"
-                    ? "border-none bg-[#090963] text-white"
-                    : "hover:text-[#5E5ED0]"
-                } rounded-full border-2 border-solid border-[#090963] px-3 py-2 hover:border-[#5E5ED0]`}
-              >
-                Daftar
-              </button>
-            </Link>
+          <div className="flex gap-3">
+            {/* daftar login */}
+            {status === "authenticated" ? (
+              <Profile></Profile>
+            ) : (
+              <div className="hidden lg:flex lg:justify-end lg:gap-x-3 lg:text-sm xl:gap-x-5">
+                <Link href={"/login"}>
+                  <button
+                    className={`${
+                      rootPathName === "/login"
+                        ? "border-none bg-[#090963] text-white"
+                        : "hover:text-[#5E5ED0]"
+                    } rounded-full border-2 border-solid border-[#090963] px-3 py-2 hover:border-[#5E5ED0]`}
+                  >
+                    Masuk
+                  </button>
+                </Link>
+                <Link href={"/daftar"}>
+                  <button
+                    className={`${
+                      rootPathName === "/daftar"
+                        ? "border-none bg-[#090963] text-white"
+                        : "hover:text-[#5E5ED0]"
+                    } rounded-full border-2 border-solid border-[#090963] px-3 py-2 hover:border-[#5E5ED0]`}
+                  >
+                    Daftar
+                  </button>
+                </Link>
+              </div>
+            )}
+            {/* hamburge klo mode mobile */}
+            <div className="lg:hidden" onClick={handleOpenMenu}>
+              <Image
+                src={isOpen ? "/icon/ic-close.svg" : "/icon/ic-hamburger.svg"}
+                alt={isOpen ? "ic-close" : "ic-hamburger"}
+                width={32}
+                height={32}
+              />
+            </div>
           </div>
         </div>
       </nav>

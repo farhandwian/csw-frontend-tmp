@@ -59,12 +59,9 @@ const MentorItem: React.FC<MentorItemProps> = ({ img, mentor, key }) => {
           <div className="mt-1 flex items-center justify-center md:mt-3">
             {/* Gunakan Link untuk navigasi */}
             <Link href={`/mentor/detail-mentor/${mentor.uuid}`} passHref>
-              <Button
-                as="a"
-                className="mb-2 me-2 w-full rounded-2xl border border-gray-300 bg-white px-2 py-[2px] text-3xs font-bold text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 md:px-4 md:py-2 md:text-sm"
-              >
-                Lihat Detail
-              </Button>
+              <button className="mb-2 me-2 w-full rounded-2xl border border-gray-300 bg-white px-2 py-[2px] text-3xs font-bold text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 md:px-4 md:py-2 md:text-sm">
+                <h1 className="text-3xs md:text-sm">Lihat Detail</h1>
+              </button>
             </Link>
           </div>
         </div>

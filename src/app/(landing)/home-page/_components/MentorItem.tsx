@@ -2,7 +2,15 @@ import Image from "next/image";
 import React from "react";
 import { TMentor } from "@/types/home-page";
 
-const MentorItem = ({ props, key }: { props: TMentor; key?: string }) => {
+const MentorItem = ({
+  img,
+  props,
+  key,
+}: {
+  img: string;
+  props: TMentor;
+  key?: string;
+}) => {
   const { profile_picture, name, teaching_field, motto } = props;
   return (
     <>
@@ -12,7 +20,7 @@ const MentorItem = ({ props, key }: { props: TMentor; key?: string }) => {
       >
         <div className="flex w-full justify-center">
           <Image
-            src={`/img/img-mentor1.png`}
+            src={`/img/${img}.png`}
             width={288}
             height={281}
             alt={`img-mentor1`}
