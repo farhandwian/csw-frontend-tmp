@@ -16,8 +16,8 @@ import { TExerciseAllResponse } from "@/types/exercise";
 import { getExerciseAllRequest } from "@/hooks/uji-kemampuan/request";
 
 export const useGetQuizSubModuleAll = (
-  module_id: string,
-  test_type_id: string,
+  module_id: number,
+  test_type_id: number,
 ): UseQueryResult<TQuizSubModuleAllResponse, TMetaErrorResponse> =>
   useQuery({
     queryKey: ["get-quiz-sub-module-all"],

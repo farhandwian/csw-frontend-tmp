@@ -22,7 +22,7 @@ const Page = () => {
 
   const [filter, setFilter] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [filteredPakets, setFilteredPakets] = useState<TPaket[]>([]);
+
   const {
     data: dataPakets,
     isLoading: isLoadingSearchPakets,
@@ -54,77 +54,30 @@ const Page = () => {
   useEffect(() => {
     if (dataPakets) {
       setPakets(dataPakets.data);
-      setFilteredPakets(dataPakets.data);
     }
   }, [dataPakets]);
 
-  const filterPakets = (pakets: any, filter: any, searchText: any) => {
-    console.log(filter, searchText);
-    return pakets.filter((paket: any) => {
-      if (filter !== "all" && paket.module_name !== filter) {
-        return false;
-      }
-      if (
-        searchText &&
-        !paket.name.toLowerCase().includes(searchText.toLowerCase()) &&
-        !paket.module_name.includes(searchText)
-      ) {
-        return false;
-      }
+  const filteredPakets = pakets.filter((paket) => {
+    if (filter === "") {
       return true;
-    });
-  };
-
-  // const filteredPakets = pakets.filter((paket) => {
-  //   if (filter === "") {
-  //     return true;
-  //   }
-  //   // Filter berdasarkan module
-  //   if (filter !== "all" && paket.module_name !== filter) {
-  //     return false;
-  //   }
-  //   // Filter berdasarkan pencarian text
-  //   if (
-  //     searchText &&
-  //     !paket.name.toLowerCase().includes(searchText.toLowerCase())
-  //   ) {
-  //     return false;
-  //   }
-  //   return true;
-  // });
-
-  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const input = form.elements.namedItem("voice-search") as HTMLInputElement;
-    const searchValue = input.value.toLowerCase();
-
-    // Update searchText state
-    setSearchText(searchValue);
-
-    // Filter pakets based on filter and searchValue
-    const filtered = filterPakets(pakets, filter, searchValue);
-
-    // Update filteredPakets state
-    setFilteredPakets(filtered);
-  };
+    }
+    // Filter berdasarkan module
+    if (filter !== "all" && paket.module_name !== filter) {
+      return false;
+    }
+    // Filter berdasarkan pencarian text
+    if (
+      searchText &&
+      !paket.name.toLowerCase().includes(searchText.toLowerCase())
+    ) {
+      return false;
+    }
+    return true;
+  });
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const filterValue = event.target.value;
-
-    // Update filter state
-    setFilter(filterValue);
-
-    // Filter pakets based on filter and searchText
-    const filtered = filterPakets(pakets, filterValue, searchText);
-
-    // Update filteredPakets state
-    setFilteredPakets(filtered);
+    setFilter(event.target.value);
   };
-
-  // const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setFilter(event.target.value);
-  // };
 
   if (isErrorSearchPakets) {
     return <ErrorComponent> {errMessageDataFetching}</ErrorComponent>;
@@ -138,13 +91,13 @@ const Page = () => {
     setSearchText(event.target.value);
   };
 
-  // const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const form = event.currentTarget;
-  //   const input = form.elements.namedItem("voice-search") as HTMLInputElement;
-  //   console.log(input.value);
-  //   setSearchText(input.value);
-  // };
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const input = form.elements.namedItem("voice-search") as HTMLInputElement;
+    console.log(input.value);
+    setSearchText(input.value);
+  };
 
   return (
     <>
@@ -272,6 +225,7 @@ const Page = () => {
                     id="voice-search"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-xs text-gray-900  focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 md:text-sm"
                     placeholder="Search"
+                    required
                     // onChange={handleSearchChange}
                   />
                 </div>
