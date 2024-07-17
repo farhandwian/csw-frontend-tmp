@@ -1,7 +1,7 @@
 import AfterTest from "@/app/student/_components/AfterTest";
-import { TAfterTestParams } from "@/types/modul";
+import { TAfterTestQuizParams } from "@/types/modul";
 
-const Page = ({ params }: { params: TAfterTestParams }) => {
+const Page = ({ params }: { params: TAfterTestQuizParams }) => {
   const redirectUrl = `/student/modul/detail-modul/${params.sub_modul_uuid}/deskripsi-latihan-soal/${params.quiz_uuid}/${params.test_type_id}`;
   return (
     <>

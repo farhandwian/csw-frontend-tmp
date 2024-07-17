@@ -3,12 +3,26 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import Link from "next/link";
 
 interface LatihanSoalItemProps {
+  exercise_uuid: string;
+  module_id: number;
+  isMax: number;
+  key: number;
   data: TExerciseHistoryDetailModule;
+  user_attempt: number;
 }
 
-const LatihanSoalItem = ({ data }: LatihanSoalItemProps) => {
+const LatihanSoalItem = ({
+  exercise_uuid,
+  module_id,
+  isMax,
+  key,
+  data,
+  user_attempt,
+}: LatihanSoalItemProps) => {
+  console.log(data);
   const [subnav, setSubnav] = useState(true);
   const showSubnav = () => setSubnav(!subnav);
 
@@ -30,7 +44,9 @@ const LatihanSoalItem = ({ data }: LatihanSoalItemProps) => {
                 className="min-h-[3rem] max-w-[4rem] "
               />
               <div>
-                <h1 className="font-semibold">Nilai Tertinggimu</h1>
+                <h1 className="font-semibold">
+                  {isMax ? "Nilai Tertinggimu" : "Nilai Terendahmu"}
+                </h1>
                 <h3>Total Nilai</h3>
               </div>
             </div>
@@ -48,24 +64,41 @@ const LatihanSoalItem = ({ data }: LatihanSoalItemProps) => {
             {/* Mark / total soal yang benar */}
             <div className="px-3 py-2">
               <h1 className="font-semibold leading-normal">
-                Mark / total soal yang benar
+                Jawaban benar / Total soal
               </h1>
               <div className="mb-1 flex max-w-[100%] items-center text-black">
                 <h1>Total</h1>
                 <div className="w-full border-t border-dotted border-gray-400"></div>
                 <h1>
-                  {data.exercise_history_detail.reduce(
-                    (acc, item) => acc + item.total_question_per_sub_module,
-                    0,
-                  )}
-                  /
-                  {data.exercise_history_detail.reduce(
-                    (acc, item) => acc + item.max_total_question_per_sub_module,
-                    0,
-                  )}
+                  {data.right_answer_per_module}/
+                  {data.total_question_per_module}
                 </h1>
               </div>
-              {data.exercise_history_detail.map((subItem, index) => (
+              {data.exercise_history_detail?.map((subItem, index) => (
+                <div
+                  className="mb-1 flex max-w-[100%] items-center text-black"
+                  key={index}
+                >
+                  <h1>{subItem.submodule}</h1>
+                  <div className="w-full border-t border-dotted border-gray-400"></div>
+                  <h1>
+                    {subItem.total_right_answer_per_sub_module}/
+                    {subItem.total_question_per_sub_module}
+                  </h1>
+                </div>
+              ))}
+              {/* bagian nilai */}
+              <h1 className="font-semibold leading-normal">
+                Nilai / Nilai Maksimal
+              </h1>
+              <div className="mb-1 flex max-w-[100%] items-center text-black">
+                <h1>Total</h1>
+                <div className="w-full border-t border-dotted border-gray-400"></div>
+                <h1>
+                  {data.score_per_module}/{data.max_score_per_module}
+                </h1>
+              </div>
+              {data.exercise_history_detail?.map((subItem, index) => (
                 <div
                   className="mb-1 flex max-w-[100%] items-center text-black"
                   key={index}
@@ -78,6 +111,14 @@ const LatihanSoalItem = ({ data }: LatihanSoalItemProps) => {
                   </h1>
                 </div>
               ))}
+              {user_attempt && (
+                <Link
+                  className="text-blue-500"
+                  href={`/student/uji-kemampuan/latihan-soal/${module_id}/deskripsi-latihan-soal/${exercise_uuid}/review-jawaban/${data.uuid}`}
+                >
+                  Lihat Review Jawaban
+                </Link>
+              )}
             </div>
           </div>
         )}

@@ -51,29 +51,50 @@ interface TQuizAll {
 
 export type TQuizAllResponse = TMetaResponseSingle<TQuizAll>;
 
-export interface TCBTParams {
+export interface TCBTQuizParams {
   module_id: number;
   sub_module_uuid: string;
   quiz_uuid: string;
 }
 
-export interface TDeskripsiParams {
+export interface TCBTExerciseParams {
+  module_id: number;
+  exercise_uuid: string;
+}
+
+export interface TDeskripsiQuizParams {
   module_id: number;
   sub_module_uuid: string;
   quiz_uuid: string;
 }
+export interface TDeskripsiExerciseParams {
+  module_id: number;
+  exercise_uuid: string;
+}
 
-export interface TReviewJawabanParams {
+export interface TReviewJawabanQuizParams {
   module_id: number;
   sub_module_uuid: string;
   quiz_submission_uuid: string;
   quiz_uuid: string;
 }
+export interface TReviewJawabanExerciseParams {
+  module_id: number;
+  exercise_submission_uuid: string;
+  exercise_uuid: string;
+}
 
-export interface TAfterTestParams {
+export interface TAfterTestQuizParams {
   module_id: number;
   sub_module_uuid: string;
   quiz_uuid: string;
   test_type_id: number;
   quiz_title: string;
+}
+
+export interface TAfterTestExerciseParams {
+  module_id: number;
+  exercise_uuid: string;
+  test_type_id: number;
+  exercise_title: string;
 }

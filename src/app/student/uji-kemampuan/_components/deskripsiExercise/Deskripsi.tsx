@@ -1,6 +1,6 @@
 "use client";
 
-import LatihanSoal from "@/app/student/uji-kemampuan/_components/deskripsiExercise/nilai/Nilai";
+import NilaiLatihanSoal from "@/app/student/uji-kemampuan/_components/deskripsiExercise/nilai/LatihanSoal";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -22,32 +22,35 @@ const informasi = {
 };
 
 const updateInformasi = (dataExerciseDetail: TExerciseDetail) => {
-  informasi.PENGERJAAN =
-    `dapat dikerjakan ${dataExerciseDetail?.attempt}x` || "";
+  if (dataExerciseDetail?.attempt > 0) {
+    informasi.PENGERJAAN = `dapat dikerjakan berkali-kali`;
+  } else {
+    informasi.PENGERJAAN = `Tidak dapat dikerjakan berkali-kali`;
+  }
 
-  if (dataExerciseDetail.user_attempt > 0) {
+  if (dataExerciseDetail?.user_attempt > 0) {
     informasi.STATUS =
-      `sudah-dikerjakan ${dataExerciseDetail?.attempt ? `${dataExerciseDetail?.attempt}x` : ""}` ||
+      `sudah-dikerjakan ${dataExerciseDetail?.user_attempt ? `${dataExerciseDetail?.user_attempt}x` : ""}` ||
       "";
   } else {
     informasi.STATUS = "belum-dikerjakan";
   }
   informasi.WAKTU = `${dataExerciseDetail?.time} MENIT` || "";
-  informasi.JUMLAH_SOAL = `${dataExerciseDetail.questions.length} SOAL` || "";
+  informasi.JUMLAH_SOAL = `${dataExerciseDetail?.questions.length} SOAL` || "";
 };
 
 interface DeskripsiProps {
   exercise_uuid: string;
+  module_id: number;
 }
 
-const Deskripsi = ({ exercise_uuid }: DeskripsiProps) => {
-  const [isDone, setIsDone] = useState(false);
-  const [singleScore, setSingleScore] = useState(0);
-  const [multipleScore, setMultipleScore] = useState([]);
+const Deskripsi = ({ exercise_uuid, module_id }: DeskripsiProps) => {
+  // const [isDone, setIsDone] = useState(false);
   const {
     data,
     isLoading: isLoadingExerciseDetail,
     isError: isErrorExerciseDetail,
+    refetch,
   } = useGetExerciseDetail(exercise_uuid);
 
   const dataExerciseDetail = data?.data!;
@@ -55,14 +58,14 @@ const Deskripsi = ({ exercise_uuid }: DeskripsiProps) => {
 
   updateInformasi(dataExerciseDetail);
 
-  useEffect(() => {
-    if (
-      dataExerciseDetail?.user_attempt &&
-      dataExerciseDetail?.user_attempt > 0
-    ) {
-      setIsDone(true);
-    }
-  }, [dataExerciseDetail]);
+  // useEffect(() => {
+  //   if (
+  //     dataExerciseDetail?.user_attempt &&
+  //     dataExerciseDetail?.user_attempt > 0
+  //   ) {
+  //     setIsDone(true);
+  //   }
+  // }, [dataExerciseDetail, isDone]);
 
   if (isLoadingExerciseDetail) {
     return <Loading>{loadingMessage}</Loading>;
@@ -110,10 +113,13 @@ const Deskripsi = ({ exercise_uuid }: DeskripsiProps) => {
                 Lanjutkan dan mulai kerjakan Latihan dengan sungguh-sungguh
               </h2>
 
-              {isDone ? (
-                <button className="me-2 mt-2 cursor-auto rounded-lg border border-gray-200 bg-[#E5E7EB] px-5 py-2.5 text-sm font-medium text-[#9CA3AF]  ">
-                  Tidak Bisa Dikerjakan Kembali
-                </button>
+              {dataExerciseDetail?.user_attempt &&
+              dataExerciseDetail?.user_attempt > 0 ? (
+                <Link href={`${exercise_uuid}/CBT`}>
+                  <button className="mb-2 me-2 mt-2 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Kerjakan Kembali
+                  </button>
+                </Link>
               ) : (
                 <Link href={`${exercise_uuid}/CBT`}>
                   <button className="mb-2 me-2 mt-2 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -153,7 +159,13 @@ const Deskripsi = ({ exercise_uuid }: DeskripsiProps) => {
             </div>
 
             {/* bagian nilai */}
-            <div className="mt-3 w-[100%] rounded-md border-[2px]"></div>
+            <div className="mt-3 w-[100%] rounded-md border-[2px]">
+              <NilaiLatihanSoal
+                exercise_uuid={exercise_uuid}
+                module_id={module_id}
+                user_attempt={dataExerciseDetail?.user_attempt}
+              />
+            </div>
           </div>
         </div>
       </section>

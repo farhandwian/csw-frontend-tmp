@@ -5,10 +5,10 @@ import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { useAddQuizSubmission, useGetQuizContent } from "@/hooks/quiz/hook";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
-import { TCBTParams } from "@/types/uji-kemampuan";
+import { TCBTQuizParams } from "@/types/uji-kemampuan";
 import { useRouter } from "next/navigation";
 
-const Page = ({ params }: { params: TCBTParams }) => {
+const Page = ({ params }: { params: TCBTQuizParams }) => {
   console.log(params.quiz_uuid);
   const {
     data,

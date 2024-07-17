@@ -2,14 +2,14 @@ import React from "react";
 import GrayButton from "@/components/Button/GrayButton";
 import BlueButton from "@/components/Button/BlueButton";
 import GreenButton from "@/components/Button/GreenButton";
-import { TQuestion, TExercise, TOption } from "@/types/exercise";
+import { TQuestion, TExerciseDetail, TChoice } from "@/types/exercise";
 import { cleanHtmlContent } from "@/lib/utils/CleanHtmlContent";
 
 interface QuestionSectionProps {
   activeQuestion: number;
   questions: TQuestion[];
-  result: TExercise;
-  onOptionSelected: (option: TOption, index: number) => void;
+  result: TExerciseDetail;
+  onOptionSelected: (option: TChoice, index: number) => void;
   onClickNext: () => void;
   onClickPrev: () => void;
   onClickSubmit: () => void;
@@ -24,8 +24,8 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
   onClickPrev,
   onClickSubmit,
 }) => {
-  const { question, options } = questions[activeQuestion];
-
+  const { content, choices } = questions[activeQuestion];
+  console.log(choices);
   const handleNextClick = () => {
     if (activeQuestion !== questions.length - 1) {
       onClickNext();
@@ -38,7 +38,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
     }
   };
 
-  const handleOptionSelected = (option: TOption, index: number) => {
+  const handleOptionSelected = (option: TChoice, index: number) => {
     return () => {
       onOptionSelected(option, index);
     };
@@ -50,37 +50,38 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
         {/* {activeQuestion + 1}.&nbsp;{question} */}
         <div
           className="prose"
-          dangerouslySetInnerHTML={{ __html: cleanHtmlContent(question) }}
+          dangerouslySetInnerHTML={{ __html: cleanHtmlContent(content) }}
         ></div>
       </h2>
       <div>
-        {options.map((option, index) => (
+        {choices.map((option, index) => (
           <div
             onClick={handleOptionSelected(option, index)}
-            key={option.id}
+            key={option.uuid}
             className={`mb-2 flex justify-between rounded-lg border-2 ${
-              option.id === result.questions[activeQuestion].user_answer
+              option.uuid === result.questions[activeQuestion].user_answer
                 ? "border-green-400"
                 : ""
             } cursor-pointer`}
           >
             <div
               className={`inline-block rounded-l-sm border-r-2 px-3 ${
-                option.id === result.questions[activeQuestion].user_answer
+                option.uuid === result.questions[activeQuestion].user_answer
                   ? "bg-green-400"
                   : ""
               }`}
             >
-              <div className="mt-[2px]">{option.letter}</div>
+              {/* letter choice */}
+              <div className="mt-[2px]">{String.fromCharCode(97 + index)}</div>
             </div>
             <div className="m-auto ml-3 inline-block text-left">
-              {option.text} Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Veritatis numquam tempore cumque illum cum sapiente
-              voluptatum id quidem. Accusamus explicabo odio numquam eum,
-              commodi omnis excepturi expedita, unde suscipit tempore laborum,
-              perferendis facere sint aliquam. Veritatis rerum nisi ipsam nulla
-              corrupti dolorum recusandae consequuntur numquam blanditiis. Sed
-              facilis vero dicta.
+              {option.content} Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Veritatis numquam tempore cumque illum cum
+              sapiente voluptatum id quidem. Accusamus explicabo odio numquam
+              eum, commodi omnis excepturi expedita, unde suscipit tempore
+              laborum, perferendis facere sint aliquam. Veritatis rerum nisi
+              ipsam nulla corrupti dolorum recusandae consequuntur numquam
+              blanditiis. Sed facilis vero dicta.
             </div>
           </div>
         ))}

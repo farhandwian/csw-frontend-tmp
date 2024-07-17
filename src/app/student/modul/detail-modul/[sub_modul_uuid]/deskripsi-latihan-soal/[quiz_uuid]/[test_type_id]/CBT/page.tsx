@@ -5,11 +5,11 @@ import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { useAddQuizSubmission, useGetQuizContent } from "@/hooks/quiz/hook";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
-import { TCBTParams } from "@/types/modul";
+import { TCBTQuizParams } from "@/types/modul";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
-const Page = ({ params }: { params: TCBTParams }) => {
+const Page = ({ params }: { params: TCBTQuizParams }) => {
   const {
     data,
     isLoading: isLoadingQuizContent,

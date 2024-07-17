@@ -1,4 +1,4 @@
-import { TQuestion, TExercise } from "@/types/exercise";
+import { TQuestion, TExerciseDetail } from "@/types/exercise";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
 import HelpIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { Alert } from "flowbite-react";
@@ -8,7 +8,7 @@ interface InformationExerciseProps {
   addLeadingZero: (number: number) => number | string;
   activeQuestion: number;
   questions: TQuestion[];
-  result: TExercise;
+  result: TExerciseDetail;
   onClickTandaiPertanyaan: () => void;
   formattedTime: string;
 }
@@ -32,7 +32,9 @@ const InformationExercise = ({
   };
 
   const Status = () => {
-    if (result.questions[activeQuestion].isMark) {
+    if (!result.questions[activeQuestion].status) {
+      return "belum-dijawab";
+    } else if (result.questions[activeQuestion].isMark) {
       return "ragu-ragu";
     } else {
       return result.questions[activeQuestion].status;
@@ -82,7 +84,7 @@ const InformationExercise = ({
               <p
                 className={`mt-[6px] whitespace-nowrap text-xs font-bold text-[#64748B] md:text-sm`}
               >
-                {result.questions[activeQuestion].mark}
+                {result.questions[activeQuestion].score}
               </p>
             </div>
           </div>
@@ -192,7 +194,7 @@ const InformationExercise = ({
               <p
                 className={`mt-[6px] whitespace-nowrap text-xs font-bold text-[#64748B] md:text-sm`}
               >
-                {result.questions[activeQuestion].mark}
+                {result.questions[activeQuestion].score}
               </p>
             </div>
           </div>

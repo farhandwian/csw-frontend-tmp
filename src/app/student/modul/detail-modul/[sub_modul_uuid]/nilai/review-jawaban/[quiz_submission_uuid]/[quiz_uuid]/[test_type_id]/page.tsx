@@ -7,9 +7,9 @@ import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { useGetQuizReview } from "@/hooks/quiz/hook";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
-import { TReviewJawabanParams } from "@/types/modul";
+import { TReviewJawabanQuizParams } from "@/types/modul";
 
-const Page = ({ params }: { params: TReviewJawabanParams }) => {
+const Page = ({ params }: { params: TReviewJawabanQuizParams }) => {
   const {
     data,
     isLoading: isLoadingQuizReview,

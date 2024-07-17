@@ -11,11 +11,17 @@ import ErrorComponent from "@/components/Error";
 import Loading from "@/components/Loading";
 import { TExerciseHistoryDetailModule } from "@/types/exercise";
 
-interface PostTestOrPretestArgs {
+interface LatihanSoalArgs {
   exercise_uuid: string;
+  module_id: number;
+  user_attempt: number;
 }
 
-const LatihanSoal = ({ exercise_uuid }: PostTestOrPretestArgs) => {
+const LatihanSoal = ({
+  exercise_uuid,
+  module_id,
+  user_attempt,
+}: LatihanSoalArgs) => {
   const [subnav, setSubnav] = useState(true);
   const showSubnav = () => setSubnav(!subnav);
 
@@ -55,19 +61,22 @@ const LatihanSoal = ({ exercise_uuid }: PostTestOrPretestArgs) => {
               </div>
             </div>
             <div className="max-h-[20rem] w-[100%] overflow-y-scroll">
-              {[...Array(2)].map((_, index) =>
-                index === 0 ? (
-                  <LatihanSoalItem
-                    key={index}
-                    data={dataExerciseHistory.max_score}
-                  />
-                ) : (
-                  <LatihanSoalItem
-                    key={index}
-                    data={dataExerciseHistory.min_score}
-                  />
-                ),
-              )}
+              <LatihanSoalItem
+                exercise_uuid={exercise_uuid}
+                module_id={module_id}
+                key={0}
+                isMax={1}
+                data={dataExerciseHistory.max_score}
+                user_attempt={user_attempt}
+              />
+              <LatihanSoalItem
+                exercise_uuid={exercise_uuid}
+                module_id={module_id}
+                key={1}
+                isMax={0}
+                data={dataExerciseHistory.min_score}
+                user_attempt={user_attempt}
+              />
             </div>
           </div>
           {/* end tabel nilai */}

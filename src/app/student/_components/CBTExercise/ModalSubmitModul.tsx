@@ -4,13 +4,13 @@ import Image from "next/image";
 import * as React from "react";
 import { Fragment, useState } from "react";
 import { GrayButton } from "@/components/Button/GrayButton";
-import { TExercise } from "@/types/exercise";
+import { TExerciseDetail } from "@/types/exercise";
 
 interface ModalSubmitModul {
   isOpenProp: boolean;
   formattedTime: string;
   unAnsweredQuestions?: number;
-  exercise: TExercise;
+  exercise: TExerciseDetail;
   onClose: () => void;
   onSubmit: () => void;
 }
@@ -76,7 +76,7 @@ export default function ModalSubmitModul({
                   </div>
                   <h1 className="text-center text-xl font-bold">PERHATIAN!!</h1>
                   <p className="mb-4 text-center">
-                    {`Modul ${exercise.modul} - ${exercise.topic} : ${exercise.description} `}
+                    {`Modul ${exercise.module_name} - ${exercise.title} : ${exercise.description} `}
                   </p>
 
                   <div

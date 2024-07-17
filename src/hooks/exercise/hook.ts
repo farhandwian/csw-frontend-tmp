@@ -8,18 +8,18 @@ import {
 import { TMetaErrorResponse } from "@/types";
 
 import {
-  //   TAddExerciseSubmissionPayload,
-  //   TAddExerciseSubmissionResponse,
+  TAddExerciseSubmissionPayload,
+  TAddExerciseSubmissionResponse,
   TExerciseDetailResponse,
   TExerciseHistoryResponse,
-  //   TExerciseReviewResponse,
+  TExerciseReviewResponse,
 } from "@/types/exercise";
 
 import {
-  //   addExerciseSubmission,
+  addExerciseSubmission,
   getExerciseDetailRequest,
   getExerciseHistoryRequest,
-  //   getExerciseReviewRequest,
+  getExerciseReviewRequest,
 } from "@/hooks/exercise/request";
 
 export const useGetExerciseDetail = (
@@ -38,40 +38,34 @@ export const useGetExerciseHistory = (
     queryFn: async () => await getExerciseHistoryRequest(uuid),
   });
 
-// export const useGetExerciseReview = (
-//   Exercise_submission_uuid: string,
-//   Exercise_uuid: string,
-//   test_type_id: number,
-// ): UseQueryResult<TExerciseReviewResponse, TMetaErrorResponse> =>
-//   useQuery({
-//     queryKey: ["get-exercise-review"],
-//     queryFn: async () =>
-//       await getExerciseReviewRequest(
-//         Exercise_submission_uuid,
-//         Exercise_uuid,
-//         test_type_id,
-//       ),
-//   });
+export const useGetExerciseReview = (
+  exercise_submission_uuid: string,
+): UseQueryResult<TExerciseReviewResponse, TMetaErrorResponse> =>
+  useQuery({
+    queryKey: ["get-exercise-review"],
+    queryFn: async () =>
+      await getExerciseReviewRequest(exercise_submission_uuid),
+  });
 
-// export const useAddExerciseSubmission = (): UseMutationResult<
-//   TAddExerciseSubmissionResponse,
-//   TMetaErrorResponse,
-//   TAddExerciseSubmissionPayload
-// > => {
-//   return useMutation<
-//     TAddExerciseSubmissionResponse,
-//     TMetaErrorResponse,
-//     TAddExerciseSubmissionPayload
-//   >({
-//     mutationKey: ["add-exercise-submission"],
-//     mutationFn: async (payload: TAddExerciseSubmissionPayload) => {
-//       console.log("tes masuk useAddExerciseSubmission");
-//       console.log(payload);
-//       const response = await addExerciseSubmission(payload);
-//       if (!response) {
-//         throw new Error("Invalid response");
-//       }
-//       return response;
-//     },
-//   });
-// };
+export const useAddExerciseSubmission = (): UseMutationResult<
+  TAddExerciseSubmissionResponse,
+  TMetaErrorResponse,
+  TAddExerciseSubmissionPayload
+> => {
+  return useMutation<
+    TAddExerciseSubmissionResponse,
+    TMetaErrorResponse,
+    TAddExerciseSubmissionPayload
+  >({
+    mutationKey: ["add-exercise-submission"],
+    mutationFn: async (payload: TAddExerciseSubmissionPayload) => {
+      console.log("tes masuk useAddExerciseSubmission");
+      console.log(payload);
+      const response = await addExerciseSubmission(payload);
+      if (!response) {
+        throw new Error("Invalid response");
+      }
+      return response;
+    },
+  });
+};

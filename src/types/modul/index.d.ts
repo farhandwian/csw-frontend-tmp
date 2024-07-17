@@ -57,13 +57,13 @@ export interface TMateriModulParams {
   test_id: string;
 }
 
-export interface TCBTParams {
+export interface TCBTQuizParams {
   sub_modul_uuid: string;
   quiz_uuid: string;
   test_type_id: number;
 }
 
-export interface TAfterTestParams {
+export interface TAfterTestQuizParams {
   sub_modul_uuid: string;
   quiz_uuid: string;
   test_type_id: number;
@@ -78,7 +78,7 @@ export interface TAfterTestProps {
   redirect_url: string;
 }
 
-export interface TReviewJawabanParams {
+export interface TReviewJawabanQuizParams {
   module_id: number;
   sub_modul_uuid: string;
   quiz_submission_uuid: string;

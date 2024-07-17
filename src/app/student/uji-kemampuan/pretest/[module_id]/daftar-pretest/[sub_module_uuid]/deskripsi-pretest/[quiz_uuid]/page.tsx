@@ -1,8 +1,8 @@
 import React from "react";
 import Deskripsi from "@/app/student/uji-kemampuan/_components/deskripsi/Deskripsi";
-import { TDeskripsiParams } from "@/types/uji-kemampuan";
+import { TDeskripsiQuizParams } from "@/types/uji-kemampuan";
 import Breadcrumbs from "@/app/student/_components/Breadcrumbs";
-const Page = ({ params }: { params: TDeskripsiParams }) => {
+const Page = ({ params }: { params: TDeskripsiQuizParams }) => {
   return (
     <>
       <Breadcrumbs widthReduction={"54px"} fontSize="12px" />

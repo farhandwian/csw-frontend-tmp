@@ -1,8 +1,8 @@
 import React from "react";
 import AfterTest from "@/app/student/_components/AfterTest";
 
-import { TAfterTestParams } from "@/types/uji-kemampuan";
-const Page = ({ params }: { params: TAfterTestParams }) => {
+import { TAfterTestQuizParams } from "@/types/uji-kemampuan";
+const Page = ({ params }: { params: TAfterTestQuizParams }) => {
   const redirectUrl = `/student/uji-kemampuan/posttest/${params.module_id}/daftar-posttest/${params.sub_module_uuid}/deskripsi-posttest/${params.quiz_uuid}`;
 
   return (

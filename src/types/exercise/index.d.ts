@@ -19,13 +19,16 @@ interface TExerciseHistoryDetailSubModule {
   submodule: string;
   score_per_sub_module: number;
   max_score_per_sub_module: number;
+  total_right_answer_per_sub_module: number;
   total_question_per_sub_module: number;
-  max_total_question_per_sub_module: number;
 }
 
 interface TExerciseHistoryDetailModule {
+  uuid: string;
   score_per_module: number;
   max_score_per_module: number;
+  right_answer_per_module: number;
+  total_question_per_module: number;
   exercise_history_detail: TExerciseHistoryDetailSubModule[];
 }
 
@@ -34,12 +37,17 @@ interface TExerciseHistory {
   min_score: TExerciseHistoryDetailModule;
 }
 //=====================================================================================================
-interface TChoice {
+export interface TChoice {
+  id: number;
   uuid: string;
   content: string;
 }
 
-interface TQuestion {
+export interface TQuestion {
+  isMark?: boolean;
+  user_answer?: string; // berupa id dari optionnya
+  status?: string; //belum-dijawab,sudah-dijawab,ditandai
+  id: number;
   uuid: string;
   sub_module_id: number;
   content: string;
@@ -61,43 +69,122 @@ interface TExerciseDetail {
 }
 //=====================================================================================================
 interface TExerciseReview {
+  id: number;
   uuid: string;
-  startedAt: string;
-  finishedAt: string;
-  timeRequired: string;
-  rightAnswer: number;
-  totalQuestion: number;
+  topic: string;
+  modul: string;
+  total_questions: number;
+  started_at: string;
+  total_time: string;
+  total_right_answers: number;
   score: number;
-  perfectScore: number;
-  questions: QuestionReview[];
+  max_score: number;
+  attempt: number;
+  questions: TQuestionReview[];
 }
 
-interface QuestionReview {
+interface TQuestionReview {
+  id: number;
   uuid: string;
-  content: string;
+  question: string;
+  options: TOptionReview[];
+  no_soal: number;
+  status: string;
+  mark: number;
   explanation: string;
-  questionMedia: QuestionMedia[];
-  choices: ChoiceReview[];
-  score: number;
+  user_answer: number;
+  right_answer: number;
+  right_answer_text: string;
 }
 
-interface QuestionMedia {
-  // Define the properties of QuestionMedia here
-  // For example:
-  // mediaType: string;
-  // mediaUrl: string;
-}
+interface TQuestionReviewItem {}
 
-interface ChoiceReview {
+interface TOptionReview {
+  id: number;
   uuid: string;
-  questionId: number;
-  content: string;
-  isChoose: boolean;
-  isCorrect: boolean;
+  text: string;
+  letter: string;
+  is_correct: boolean;
 }
 
 //=====================================================================================================
+interface OptionItem {
+  id: number;
+  text: string;
+}
+
+interface QuestionCreateItem {
+  id: number;
+  uuid: string;
+  sub_module_id: number;
+  options: OptionItem[];
+  user_answer: string;
+  score: number;
+}
+
+interface TAddExerciseSubmissionPayload {
+  exercise_uuid: string;
+  time_required: string;
+  questions: QuestionCreateItem[];
+}
+//=====================================================================================================
+// interface dan type untuk exercise review
+
+interface TExerciseReview {
+  id: number;
+  uuid: string;
+  topic: string;
+  modul: string;
+  total_questions: number;
+  started_at: string;
+  total_time: string;
+  total_right_answers: number;
+  score: number;
+  max_score: number;
+  attempt: number;
+  questions: TQuestionReview[];
+}
+
+interface TQuestionReview {
+  id: number;
+  uuid: string;
+  question: string;
+  no_soal: number;
+  status: string;
+  mark: number;
+  explanation: string;
+  user_answer: number;
+  right_answer: number;
+  right_answer_text: string;
+  options: TOptionReview[];
+}
+
+interface TOptionReview {
+  id: number;
+  uuid: string;
+  text: string;
+  letter: string;
+  is_correct: boolean;
+}
+
+// ==========================================================================
 
 export type TExerciseAllResponse = TMetaResponse<TExerciseAll>;
 export type TExerciseDetailResponse = TMetaResponseSingle<TExerciseDetail>;
 export type TExerciseHistoryResponse = TMetaResponseSingle<TExerciseHistory>;
+export type TAddExerciseSubmissionResponse = TMetaResponseSingle<>;
+export type TExerciseReviewResponse = TMetaResponseSingle<TExerciseReview>;
+
+//=====================================================================================================
+
+//param front end
+interface TExerciseDeskrispiParams {
+  module_id: number;
+  exercise_uuid: string;
+}
+
+export interface TAfterTestProps {
+  exercise_uuid: string;
+  exercise_title: string;
+  redirect_url: string;
+}

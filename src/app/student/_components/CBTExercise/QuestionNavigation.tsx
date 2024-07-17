@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import EmojiFlagsIcon from "@mui/icons-material/EmojiFlagsOutlined";
-import { TQuestion, TExercise } from "@/types/exercise";
+import { TQuestion, TExerciseDetail } from "@/types/exercise";
 import { TipeUjianContext } from "@/app/student/_components/CBT/CBT";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
@@ -8,9 +8,9 @@ import { grey } from "@mui/material/colors";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 interface QuestionNavigationProps {
-  result: TExercise;
+  result: TExerciseDetail;
   activeQuestion: number;
-  onClickNavigation: (noSoal: number, index: number) => void;
+  onClickNavigation: (index: number) => void;
 }
 
 const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
@@ -21,9 +21,9 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
   const [isShow, setIsShow] = useState(false);
   const tipeUjianContext = useContext(TipeUjianContext);
 
-  const checkColorNavigation = (question: TQuestion, index: number) => {
+  const checkColorNavigation = (question: TQuestion, questionIndex: number) => {
     let style: string = "";
-    if (question.no_soal === activeQuestion + 1) {
+    if (questionIndex === activeQuestion) {
       style += `border-green-400 `;
     }
 
@@ -54,8 +54,8 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
     return style;
   };
 
-  const onClickNavigationButton = (noSoal: number, index: number) => {
-    onClickNavigation(noSoal, index);
+  const onClickNavigationButton = (index: number) => {
+    onClickNavigation(index);
   };
 
   return (
@@ -74,7 +74,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
 
           <div className="">
             <h1 className="font-semibold">NAVIGASI LATIHAN</h1>
-            <h1>{result.topic}</h1>
+            <h1>{result.title}</h1>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
             {result.questions.map((question, index) => (
               <button
                 key={index}
-                onClick={() => onClickNavigationButton(question.no_soal, index)}
+                onClick={() => onClickNavigationButton(index)}
                 className={`inline-block h-[55px] rounded-sm border-2 ${checkColorNavigation(
                   question,
                   index,
@@ -131,7 +131,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
 
               <div className="flex items-center justify-center ">
                 <h1 className=" text-xs font-semibold">NAVIGASI LATIHAN</h1>
-                <h1 className="hidden text-2xs">{result.topic}</h1>
+                <h1 className="hidden text-2xs">{result.title}</h1>
               </div>
             </div>
 
@@ -140,9 +140,7 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
                 {result.questions.map((question, index) => (
                   <button
                     key={index}
-                    onClick={() =>
-                      onClickNavigationButton(question.no_soal, index)
-                    }
+                    onClick={() => onClickNavigationButton(index)}
                     className={`inline-block h-[40px] rounded-sm border-2 text-2xs ${checkColorNavigation(
                       question,
                       index,

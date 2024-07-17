@@ -1,13 +1,13 @@
 "use client";
-import InformationExercise from "@/app/student/_components/CBT/InformationExercise";
-import ModalSubmitModul from "@/app/student/_components/CBT/ModalSubmitModul";
-import QuestionNavigation from "@/app/student/_components/CBT/QuestionNavigation";
-import QuestionSection from "@/app/student/_components/CBT/QuestionSection";
+import InformationExercise from "@/app/student/_components/CBTExercise/InformationExercise";
+import ModalSubmitModul from "@/app/student/_components/CBTExercise/ModalSubmitModul";
+import QuestionNavigation from "@/app/student/_components/CBTExercise/QuestionNavigation";
+import QuestionSection from "@/app/student/_components/CBTExercise/QuestionSection";
 import useTimer from "@/hooks/useTimer";
 import {
   TAddExerciseSubmissionPayload,
-  TOption,
-  TExercise,
+  TChoice,
+  TExerciseDetail,
 } from "@/types/exercise";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -20,7 +20,7 @@ import { TMetaErrorResponse, TMetaResponseSingle } from "@/types";
 import { UseMutateFunction } from "@tanstack/react-query";
 
 interface CBTProps {
-  exercise: TExercise;
+  exercise: TExerciseDetail;
   mutate: UseMutateFunction<
     TMetaResponseSingle<string>,
     TMetaErrorResponse,
@@ -45,29 +45,13 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
   const [unAnsweredQuestions, setisUnAnsweredQuestions] = useState(
     exercise.questions.length,
   );
-  // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
-  const [navigasiSoalType, setNavigasiSoalType] =
-    useState<NavigasiSoalContextType>("kecil");
 
-  useEffect(() => {
-    checkNavigasiSoalType();
-  });
-
-  const serverTime = exercise.total_time * 600000; // Contoh waktu dalam milidetik (10 menit)
-
-  // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
-  const checkNavigasiSoalType = () => {
-    if (exercise.total_questions > 30) {
-      setNavigasiSoalType("besar");
-    } else {
-      setNavigasiSoalType("kecil");
-    }
-  };
+  const serverTime = exercise.time * 600000; // Contoh waktu dalam milidetik (10 menit)
 
   const onSubmit = () => {
     try {
       const payload: TAddExerciseSubmissionPayload =
-        TransformExerciseToPayloadExerciseSubmission(result, 40, timeLeft);
+        TransformExerciseToPayloadExerciseSubmission(result, timeLeft);
 
       console.log(payload);
       mutate(payload, {
@@ -98,6 +82,7 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
   const onTimerEnd = () => {
     onSubmit();
   };
+
   const { formattedTime, timeLeft } = useTimer({
     time: serverTime,
     onTimerEnd,
@@ -128,18 +113,21 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
     }
   };
 
-  const onOptionSelected = (option: TOption, index: number) => {
+  const onOptionSelected = (option: TChoice, index: number) => {
     const updateResult = { ...result };
-
-    if (updateResult.questions[activeQuestion].user_answer === option.id) {
+    console.log(
+      updateResult.questions[activeQuestion].user_answer,
+      option.uuid,
+    );
+    if (updateResult.questions[activeQuestion].user_answer === option.uuid) {
       // Mengganti user_answer pada pertanyaan yang sedang aktif
-      updateResult.questions[activeQuestion].user_answer = 0;
+      updateResult.questions[activeQuestion].user_answer = "";
 
       updateResult.questions[activeQuestion].status = "belum-dijawab";
       // Memperbarui state menggunakan setResult
     } else {
       // Mengganti user_answer pada pertanyaan yang sedang aktif
-      updateResult.questions[activeQuestion].user_answer = option.id;
+      updateResult.questions[activeQuestion].user_answer = option.uuid;
 
       updateResult.questions[activeQuestion].status = "sudah-dijawab";
       // Memperbarui state menggunakan setResult
@@ -153,11 +141,12 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
     // Mengganti userAnswer pada pertanyaan yang sedang aktif
     setIsMark(!isMark);
     updateResult.questions[activeQuestion].isMark = !isMark;
+
     // Memperbarui state menggunakan setResult
     setResult(updateResult);
   };
 
-  const onClickNavigation = (noSoal: number, index: number) => {
+  const onClickNavigation = (index: number) => {
     setActiveQuestion(index);
   };
 
@@ -182,11 +171,11 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
   }
 
   return (
-    <TipeUjianContext.Provider value={navigasiSoalType}>
+    <>
       <h1
         className={`my-2 text-xl font-semibold leading-normal text-tp-Gunmetal md:text-2xl`}
       >
-        {exercise.topic}
+        {exercise.title}
       </h1>
       <div className="flex flex-col md:flex-row">
         <div className="md:w-[73%]">
@@ -231,7 +220,7 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
         onClose={onCloseModalSubmit}
         onSubmit={onSubmit}
       />
-    </TipeUjianContext.Provider>
+    </>
   );
 };
 

@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Fragment } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { signOut } from "next-auth/react";
-
 const profiles = [
   {
     id: 1,
@@ -100,8 +99,8 @@ const Profile = () => {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <div
-                onClick={() => signOut({ redirect: false })}
+              <Link
+                href={"/student/dashboard"}
                 className="group flex items-center rounded p-2 text-sm text-gray-700 transition-colors hover:bg-red-500 hover:text-white"
               >
                 <Image
@@ -113,7 +112,7 @@ const Profile = () => {
                 />
 
                 <h3>{profiles[2].text}</h3>
-              </div>
+              </Link>
             </Menu.Item>
             <Menu.Item>
               <div

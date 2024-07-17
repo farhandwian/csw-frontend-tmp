@@ -8,6 +8,7 @@ import Loading from "@/components/Loading";
 import { useGetExerciseAll } from "@/hooks/uji-kemampuan/hook";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 import { TUjiKemampuanAllParams } from "@/types/uji-kemampuan";
+import Link from "next/link";
 
 const percentage = 66;
 
@@ -88,7 +89,8 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
             <div className="grid grid-cols-3 gap-2">
               {/* container item card pretest */}
               {dataExercises?.map((exercise, index) => (
-                <div
+                <Link
+                  href={`${params.module_id}/deskripsi-latihan-soal/${exercise.uuid}`}
                   key={index}
                   style={{
                     backgroundColor:
@@ -120,7 +122,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
                     <h3>{exercise.total_question}</h3>
                     <ArrowCircleRightIcon sx={{ color: "black" }} />
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
