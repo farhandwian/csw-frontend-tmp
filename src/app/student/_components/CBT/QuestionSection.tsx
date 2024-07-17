@@ -46,15 +46,27 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
 
   return (
     <div className="w-[100%] rounded-2xl border-2 bg-white p-4">
-      <h2 className="mb-2">
+      <h2 className="mb-2 text-justify">
         {/* {activeQuestion + 1}.&nbsp;{question} */}
         <div
           className="prose"
           dangerouslySetInnerHTML={{ __html: cleanHtmlContent(question) }}
         ></div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+        corrupti magnam ratione cupiditate culpa adipisci quis laboriosam modi
+        consectetur sapiente, obcaecati, ut mollitia natus. Animi repudiandae
+        reprehenderit corrupti! Inventore necessitatibus veritatis saepe quo
+        possimus consequuntur sequi delectus voluptatem. Repudiandae, nam
+        provident. Doloribus asperiores obcaecati rerum voluptatem debitis
+        accusantium quis reprehenderit, veritatis libero. Explicabo saepe fugiat
+        provident quo aliquam quam libero pariatur ullam cupiditate, commodi
+        tenetur? Quidem, numquam qui provident similique unde quod optio minus
+        aliquid vitae amet vero saepe iure beatae possimus nisi reprehenderit
+        labore quis blanditiis non ex nobis repellendus, totam quasi accusamus.
+        Consequatur pariatur impedit repellat animi odio.
       </h2>
       <div>
-        {options.map((option, index) => (
+        {options?.map((option, index) => (
           <div
             onClick={handleOptionSelected(option, index)}
             key={option.id}
@@ -73,14 +85,26 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
             >
               <div className="mt-[2px]">{option.letter}</div>
             </div>
-            <div className="m-auto ml-3 inline-block text-left">
-              {option.text} Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Veritatis numquam tempore cumque illum cum sapiente
-              voluptatum id quidem. Accusamus explicabo odio numquam eum,
-              commodi omnis excepturi expedita, unde suscipit tempore laborum,
-              perferendis facere sint aliquam. Veritatis rerum nisi ipsam nulla
-              corrupti dolorum recusandae consequuntur numquam blanditiis. Sed
-              facilis vero dicta.
+            <div className="m-auto ml-3 inline-block pr-2 text-justify">
+              {/* {option.text} */}
+              <div
+                className="prose"
+                dangerouslySetInnerHTML={{
+                  __html: cleanHtmlContent(option.text),
+                }}
+              ></div>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, sed
+              recusandae aut dicta repellendus ad nihil earum aspernatur
+              voluptate temporibus totam, voluptatem consectetur odit quis
+              similique suscipit. Incidunt error molestiae dolores nobis
+              possimus corrupti aliquid aut fugit, quaerat eaque hic quos quia
+              dicta enim veniam numquam nam laborum fuga qui libero architecto
+              quae pariatur adipisci voluptatem! Ducimus eius exercitationem qui
+              impedit quod, obcaecati excepturi repellendus sunt quasi molestias
+              assumenda repudiandae, totam dolorum dolor amet reprehenderit
+              iusto ipsum repellat! Temporibus nobis quasi autem cumque ipsa?
+              Reiciendis ipsam ipsa possimus repellat quod? Blanditiis, tempore.
+              Beatae, quidem ipsam quod quisquam amet eaque neque?
             </div>
           </div>
         ))}

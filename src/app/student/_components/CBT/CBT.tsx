@@ -49,7 +49,7 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
     checkNavigasiSoalType();
   });
 
-  const serverTime = quiz.total_time * 600000; // Contoh waktu dalam milidetik (10 menit)
+  const serverTime = quiz.total_time * 60000; // Contoh waktu dalam milidetik (10 menit)
 
   // belum diimplementasi(di figma nya tedapat perbedaan tampilan untuk soal banyak dan soal sedikit )
   const checkNavigasiSoalType = () => {
@@ -63,18 +63,14 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
   const onSubmit = () => {
     try {
       const payload: TAddQuizSubmissionPayload =
-        TransformQuizToPayloadQuizSubmission(result, 40, timeLeft);
+        TransformQuizToPayloadQuizSubmission(result, timeLeft);
 
       console.log(payload);
       mutate(payload, {
         onSuccess: () => {
-          console.log("tes1");
-          // router.replace("/student/modul/detail-modul/after-test");
-
           toast.success("quiz submission has been added");
         },
         onError: (error) => {
-          console.log("tes2");
           logger(payload);
           logger("add quiz submission Error:", error.response?.data.message);
           toast.error(

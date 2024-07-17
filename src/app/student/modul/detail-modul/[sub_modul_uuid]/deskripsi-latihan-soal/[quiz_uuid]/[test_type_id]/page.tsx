@@ -23,8 +23,9 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
   };
   const updateInformasi = (dataQuizDetail: TQuizDetail) => {
     console.log(dataQuizDetail?.score);
-    informasi.PENGERJAAN =
-      `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
+    // informasi.PENGERJAAN =
+    //   `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
+    informasi.PENGERJAAN = `dapat dikerjakan berkali-kali`;
     informasi.STATUS =
       `${dataQuizDetail?.status} ${dataQuizDetail?.attempt ? `${dataQuizDetail?.attempt}x` : ""}` ||
       "";

@@ -46,7 +46,7 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
 
   return (
     <div className="w-[100%] rounded-2xl border-2 bg-white p-4">
-      <h2 className="mb-2">
+      <h2 className="mb-2 text-justify">
         {/* {activeQuestion + 1}.&nbsp;{question} */}
         <div
           className="prose"
@@ -74,14 +74,13 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
               {/* letter choice */}
               <div className="mt-[2px]">{String.fromCharCode(97 + index)}</div>
             </div>
-            <div className="m-auto ml-3 inline-block text-left">
-              {option.content} Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Veritatis numquam tempore cumque illum cum
-              sapiente voluptatum id quidem. Accusamus explicabo odio numquam
-              eum, commodi omnis excepturi expedita, unde suscipit tempore
-              laborum, perferendis facere sint aliquam. Veritatis rerum nisi
-              ipsam nulla corrupti dolorum recusandae consequuntur numquam
-              blanditiis. Sed facilis vero dicta.
+            <div className="m-auto ml-3 inline-block pr-2 text-justify">
+              <div
+                className="prose"
+                dangerouslySetInnerHTML={{
+                  __html: cleanHtmlContent(option.content),
+                }}
+              ></div>
             </div>
           </div>
         ))}

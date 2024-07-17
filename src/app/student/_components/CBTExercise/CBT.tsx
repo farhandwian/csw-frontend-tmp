@@ -46,7 +46,7 @@ const CBT = ({ exercise, mutate, router, status }: CBTProps) => {
     exercise.questions.length,
   );
 
-  const serverTime = exercise.time * 600000; // Contoh waktu dalam milidetik (10 menit)
+  const serverTime = exercise.time * 60000; // Contoh waktu dalam milidetik (10 menit)
 
   const onSubmit = () => {
     try {

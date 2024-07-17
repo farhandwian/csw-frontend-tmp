@@ -62,7 +62,6 @@ interface TQuestionSubmission {
 }
 
 interface TAddQuizSubmissionPayload {
-  user_id: number;
   quiz_id: number;
   topic: string;
   modul: string;
@@ -70,10 +69,6 @@ interface TAddQuizSubmissionPayload {
   time_required: string;
   questions: TQuestionSubmission[];
 }
-
-// interface TAddQuizSubmission {
-//   id: number;
-// }
 
 export type TAddQuizSubmissionResponse = TMetaResponseSingle<>;
 

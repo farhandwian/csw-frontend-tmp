@@ -7,12 +7,11 @@ import {
 
 export const TransformQuizToPayloadQuizSubmission = (
   quiz: TQuiz,
-  user_id: number,
   time_left: number,
 ): TAddQuizSubmissionPayload => {
   const { id, topic, modul, total_questions, total_time, questions } = quiz;
 
-  const total_time_in_seconds = total_time * 600000;
+  const total_time_in_seconds = total_time * 60000;
   const time_required = formatSecondToTime(total_time_in_seconds - time_left);
 
   console.log(total_time_in_seconds, time_required);
@@ -42,7 +41,6 @@ export const TransformQuizToPayloadQuizSubmission = (
   });
 
   return {
-    user_id,
     quiz_id: id,
     topic,
     modul,
@@ -84,7 +82,7 @@ export const TransformExerciseToPayloadExerciseSubmission = (
 ): TAddExerciseSubmissionPayload => {
   const { uuid, time, questions } = exercise;
 
-  const total_time_in_seconds = time * 600000; // Mengubah time dari menit ke detik
+  const total_time_in_seconds = time * 60000; // Mengubah time dari menit ke detik
   const time_required = formatSecondToTime(total_time_in_seconds - time_left);
   console.log(total_time_in_seconds, time_required);
 

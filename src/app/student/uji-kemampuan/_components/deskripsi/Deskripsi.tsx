@@ -22,8 +22,10 @@ const informasi = {
 };
 
 const updateInformasi = (dataQuizDetail: TQuizDetail) => {
-  informasi.PENGERJAAN =
-    `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
+  // informasi.PENGERJAAN =
+  //   `dapat dikerjakan ${dataQuizDetail?.attempt_allowed}x` || "";
+  informasi.PENGERJAAN = `dapat dikerjakan sekali`;
+
   informasi.STATUS =
     `${dataQuizDetail?.status} ${dataQuizDetail?.attempt ? `${dataQuizDetail?.attempt}x` : ""}` ||
     "";

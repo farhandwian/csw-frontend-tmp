@@ -66,12 +66,12 @@ const srcItemCardsMap: SrcItemCardsMap = {
 };
 
 const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
-  console.log(params.module_id);
+  console.log(parseInt(params.module_id, 10));
   const {
     data,
     isLoading: isLoadingAllPosttest,
     isError: isErrorAllPosttest,
-  } = useGetQuizSubModuleAll(params.module_id, "2");
+  } = useGetQuizSubModuleAll(parseInt(params.module_id, 10), 3);
 
   const dataAllPosttest = data?.data;
 

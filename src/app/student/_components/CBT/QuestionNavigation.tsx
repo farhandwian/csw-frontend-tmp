@@ -61,11 +61,11 @@ const QuestionNavigation: React.FC<QuestionNavigationProps> = ({
   return (
     <>
       <div className="ml-2 hidden w-[92%] rounded-md border-2 bg-white md:block">
-        <div className="flex justify-between gap-2 p-3 shadow-md">
+        <div className="flex gap-2 p-3 shadow-md">
           <div>
             <Image
-              width={60}
-              height={60}
+              width={40}
+              height={40}
               src="/img/uji-kemampuan/ic_navigation.png"
               className="inline-block"
               alt="Logo CSW"

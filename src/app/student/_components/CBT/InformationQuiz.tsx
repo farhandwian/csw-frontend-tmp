@@ -42,7 +42,7 @@ const InformationQuiz = ({
     <>
       {/* desktop mode */}
       <div className="hidden md:block">
-        <div className="mb-5 flex w-[100%] items-center justify-evenly rounded-2xl border-2">
+        <div className="mb-5 flex w-[100%] items-center justify-evenly rounded-2xl border-2 bg-white">
           <div className="flex py-[6px]">
             <div className="mr-3">
               <p className={`text-xs font-bold text-[#9CA3AF] md:text-sm`}>
@@ -168,7 +168,22 @@ const InformationQuiz = ({
             </p>
           </div>
         </div>
-        <div className="mb-2 flex w-[100%] items-center justify-evenly rounded-2xl border-2 md:mb-5">
+        <div className="mb-2 flex w-[100%] items-center justify-evenly rounded-2xl border-2 bg-white md:mb-5">
+          <div className=" w-fit py-[6px]  md:flex">
+            <div className="mr-3">
+              <p className={`text-xs font-bold text-[#9CA3AF] md:text-sm`}>
+                NO
+              </p>
+              <p
+                className={`mt-[6px] whitespace-nowrap text-xs font-bold text-[#64748B] md:text-sm`}
+              >
+                {addLeadingZero(activeQuestion + 1)}/
+                {addLeadingZero(questions.length)}
+              </p>
+            </div>
+          </div>
+          {/* vertical line */}
+          <div className="my-auto h-[50px] w-[3px] bg-[#E5E7EB] md:block"></div>
           <div className=" w-fit py-[6px]  md:flex">
             <div className="mr-3">
               <p className={`text-xs font-bold text-[#9CA3AF] md:text-sm`}>
@@ -245,7 +260,7 @@ const InformationQuiz = ({
                     ></EmojiFlagsIcon>
                   </div>
                   <h1 className="whitespace-nowrap text-xs md:text-xs ">
-                    TANDAI PERTANYAAN
+                    TANDAI
                   </h1>
                 </div>
               </div>

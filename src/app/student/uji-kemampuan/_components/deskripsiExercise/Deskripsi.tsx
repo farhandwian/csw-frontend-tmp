@@ -22,11 +22,13 @@ const informasi = {
 };
 
 const updateInformasi = (dataExerciseDetail: TExerciseDetail) => {
-  if (dataExerciseDetail?.attempt > 0) {
-    informasi.PENGERJAAN = `dapat dikerjakan berkali-kali`;
-  } else {
-    informasi.PENGERJAAN = `Tidak dapat dikerjakan berkali-kali`;
-  }
+  // if (dataExerciseDetail?.attempt > 0) {
+  //   informasi.PENGERJAAN = `dapat dikerjakan berkali-kali`;
+  // } else {
+  //   informasi.PENGERJAAN = `Tidak dapat dikerjakan berkali-kali`;
+  // }
+
+  informasi.PENGERJAAN = `dapat dikerjakan berkali-kali`;
 
   if (dataExerciseDetail?.user_attempt > 0) {
     informasi.STATUS =
