@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../const";
+// import { BASE_URL } from "../const";
 
 import { AuthState } from "./authSlice";
 
 // const backendURL = process.env.BASE_URL;
-const backendURL = BASE_URL;
+// const backendURL = BASE_URL;
 
 interface RegisterUserArgs {
   email: string;
@@ -66,7 +66,7 @@ export const registerUser = createAsyncThunk<
     const transformedData = transformRegisterData(RegisterUserArgs);
 
     const response = await axios.post(
-      `${backendURL}/api/v1/account/register`,
+      `/api/v1/account/register`,
       transformedData,
       config,
     );
