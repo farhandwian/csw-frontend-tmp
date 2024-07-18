@@ -21,7 +21,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginForm: NextPage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const [error, setError] = useState<string | undefined | null>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -59,7 +59,7 @@ const LoginForm: NextPage = () => {
 
         if (response?.ok && response?.url !== null) {
           toast.success(`Login Success. Welcome ${data.email}`);
-          router.push(searchParams.get("callbackUrl") || "/home-page");
+          // router.push(searchParams.get("callbackUrl") || "/home-page");
         } else {
           setError(response?.error);
         }
