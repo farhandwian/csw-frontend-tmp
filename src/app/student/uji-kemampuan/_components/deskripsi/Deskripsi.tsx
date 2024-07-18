@@ -51,6 +51,7 @@ const Deskripsi = ({
     data,
     isLoading: isLoadingQuizDetail,
     isError: isErrorQuizDetail,
+    refetch,
   } = useGetQuizDetail(quiz_uuid, convertTestTypeNameToID(test_type));
 
   // params.test_type_id
@@ -62,6 +63,7 @@ const Deskripsi = ({
 
   //   const informasiArray = Object.entries(informasi);
   useEffect(() => {
+    refetch();
     if (dataQuizDetail?.attempt && dataQuizDetail?.attempt > 0) {
       setIsDone(true);
     }
@@ -72,7 +74,7 @@ const Deskripsi = ({
       setSingleScore(dataQuizDetail?.score);
       console.log(singleScore);
     }
-  }, [dataQuizDetail, test_type]);
+  }, [dataQuizDetail, test_type, singleScore, refetch]);
 
   if (isLoadingQuizDetail) {
     return <Loading>{loadingMessage}</Loading>;
@@ -126,7 +128,7 @@ const Deskripsi = ({
                 Lanjutkan dan mulai kerjakan pretest dengan sungguh-sungguh
               </h2>
 
-              {isDone ? (
+              {dataQuizDetail?.attempt && dataQuizDetail?.attempt ? (
                 <button className="me-2 mt-2 cursor-auto rounded-lg border border-gray-200 bg-[#E5E7EB] px-5 py-2.5 text-sm font-medium text-[#9CA3AF]  ">
                   Tidak Bisa Dikerjakan Kembali
                 </button>
