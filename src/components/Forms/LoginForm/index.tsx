@@ -17,7 +17,7 @@ import { NextPage } from "next";
 import { HiInformationCircle } from "react-icons/hi";
 import { Spinner } from "flowbite-react";
 import { signIn } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const LoginForm: NextPage = () => {
   const router = useRouter();
