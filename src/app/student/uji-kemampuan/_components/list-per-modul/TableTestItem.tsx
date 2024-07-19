@@ -24,7 +24,7 @@ const TableTestItem = ({ sub_module_uuid, testType }: TableTestItemProps) => {
     data,
     isLoading: isLoadingQuizAllPretest,
     isError: isErrorQuizAllPretest,
-  } = useGetQuizAll(page, 2, sub_module_uuid, testTypeID);
+  } = useGetQuizAll(page, 4, sub_module_uuid, testTypeID);
 
   const dataQuizAllPretest = data?.data;
   const pagination = data?.pagination;

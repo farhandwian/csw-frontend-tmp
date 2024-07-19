@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import MateriModulLayout from "@/app/student/modul/detail-modul/[sub_modul_uuid]/materi-modul/_components/MateriModulLayout";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import MateriTerkunciAlert from "@/app/student/modul/detail-modul/[sub_modul_uuid]/materi-modul/_components/MateriTerkunciAlert";
+// import MateriTerkunciAlert from "@/app/student/modul/detail-modul/[sub_modul_uuid]/materi-modul/_components/MateriTerkunciAlert";
 import { TMateriModulParams } from "@/types/modul";
 import { useGetMateriModul } from "@/hooks/modul/hook";
 import ErrorComponent from "@/components/Error";
@@ -55,7 +55,7 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
       activeSubSubject={activeSubSubject}
       setActiveSubSubject={setActiveSubSubject}
     >
-      <MateriTerkunciAlert />
+      {/* <MateriTerkunciAlert /> */}
       <div
         key={activeSubSubject}
         className="h-fit max-w-[100%] bg-white shadow-md"
@@ -71,33 +71,24 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
         <div className="h-[28.75rem] overflow-y-scroll p-3 shadow-sm">
           {/* kotak nomor kecil */}
           <div className="h-fit w-fit border border-blue-400 px-2 py-1">
-            <h3>{`${activeSubSubject + 1}.0`}</h3>
+            <h3>{`1.${activeSubSubject + 1}`}</h3>
           </div>
           <h1 className="text-2xl font-semibold">
             {dataSubSubjects && dataSubSubjects[activeSubSubject].name}
           </h1>
 
           {/* horizontal line thin */}
-          <div className="w-100% mt-2 h-1 bg-gray-100"></div>
+          <div className="w-100% mb-4 mt-2 h-1 bg-gray-100"></div>
 
-          <div
-            className="prose"
-            dangerouslySetInnerHTML={{
-              __html: cleanHtmlContent(
-                dataSubSubjects && dataSubSubjects[activeSubSubject].content,
-              ),
-            }}
-          ></div>
-
-          <div className="w-full bg-red-400 text-right">
-            <Image
-              src={"/image/img-login.png"}
-              width={0}
-              height={0}
-              sizes="100vw"
-              alt="img-login"
-              className="h-[6.375rem] w-[6.375rem] object-fill"
-            />
+          <div className="text-justify">
+            <div
+              className="prose"
+              dangerouslySetInnerHTML={{
+                __html: cleanHtmlContent(
+                  dataSubSubjects && dataSubSubjects[activeSubSubject].content,
+                ),
+              }}
+            ></div>
           </div>
         </div>
         {/* footer */}
