@@ -72,7 +72,7 @@ const Page = ({ params }: { params: TDeskripsiLatihanSoalParams }) => {
         </p>
         <p className="mt-3 text-sm font-semibold text-[#b4b4b4] md:text-base">
           Persiapkan diri kamu sebelum mengerjakan latihan dengan mempelajari
-          dan memahami modul materi 1. Sudah belajar sebelumnya? Lanjutkan dan
+          dan memahami modul materi. Sudah belajar sebelumnya? Lanjutkan dan
           mulai kerjakan latihan!
         </p>
 

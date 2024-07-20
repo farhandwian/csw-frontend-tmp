@@ -263,7 +263,11 @@ const HomePage = () => {
                       key={`mentor-item-${index}`}
                       className={`keen-slider__slide ${"number-slide" + (index + 1)} px-2 md:px-0 lg:py-20`}
                     >
-                      <MentorItem img={`img-mentor${index + 1}`} props={item} key={`mentor-item-${index}`} />
+                      <MentorItem
+                        img={`img-mentor${index + 1}`}
+                        props={item}
+                        key={`mentor-item-${index}`}
+                      />
                     </div>
                   ))
                 )}
@@ -576,28 +580,20 @@ const HomePage = () => {
         </h2>
         <div className="mt-5 flex w-full flex-col items-center justify-center gap-y-4 lg:mt-20 lg:gap-y-6">
           <FaqItem
-            title="Masalah apa yang Anda selesaikan?"
-            text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
+            title="Apa itu CSW?"
+            text="CSW adalah startup bimbingan belajar yang berkomitmen untuk membantu siswa meraih kesuksesan dalam menghadapi seleksi masuk sekolah tinggi kedinasan"
           />
           <FaqItem
-            title="Masalah apa yang Anda selesaikan?"
-            text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
+            title="Apa saja program-program yang ditawarkan oleh CSW?"
+            text="Kami menawarkan program bimbingan belajar online fleksibel. Materi kami dirancang untuk memberikan materi yang disesuaikan dengan kebutuhan siswa setelah mereka membeli paket bimbingan. Mereka akan dibimbing oleh para mentor yang ahli di bidangnya."
           />
           <FaqItem
-            title="Masalah apa yang Anda selesaikan?"
-            text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
+            title="Bagaimana cara membeli paket pada csw?"
+            text="Pengguna bisa mengakses menu 'Paket', lalu memilih paket yang sesuai dengan kebutuhan mereka. Setelah memilih paket, pengguna dapat melihat detail paket termasuk harga dan fitur yang ditawarkan. Selanjutnya, pengguna bisa melanjutkan ke proses pembelian dengan mengklik tombol 'Beli'. Pengguna akan diarahkan ke halaman pembayaran di mana mereka dapat memilih metode pembayaran yang diinginkan, seperti kartu kredit, transfer bank, atau pembayaran digital lainnya. Setelah pembayaran berhasil, paket akan diaktifkan secara otomatis dan pengguna dapat langsung menikmati layanan yang ditawarkan oleh paket tersebut."
           />
           <FaqItem
-            title="Masalah apa yang Anda selesaikan?"
-            text="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s"
+            title="Bagaimana bimbingan belajar pada CSW?"
+            text="Bimbingan belajar akan dilaksakan dengan menggunakna website dan bisa dibimbing oleh mentor"
           />
         </div>
       </div>

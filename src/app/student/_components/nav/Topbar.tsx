@@ -133,19 +133,6 @@ export default function TopBar({
                       </p>
                     </div>
                   </div>
-                  <div className="flex">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-200">
-                      <CheckIcon className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="font-medium text-gray-700">
-                        Notification Title
-                      </p>
-                      <p className="truncate text-sm text-gray-500">
-                        Test Notification text for design
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </Popover.Panel>
@@ -162,7 +149,7 @@ export default function TopBar({
                 />
               </picture>
               <span className="hidden font-medium text-gray-700 md:block">
-                {user.name}
+                {user?.name}
               </span>
               <ExpandMoreIcon className="ml-2 h-4 w-4 text-gray-700" />
             </Menu.Button>
@@ -195,13 +182,13 @@ export default function TopBar({
                       {/* <h3>Login as {profiles[0].text}</h3>
                       <h3>Newbie User</h3> */}
 
-                      <h3>Login sebagai {user.name}</h3>
+                      <h3>Login sebagai {user?.name}</h3>
                     </div>
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
                   <Link
-                    href="#"
+                    href="/home-page"
                     className="group flex items-center rounded p-2 text-sm text-gray-700 transition-colors hover:bg-red-500 hover:text-white"
                   >
                     <Image

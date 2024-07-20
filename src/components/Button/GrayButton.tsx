@@ -20,7 +20,7 @@ export const GrayButton = ({
       className={`h-7 w-fit bg-gray-400 text-white hover:!bg-gray-500 focus:ring-0 md:h-fit md:w-fit ${className}`}
       {...props}
     >
-      <h1 className="text-xs">{children}</h1>
+      <h1 className="text-xs md:text-sm">{children}</h1>
     </Button>
   );
 };

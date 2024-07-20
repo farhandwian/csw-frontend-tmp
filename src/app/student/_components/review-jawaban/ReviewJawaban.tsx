@@ -37,7 +37,7 @@ const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
         <div className="w-full md:w-[75%]">
           <InformationTable dataQuizReview={props.dataQuizReview} />
           {/* awal section soal */}
-          {props.dataQuizReview.questions.map((question, index) => (
+          {props.dataQuizReview?.questions.map((question, index) => (
             <div key={index} id={`soal-${question.question_review_item.id}`}>
               <div className="mb-1">
                 {/* awal section informasi kuis */}
@@ -107,20 +107,6 @@ const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
                         ),
                       }}
                     ></div>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Laudantium corrupti fugit nulla soluta est magni sapiente
-                    doloremque rerum odit delectus sed expedita nihil doloribus
-                    nisi quidem earum iste rem, magnam harum blanditiis.
-                    Repellendus, eos, omnis, eius esse consequatur pariatur
-                    voluptatum sed veritatis reiciendis velit natus. Eum,
-                    facilis? Porro distinctio facilis hic animi dolores itaque.
-                    Minus optio laboriosam labore? Aspernatur fuga corrupti non
-                    quam temporibus corporis facere rerum pariatur minima harum,
-                    doloremque soluta aliquam voluptates sequi laboriosam
-                    voluptate voluptatum omnis nulla ea animi deleniti
-                    architecto repudiandae dolorum quia? A eaque fuga rem, nemo
-                    earum asperiores omnis, totam perferendis, laboriosam libero
-                    assumenda.
                   </h2>
                   <div className="">
                     {question.question_review_item.options.map(
@@ -157,25 +143,6 @@ const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
                                         __html: cleanHtmlContent(option.text),
                                       }}
                                     ></div>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Repudiandae libero esse
-                                    beatae ex! Excepturi vitae magnam
-                                    doloremque, odit, voluptates eius quisquam
-                                    possimus reprehenderit reiciendis, magni
-                                    consequatur exercitationem omnis aliquam.
-                                    Autem mollitia voluptate neque nulla facilis
-                                    corporis hic qui veniam at fugit eligendi,
-                                    magni iure, explicabo repellat dolorum alias
-                                    voluptas laboriosam. Commodi porro ullam
-                                    dolor, minima molestiae recusandae
-                                    laboriosam odio quaerat vel repellendus non
-                                    ea fugiat possimus mollitia deleniti. Natus
-                                    ipsam deleniti eos assumenda? Dicta
-                                    voluptate nemo repudiandae laboriosam
-                                    dolore. Facilis explicabo dolor, quis
-                                    aliquid laborum praesentium enim voluptates
-                                    modi saepe aspernatur placeat sit fugiat
-                                    quae velit in esse incidunt sapiente!
                                   </div>
                                 </div>
                                 {option.id === question.user_answer ? (
@@ -228,25 +195,6 @@ const ReviewJawaban = ({ props }: { props: ReviewJawabanProps }) => {
                                         __html: cleanHtmlContent(option.text),
                                       }}
                                     ></div>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Repudiandae libero esse
-                                    beatae ex! Excepturi vitae magnam
-                                    doloremque, odit, voluptates eius quisquam
-                                    possimus reprehenderit reiciendis, magni
-                                    consequatur exercitationem omnis aliquam.
-                                    Autem mollitia voluptate neque nulla facilis
-                                    corporis hic qui veniam at fugit eligendi,
-                                    magni iure, explicabo repellat dolorum alias
-                                    voluptas laboriosam. Commodi porro ullam
-                                    dolor, minima molestiae recusandae
-                                    laboriosam odio quaerat vel repellendus non
-                                    ea fugiat possimus mollitia deleniti. Natus
-                                    ipsam deleniti eos assumenda? Dicta
-                                    voluptate nemo repudiandae laboriosam
-                                    dolore. Facilis explicabo dolor, quis
-                                    aliquid laborum praesentium enim voluptates
-                                    modi saepe aspernatur placeat sit fugiat
-                                    quae velit in esse incidunt sapiente!
                                   </div>
                                 </div>
 

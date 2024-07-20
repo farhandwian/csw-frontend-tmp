@@ -32,6 +32,7 @@ type NavigasiSoalContextType = "besar" | "kecil";
 export const TipeUjianContext = createContext<NavigasiSoalContextType>("kecil");
 
 const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
+  const [isLoadingMutate, setIsLoadingMutate] = useState(false);
   const [activeQuestion, setActiveQuestion] = useState(0); // this will be the index that used to move through question array
 
   const [result, setResult] = useState(quiz);
@@ -61,6 +62,7 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
   };
 
   const onSubmit = () => {
+    setIsLoadingMutate(true);
     try {
       const payload: TAddQuizSubmissionPayload =
         TransformQuizToPayloadQuizSubmission(result, timeLeft);
@@ -68,9 +70,11 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
       console.log(payload);
       mutate(payload, {
         onSuccess: () => {
+          setIsLoadingMutate(true);
           toast.success("quiz submission has been added");
         },
         onError: (error) => {
+          setIsLoadingMutate(true);
           logger(payload);
           logger("add quiz submission Error:", error.response?.data.message);
           toast.error(
@@ -79,6 +83,7 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
         },
       });
     } catch (error) {
+      setIsLoadingMutate(false);
       throw new Error("Invalid response");
     }
   };
@@ -167,6 +172,10 @@ const CBT = ({ quiz, mutate, router, status }: CBTProps) => {
 
   if (status === "error") {
     return <ErrorComponent>error submit quiz submission</ErrorComponent>;
+  }
+
+  if (isLoadingMutate) {
+    return <Loading>...Loading submit quiz submission</Loading>;
   }
 
   return (

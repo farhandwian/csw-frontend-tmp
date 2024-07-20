@@ -135,7 +135,7 @@ const SideBar = forwardRef<HTMLDivElement, SideBarProps>(
               />
               <p className="mt-2 text-center capitalize">
                 Dashboard Anda, <br />
-                <span className="font-semibold">{user.name}</span>
+                <span className="font-semibold">{user?.name}</span>
               </p>
             </div>
           </div>

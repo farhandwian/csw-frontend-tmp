@@ -52,18 +52,6 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
           className="prose"
           dangerouslySetInnerHTML={{ __html: cleanHtmlContent(question) }}
         ></div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-        corrupti magnam ratione cupiditate culpa adipisci quis laboriosam modi
-        consectetur sapiente, obcaecati, ut mollitia natus. Animi repudiandae
-        reprehenderit corrupti! Inventore necessitatibus veritatis saepe quo
-        possimus consequuntur sequi delectus voluptatem. Repudiandae, nam
-        provident. Doloribus asperiores obcaecati rerum voluptatem debitis
-        accusantium quis reprehenderit, veritatis libero. Explicabo saepe fugiat
-        provident quo aliquam quam libero pariatur ullam cupiditate, commodi
-        tenetur? Quidem, numquam qui provident similique unde quod optio minus
-        aliquid vitae amet vero saepe iure beatae possimus nisi reprehenderit
-        labore quis blanditiis non ex nobis repellendus, totam quasi accusamus.
-        Consequatur pariatur impedit repellat animi odio.
       </h2>
       <div>
         {options?.map((option, index) => (
@@ -93,18 +81,6 @@ const QuestionSection: React.FC<QuestionSectionProps> = ({
                   __html: cleanHtmlContent(option.text),
                 }}
               ></div>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, sed
-              recusandae aut dicta repellendus ad nihil earum aspernatur
-              voluptate temporibus totam, voluptatem consectetur odit quis
-              similique suscipit. Incidunt error molestiae dolores nobis
-              possimus corrupti aliquid aut fugit, quaerat eaque hic quos quia
-              dicta enim veniam numquam nam laborum fuga qui libero architecto
-              quae pariatur adipisci voluptatem! Ducimus eius exercitationem qui
-              impedit quod, obcaecati excepturi repellendus sunt quasi molestias
-              assumenda repudiandae, totam dolorum dolor amet reprehenderit
-              iusto ipsum repellat! Temporibus nobis quasi autem cumque ipsa?
-              Reiciendis ipsam ipsa possimus repellat quod? Blanditiis, tempore.
-              Beatae, quidem ipsam quod quisquam amet eaque neque?
             </div>
           </div>
         ))}

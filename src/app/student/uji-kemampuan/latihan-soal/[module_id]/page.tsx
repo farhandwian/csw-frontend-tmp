@@ -9,6 +9,7 @@ import { useGetExerciseAll } from "@/hooks/uji-kemampuan/hook";
 import { errMessageDataFetching, loadingMessage } from "@/lib/const";
 import { TUjiKemampuanAllParams } from "@/types/uji-kemampuan";
 import Link from "next/link";
+import { convertIDToModuleName } from "@/lib/utils/ConvertModule";
 
 const percentage = 66;
 
@@ -56,11 +57,12 @@ const srcItemCards = [
 
 const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
   console.log(params.module_id);
+  const modulName = convertIDToModuleName(params.module_id);
   const {
     data,
     isLoading: isLoadingExerciseAll,
     isError: isErrorExerciseAll,
-  } = useGetExerciseAll(params.module_id, "1");
+  } = useGetExerciseAll(params.module_id, "4");
   const dataExercises = data?.data;
 
   if (isErrorExerciseAll) {
@@ -77,17 +79,18 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
       <Breadcrumbs widthReduction={"54px"} fontSize="7px" /> */}
       <section className="relative w-[100%]  p-4 md:p-5">
         <div className="mb-3">
-          <h1 className="text-md font-bold">Paket Latihan Soal Matematika</h1>
+          <h1 className="text-md font-bold">Paket Latihan Soal {modulName}</h1>
           <h2 className="text-sm">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.{" "}
+            Halaman ini merupakan halaman daftar paket latihan soal. Paket
+            latihan soal berisi soal-soal yang dikelompokan berdasarkan modul{" "}
+            {modulName}, didalamnya terdapat soal-soal tiap submodul
           </h2>
         </div>
         <div className="flex">
           <div className="w-[70%]">
-            {/* container card pretest */}
+            {/* container card latihan soal */}
             <div className="grid grid-cols-3 gap-2">
-              {/* container item card pretest */}
+              {/* container item card latihan soal */}
               {dataExercises?.map((exercise, index) => (
                 <Link
                   href={`${params.module_id}/deskripsi-latihan-soal/${exercise.uuid}`}
@@ -113,8 +116,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
                     <h1 className="text-lg font-bold">{exercise.title}</h1>
                     <p className="text-xs">
                       {exercise.description} yang dapat dikerjakan{" "}
-                      {exercise.attempt}
-                      kali
+                      {exercise.attempt} kali
                     </p>
                   </div>
 
