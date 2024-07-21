@@ -75,7 +75,7 @@ export default function ModalSubmitModul({
                     />
                   </div>
                   <h1 className="text-center text-xl font-bold">PERHATIAN!!</h1>
-                  <p className="mb-4 text-center">
+                  <p className="mb-4 line-clamp-4 text-center ">
                     {`Modul ${exercise.module_name} - ${exercise.title} : ${exercise.description} `}
                   </p>
 

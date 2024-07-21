@@ -17,7 +17,7 @@ export type TLoginPayload = {
 
 export type TRegisterPayload = {
   name: string;
-  class: string;
+  // class: string;
   district: string;
   regency: string;
   province: string;

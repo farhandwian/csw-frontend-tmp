@@ -7,7 +7,8 @@ interface navigationState {
 
 const initialState: navigationState = {
   ujiKemampuanmoduleNav: 1,
-  ujiKemampuanTestTypeNav: "pretest",
+  // ujiKemampuanTestTypeNav: "pretest",
+  ujiKemampuanTestTypeNav: "latihan-soal",
 };
 
 const navigationSlice = createSlice({

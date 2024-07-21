@@ -91,7 +91,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
         paramsIndexPosition={[3]}
       />
 
-      <section className="relative w-[100%]  p-4 md:p-5">
+      <section className="relative w-[100%] p-4 md:p-5">
         <div className="mb-3">
           <h1 className="text-md font-bold">
             Posttest {dataAllPosttest?.module_name}
@@ -102,10 +102,10 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
               : "Berikut adalah posttest dari modul Matematika"}
           </h2>
         </div>
-        <div className="flex">
-          <div className="w-[70%]">
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-[70%]">
             {/* container card posttest */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
               {/* container item card posttest */}
               {dataAllPosttest?.quizzes_grouped_by_sub_module.map(
                 (dataPosttest, index) => (
@@ -200,7 +200,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
               )}
             </div>
           </div>
-          <div className="w-[30%]">
+          <div className="w-full md:w-[30%]">
             <PapanInformasi />
           </div>
         </div>

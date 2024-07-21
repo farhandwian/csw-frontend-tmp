@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { TUser } from "@/types/auth";
+import { signOut } from "next-auth/react";
 
 const profiles = [
   {
@@ -204,7 +205,8 @@ export default function TopBar({
                 </Menu.Item>
                 <Menu.Item>
                   <Link
-                    href="#"
+                    href={"/home-page"}
+                    onClick={() => signOut({ redirect: false })}
                     className="group flex items-center rounded p-2 text-sm text-gray-700 transition-colors hover:bg-red-500 hover:text-white"
                   >
                     <LogoutIcon className="mr-4 h-4 w-4" />

@@ -22,8 +22,7 @@ const LatihanSoalItem = ({
   data,
   user_attempt,
 }: LatihanSoalItemProps) => {
-  console.log(data);
-  const [subnav, setSubnav] = useState(true);
+  const [subnav, setSubnav] = useState(false); // Default set to false to hide initially
   const showSubnav = () => setSubnav(!subnav);
 
   return (
@@ -41,7 +40,7 @@ const LatihanSoalItem = ({
                 width={538}
                 height={638}
                 alt="img-banner"
-                className="min-h-[3rem] max-w-[4rem] "
+                className="min-h-[3rem] max-w-[4rem]"
               />
               <div>
                 <h1 className="font-semibold">
@@ -55,11 +54,15 @@ const LatihanSoalItem = ({
                 <h1 className="p-0 text-[#FFA056]">{data.score_per_module}</h1>
                 <h1 className="text-[#FF2985]">/{data.max_score_per_module}</h1>
               </div>
-              <div>{subnav ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}</div>
+              <div>{subnav ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}</div>
             </div>
           </div>
         </div>
-        {subnav && (
+        <div
+          className={`transition-max-height overflow-hidden duration-500 ease-in-out ${
+            subnav ? "max-h-screen" : "max-h-0"
+          }`}
+        >
           <div className="rounded-b-2xl bg-[#E3E7FA]">
             {/* Mark / total soal yang benar */}
             <div className="px-3 py-2">
@@ -121,7 +124,7 @@ const LatihanSoalItem = ({
               )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

@@ -504,28 +504,29 @@ const HomePage = () => {
                   img="profile"
                   name="Annisa Pertiwi"
                   student="Mahasiswa STIS 2021"
-                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Setelah mengikuti bimbel ini alhamdulillah sekarang saya bisa diterima di lembaga yang saya inginkan."
+                  text="Bimbel csw memberikan pengalaman belajar yang luar biasa. Materi yang disajikan sangat jelas dan membantu saya memahami konsep dengan baik. Berkat bimbel ini, saya berhasil masuk ke STIS seperti yang saya impikan."
                   rating={5}
                 />
               </div>
               <div className="keen-slider__slide number-slide2 w-fit px-2 py-5">
                 <TestimoniItem
-                  img="profile"
-                  name="Siti Permatasari"
+                  img="profile2"
+                  name="Putri Amanda"
                   student="Mahasiswa STAN 2023"
-                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Setelah mengikuti bimbel ini alhamdulillah sekarang saya bisa diterima di lembaga yang saya inginkan."
+                  text="Saya sangat terkesan dengan metode pembelajaran di bimbel csw. Setiap sesi sangat informatif dan interaktif, membuat saya lebih siap menghadapi ujian. Saya sangat bersyukur bisa diterima di STAN berkat bimbel ini."
                   rating={4}
                 />
               </div>
               <div className="keen-slider__slide number-slide3 w-fit px-2 py-5">
                 <TestimoniItem
-                  img="profile"
-                  name="Siti Permatasari"
+                  img="profile3"
+                  name="Ghifari"
                   student="Mahasiswa STAN 2023"
-                  text="Bimbel csw merupakan salah satu bimbel online kedinasan dengan sistem pembelajaran terbaik yang pernah saya temui. Setelah mengikuti bimbel ini alhamdulillah sekarang saya bisa diterima di lembaga yang saya inginkan."
+                  text="Bimbel csw memiliki pendekatan yang efektif dalam mengajar. Pengajarannya sangat membantu saya dalam memahami materi yang sulit. Berkat bimbingan yang tepat, saya berhasil lolos seleksi masuk STAN."
                   rating={4}
                 />
               </div>
+
               <div className="keen-slider__slide number-slide4 w-fit px-2 py-5">
                 <TestimoniItem
                   img="profile"

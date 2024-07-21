@@ -66,7 +66,7 @@ const RegisterForm: React.FC = () => {
           district: data.kecamatan,
           password: data.password,
           confirm_password: data.konfPassword,
-          class: data.kelas,
+          // class: data.kelas,
         });
 
         if (response) {
@@ -189,7 +189,7 @@ const RegisterForm: React.FC = () => {
           error={formik.errors.konfPassword}
           touched={formik.touched.konfPassword || false}
         />
-        <Input
+        {/* <Input
           placeHolder="Pilih Kelas"
           fieldName="kelas"
           fieldType="text"
@@ -199,7 +199,7 @@ const RegisterForm: React.FC = () => {
           onBlur={formik.handleBlur}
           error={formik.errors.kelas}
           touched={formik.touched.kelas || false}
-        />
+        /> */}
       </div>
       <Button type="submit">{loading ? <Spinner /> : "Register"}</Button>
     </form>

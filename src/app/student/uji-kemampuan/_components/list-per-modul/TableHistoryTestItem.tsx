@@ -75,7 +75,7 @@ const TableHistoryTestItem = ({
 
   return (
     <div
-      className={`ml-5 ${
+      className={`mt-5 md:ml-5 md:mt-0 ${
         isHaveModul ? "h-[33.75rem]" : "h-[10rem]"
       }  max-w-[23rem] rounded-md border bg-white`}
     >

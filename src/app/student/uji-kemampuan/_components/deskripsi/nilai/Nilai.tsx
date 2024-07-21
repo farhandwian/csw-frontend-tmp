@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { TTestType } from "@/types/index";
 
 import PostTestOrPretest from "@/app/student/uji-kemampuan/_components/deskripsi/nilai/PostTestOrPretest";
@@ -21,12 +22,14 @@ const Nilai = ({
   quiz_uuid,
   quiz_submission_uuid,
 }: NilaiProps) => {
+  useEffect(() => {
+    // ... Logic here if necessary
+  }, [quiz_submission_uuid, singleScore]);
   const typeNilaiComponent = () => {
     if (testType === "latihan-soal") {
       // return <LatihanSoal dataNilai={dataNilai} typeNilai={testType} />;
       return "";
     } else if (testType === "pretest" || testType === "posttest") {
-      console.log(singleScore);
       return (
         <PostTestOrPretest
           score={singleScore!}

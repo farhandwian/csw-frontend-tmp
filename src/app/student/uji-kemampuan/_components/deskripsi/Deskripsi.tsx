@@ -168,7 +168,7 @@ const Deskripsi = ({
 
             {/* bagian nilai */}
             <Nilai
-              singleScore={singleScore}
+              singleScore={dataQuizDetail.score}
               testType={test_type}
               maxScore={dataQuizDetail.max_score}
               quiz_uuid={quiz_uuid}

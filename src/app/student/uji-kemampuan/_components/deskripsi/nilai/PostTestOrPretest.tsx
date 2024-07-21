@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { TTestType } from "@/types/index";
 import Link from "next/link";
@@ -18,6 +19,9 @@ const PostTestOrPretest = ({
   quiz_uuid,
   quiz_submission_uuid,
 }: PostTestOrPretestArgs) => {
+  useEffect(() => {
+    // ... Logic here if necessary
+  }, [quiz_submission_uuid, score]);
   const urlRedirect = () => {
     if (testType === "pretest") {
       return `${quiz_uuid}/review-jawaban/${quiz_submission_uuid}`;
@@ -32,13 +36,13 @@ const PostTestOrPretest = ({
   };
   return (
     <>
-      {score >= 0 ? (
+      {score > -1 ? (
         <>
           <div className="border-b-[2px] p-2">
             <h1 className="text-md text-[#267DDD]">NILAI</h1>
           </div>
           <div className="p-3">
-            <div className="rounded-md bg-white">
+            <div className="rounded-md bg-white p-3">
               <Image
                 src={"/img/uji-kemampuan/ic_nilai_mtk.png"}
                 width={538}
@@ -58,7 +62,8 @@ const PostTestOrPretest = ({
                   </div>
                   <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
                     <div
-                      className={`h-2.5 w-[${scorePercentage()}%]  rounded-full bg-blue-600`}
+                      className={`h-2.5 rounded-full bg-blue-600`}
+                      style={{ width: `${scorePercentage()}%` }}
                     ></div>
                   </div>
                 </div>

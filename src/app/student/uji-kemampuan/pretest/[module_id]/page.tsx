@@ -102,10 +102,10 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
               : "Berikut adalah pretest dari modul Matematika"}
           </h2>
         </div>
-        <div className="flex">
-          <div className="w-[70%]">
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-[70%]">
             {/* container card pretest */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
               {/* container item card pretest */}
               {dataAllPretest?.quizzes_grouped_by_sub_module.map(
                 (dataPretest, index) => (
@@ -200,7 +200,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
               )}
             </div>
           </div>
-          <div className="w-[30%]">
+          <div className="w-full md:w-[30%]">
             <PapanInformasi />
           </div>
         </div>

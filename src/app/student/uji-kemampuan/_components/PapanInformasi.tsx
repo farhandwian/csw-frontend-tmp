@@ -4,7 +4,7 @@ import Image from "next/image";
 const PapanInformasi = () => {
   return (
     <>
-      <div className="ml-5 h-[22.5rem] max-w-[23rem] rounded-md bg-white shadow-md">
+      <div className="mt-5 h-[15rem] max-w-[23rem] rounded-md bg-white shadow-md md:ml-5 md:mt-0 md:h-[22.5rem]">
         <div className="flex h-[20%] p-2 shadow-md">
           <div className="mr-2 w-[20%]">
             <Image

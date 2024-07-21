@@ -39,7 +39,7 @@ const AfterTest = ({ props }: AfterTestProps) => {
             onClick={() => {}}
           >
             <h1 className="text-xs md:text-sm">
-              Kembali ke deskripsi {exerciseTitle}
+              Kembali ke deskripsi latihan soal
             </h1>
           </BlueButton>
         </Link>

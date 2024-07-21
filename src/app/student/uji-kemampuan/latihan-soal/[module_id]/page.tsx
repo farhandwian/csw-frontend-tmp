@@ -86,10 +86,10 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
             {modulName}, didalamnya terdapat soal-soal tiap submodul
           </h2>
         </div>
-        <div className="flex">
-          <div className="w-[70%]">
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full md:w-[70%]">
             {/* container card latihan soal */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
               {/* container item card latihan soal */}
               {dataExercises?.map((exercise, index) => (
                 <Link
@@ -99,7 +99,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
                     backgroundColor:
                       srcItemCards[index % srcItemCards.length].color,
                   }}
-                  className=" rounded-md px-6 pb-2 pt-3"
+                  className="rounded-md px-4 pb-1 pt-2 md:px-6 md:pb-2 md:pt-3"
                 >
                   <Image
                     src={srcItemCards[index % srcItemCards.length].iconImageUrl}
@@ -109,19 +109,21 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
                     className="mt-1 inline h-[2.3rem] w-[2.3rem]"
                   />
 
-                  <div className="my-6">
-                    <h1 className="text-base font-semibold text-[#F9BF3B]">
-                      Latihan Soal
+                  <div className="my-3 md:my-6">
+                    <h1 className="text-sm font-semibold text-[#F9BF3B] md:text-base">
+                      Paket Latihan Soal
                     </h1>
-                    <h1 className="text-lg font-bold">{exercise.title}</h1>
-                    <p className="text-xs">
+                    <h1 className="text-sm font-bold md:text-lg">
+                      {exercise.title}
+                    </h1>
+                    <p className="line-clamp-4 text-xs">
                       {exercise.description} yang dapat dikerjakan{" "}
                       {exercise.attempt} kali
                     </p>
                   </div>
 
                   <div className="flex justify-between">
-                    <h3>{exercise.total_question}</h3>
+                    <h3>{exercise.total_question} soal</h3>
                     <ArrowCircleRightIcon sx={{ color: "black" }} />
                   </div>
                 </Link>
@@ -129,7 +131,7 @@ const Page = ({ params }: { params: TUjiKemampuanAllParams }) => {
             </div>
           </div>
           {/* papan informasi */}
-          <div className="w-[30%]">
+          <div className="w-full md:w-[30%]">
             <PapanInformasi />
           </div>
         </div>

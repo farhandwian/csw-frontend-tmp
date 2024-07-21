@@ -114,7 +114,7 @@ const TableTestItem = ({ sub_module_uuid, testType }: TableTestItemProps) => {
           ))}
 
           {/* pagination */}
-          <div className="mt-2 flex cursor-pointer overflow-x-auto text-xs sm:justify-center">
+          <div className="mt-2 flex cursor-pointer justify-center overflow-x-auto text-xs">
             <ul className="inline-flex h-10 -space-x-px text-base">
               <li>
                 <button
