@@ -4,9 +4,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import SearchModal from "../SearchModal";
-import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
-import { AppDispatch, useAppSelector } from "@/store";
+import { useAppSelector } from "@/store";
 import { TMateriModul } from "@/types/modul";
 
 interface SidebarMateriModulProps {
@@ -32,6 +31,7 @@ const SideTopbarMateriModul = ({
     (state) => state.studentLayout.showNav,
   );
   const isMobile = useAppSelector((state) => state.studentLayout.isMobile);
+  console.log(isMobile);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -42,6 +42,7 @@ const SideTopbarMateriModul = ({
   };
 
   const sidebarPosition = () => {
+    console.log(isShowNavDashboard, sidebar);
     if (!isShowNavDashboard && sidebar) {
       return "left-0";
     } else if (isShowNavDashboard && sidebar) {
@@ -67,13 +68,8 @@ const SideTopbarMateriModul = ({
             {sidebar ? <CloseIcon /> : <MenuIcon />}
           </div>
           {/* Breadcrumbs */}
-          <Breadcrumbs
-            fontSize="7px"
-            bgColor="#DCDCDC"
-            isShadow={false}
-            padding="5px"
-          />
-          <h2 className="mx-auto">
+          <Breadcrumbs bgColor="#DCDCDC" isShadow={false} padding="5px" />
+          <h2 className="mx-auto hidden md:block">
             {dataMateriModul?.sub_subject[activeSubSubject].name}
           </h2>
           <button onClick={handleOpen}>
@@ -89,27 +85,53 @@ const SideTopbarMateriModul = ({
 
       {/* END TOPBAR */}
       {/* SIDEBAR */}
-      <nav
-        className={`fixed top-24 z-10 h-screen w-64 overflow-x-hidden text-wrap bg-white shadow-lg transition-all ${sidebarPosition()}`}
-        style={{ overflowWrap: "break-word" }}
-      >
-        <div className="p-3">
-          <div className="mt-5 w-full max-w-[100%]">
-            {/* {SidebarData.map((item: any, index) => (
-              <SubMenu item={item} key={index} />
-            ))} */}
-            <SubMenu
-              dataMateriModul={dataMateriModul}
-              activeSubSubject={activeSubSubject}
-              setActiveSubSubject={setActiveSubSubject}
-            />
-          </div>
-
-          <div className=" flex h-2 w-[100%] px-3 shadow-sm">
-            <div className=""></div>
+      {isMobile ? (
+        <div
+          className={`fixed left-0 top-6 z-30 h-full w-52 transform bg-white text-white transition-transform ${
+            sidebar ? "translate-x-0" : "-translate-x-full"
+          } md:relative md:w-64 md:translate-x-0`}
+        >
+          <div className="p-4">
+            <div className="flex items-center justify-between">
+              <h2>Sidebar</h2>
+              <button onClick={showSidebar}>
+                <CloseIcon />
+              </button>
+            </div>
+            <div className="mt-5 w-full max-w-[100%]">
+              <SubMenu
+                dataMateriModul={dataMateriModul}
+                activeSubSubject={activeSubSubject}
+                setActiveSubSubject={setActiveSubSubject}
+              />
+            </div>
           </div>
         </div>
-      </nav>
+      ) : (
+        <nav
+          className={`fixed top-24 z-10 h-screen w-64 overflow-x-hidden text-wrap border-r-2 bg-white shadow-lg transition-all ${sidebarPosition()}`}
+          style={{ overflowWrap: "break-word" }}
+        >
+          <div className="p-3">
+            <div className="mt-5 w-full max-w-[100%]">
+              <SubMenu
+                dataMateriModul={dataMateriModul}
+                activeSubSubject={activeSubSubject}
+                setActiveSubSubject={setActiveSubSubject}
+              />
+            </div>
+          </div>
+        </nav>
+      )}
+
+      {/* Overlay for mobile */}
+      {isMobile && sidebar && (
+        <div
+          className="fixed inset-0 z-20 bg-[#121212] opacity-50 md:hidden"
+          onClick={showSidebar}
+        ></div>
+      )}
+
       {/* END SIDEBAR */}
     </div>
   );

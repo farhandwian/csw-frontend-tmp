@@ -104,7 +104,7 @@ export default function Breadcrumbs({
           >
             <ArrowBackIosIcon fontSize="inherit" />
             <div
-              className={`text-tp-SlateGray ${fontSize && `text-[${fontSize}]`}`}
+              className={`text-gray-400 ${fontSize && `text-[${fontSize}]`}`}
             >
               <Link
                 href={`/student/${link}`}

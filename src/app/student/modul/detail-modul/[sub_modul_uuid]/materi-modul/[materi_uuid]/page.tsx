@@ -62,18 +62,18 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
         style={{ overflowWrap: "break-word" }}
       >
         {/* header */}
-        <div className="flex min-h-16 w-[100%] items-center bg-blue-300 ">
-          <h1 className="ml-6 text-2xl font-bold">
+        <div className=" flex min-h-12 w-[100%] items-center bg-blue-300 md:min-h-16 ">
+          <h1 className="ml-6 text-lg font-bold md:text-2xl">
             {dataMateriModul?.subject}
           </h1>
         </div>
         {/* isi */}
-        <div className="h-[28.75rem] overflow-y-scroll p-3 shadow-sm">
+        <div className="p-3 shadow-sm md:h-full">
           {/* kotak nomor kecil */}
           <div className="h-fit w-fit border border-blue-400 px-2 py-1">
-            <h3>{`1.${activeSubSubject + 1}`}</h3>
+            <h3 className="text-xs md:text-base">{`1.${activeSubSubject + 1}`}</h3>
           </div>
-          <h1 className="text-2xl font-semibold">
+          <h1 className="text-lg font-semibold md:text-2xl">
             {dataSubSubjects && dataSubSubjects[activeSubSubject].name}
           </h1>
 
@@ -101,7 +101,7 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
                 <div className="inline cursor-pointer " onClick={onClickPrev}>
                   <div className="flex items-center">
                     <ArrowBackIosNewIcon sx={{ fontSize: "30px" }} />
-                    <div>
+                    <div className="text-2xs md:text-base">
                       <h1 className="text-left">{activeSubSubject}.0</h1>
                       <h1>
                         {dataSubSubjects &&
@@ -116,9 +116,9 @@ const Page = ({ params }: { params: TMateriModulParams }) => {
                 activeSubSubject !== dataSubSubjects.length - 1 && (
                   <div className=" inline cursor-pointer" onClick={onClickNext}>
                     <div className="flex items-center">
-                      <div>
+                      <div className="text-2xs md:text-base">
                         <h1 className="text-right">{activeSubSubject + 2}.0</h1>
-                        <h1>
+                        <h1 className="text-right">
                           {dataSubSubjects &&
                             dataSubSubjects[activeSubSubject + 1].name}
                         </h1>

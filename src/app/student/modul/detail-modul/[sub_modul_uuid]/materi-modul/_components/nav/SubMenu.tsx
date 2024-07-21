@@ -39,11 +39,11 @@ const SidebarLink = ({
           } mt-3`}
           onClick={dataMateriModul?.sub_subject && showSubnav}
         >
-          <div className="flex w-[100%] max-w-[100%] items-center rounded-r-lg">
+          <div className="flex w-[100%] max-w-[100%] items-center rounded-r-lg text-sm md:text-base">
             <div className="w-[17%] rounded-2xl text-white">
               <h1 className="ml-2">1</h1>
             </div>
-            <div className="ml-1 w-[75%] max-w-[100%] p-[2px] text-[#64748B]">
+            <div className=" ml-1 w-[75%] max-w-[100%] p-[2px] text-[#64748B]">
               {dataMateriModul?.subject}
             </div>
             <div className="">
@@ -63,7 +63,7 @@ const SidebarLink = ({
           {/* sub menu */}
           {subnav && (
             <div
-              className="rounded-2xl py-2 pr-1 shadow-inner"
+              className="rounded-2xl py-2 pr-1 text-xs shadow-inner md:text-sm"
               style={{
                 backgroundImage: `linear-gradient(to right, #31B9ED 17%, #F7F7F7 17%)`,
               }}
@@ -71,7 +71,7 @@ const SidebarLink = ({
               {dataMateriModul?.sub_subject.map((sub_subject, index) => (
                 <div
                   onClick={() => onClickSubnav(index)}
-                  className="flex max-w-[100%] cursor-pointer items-center rounded-2xl py-1 text-sm text-black"
+                  className="flex max-w-[100%] cursor-pointer items-center rounded-2xl py-1 text-black"
                   key={index}
                 >
                   <div className="w-[17%] rounded-2xl text-white">

@@ -16,7 +16,7 @@ const MentorItem: React.FC<MentorItemProps> = ({ img, mentor, key }) => {
   return (
     <div
       key={key}
-      className="h-full w-full rounded-md bg-white shadow-md md:min-h-[90vh] md:rounded-xl"
+      className="h-full w-full rounded-md bg-white shadow-md md:min-h-24 md:rounded-xl lg:min-h-32"
     >
       <div className="relative flex w-full justify-center rounded-t-md bg-[#3838A4] md:rounded-t-xl">
         {/* ic bg card */}
@@ -38,8 +38,8 @@ const MentorItem: React.FC<MentorItemProps> = ({ img, mentor, key }) => {
         />
       </div>
 
-      <div className="h-[50%]">
-        <div className="flex h-full flex-col justify-between p-2 md:p-4">
+      <div className="md:h-[50%] lg:h-[350px] xl:h-[300px]">
+        <div className="flex flex-col justify-between p-2 md:h-full md:p-4 lg:h-[100px]">
           <div className="md:mt-3">
             <div className="">
               <h4 className="text-xs font-bold md:text-base">{mentor.name}</h4>
